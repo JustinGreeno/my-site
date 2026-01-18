@@ -1,0 +1,975 @@
+/*
+ONLY css is permitted in a .css file
+NO html allowed whatsoever
+
+Best CSS Rule sort order:
+	HTML elements first
+	.classes next
+	#ids last
+Results in easier to predict CSS Cascade
+*/
+
+/*
+------------------------
+HTML element selectors
+------------------------
+*/
+html {
+	/* 
+	This is creating the main default for the page
+	*/
+
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1.2em;
+	color: #a5e4cc;
+	max-width: 1200px;
+	margin: 0 auto;
+	/*background: linear-gradient(180deg, 
+	#051E03 -10%, #004935 30%, #051E03 50%, #004935 70%, #051E03 110%);
+	*/
+	background: url('../images/grass_tile_lg.png') repeat 75% 0;
+	/* 25% from the left and 0 from the top */
+	/* background-attachment: fixed;  This would make the background stay static */
+	
+}
+
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh; /* Ensure the body takes at least the full height of the viewport */
+	/*FOR COLORED BACKGROUND
+		background-color: #034b13;
+	background-image: url(../images/background.png);
+	background-size:cover;
+	*/
+	font-family: Arial, sans-serif;
+	margin: 0px;
+	/* BEE
+	background: url('../images/bee.gif') repeat 75% 0;*/
+}
+
+main {
+	flex: 1;
+	background: none;
+	
+}
+
+div {
+	 /* add styles */
+	
+}
+
+/* Boxes to put over images so show both texts and imgs*/
+.transparent-background{
+	background-color: rgba(255,255,255, .66);
+	color: black;
+	padding: 5px;
+}
+
+.logo {
+    /* Add styles for your logo here */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+article img {
+	transition: transform 0.3s ease-in-out;
+	max-height:220px;
+}
+
+article img:hover {
+	transform: scale(1.02); /* Zoom in when hovering over header img*/
+
+}
+
+
+
+header img {
+	height: 65px;
+	width: 65px;
+	float: left;
+	margin: 10px 20px;
+	transition: transform 0.3s ease-in-out;
+
+}
+
+header img:hover {
+	transform: scale(1.22); /* Zoom in when hovering over header img*/
+	position:sticky;
+}
+
+header {
+	/* background-image: url(../images/header.png); 
+		background-repeate: no-repear;
+		background-size:
+	*/
+	border: solid 2px #689fab;
+	border-width: 3px 6px;
+	border-radius: 10px 10px 50px 10px;
+	background-color: #012F0B;
+	display: flex;
+	align-items: center;
+	margin: 5px;
+	box-shadow: 12px 12px 30px rgba(0, 0, 0, 0.8);
+}
+
+iframe {
+	max-width: 100%;
+	width: 630px;
+	height: 354px;
+	border: solid 2px #689fab;
+	border-width: 3px 6px;
+	border-radius: 10px 10px 50px 10px;
+	box-shadow: 12px 12px 30px rgba(0, 0, 0, 0.8);
+}
+
+
+
+/* Common styles for hyperlinks */
+a {
+	transition: color 0.7s ease-in-out; /* Common transition for color changes */
+
+}
+
+	/* Styles for hyperlinks in normal state */
+	a:hover {
+		color: #FAF8F7;
+
+	}
+
+		/* Styles for hyperlinks in active state */
+	a:active {
+		background-color: #FAF8F7;
+		color: #6ab9b2;
+
+	}
+
+		/* Styles for hyperlinks in focus state */
+	a:focus {
+		color: #689fab;
+
+	}
+
+/* Navigation styles */
+nav {
+	background: linear-gradient(180deg, #012F0B -20%, #051E03 40%, #051E03 90%, #012F0B 110%);
+	font-size: 0.7em;
+	padding: 5px;
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+	display: flex;
+	flex-direction: column;
+	border: solid 2px #689fab;
+	border-width: 3px 6px;
+	border-radius: 10px 10px 50px 10px;
+	margin: 5px;
+	box-shadow: 12px 12px 30px rgba(0, 0, 0, 0.8);
+	/* Ensure the flex direction is set to row */
+}
+
+	nav a {
+		transition: color 0.5s ease-in-out;
+		margin-right: 10px;
+		color: #A5E4CC; /* Add a default color for testing */
+	}
+		nav a:hover {
+			color: #ade8f5;
+		}
+
+		nav a:active {
+			background-color: #051e03;
+			color: #689fab;
+		}
+
+		nav a:focus {
+			background-color: #FAF8F7;
+			color: #6ab9b2;
+		}
+
+	nav ul {
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		/* Mobile-first: stack items vertically */
+	}
+	
+	nav li {
+		/* Remove or adjust the width property */
+		/* width: 40vw; */
+		border: solid 1px #6ab9b2;
+		margin: 2px;
+		padding: 4px;
+		border-radius: 20px;
+		margin-right: 20px;
+		font-size: 1em;
+	}
+
+.positioned-img{
+	position: relative; /* this will over lap and mess up other flex boxes*/
+	top:100px; /* move down by x number pixels */
+	right:50px;
+
+}
+
+#wrapper {
+	flex: 1; /* Grow to fill available space */
+	display: flex;
+	flex-direction: column;
+	/* min-height: 100vh; */
+	max-width: 1200px;
+	margin: 0 auto; /* Center the wrapper horizontally */
+	padding: 1px;
+	background-color: #f0f0f0;
+	border-color: aquamarine;
+	border-width: 0px 5px;
+	border-style: solid;
+}
+
+#absolute_child{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	text-shadow: 0px 0px 10px black;
+}
+
+form {
+	margin-left: auto; /* This will push the form (and its content) to the right */
+	margin-right: 10px; /* Add some margin on the right for spacing */
+}
+
+#search-form {
+	display: flex;
+	margin: 10px;
+}
+
+#search-input {
+	flex: 1;
+	width: 100%; /* Set the width to 100% to fill the space horizontally */
+	padding: 9px; /* Adjust the padding as needed */
+	font-size: 16px; /* Adjust the font size as needed */
+	margin-left: auto;
+	margin-right: 10px;
+	box-shadow: 12px 12px 30px rgba(0, 0, 0, 0.8);
+}
+
+
+button {
+	padding: 3px 7px;
+	margin: 2px 2px;
+	background-color: #0f501d;
+	color: white;
+	border: 2px solid rgba(0, 128, 255, 0.5);
+	border-width: 1px;
+	border-style: solid;
+	cursor: pointer;
+	margin-left: auto;
+	margin-right: 10px;
+	transition: background-color 0.3s, transform 0.3s ease-in-out;
+	float: right; /* Keep the button on the right side */
+	box-shadow: 12px 12px 30px rgba(0, 0, 0, 0.8);
+}
+
+
+	button:hover {
+		background-color: #135732; /* Change the color on hover */
+		transform: scale(1.05); /* Add a slight zoom effect on hover */
+	}
+
+
+
+
+
+
+blockquote {
+	font-family: 'Times New Roman', Times, serif;
+	background-color: #18110c;
+	color: #C6B084;
+	padding: 0px 2px;
+	border-color: #C6B084;
+	border-width: 2px 2px;
+	border-style: solid;
+	white-space: pre-wrap;
+	margin: 2px; /* Add this line to reset margin */
+	max-width: 320px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+figcaption{
+
+	font-family: 'Times New Roman', Times, serif;
+	font-size: .7em;
+	position: absolute;
+	bottom:0px;
+	width:100%;
+	background:rgba(0,0,0,0.5);
+}
+
+.center-video {
+	text-align: center; /* Center the content horizontally */
+	margin: 20px 0; /* Add margin for spacing */
+	
+}
+
+	.center-video figure {
+		display: inline-block; /* Ensure figure is treated as an inline-block */
+	}
+
+
+section {
+	display: flex;
+	margin: 1px 5px;
+	padding: 0px 10px;
+	color: #A5E4CC;
+	border: solid 2px #689fab;
+	border-width: 3px 6px;
+	border-radius: 10px 10px 50px 10px;
+	max-width: 1200px;
+	max-width: 100%;
+	box-shadow: 12px 12px 30px rgba(0, 0, 0, 0.8);
+}
+
+	/* Odd section styles */
+	section:nth-child(odd) {
+		background: linear-gradient(180deg, #051E03 -10%, #012F0B 110%, #051E03 150%);
+	}
+
+	/* Even section styles */
+	section:nth-child(even) {
+		background: linear-gradient(180deg, #0f501d -10%, #0F501D 40%, #0F501D 110%, #0f501d 150%);
+	}
+
+
+section li {
+	transition: background-color 0.3s ease-in-out;
+}
+	section li:hover {
+		background-color: #81ae89; /* Change to the color you want on hover */
+	}
+
+article {
+	flex: 1;
+	margin: 0px 0px 0px 0px;
+	padding: 15px 15px 30px 15px;
+	background-color: #012F0B;
+	color: #A5E4CC;
+	background: linear-gradient(180deg, #012F0B -20%, #051E03 40%, #051E03 90%, #016316 110%);
+	border: solid 2px #689fab;
+	border-width: 3px 6px;
+	border-radius: 10px 10px 50px 10px;
+	max-width: 1200px;
+	max-width: 100%;
+	box-shadow: 12px 12px 30px rgba(0, 0, 0, 0.8);
+}
+
+	article:nth-child(even) {
+		flex: 1; /* Add this line to make each article take equal width in the flex container */
+		margin: 0px 0px 0px 0px;
+		padding: 15px 15px 30px 15px;
+		background-color: #012F0B;
+		color: #A5E4CC;
+		background: linear-gradient(180deg,#012F0B -20%, #016316 40%, #051E03 90%, #012F0B 110%);
+		border: solid 2px #689fab;
+		border-width: 3px 6px;
+		border-radius: 10px 10px 50px 10px;
+	}
+
+	article img {
+		float: right; /* Float the image to the right */
+		margin: 1px 1px 10px 10px; /* Adjust margins for spacing */
+		/*border: solid 3px #042002; I dont want a border because most my PNGs are empty around them*/ 
+		padding: 0px 1px;
+		border-width: 2px 2px;
+		max-width:400px;
+		max-width: 45%;
+		
+	}
+
+.article-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center; /* Center horizontally */
+	justify-content: center; /* Center vertically */
+	text-align: center; /* Center inline-level elements horizontally */
+}
+
+	.banner-image {
+		width: 98%; /* Make banner images take up full width */
+		display:block; /* Set a maximum width if needed */
+		float:left; /* Center the image horizontally within the article */
+		margin:0px 80px;
+		transition: transform 0.3s ease-in-out;
+	
+	}
+
+	.banner_image:hover {
+		transform: scale(1.01); /* Zoom in when hovering over header img*/
+	}
+
+li {
+	/* this external rule says list items should use white-ish borders */
+	margin: 1px 2px;
+	padding: 2px;
+	border-radius: 20px;
+	/* width: 40vw; /* Adjust the width as needed */
+	display: inline-block;  /* rather than listed in one colum*/
+	font-size: 1em;
+}
+
+ul{
+	border: none;
+	margin: 5px;
+	padding: 2px;
+}
+
+footer {
+	background: linear-gradient(180deg, #012F0B -20%, #051E03 40%, #051E03 90%, #012F0B 110%);
+	max-width: 99%;
+	min-width: 97%;
+	padding: 0px;
+	color: #FAF8F7;
+	box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.5);
+	border: solid 2px #689fab;
+	border-width: 3px 6px;
+	border-radius: 10px 10px 50px 10px;
+	font-size: 13px;
+	position: sticky;
+	bottom: 0;
+	z-index: 999;
+	box-shadow: 12px 12px 30px rgba(0, 0, 0, 0.8);
+}
+footer img{
+	width:30px;
+
+}
+footer a {
+	transition: color 0.3s ease-in-out;
+}
+
+footer a:hover {
+	color: #FAF8F7; /* Change to the color you want on hover */
+}
+	footer li {
+		/* this external rule says list items should use white-ish borders */
+		border: solid 1px #6ab9b2;
+		margin: 1px 5px;
+		padding: 4px;
+		border-radius: 20px;
+		/* width: 40vw; /* Adjust the width as needed */
+		display: inline-block; /* rather than listed in one colum*/
+		font-size: 1em;
+	}
+
+/* every other colour shift*/
+	section:nth-child(even) {
+		background: linear-gradient(180deg,#051E03 -20%, #012F0B 40%, #012F0B 90%, #051E03 110%);
+	}
+/*
+this if for all headers list, can use this to do every other header, ect
+*/
+h1, h2, h3, h4, h5, h6{
+	/* Use font server font, or cursive fall-back */
+	font-family: Georgia, 'Times New Roman', Times, serif;		
+	margin:5px;
+	padding:0px 30px 0px 50px;
+	color:aliceblue;
+	
+}
+/*
+The last rule for a specfic header will be the one listened to 
+*/
+h1 {
+	font-family: "Kode Mono", monospace;
+	font-size: 1.8em;
+	margin: 1px 5px;
+	padding-left: 15px;
+}
+
+h2 {
+	font-family: "Oswald", sans-serif;
+	margin: 10px 10px 10px 50px;
+	padding-left: 15px;
+}
+
+h3 {
+	font-size: 1em;
+	margin: 1px 5px;
+	padding-left: 15px;
+}
+
+p {
+	padding: 1px 10px;
+	margin: 1px 5px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+code {
+	font-size: 1.2em;
+	background-color: #010700;
+}
+pre {
+	border: solid 2px #162B7A;
+	padding: 5px;
+	background-color: #010700;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 26px;
+	background-color: #010700;
+	color: floralwhite;
+	padding: 15px 35px;
+	border-color: aquamarine;
+	border-width: 2px 2px;
+	border-style: solid;
+	white-space:pre-wrap;
+	
+}
+
+/*
+this rule is used to demonstrate the Cascade
+see how this rule conflicts with an embedded rule
+example seen in: css-implementation-cascading.html
+*/
+
+
+/* 
+---------------------------
+Pseudoclass Selectors 
+---------------------------
+*/
+
+/*an <a> tag pseudoclassing example */
+/*first, rules for all a tags...*/
+a {
+	font-family: arial;
+	font-weight: bold;
+	font-size: .9em;
+	letter-spacing: 1.5px;
+	color: #A5E4CC;
+	padding: 3px;
+}
+
+/* link has never been clicked*/
+	a:link {
+		color: #689fab;
+		text-shadow: 1px 1px 0px #051e03;
+	}
+/* link has been clicked previously */
+	a:visited {
+		color: #93b6b3;
+	}
+/* link is in mouseover state */
+	a:hover {
+		text-decoration: none;
+		color: #FAF8F7;
+	}
+/* you can style for when the user tabs into a tag  */
+a:focus{	
+	background-color: #975C68;
+	/*	
+	:focus will include a default outline 
+	https://developer.mozilla.org/en-US/docs/Web/CSS/outline
+
+	most browsers will add thier own default 'outline' value
+	if you dont like it, you can remove it or change it
+	*/
+	/* outline:none; */
+	outline:2px dotted #162B7A;
+}
+/* link is being clicked/tapped right now!! */
+	a:active {
+		background-color: #051E03;
+		color: #051E03;
+	}
+
+
+
+/* bad! never underline text that isn't a hyperlink */
+.add-underline{
+	border-bottom:solid 1px #EAE8DB;
+}
+
+
+/*
+-----------------------------
+.class selectors 
+place after HTML elements in .css file
+-----------------------------
+*/
+/* uses a serif font */
+.serif_font{
+	font-family:'Times New Roman', Times, serif;
+}
+/*adds a brown bar on the left side of the element*/
+.sidebar {
+    width: 20%;
+    background: linear-gradient(180deg, #012F0B -20%, #051E03 40%, #051E03 90%, #012F0B 110%);
+    color: #4EACCB;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 20px;
+    border: solid 2px #689fab;
+    border-width: 3px 6px;
+    border-radius: 10px 10px 50px 10px;
+    box-shadow: 12px 12px 30px rgba(0, 0, 0, 0.8);
+}
+
+.article-ad {
+    background-color: #720404; /* Set background color */
+    border: 2px solid #ccc; /* Add a border */
+    padding: 20px; /* Add padding for spacing */
+    margin: 10px 0; /* Adjust margin for spacing */
+    text-align: center; /* Center align text */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
+}
+
+/* Style for the article title */
+.article-ad h2 {
+    color: #333; /* Set title color */
+    font-size: 24px; /* Increase font size */
+}
+
+/* Style for the article content */
+.article-ad p {
+    color: #666; /* Set content color */
+    font-size: 16px; /* Adjust font size */
+}
+
+/* Style for the "Donate Now" button */
+.article-ad .buy-button {
+    background-color: #4CAF50; /* Set button background color */
+    color: #fff; /* Set button text color */
+    padding: 10px 20px; /* Add padding to the button */
+    font-size: 18px; /* Increase button font size */
+    text-decoration: none; /* Remove underlines */
+    border: none; /* Remove button border */
+    cursor: pointer; /* Add pointer cursor on hover */
+    border-radius: 5px; /* Add border-radius for rounded corners */
+}
+
+/* Hover effect for the button */
+.article-ad .buy-button:hover {
+    background-color: #45a049; /* Darken the button color on hover */
+}
+
+/* make element blue */
+.blueish{
+	background-color: #162B7A;
+	color:#FAF8F7;	
+}
+.rounded{
+	border-color: #FAF8F7;
+	border-style:solid;
+	border-width:2px 5px 5px 2px;
+	border-radius:5px 5px 15px 5px;
+	margin-bottom:20px;
+	padding:0px 10px;
+	background-color: #975C68;
+}
+/*
+you can psuedoclass any element,
+including a .class selector
+*/
+.nav-link{
+	font-family:arial;
+	font-weight:bold;
+	font-size:1.2em;
+	padding:3px;
+	text-decoration: none;
+	border-radius:5px;
+}
+
+/* link has never been clicked*/
+.nav-link:link{
+	background-color:#975C68;
+	color:#FAF8F7;	
+}
+/* link has been clicked previously */
+.nav-link:visited{
+	background-color:#975C68;
+	color:#FAF8F7;	
+}
+/* link is in mouseover state */
+.nav-link:hover{
+	color:#975C68;
+	background-color:#FAF8F7;
+	text-decoration: underline;
+}
+/* you can style as the user tabs into a tag  */
+.nav-link:focus{
+	background-color:#162B7A;
+	color:#4EACCB;
+}
+/* link is being clicked/tapped right now!! */
+.nav-link:active{
+	color:#FAF8F7;
+	background-color:#162B7A;
+}
+
+
+/*
+-----------------------------
+Styling Images
+-----------------------------
+*/
+ /* 
+ all images will have these styles 
+ the following two css properties are
+ ideal as a default choice 
+ (it makes responsive, scalable images!)
+ 	max-width:100%;
+ 	height:auto;
+ */
+ img{
+	/* 
+	images will be as big as it can be,
+	without exceeding its actual size 	
+	image will shrink to fit in parent container
+	*/
+	max-width:100%;
+
+	/* 
+	ensures the height will scale
+	to maintain aspect ratio */
+	height:auto;	
+}
+
+/* only the id="resize_image" image
+	will have these styles
+
+	if we need to specify an image size, 
+	better using CSS here than using 
+	HTML width="" attribute: 
+	keep style (CSS) separate from structure (HTML)
+*/
+#resize_image{
+	width:120px;
+}
+
+
+
+/*
+span
+*/
+em{
+    background-color:rgb(255, 255, 118);
+    color:#0191C8;
+    padding:1px 5px;
+}
+.highlight{
+    background-color:rgb(255, 255, 118);
+    color:#0191C8;
+    padding:1px 5px;
+}
+.red{
+    color:red;
+}
+.blue {
+	color: #ADE8F5;
+}
+.green {
+	color: #012f0b;
+}	
+
+.span-example{
+    background-color: #82dcff;
+    padding:10px;
+}
+
+
+
+
+
+/* 
+---------------------------
+Applying Fonts
+---------------------------
+*/
+/*
+some standard, reliable fonts
+most all devices support these standards...
+*/
+.times{			font-family:"times new roman", serif;	}
+.georgia{		font-family:"georgia", serif;			}
+.courier{		font-family:"courier", serif;			}
+.arial{			font-family:"arial", sans-serif;			}
+.tahoma{		font-family:"tahoma", sans-serif;			}
+.verdana{		font-family:"verdana", sans-serif;			}
+
+/* 
+assigning non-standard fonts wont work well for all operating systems
+poor compatibility!!
+*/
+#demonstrate_questionable_font{
+	font-family:"algerian";
+}
+
+/* 
+a comma delimited list will assign the
+first font in the list available to the client			
+*/
+#demonstrate_comma_delimited_list{
+	font-family:"algerian", "georgia", serif;
+}
+
+/* @media TYPE */
+/* @media (feature:value) */
+
+				/* HOW IT WILL PRINT */
+@media print{
+
+	h1,h2,h3,h4,h5,h6{
+		page-break-after:avoid;
+	}
+	section{
+		page-break-after:always;
+	}
+	nav{
+		display:none;
+	}
+}
+		 /* HOW IS THIS CONTENT BEING VIEWED?! */
+
+/* IF MOBILE*/              /*  Start with smallest*/
+
+/* BREAK POINTS*/       /* all min width */
+@media (min-width: 200px) {
+	footer img {
+		width: 30px;
+	}
+
+	body { /* add styles */
+	}
+
+	article .banner-image {
+		min-width: 100%;
+		/*min-width: 195px;*/ /* Make banner images take up full width */
+		/* Add other styles for banner images if needed */
+		margin: 0px 0px;
+	}
+
+
+	@media (min-width: 440px) {
+		footer img {
+			width: 50px;
+		}
+
+		
+
+		article .banner-image {
+			min-width: 100%;
+			/*min-width: 195px;*/ /* Make banner images take up full width */
+			/* Add other styles for banner images if needed */
+			margin: 0px 0px;
+		}
+
+		article {
+			margin: 5px 5px 15px 5px;
+			max-width: 1200px;
+		}
+
+		.article-group {
+			display: flex;
+			flex-wrap: wrap; /* Ensures articles wrap on smaller screens */
+			gap: 20px; /* Adds space between articles */
+		}
+		
+		.article-group article {
+			flex: 1 1 calc(50% - 20px); /* Each article takes up 50% of the width, minus the gap */
+			box-sizing: border-box; /* Includes padding and border in width calculation */
+			padding: 10px; /* Adds padding inside the articles */
+			border: 1px solid #ccc; /* Optional: Gives a border to articles for visibility */
+		}
+		
+		.article-group img {
+			max-width: 100%; /* Ensures images do not exceed the width of their container */
+			height: auto; /* Maintains the image's aspect ratio */
+			display: block; /* Prevents inline spacing below images */
+			margin: 10px 0; /* Adds spacing between images */
+		}
+		article-group :nth-child(odd) {
+			margin: 5px 15px 15px 5px;
+		}
+
+		@media (max-width: 768px) {
+            .article-group article {
+                flex: 1 1 100%; /* Full width for single column on smaller screens */
+            }
+        }
+
+		@media (min-width: 900px) {
+			/* Styles for mid wide screens */
+
+
+			nav {
+				flex-direction: row;
+			}
+
+				nav ul {
+					flex-direction: row;
+					margin: 5px 1px;
+				}
+
+				nav li {
+					margin: 5px 10px;
+				}
+
+			pre {
+				font-size: 0.6em;
+			}
+
+			.article-group {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr); /* Two columns */
+			}
+
+			article .banner-image {
+				min-width: 100%;
+				/*min-width: 195px;*/ /* Make banner images take up full width */
+				/* Add other styles for banner images if needed */
+				margin: 0px 0px;
+			}
+
+			article:last-child { /* add styles */
+			}
+
+
+
+			.article-image { /* standardizing all img sizes within articles*/
+				/*        object-fit:cover;     wouldnt work with many options  */
+				/*        min-heeight:200px;         this will stretch */
+				width: 100%;
+				display: center;
+				display: top;
+			}
+
+			article {
+				margin: 10px 10px 15px 10px;
+				max-width: 1200px;
+			}
+
+			.article-group {
+				display: flex;
+				flex-wrap: wrap; /* Ensure flex items wrap to the next line */
+				margin: 10px 10px 10px 10px;
+				max-width: 1200px;
+			}
+
+				.article-group article:nth-child(odd) {
+					margin: 0px 10px 0px 0px;
+				}
+
+
+
+			footer {
+			 /* add styles */}
+		}
+	}
+}
+
+
+
