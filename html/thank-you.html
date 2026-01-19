@@ -1,36 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Assignment 06 - COMP2132 (Thank You)</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="../scripts/script.js"></script>
-    <link href="../css/my_style.css" rel="stylesheet">
+    <title>Thank You | Justin Greeno</title>
+
+    <!-- CSS -->
+    <link href="../css/style.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+    <link rel="manifest" href="../images/site.webmanifest">
+    <meta name="theme-color" content="#012F0B">
 </head>
 <body>
-  <div>
     <header>
-      <a href="../html/index.html"><img src="../images/books.png" alt="books"></a>
-      <h1>COMP2132 Assignment 06 - Thank You Page</h1>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="../images/pixel_justin.gif" alt="Justin Greeno">
+                <span class="logo-text">JustinGreeno.dev</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="pixel-art.html">Pixel Art</a></li>
+                    <li><a href="devlogs.html">Devlogs</a></li>
+                    <li><a href="life.html">Life</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <!-- Keep your search bar form -->
-    <form id="search-form">
-      <input type="text" id="search-input" placeholder="Search...">
-      <!-- <button type="submit">Search</button> -->
-    </form>
+    <main>
+        <div class="container">
+            <section class="glass-panel text-center" style="padding: 4rem 2rem;">
+                <div style="font-size: 4rem; margin-bottom: 1rem;">&#10004;</div>
+                <h1>Thank You!</h1>
+                <p>Your message has been sent successfully. I'll get back to you as soon as possible.</p>
+                <div class="mt-3">
+                    <a href="index.html" class="btn">Back to Home</a>
+                    <a href="about.html" class="btn btn-outline">About Me</a>
+                </div>
+            </section>
+        </div>
+    </main>
 
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-      </ul>
-    </nav>
+    <footer>
+        <div class="footer-content">
+            <h4>Connect With Me</h4>
+            <div class="social-links">
+                <a href="https://www.youtube.com/@justingreno" target="_blank" class="social-link" title="YouTube">
+                    <img src="../images/yt.png" alt="YouTube">
+                </a>
+                <a href="https://www.twitch.tv/darknessblooms" target="_blank" class="social-link" title="Twitch">
+                    <img src="../images/twitch.png" alt="Twitch">
+                </a>
+                <a href="https://www.instagram.com/justingreeno" target="_blank" class="social-link" title="Instagram">
+                    <img src="../images/insta.png" alt="Instagram">
+                </a>
+                <a href="https://discord.gg/FTskDEdAtj" target="_blank" class="social-link" title="Discord">
+                    <img src="../images/discord.png" alt="Discord">
+                </a>
+                <a href="https://www.patreon.com/u55408845" target="_blank" class="social-link" title="Patreon">
+                    <img src="../images/patreon.png" alt="Patreon">
+                </a>
+            </div>
+            <p>&copy; 2025 JustinGreeno.dev | Nova Scotia, Canada</p>
+        </div>
+    </footer>
 
-    <!-- The "thank you" content -->
-    <article class="container">
-      <h1>Thank You</h1>
-      <p>Your form has been submitted.</p>
-    </article>
-  </div>
+    <script src="../javascript/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Art | Justin Greeno</title>
+    <meta name="description" content="Pixel art gallery and time-lapse videos by Justin Greeno. Digital art and animations.">
+
+    <!-- CSS -->
+    <link href="../css/style.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+    <link rel="manifest" href="../images/site.webmanifest">
+    <meta name="theme-color" content="#012F0B">
+
+    <style>
+        /* Auto-scrolling Carousel with side arrows */
+        .carousel-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .carousel-wrapper {
+            flex: 1;
+            overflow: hidden;
+            padding: 1rem 0;
+        }
+        .carousel-track {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: transform 0.05s linear;
+        }
+        .carousel-item {
+            flex: 0 0 auto;
+            cursor: pointer;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            text-decoration: none;
+        }
+        .carousel-item img {
+            width: 180px;
+            height: auto;
+            border-radius: 10px;
+            border: 1px solid rgba(104, 159, 171, 0.25);
+            box-shadow: 6px 10px 50px rgba(0, 0, 0, 0.8);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .carousel-item:hover img {
+            transform: scale(1.05);
+            box-shadow: 10px 15px 60px rgba(0, 0, 0, 0.9);
+        }
+        .carousel-item span {
+            display: block;
+            text-align: center;
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+            color: var(--text-light);
+        }
+        /* Arrow buttons on sides - smaller */
+        .carousel-arrow {
+            flex: 0 0 auto;
+            background: var(--glass-bg, rgba(1, 47, 11, 0.85));
+            border: 1px solid rgba(104, 159, 171, 0.25);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--accent-teal, #689fab);
+            font-size: 0.9rem;
+            box-shadow: 4px 6px 20px rgba(0, 0, 0, 0.6);
+            z-index: 10;
+        }
+        .carousel-arrow:hover {
+            background: var(--accent-teal, #689fab);
+            color: var(--primary-green, #012F0B);
+            transform: scale(1.1);
+        }
+        @media (min-width: 768px) {
+            .carousel-item img {
+                width: 220px;
+            }
+            .carousel-arrow {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+        }
+        @media (min-width: 1024px) {
+            .carousel-item img {
+                width: 280px;
+            }
+            .carousel-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="../images/pixel_justin.gif" alt="Justin Greeno">
+                <span class="logo-text">JustinGreeno.dev</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="pixel-art.html" class="active">Pixel Art</a></li>
+                    <li><a href="devlogs.html">Devlogs</a></li>
+                    <li><a href="life.html">Life</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="webgames.html">Web Games</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Search Bar -->
+            <div class="search-container">
+                <form class="search-form" id="search-form">
+                    <input type="text" class="search-input" id="search-input" placeholder="Search..." autocomplete="off">
+                    <button type="submit" class="search-btn">Go</button>
+                </form>
+                <div class="search-results" id="search-results"></div>
+            </div>
+
+            <!-- Page Title -->
+            <section class="hero" style="padding: 1.5rem;">
+                <img src="../images/title.gif" alt="Darkness Blooms" class="hero-image-large">
+                <h1>Pixel Art Gallery</h1>
+                <p class="tagline">Pixel Art & Animation</p>
+            </section>
+
+            <!-- Auto-scrolling Carousel -->
+            <section class="glass-panel">
+                <h2 class="text-center">Click to Jump to Artwork</h2>
+                <div class="carousel-container">
+                    <button class="carousel-arrow" id="carousel-left" title="Speed up left">&larr;</button>
+                    <div class="carousel-wrapper">
+                        <div class="carousel-track" id="carousel-track">
+                            <!-- Set 1 -->
+                            <a href="#billys-house" class="carousel-item"><img src="../images/house_art.gif" alt="Billy's House"><span>Billy's House</span></a>
+                            <a href="#stardew-title" class="carousel-item"><img src="../images/title.gif" alt="Stardew Valley Title"><span>Stardew Title</span></a>
+                            <a href="#mushroom-towers" class="carousel-item"><img src="../images/mushTower.gif" alt="Mushroom Towers"><span>Mushroom Towers</span></a>
+                            <a href="#tree-stumps" class="carousel-item"><img src="../images/stump.gif" alt="Tree Stumps"><span>Tree Stumps</span></a>
+                            <a href="#veggies" class="carousel-item"><img src="../images/veg.gif" alt="Veggies"><span>Veggies</span></a>
+                            <a href="#treasure-chests" class="carousel-item"><img src="../images/Pick a chest gif 2.0.gif" alt="Treasure Chests"><span>Chests</span></a>
+                            <a href="#windmills" class="carousel-item"><img src="../images/Windmills 3.0 Gif .gif" alt="Windmills"><span>Windmills</span></a>
+                            <a href="#convoy" class="carousel-item"><img src="../images/gif REAL SCUESS THIS ONE.gif" alt="Convoy"><span>Convoy</span></a>
+                            <!-- Set 2 -->
+                            <a href="#billys-house" class="carousel-item"><img src="../images/house_art.gif" alt="Billy's House"><span>Billy's House</span></a>
+                            <a href="#stardew-title" class="carousel-item"><img src="../images/title.gif" alt="Stardew Valley Title"><span>Stardew Title</span></a>
+                            <a href="#mushroom-towers" class="carousel-item"><img src="../images/mushTower.gif" alt="Mushroom Towers"><span>Mushroom Towers</span></a>
+                            <a href="#tree-stumps" class="carousel-item"><img src="../images/stump.gif" alt="Tree Stumps"><span>Tree Stumps</span></a>
+                            <a href="#veggies" class="carousel-item"><img src="../images/veg.gif" alt="Veggies"><span>Veggies</span></a>
+                            <a href="#treasure-chests" class="carousel-item"><img src="../images/Pick a chest gif 2.0.gif" alt="Treasure Chests"><span>Chests</span></a>
+                            <a href="#windmills" class="carousel-item"><img src="../images/Windmills 3.0 Gif .gif" alt="Windmills"><span>Windmills</span></a>
+                            <a href="#convoy" class="carousel-item"><img src="../images/gif REAL SCUESS THIS ONE.gif" alt="Convoy"><span>Convoy</span></a>
+                            <!-- Set 3 -->
+                            <a href="#billys-house" class="carousel-item"><img src="../images/house_art.gif" alt="Billy's House"><span>Billy's House</span></a>
+                            <a href="#stardew-title" class="carousel-item"><img src="../images/title.gif" alt="Stardew Valley Title"><span>Stardew Title</span></a>
+                            <a href="#mushroom-towers" class="carousel-item"><img src="../images/mushTower.gif" alt="Mushroom Towers"><span>Mushroom Towers</span></a>
+                            <a href="#tree-stumps" class="carousel-item"><img src="../images/stump.gif" alt="Tree Stumps"><span>Tree Stumps</span></a>
+                            <a href="#veggies" class="carousel-item"><img src="../images/veg.gif" alt="Veggies"><span>Veggies</span></a>
+                            <a href="#treasure-chests" class="carousel-item"><img src="../images/Pick a chest gif 2.0.gif" alt="Treasure Chests"><span>Chests</span></a>
+                            <a href="#windmills" class="carousel-item"><img src="../images/Windmills 3.0 Gif .gif" alt="Windmills"><span>Windmills</span></a>
+                            <a href="#convoy" class="carousel-item"><img src="../images/gif REAL SCUESS THIS ONE.gif" alt="Convoy"><span>Convoy</span></a>
+                            <!-- Set 4 -->
+                            <a href="#billys-house" class="carousel-item"><img src="../images/house_art.gif" alt="Billy's House"><span>Billy's House</span></a>
+                            <a href="#stardew-title" class="carousel-item"><img src="../images/title.gif" alt="Stardew Valley Title"><span>Stardew Title</span></a>
+                            <a href="#mushroom-towers" class="carousel-item"><img src="../images/mushTower.gif" alt="Mushroom Towers"><span>Mushroom Towers</span></a>
+                            <a href="#tree-stumps" class="carousel-item"><img src="../images/stump.gif" alt="Tree Stumps"><span>Tree Stumps</span></a>
+                            <a href="#veggies" class="carousel-item"><img src="../images/veg.gif" alt="Veggies"><span>Veggies</span></a>
+                            <a href="#treasure-chests" class="carousel-item"><img src="../images/Pick a chest gif 2.0.gif" alt="Treasure Chests"><span>Chests</span></a>
+                            <a href="#windmills" class="carousel-item"><img src="../images/Windmills 3.0 Gif .gif" alt="Windmills"><span>Windmills</span></a>
+                            <a href="#convoy" class="carousel-item"><img src="../images/gif REAL SCUESS THIS ONE.gif" alt="Convoy"><span>Convoy</span></a>
+                            <!-- Set 5 -->
+                            <a href="#billys-house" class="carousel-item"><img src="../images/house_art.gif" alt="Billy's House"><span>Billy's House</span></a>
+                            <a href="#stardew-title" class="carousel-item"><img src="../images/title.gif" alt="Stardew Valley Title"><span>Stardew Title</span></a>
+                            <a href="#mushroom-towers" class="carousel-item"><img src="../images/mushTower.gif" alt="Mushroom Towers"><span>Mushroom Towers</span></a>
+                            <a href="#tree-stumps" class="carousel-item"><img src="../images/stump.gif" alt="Tree Stumps"><span>Tree Stumps</span></a>
+                            <a href="#veggies" class="carousel-item"><img src="../images/veg.gif" alt="Veggies"><span>Veggies</span></a>
+                            <a href="#treasure-chests" class="carousel-item"><img src="../images/Pick a chest gif 2.0.gif" alt="Treasure Chests"><span>Chests</span></a>
+                            <a href="#windmills" class="carousel-item"><img src="../images/Windmills 3.0 Gif .gif" alt="Windmills"><span>Windmills</span></a>
+                            <a href="#convoy" class="carousel-item"><img src="../images/gif REAL SCUESS THIS ONE.gif" alt="Convoy"><span>Convoy</span></a>
+                            <!-- Set 6 -->
+                            <a href="#billys-house" class="carousel-item"><img src="../images/house_art.gif" alt="Billy's House"><span>Billy's House</span></a>
+                            <a href="#stardew-title" class="carousel-item"><img src="../images/title.gif" alt="Stardew Valley Title"><span>Stardew Title</span></a>
+                            <a href="#mushroom-towers" class="carousel-item"><img src="../images/mushTower.gif" alt="Mushroom Towers"><span>Mushroom Towers</span></a>
+                            <a href="#tree-stumps" class="carousel-item"><img src="../images/stump.gif" alt="Tree Stumps"><span>Tree Stumps</span></a>
+                            <a href="#veggies" class="carousel-item"><img src="../images/veg.gif" alt="Veggies"><span>Veggies</span></a>
+                            <a href="#treasure-chests" class="carousel-item"><img src="../images/Pick a chest gif 2.0.gif" alt="Treasure Chests"><span>Chests</span></a>
+                            <a href="#windmills" class="carousel-item"><img src="../images/Windmills 3.0 Gif .gif" alt="Windmills"><span>Windmills</span></a>
+                            <a href="#convoy" class="carousel-item"><img src="../images/gif REAL SCUESS THIS ONE.gif" alt="Convoy"><span>Convoy</span></a>
+                            <!-- Set 7 -->
+                            <a href="#billys-house" class="carousel-item"><img src="../images/house_art.gif" alt="Billy's House"><span>Billy's House</span></a>
+                            <a href="#stardew-title" class="carousel-item"><img src="../images/title.gif" alt="Stardew Valley Title"><span>Stardew Title</span></a>
+                            <a href="#mushroom-towers" class="carousel-item"><img src="../images/mushTower.gif" alt="Mushroom Towers"><span>Mushroom Towers</span></a>
+                            <a href="#tree-stumps" class="carousel-item"><img src="../images/stump.gif" alt="Tree Stumps"><span>Tree Stumps</span></a>
+                            <a href="#veggies" class="carousel-item"><img src="../images/veg.gif" alt="Veggies"><span>Veggies</span></a>
+                            <a href="#treasure-chests" class="carousel-item"><img src="../images/Pick a chest gif 2.0.gif" alt="Treasure Chests"><span>Chests</span></a>
+                            <a href="#windmills" class="carousel-item"><img src="../images/Windmills 3.0 Gif .gif" alt="Windmills"><span>Windmills</span></a>
+                            <a href="#convoy" class="carousel-item"><img src="../images/gif REAL SCUESS THIS ONE.gif" alt="Convoy"><span>Convoy</span></a>
+                            <!-- Set 8 -->
+                            <a href="#billys-house" class="carousel-item"><img src="../images/house_art.gif" alt="Billy's House"><span>Billy's House</span></a>
+                            <a href="#stardew-title" class="carousel-item"><img src="../images/title.gif" alt="Stardew Valley Title"><span>Stardew Title</span></a>
+                            <a href="#mushroom-towers" class="carousel-item"><img src="../images/mushTower.gif" alt="Mushroom Towers"><span>Mushroom Towers</span></a>
+                            <a href="#tree-stumps" class="carousel-item"><img src="../images/stump.gif" alt="Tree Stumps"><span>Tree Stumps</span></a>
+                            <a href="#veggies" class="carousel-item"><img src="../images/veg.gif" alt="Veggies"><span>Veggies</span></a>
+                            <a href="#treasure-chests" class="carousel-item"><img src="../images/Pick a chest gif 2.0.gif" alt="Treasure Chests"><span>Chests</span></a>
+                            <a href="#windmills" class="carousel-item"><img src="../images/Windmills 3.0 Gif .gif" alt="Windmills"><span>Windmills</span></a>
+                            <a href="#convoy" class="carousel-item"><img src="../images/gif REAL SCUESS THIS ONE.gif" alt="Convoy"><span>Convoy</span></a>
+                            <!-- Set 9 -->
+                            <a href="#billys-house" class="carousel-item"><img src="../images/house_art.gif" alt="Billy's House"><span>Billy's House</span></a>
+                            <a href="#stardew-title" class="carousel-item"><img src="../images/title.gif" alt="Stardew Valley Title"><span>Stardew Title</span></a>
+                            <a href="#mushroom-towers" class="carousel-item"><img src="../images/mushTower.gif" alt="Mushroom Towers"><span>Mushroom Towers</span></a>
+                            <a href="#tree-stumps" class="carousel-item"><img src="../images/stump.gif" alt="Tree Stumps"><span>Tree Stumps</span></a>
+                            <a href="#veggies" class="carousel-item"><img src="../images/veg.gif" alt="Veggies"><span>Veggies</span></a>
+                            <a href="#treasure-chests" class="carousel-item"><img src="../images/Pick a chest gif 2.0.gif" alt="Treasure Chests"><span>Chests</span></a>
+                            <a href="#windmills" class="carousel-item"><img src="../images/Windmills 3.0 Gif .gif" alt="Windmills"><span>Windmills</span></a>
+                            <a href="#convoy" class="carousel-item"><img src="../images/gif REAL SCUESS THIS ONE.gif" alt="Convoy"><span>Convoy</span></a>
+                            <!-- Set 10 -->
+                            <a href="#billys-house" class="carousel-item"><img src="../images/house_art.gif" alt="Billy's House"><span>Billy's House</span></a>
+                            <a href="#stardew-title" class="carousel-item"><img src="../images/title.gif" alt="Stardew Valley Title"><span>Stardew Title</span></a>
+                            <a href="#mushroom-towers" class="carousel-item"><img src="../images/mushTower.gif" alt="Mushroom Towers"><span>Mushroom Towers</span></a>
+                            <a href="#tree-stumps" class="carousel-item"><img src="../images/stump.gif" alt="Tree Stumps"><span>Tree Stumps</span></a>
+                            <a href="#veggies" class="carousel-item"><img src="../images/veg.gif" alt="Veggies"><span>Veggies</span></a>
+                            <a href="#treasure-chests" class="carousel-item"><img src="../images/Pick a chest gif 2.0.gif" alt="Treasure Chests"><span>Chests</span></a>
+                            <a href="#windmills" class="carousel-item"><img src="../images/Windmills 3.0 Gif .gif" alt="Windmills"><span>Windmills</span></a>
+                            <a href="#convoy" class="carousel-item"><img src="../images/gif REAL SCUESS THIS ONE.gif" alt="Convoy"><span>Convoy</span></a>
+                        </div>
+                    </div>
+                    <button class="carousel-arrow" id="carousel-right" title="Speed up right">&rarr;</button>
+                </div>
+            </section>
+
+            <!-- About My Art -->
+            <section class="glass-panel">
+                <h2>About My Art</h2>
+                <p>
+                    I create pixel art inspired by classic retro games like Final Fantasy and Stardew Valley. My work focuses on atmospheric environments, character sprites, and animated scenes for my game project Darkness Blooms. Click on any artwork to watch the time-lapse creation video!
+                </p>
+            </section>
+
+            <!-- Art Item 1: Billy's House -->
+            <article class="art-item" id="billys-house">
+                <div class="art-item-content">
+                    <a href="https://www.youtube.com/watch?v=LlvsxoYQCjI" target="_blank" class="art-gif-link">
+                        <img src="../images/house_art.gif" alt="Billy's House" class="art-gif">
+                    </a>
+                    <div class="art-description">
+                        <h3>Billy's House</h3>
+                        <p>Billy's parents are archaeologists turned researchers turned professors, and they live within the main castle. Click the image to watch the time-lapse creation video!</p>
+                    </div>
+                </div>
+                <div class="video-container mt-2">
+                    <iframe src="https://www.youtube.com/embed/LlvsxoYQCjI" title="Billy's House Time-lapse" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </article>
+
+            <!-- Art Item 2: Stardew Valley Title Screen Remake -->
+            <article class="art-item" id="stardew-title">
+                <div class="art-item-content">
+                    <a href="https://www.youtube.com/watch?v=lLe3m-RQPg4" target="_blank" class="art-gif-link">
+                        <img src="../images/title.gif" alt="Stardew Valley Title Screen Remake" class="art-gif">
+                    </a>
+                    <div class="art-description">
+                        <h3>Stardew Valley Title Screen Remake</h3>
+                        <p>A tribute to one of my favorite games that inspired the art style of Darkness Blooms. Click the image to watch the time-lapse creation video!</p>
+                    </div>
+                </div>
+                <div class="video-container mt-2">
+                    <iframe src="https://www.youtube.com/embed/lLe3m-RQPg4" title="Stardew Valley Title Screen Remake Time-lapse" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </article>
+
+            <!-- Art Item 3: Mushroom Towers -->
+            <article class="art-item" id="mushroom-towers">
+                <div class="art-item-content">
+                    <a href="https://www.youtube.com/watch?v=R5VRNv7qFoY" target="_blank" class="art-gif-link">
+                        <img src="../images/mushTower.gif" alt="Mushroom Towers" class="art-gif">
+                    </a>
+                    <div class="art-description">
+                        <h3>Mushroom Towers</h3>
+                        <p>In Darkness Blooms the elements of technology and nature often mix. In one small community, the people live inside large mushrooms. Click the image to watch the time-lapse creation video!</p>
+                    </div>
+                </div>
+                <div class="video-container mt-2">
+                    <iframe src="https://www.youtube.com/embed/R5VRNv7qFoY" title="Mushroom Towers Time-lapse" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </article>
+
+            <!-- Art Item 4: Stumps -->
+            <article class="art-item" id="tree-stumps">
+                <div class="art-item-content">
+                    <a href="https://www.youtube.com/watch?v=DCXRBEiLUUc" target="_blank" class="art-gif-link">
+                        <img src="../images/stump.gif" alt="Tree Stumps" class="art-gif">
+                    </a>
+                    <div class="art-description">
+                        <h3>Tree Stumps</h3>
+                        <p>Ever since the incident it's hard to trust anything not to attack you. Nature has gone wild. Click the image to watch the time-lapse creation video!</p>
+                    </div>
+                </div>
+                <div class="video-container mt-2">
+                    <iframe src="https://www.youtube.com/embed/DCXRBEiLUUc" title="Tree Stumps Time-lapse" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </article>
+
+            <!-- Art Item 5: Veggies -->
+            <article class="art-item" id="veggies">
+                <div class="art-item-content">
+                    <a href="https://www.youtube.com/watch?v=ET4TbnetgNA" target="_blank" class="art-gif-link">
+                        <img src="../images/veg.gif" alt="Veggies" class="art-gif">
+                    </a>
+                    <div class="art-description">
+                        <h3>Veggies</h3>
+                        <p>Animated vegetable sprites for farming and gardening mechanics in the game. Click the image to watch the time-lapse creation video!</p>
+                    </div>
+                </div>
+                <div class="video-container mt-2">
+                    <iframe src="https://www.youtube.com/embed/ET4TbnetgNA" title="Veggies Time-lapse" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </article>
+
+            <!-- Art Item 6: Chests -->
+            <article class="art-item" id="treasure-chests">
+                <div class="art-item-content">
+                    <a href="https://www.youtube.com/watch?v=aC137GxEQZI" target="_blank" class="art-gif-link">
+                        <img src="../images/Pick a chest gif 2.0.gif" alt="Treasure Chests" class="art-gif">
+                    </a>
+                    <div class="art-description">
+                        <h3>Treasure Chests</h3>
+                        <p>A variety of treasure chests for players to discover throughout the game world. Click the image to watch the time-lapse creation video!</p>
+                    </div>
+                </div>
+                <div class="video-container mt-2">
+                    <iframe src="https://www.youtube.com/embed/aC137GxEQZI" title="Treasure Chests Time-lapse" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </article>
+
+            <!-- Art Item 7: Windmills -->
+            <article class="art-item" id="windmills">
+                <div class="art-item-content">
+                    <a href="https://www.youtube.com/watch?v=wjNMZPSz7Jo" target="_blank" class="art-gif-link">
+                        <img src="../images/Windmills 3.0 Gif .gif" alt="Windmills" class="art-gif">
+                    </a>
+                    <div class="art-description">
+                        <h3>Windmills</h3>
+                        <p>Animated windmill structures that bring life to the countryside areas of the game. Click the image to watch the time-lapse creation video!</p>
+                    </div>
+                </div>
+                <div class="video-container mt-2">
+                    <iframe src="https://www.youtube.com/embed/wjNMZPSz7Jo" title="Windmills Time-lapse" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </article>
+
+            <!-- Art Item 8: Convoy -->
+            <article class="art-item" id="convoy">
+                <div class="art-item-content">
+                    <a href="https://www.youtube.com/watch?v=7Sz5tXZ1o5I" target="_blank" class="art-gif-link">
+                        <img src="../images/gif REAL SCUESS THIS ONE.gif" alt="Convoy" class="art-gif">
+                    </a>
+                    <div class="art-description">
+                        <h3>Convoy</h3>
+                        <p>A traveling convoy scene showcasing the larger world of Darkness Blooms. Click the image to watch the time-lapse creation video!</p>
+                    </div>
+                </div>
+                <div class="video-container mt-2">
+                    <iframe src="https://www.youtube.com/embed/7Sz5tXZ1o5I" title="Convoy Time-lapse" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </article>
+
+            <!-- CTA -->
+            <section class="glass-panel text-center">
+                <h2>Want to See More?</h2>
+                <p>Subscribe to my YouTube channel for more time-lapse art videos and game development content!</p>
+                <div class="mt-2">
+                    <a href="https://www.youtube.com/justingreeno" target="_blank" class="btn">Subscribe on YouTube</a>
+                    <a href="devlogs.html" class="btn btn-outline">View Game Devlogs</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.youtube.com/justingreeno" target="_blank" class="social-link" title="YouTube">
+                    <img src="../images/yt.png" alt="YouTube">
+                </a>
+                <a href="https://www.twitch.tv/darknessblooms" target="_blank" class="social-link" title="Twitch">
+                    <img src="../images/twitch.png" alt="Twitch">
+                </a>
+                <a href="https://www.instagram.com/justingreeno" target="_blank" class="social-link" title="Instagram">
+                    <img src="../images/insta.png" alt="Instagram">
+                </a>
+                <a href="https://discord.gg/FTskDEdAtj" target="_blank" class="social-link" title="Discord">
+                    <img src="../images/discord.png" alt="Discord">
+                </a>
+                <a href="https://www.patreon.com/u55408845" target="_blank" class="social-link" title="Patreon">
+                    <img src="../images/patreon.png" alt="Patreon">
+                </a>
+            </div>
+            <p>&copy; 2025 JustinGreeno.dev | Nova Scotia, Canada</p>
+        </div>
+    </footer>
+
+    <script src="../javascript/main.js"></script>
+    <script>
+        // Smooth carousel with hover-based arrow speed control
+        (function() {
+            const track = document.getElementById('carousel-track');
+            const leftBtn = document.getElementById('carousel-left');
+            const rightBtn = document.getElementById('carousel-right');
+
+            if (!track) return;
+
+            // Start in the middle so we can scroll both directions
+            let position = 0;
+            let baseSpeed = 0.5;
+            let currentSpeed = baseSpeed;
+            let direction = 1; // 1 = scrolling left (default), -1 = scrolling right
+            let isTrackHovered = false;
+            let isLeftHovered = false;
+            let isRightHovered = false;
+            let initialized = false;
+
+            function animate() {
+                // Set initial position to middle after first frame (when track has width)
+                if (!initialized && track.scrollWidth > 0) {
+                    position = -(track.scrollWidth * 0.4);
+                    initialized = true;
+                }
+
+                // Pause when hovering over track items (not arrows)
+                if (!isTrackHovered || isLeftHovered || isRightHovered) {
+                    // Left arrow = scroll left (show content from right), Right arrow = scroll right (show content from left)
+                    if (isLeftHovered) {
+                        direction = -1;
+                        currentSpeed = 4;
+                    } else if (isRightHovered) {
+                        direction = 1;
+                        currentSpeed = 4;
+                    } else {
+                        currentSpeed = baseSpeed;
+                    }
+
+                    position -= currentSpeed * direction;
+                    track.style.transform = `translateX(${position}px)`;
+                }
+
+                requestAnimationFrame(animate);
+            }
+
+            // Pause on track hover
+            track.addEventListener('mouseenter', () => { isTrackHovered = true; });
+            track.addEventListener('mouseleave', () => { isTrackHovered = false; });
+
+            // Arrow hover controls - speed up in that direction
+            leftBtn.addEventListener('mouseenter', () => { isLeftHovered = true; });
+            leftBtn.addEventListener('mouseleave', () => { isLeftHovered = false; });
+
+            rightBtn.addEventListener('mouseenter', () => { isRightHovered = true; });
+            rightBtn.addEventListener('mouseleave', () => { isRightHovered = false; });
+
+            // Start animation
+            animate();
+        })();
+    </script>
+</body>
+</html>

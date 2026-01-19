@@ -1,142 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title> Assignment05 - COMP1850</title>
     <meta charset="UTF-8">
-    <!-- Extends the ability to read and render all font characters-->
-    <!-- Meta self closes -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Justin Greeno | Web Developer & Pixel Artist</title>
+    <meta name="description" content="Portfolio of Justin Greeno - Web Developer, Pixel Artist, and Game Developer from Nova Scotia.">
 
-    <!-- Making sure the viewport is sized based on screen used, IE. phone or computer-->
-    <!-- linking to the css style folder-->
-    <link href="../css/my_style.css" rel="stylesheet">
-   
-    <!-- GOOGLE FONTS-->
+    <!-- CSS -->
+    <link href="../css/style.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 
-    <!-- Icon for tabs -->
+    <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
     <link rel="manifest" href="../images/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-
+    <meta name="theme-color" content="#012F0B">
 </head>
 <body>
-    <div>
-        <header>
-            <a href="../html/index.html"> <img src="../images/books.png" alt="books"></a>
-            <h1>COMP2132 Assignment 01</h1>
-
-        </header>
-    </div>
-    <section>
-    
-     <h2>Welcome to the website made by:</h2> <h2 id="javascript_message"></h2>
-           <script src="script.js"></script>
-    
-      </section>
-     
-
-            <form id="search-form">
-                <input type="text" id="search-input" placeholder="Search...">
-                <button type="submit">Search</button>
-            </form>
-
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="../images/pixel_justin.gif" alt="Justin Greeno">
+                <span class="logo-text">JustinGreeno.dev</span>
+            </a>
             <nav>
                 <ul>
-                    <li><a href="index.html">Justin Greeno</a></li>
-                    <li><a href="timelapseart.html">Youtube Videos</a></li>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="pixel-art.html">Pixel Art</a></li>
+                    <li><a href="devlogs.html">Devlogs</a></li>
+                    <li><a href="life.html">Life</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="webgames.html">Web Games</a></li>
                 </ul>
             </nav>
         </div>
-       <div>
+    </header>
 
+    <main>
+        <div class="container">
+            <!-- Search Bar -->
+            <div class="search-container">
+                <form class="search-form" id="search-form">
+                    <input type="text" class="search-input" id="search-input" placeholder="Search..." autocomplete="off">
+                    <button type="submit" class="search-btn">Go</button>
+                </form>
+                <div class="search-results" id="search-results"></div>
+            </div>
 
+            <!-- Hero Section -->
+            <section class="hero">
+                <img src="../images/pixel_justin.gif" alt="Pixel Art Justin" class="hero-image">
+                <h1>Justin Greeno</h1>
+                <p class="tagline">Web Developer | Pixel Artist | Game Developer</p>
+                <p>Building digital experiences from Nova Scotia, Canada</p>
+                <div class="mt-2">
+                    <a href="about.html" class="btn">Learn More</a>
+                    <a href="resume.html" class="btn btn-outline">View Resume</a>
+                </div>
+            </section>
 
-            <!--  -->
-            <article>
-
-                <a href="index.html">
-                    <img src="../images/pixel_justin.gif" alt="Darkness Blooms" style="float: left; margin: 0 10px 10px 0;">
+            <!-- Navigation Cards -->
+            <section class="nav-cards">
+                <a href="about.html" class="nav-card">
+                    <img src="../images/pixel_justin.gif" alt="About Me" class="nav-card-image">
+                    <h3>About Me</h3>
+                    <p>Farm kid turned counselor turned developer.</p>
                 </a>
-               
-                <h2> <br />Justin Greeno </h2>
 
-                <h4> Who the heck is this guy? </h4>
+                <a href="pixel-art.html" class="nav-card">
+                    <img src="../images/stump.gif" alt="Pixel Art" class="nav-card-image">
+                    <h3>Pixel Art</h3>
+                    <p>Pixel art and time-lapse videos.</p>
+                </a>
 
+                <a href="devlogs.html" class="nav-card">
+                    <img src="../images/title.gif" alt="Darkness Blooms" class="nav-card-image">
+                    <h3>Darkness Blooms</h3>
+                    <p>Development logs for my retro RPG.</p>
+                </a>
+
+                <a href="life.html" class="nav-card">
+                    <img src="../images/insta.png" alt="Life" class="nav-card-image">
+                    <h3>Life</h3>
+                    <p>Adventures and personal moments.</p>
+                </a>
+
+                <a href="resume.html" class="nav-card">
+                    <img src="../images/books.png" alt="Resume" class="nav-card-image">
+                    <h3>Resume</h3>
+                    <p>Professional experience.</p>
+                </a>
+
+                <a href="webgames.html" class="nav-card">
+                    <img src="../images/pacman/pac-man-fast.gif" alt="Web Games" class="nav-card-image">
+                    <h3>Web Games</h3>
+                    <p>Playable browser games.</p>
+                </a>
+            </section>
+
+            <!-- Quick About -->
+            <section class="glass-panel mt-2">
+                <h2>Welcome!</h2>
                 <p>
-                    My name is Justin Greeno. I have 2 dogs, I grew up on a farm in Nova Scotia. Ive been working on the front like of the opiod epidemic for the past 8 years as a counsellour for the homeless and drug addicted populations. I am currently trying to pivot into web development and programming. I also make digital pixel art and am trying to slowly solo dev a retro style computer game. 
+                    I'm Justin Greeno, a web developer and digital artist based in Nova Scotia, Canada. I grew up on a farm here in Nova Scotia, spent 10 years in Vancouver, BC working as a counselor on the frontlines of the opioid epidemic, and recently moved back home to care for my aging mother-in-law.
                 </p>
                 <p>
-                    I am taking COMP2132 in order to pivot to a career in programming. I have taken a C# class with Jeff before and am looking forward to learning javascript to advance my skill tree. 
+                    I'm passionate about web development, pixel art and animation, retro video games, gardening, and continuous learning. I'm also solo-developing a retro-style RPG called <strong>Darkness Blooms</strong>.
                 </p>
-
-            </article>
+                <div class="social-links">
+                    <a href="https://www.youtube.com/justingreeno" target="_blank" class="social-link" title="YouTube">
+                        <img src="../images/yt.png" alt="YouTube">
+                    </a>
+                    <a href="https://www.twitch.tv/darknessblooms" target="_blank" class="social-link" title="Twitch">
+                        <img src="../images/twitch.png" alt="Twitch">
+                    </a>
+                    <a href="https://www.instagram.com/justingreeno" target="_blank" class="social-link" title="Instagram">
+                        <img src="../images/insta.png" alt="Instagram">
+                    </a>
+                    <a href="https://discord.gg/FTskDEdAtj" target="_blank" class="social-link" title="Discord">
+                        <img src="../images/discord.png" alt="Discord">
+                    </a>
+                    <a href="https://www.patreon.com/u55408845" target="_blank" class="social-link" title="Patreon">
+                        <img src="../images/patreon.png" alt="Patreon">
+                    </a>
+                </div>
+            </section>
         </div>
-
-        <div class="article-group">
-            <article>
-                <h2>Dogs! </h2>
-        <!-- Img as link      
-        <a href="1984.html">
-            <img src="../images/boat05.png" alt="1984">
-        </a>-->
-
-        <img src="../images/dog1.jpg" alt="dog1">
-        <img src="../images/dog2.jpg" alt="dog2">
-        <img src="../images/dog3.jpg" alt="dog3">
-        <img src="../images/dog4.jpg" alt="dog4">
-        <img src="../images/dog5.jpg" alt="dog5">
-
-               
-                <a href="#top">TOP</a>
-            </article>
-            <article>
-                <h2>Pixel Art! </h2>
-                
-                <img src="../images/title.gif" alt="darknessblooms">
-                <img src="../images/gbc.gif" alt="gameboy">
-                <img src="../images/mushTower.gif" alt="mushroom tower">
-                <img src="../images/stump.gif" alt="stumps">
-                <img src="../images/mimic.gif" alt="mimics">
-                <img src="../images/house_art.gif" alt="billys house">
-
-                
-                <a href="#top">TOP</a>
-            </article>
-
-        </div>
-
-    </div>
+    </main>
 
     <footer>
-        <!-- Social media icons -->
-        <div class="social-icons">
-            <h4>
-                Social Media Links
-            </h4>
-            <a href="https://www.youtube.com" target="_blank"><img src="../images/yt.png" alt="Youtube"></a>
-            <a href="https://www.twitter.com" target="_blank"><img src="../images/twit.png" alt="Twitter"></a>
-            <a href="https://www.instagram.com" target="_blank"><img src="../images/insta.png" alt="Instagram"></a>
-            <a href="https://www.discord.com" target="_blank"><img src="../images/discord.png" alt="discord"></a>
-            <a href="https://www.patreon.com" target="_blank"><img src="../images/patreon.png" alt="Patreon"></a>
-            <a href="https://www.twitch.com" target="_blank"><img src="../images/twitch.png" alt="Twitch"></a>
-
-            <!-- Add more social media icons as needed -->
-            <!-- Other footer content -->
-            <p>
-                2025 DarknessBlooms.com<br />
-                Founder: Justin Greeno<br />
-                Vancouver B.C.<br />
-            </p>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.youtube.com/justingreeno" target="_blank" class="social-link" title="YouTube">
+                    <img src="../images/yt.png" alt="YouTube">
+                </a>
+                <a href="https://www.twitch.tv/darknessblooms" target="_blank" class="social-link" title="Twitch">
+                    <img src="../images/twitch.png" alt="Twitch">
+                </a>
+                <a href="https://www.instagram.com/justingreeno" target="_blank" class="social-link" title="Instagram">
+                    <img src="../images/insta.png" alt="Instagram">
+                </a>
+                <a href="https://discord.gg/FTskDEdAtj" target="_blank" class="social-link" title="Discord">
+                    <img src="../images/discord.png" alt="Discord">
+                </a>
+                <a href="https://www.patreon.com/u55408845" target="_blank" class="social-link" title="Patreon">
+                    <img src="../images/patreon.png" alt="Patreon">
+                </a>
+            </div>
+            <p>&copy; 2025 JustinGreeno.dev | Nova Scotia, Canada</p>
         </div>
     </footer>
 
+    <script src="../javascript/main.js"></script>
 </body>
 </html>

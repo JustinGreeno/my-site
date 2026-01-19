@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darkness Blooms Devlogs | Justin Greeno</title>
+    <meta name="description" content="Development logs for Darkness Blooms - a story-driven retro RPG being solo developed by Justin Greeno.">
+
+    <!-- CSS -->
+    <link href="../css/style.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+    <link rel="manifest" href="../images/site.webmanifest">
+    <meta name="theme-color" content="#012F0B">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="../images/pixel_justin.gif" alt="Justin Greeno">
+                <span class="logo-text">JustinGreeno.dev</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="pixel-art.html">Pixel Art</a></li>
+                    <li><a href="devlogs.html" class="active">Devlogs</a></li>
+                    <li><a href="life.html">Life</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="webgames.html">Web Games</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Search Bar -->
+            <div class="search-container">
+                <form class="search-form" id="search-form">
+                    <input type="text" class="search-input" id="search-input" placeholder="Search..." autocomplete="off">
+                    <button type="submit" class="search-btn">Go</button>
+                </form>
+                <div class="search-results" id="search-results"></div>
+            </div>
+
+            <!-- Page Title -->
+            <section class="hero" style="padding: 1.5rem;">
+                <img src="../images/title.gif" alt="Darkness Blooms" class="hero-image-large" style="max-width: 400px;">
+                <h1>Darkness Blooms</h1>
+                <p class="tagline">A Story-Driven Retro RPG</p>
+            </section>
+
+            <!-- Game Introduction -->
+            <section class="glass-panel">
+                <h2>About The Game</h2>
+                <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: flex-start;">
+                    <img src="../images/gbc.gif" alt="Game Boy Style" style="max-width: 150px; border-radius: 10px; border: 1px solid rgba(104, 159, 171, 0.25); box-shadow: 0 15px 50px rgba(0,0,0,0.8);">
+                    <div style="flex: 1; min-width: 250px;">
+                        <p>
+                            Darkness Blooms is a deeply story-driven narrative team-based RPG. Through retro style pixel art and animation, a story of 6 unlikely young adults are drawn together and given the opportunity to be heroes whether they asked for it or not.
+                        </p>
+                        <p>
+                            Inspired by classic RPGs like Final Fantasy and Zelda, mixed with the art style of Stardew Valley, Darkness Blooms combines nostalgic gameplay with modern narrative techniques.
+                        </p>
+                        <p>
+                            The game is being solo developed by me, including all the artwork, programming, and narrative storytelling.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- The Characters -->
+            <section class="glass-panel">
+                <h2>The Characters</h2>
+                <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: flex-start;">
+                    <div style="flex: 1; min-width: 250px;">
+                        <img src="../images/char.png" alt="Party Characters" style="max-width: 100%; border-radius: 10px; box-shadow: 0 15px 50px rgba(0,0,0,0.8);">
+                    </div>
+                    <div style="flex: 1; min-width: 250px;">
+                        <p>
+                            Meet the heroes of Darkness Blooms: <strong>Ellie</strong>, <strong>Nixxy</strong>, <strong>Billy</strong>, <strong>Asher</strong>, <strong>Player1</strong>, and <strong>KK</strong>. Each character has their own story, abilities, and backgrounds that make them special.
+                        </p>
+                        <blockquote>
+                            <p>"In the darkest of times, even the smallest light can bloom into something extraordinary."</p>
+                            <cite>- Ellie, Darkness Blooms</cite>
+                        </blockquote>
+                    </div>
+                </div>
+
+                <div class="video-container mt-2">
+                    <iframe src="https://www.youtube.com/embed/GsCAqKWsDmA" title="Darkness Blooms Characters" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </section>
+
+            <!-- The Story -->
+            <section class="glass-panel">
+                <h2>The Story</h2>
+                <p>
+                    The main story follows overarching themes and narratives that give players an idea of what to expect. Without spoiling anything, expect a journey that will challenge what you think about heroes and villains.
+                </p>
+                <blockquote>
+                    <p>"It's like everyone tells a story about themselves inside their own head. Always. All the time. That story makes you what you are. We build ourselves out of that story."</p>
+                    <cite>- Patrick Rothfuss</cite>
+                </blockquote>
+
+                <div class="video-container mt-2">
+                    <iframe src="https://www.youtube.com/embed/47WdJTkzF9Q" title="Darkness Blooms Story" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </section>
+
+            <!-- Development Videos -->
+            <section class="glass-panel">
+                <h2>Development Logs</h2>
+                <p>
+                    I use devlogs to keep myself accountable and share my progress with the community. Here you can follow along as I build Darkness Blooms from the ground up.
+                </p>
+
+                <article class="art-item">
+                    <div class="art-item-content">
+                        <a href="https://www.youtube.com/watch?v=3laN-9JQICs" target="_blank" class="art-gif-link">
+                            <img src="../images/title.gif" alt="Game Introduction" class="art-gif">
+                        </a>
+                        <div class="art-description">
+                            <h3>Game Introduction</h3>
+                            <p>An overview of what Darkness Blooms is all about.</p>
+                        </div>
+                    </div>
+                    <div class="video-container mt-2">
+                        <iframe src="https://www.youtube.com/embed/3laN-9JQICs" title="Devlog" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </article>
+
+                <article class="art-item">
+                    <div class="art-item-content">
+                        <a href="https://www.youtube.com/watch?v=SR5daE8LU0k" target="_blank" class="art-gif-link">
+                            <img src="../images/pixel_justin.gif" alt="Development Progress" class="art-gif">
+                        </a>
+                        <div class="art-description">
+                            <h3>Development Progress</h3>
+                            <p>How I implement new features and track progress.</p>
+                        </div>
+                    </div>
+                    <div class="video-container mt-2">
+                        <iframe src="https://www.youtube.com/embed/SR5daE8LU0k" title="Devlog" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Community Section -->
+            <section class="glass-panel">
+                <h2>Join The Community</h2>
+                <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: flex-start;">
+                    <img src="../images/disc.webp" alt="Discord Community" style="max-width: 150px; border-radius: 10px; border: 1px solid rgba(104, 159, 171, 0.25); box-shadow: 0 15px 50px rgba(0,0,0,0.8);">
+                    <div style="flex: 1; min-width: 250px;">
+                        <p>
+                            Join our Discord community! We have shared conversations around art and game dev, and showcase amazing art from community members. We also run art contests around themes from the game.
+                        </p>
+                        <div class="mt-2">
+                            <a href="https://discord.gg/FTskDEdAtj" target="_blank" class="btn">Join Discord</a>
+                            <a href="https://www.patreon.com/u55408845" target="_blank" class="btn btn-outline">Support on Patreon</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA -->
+            <section class="glass-panel text-center">
+                <h2>Stay Updated</h2>
+                <p>Subscribe to my YouTube channel and join the Discord to stay up to date on Darkness Blooms development!</p>
+                <div class="social-links">
+                    <a href="https://www.youtube.com/justingreeno" target="_blank" class="social-link" title="YouTube">
+                        <img src="../images/yt.png" alt="YouTube">
+                    </a>
+                    <a href="https://www.twitch.tv/darknessblooms" target="_blank" class="social-link" title="Twitch">
+                        <img src="../images/twitch.png" alt="Twitch">
+                    </a>
+                    <a href="https://discord.gg/FTskDEdAtj" target="_blank" class="social-link" title="Discord">
+                        <img src="../images/discord.png" alt="Discord">
+                    </a>
+                    <a href="https://www.patreon.com/u55408845" target="_blank" class="social-link" title="Patreon">
+                        <img src="../images/patreon.png" alt="Patreon">
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.youtube.com/justingreeno" target="_blank" class="social-link" title="YouTube">
+                    <img src="../images/yt.png" alt="YouTube">
+                </a>
+                <a href="https://www.twitch.tv/darknessblooms" target="_blank" class="social-link" title="Twitch">
+                    <img src="../images/twitch.png" alt="Twitch">
+                </a>
+                <a href="https://www.instagram.com/justingreeno" target="_blank" class="social-link" title="Instagram">
+                    <img src="../images/insta.png" alt="Instagram">
+                </a>
+                <a href="https://discord.gg/FTskDEdAtj" target="_blank" class="social-link" title="Discord">
+                    <img src="../images/discord.png" alt="Discord">
+                </a>
+                <a href="https://www.patreon.com/u55408845" target="_blank" class="social-link" title="Patreon">
+                    <img src="../images/patreon.png" alt="Patreon">
+                </a>
+            </div>
+            <p>&copy; 2025 JustinGreeno.dev | Nova Scotia, Canada</p>
+        </div>
+    </footer>
+
+    <script src="../javascript/main.js"></script>
+</body>
+</html>

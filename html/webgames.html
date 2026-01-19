@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Games | Justin Greeno</title>
+    <meta name="description" content="Play browser-based games by Justin Greeno - Snake and Pacman!">
+
+    <!-- CSS -->
+    <link href="../css/style.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+    <link rel="manifest" href="../images/site.webmanifest">
+    <meta name="theme-color" content="#012F0B">
+
+    <style>
+        .game-canvas-container {
+            display: flex;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+        #snake-canvas, #pacman-canvas {
+            border: 2px solid var(--glass-border-solid, rgba(104, 159, 171, 0.25));
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            box-shadow: 6px 10px 50px rgba(0, 0, 0, 0.8);
+        }
+        .game-over-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .game-over-overlay.show {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .key-indicator {
+            text-align: center;
+            margin-top: 1rem;
+            font-family: "Kode Mono", monospace;
+            font-size: 1.1rem;
+            color: var(--accent-teal, #689fab);
+        }
+        .key-indicator span {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--glass-bg, rgba(1, 47, 11, 0.85));
+            border: 1px solid rgba(104, 159, 171, 0.25);
+            border-radius: 8px;
+            min-width: 100px;
+            box-shadow: 4px 6px 20px rgba(0, 0, 0, 0.4);
+        }
+        .mobile-controls {
+            display: grid;
+            grid-template-columns: repeat(3, 60px);
+            grid-template-rows: repeat(3, 60px);
+            gap: 5px;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        .mobile-btn {
+            background: var(--glass-bg, rgba(1, 47, 11, 0.85));
+            border: 1px solid rgba(104, 159, 171, 0.25);
+            border-radius: 10px;
+            color: var(--accent-teal, #689fab);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 4px 6px 20px rgba(0, 0, 0, 0.4);
+        }
+        .mobile-btn:hover, .mobile-btn:active {
+            background: var(--accent-teal, #689fab);
+            color: var(--primary-green, #012F0B);
+        }
+        .mobile-btn.up { grid-column: 2; grid-row: 1; }
+        .mobile-btn.left { grid-column: 1; grid-row: 2; }
+        .mobile-btn.stop { grid-column: 2; grid-row: 2; }
+        .mobile-btn.right { grid-column: 3; grid-row: 2; }
+        .mobile-btn.down { grid-column: 2; grid-row: 3; }
+        @media (min-width: 768px) {
+            .mobile-controls {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="../images/pixel_justin.gif" alt="Justin Greeno">
+                <span class="logo-text">JustinGreeno.dev</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="pixel-art.html">Pixel Art</a></li>
+                    <li><a href="devlogs.html">Devlogs</a></li>
+                    <li><a href="life.html">Life</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="webgames.html" class="active">Web Games</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Search Bar -->
+            <div class="search-container">
+                <form class="search-form" id="search-form">
+                    <input type="text" class="search-input" id="search-input" placeholder="Search..." autocomplete="off">
+                    <button type="submit" class="search-btn">Go</button>
+                </form>
+                <div class="search-results" id="search-results"></div>
+            </div>
+
+            <!-- Page Title -->
+            <section class="hero" style="padding: 2rem;">
+                <h1>Web Games</h1>
+                <p class="tagline">Playable Browser Games</p>
+            </section>
+
+            <!-- Snake Game (First) -->
+            <section class="glass-panel game-section" id="snake-section">
+                <h2>Snake</h2>
+                <p class="text-center">Classic Snake game! Eat the food to grow longer. Don't hit the walls or yourself!</p>
+
+                <div class="snake-scores" style="display: flex; justify-content: space-around; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin: 1rem 0;">
+                    <div class="score-display" style="text-align: center;">
+                        <h3 style="margin: 0; color: var(--accent-teal, #689fab);">Score</h3>
+                        <div id="snake-score" style="font-size: 2.5rem; font-family: 'Kode Mono', monospace; color: #A5E4CC;">0</div>
+                    </div>
+                    <div class="highscore-display" style="text-align: center;">
+                        <h3 style="margin: 0; color: var(--accent-teal, #689fab);">High Scores</h3>
+                        <div id="snake-highscores" style="font-family: 'Kode Mono', monospace; font-size: 1rem; color: #A5E4CC;">
+                            <div>1. --- : 0</div>
+                            <div>2. --- : 0</div>
+                            <div>3. --- : 0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-canvas-container" style="position: relative;">
+                    <canvas id="snake-canvas" width="400" height="400"></canvas>
+                    <div class="game-over-overlay" id="snake-game-over">
+                        <h3 style="color: #A5E4CC;">Game Over!</h3>
+                        <p style="color: #689fab;">Final Score: <span id="final-score">0</span></p>
+                        <div id="snake-initials-form" style="display: none; margin: 1rem 0;">
+                            <p style="color: #A5E4CC;">New High Score! Enter your initials:</p>
+                            <input type="text" id="snake-initials" maxlength="3" style="width: 80px; padding: 0.5rem; font-size: 1.5rem; text-align: center; text-transform: uppercase; background: rgba(0,0,0,0.5); border: 2px solid #689fab; border-radius: 5px; color: #A5E4CC; font-family: 'Kode Mono', monospace;">
+                            <button class="game-btn" id="snake-submit-score" style="margin-left: 0.5rem;">Submit</button>
+                        </div>
+                        <button class="game-btn" id="snake-restart">Play Again</button>
+                    </div>
+                </div>
+
+                <div class="game-controls">
+                    <button class="game-btn" id="snake-start">Start Game</button>
+                </div>
+
+                <div class="key-indicator">
+                    Current Key: <span id="snake-key-display">None</span>
+                </div>
+
+                <div class="game-instructions">
+                    <h4>Controls</h4>
+                    <ul>
+                        <li>Arrow Keys or WASD to move</li>
+                        <li>Space to pause</li>
+                    </ul>
+                </div>
+
+                <!-- Mobile Controls for Snake -->
+                <div class="mobile-controls" id="snake-mobile-controls">
+                    <button class="mobile-btn up" data-snake-dir="up">&#9650;</button>
+                    <button class="mobile-btn left" data-snake-dir="left">&#9664;</button>
+                    <button class="mobile-btn stop" data-snake-dir="pause">&#10074;&#10074;</button>
+                    <button class="mobile-btn right" data-snake-dir="right">&#9654;</button>
+                    <button class="mobile-btn down" data-snake-dir="down">&#9660;</button>
+                </div>
+            </section>
+
+            <!-- Pacman Game -->
+            <section class="glass-panel game-section" id="pacman-section">
+                <h2>Pac-Man</h2>
+                <p class="text-center">Eat the dots and avoid the ghosts! Ghosts spawn at 3, 9, and 18 points.</p>
+
+                <div class="game-score">Score: <span id="pacman-score">0</span></div>
+
+                <div class="game-canvas-container" style="position: relative;">
+                    <canvas id="pacman-canvas" width="400" height="400"></canvas>
+                    <div class="game-over-overlay" id="pacman-game-over">
+                        <h3 style="color: #A5E4CC;">Game Over!</h3>
+                        <p style="color: #689fab;">Final Score: <span id="pacman-final-score">0</span></p>
+                        <button class="game-btn" id="pacman-restart">Play Again</button>
+                    </div>
+                </div>
+
+                <div class="game-controls">
+                    <button class="game-btn" id="pacman-start">Start Game</button>
+                </div>
+
+                <div class="game-instructions">
+                    <h4>Controls</h4>
+                    <ul>
+                        <li id="pac-key-up">W / &#9650; - Up</li>
+                        <li id="pac-key-left">A / &#9668; - Left</li>
+                        <li id="pac-key-down">S / &#9660; - Down</li>
+                        <li id="pac-key-right">D / &#9658; - Right</li>
+                    </ul>
+                </div>
+
+                <!-- Mobile Controls -->
+                <div class="mobile-controls" id="pacman-mobile-controls">
+                    <button class="mobile-btn up" data-pac-dir="up">&#9650;</button>
+                    <button class="mobile-btn left" data-pac-dir="left">&#9664;</button>
+                    <button class="mobile-btn stop" data-pac-dir="stop">&#9632;</button>
+                    <button class="mobile-btn right" data-pac-dir="right">&#9654;</button>
+                    <button class="mobile-btn down" data-pac-dir="down">&#9660;</button>
+                </div>
+            </section>
+
+            <!-- More Games Coming -->
+            <section class="glass-panel text-center">
+                <h2>More Games Coming Soon!</h2>
+                <p>I'm working on more browser-based games and interactive experiences.</p>
+                <div class="mt-2">
+                    <a href="devlogs.html" class="btn">View Game Devlogs</a>
+                    <a href="pixel-art.html" class="btn btn-outline">See My Art</a>
+                </div>
+            </section>
+
+            <!-- Stay Updated -->
+            <section class="glass-panel text-center">
+                <h2>Stay Updated</h2>
+                <p>Follow me on social media to know when new games are released!</p>
+                <div class="social-links">
+                    <a href="https://www.youtube.com/justingreeno" target="_blank" class="social-link" title="YouTube">
+                        <img src="../images/yt.png" alt="YouTube">
+                    </a>
+                    <a href="https://www.twitch.tv/darknessblooms" target="_blank" class="social-link" title="Twitch">
+                        <img src="../images/twitch.png" alt="Twitch">
+                    </a>
+                    <a href="https://discord.gg/FTskDEdAtj" target="_blank" class="social-link" title="Discord">
+                        <img src="../images/discord.png" alt="Discord">
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.youtube.com/justingreeno" target="_blank" class="social-link" title="YouTube">
+                    <img src="../images/yt.png" alt="YouTube">
+                </a>
+                <a href="https://www.twitch.tv/darknessblooms" target="_blank" class="social-link" title="Twitch">
+                    <img src="../images/twitch.png" alt="Twitch">
+                </a>
+                <a href="https://www.instagram.com/justingreeno" target="_blank" class="social-link" title="Instagram">
+                    <img src="../images/insta.png" alt="Instagram">
+                </a>
+                <a href="https://discord.gg/FTskDEdAtj" target="_blank" class="social-link" title="Discord">
+                    <img src="../images/discord.png" alt="Discord">
+                </a>
+                <a href="https://www.patreon.com/u55408845" target="_blank" class="social-link" title="Patreon">
+                    <img src="../images/patreon.png" alt="Patreon">
+                </a>
+            </div>
+            <p>&copy; 2025 JustinGreeno.dev | Nova Scotia, Canada</p>
+        </div>
+    </footer>
+
+    <script src="../javascript/main.js"></script>
+
+    <!-- Snake Game Script -->
+    <script>
+        (function() {
+            const canvas = document.getElementById('snake-canvas');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+            const scoreEl = document.getElementById('snake-score');
+            const finalScoreEl = document.getElementById('final-score');
+            const gameOverEl = document.getElementById('snake-game-over');
+            const startBtn = document.getElementById('snake-start');
+            const restartBtn = document.getElementById('snake-restart');
+            const keyDisplay = document.getElementById('snake-key-display');
+            const highscoresEl = document.getElementById('snake-highscores');
+            const initialsForm = document.getElementById('snake-initials-form');
+            const initialsInput = document.getElementById('snake-initials');
+            const submitScoreBtn = document.getElementById('snake-submit-score');
+
+            const gridSize = 20;
+            const tileCount = canvas.width / gridSize;
+
+            let snake = [];
+            let food = {};
+            let direction = { x: 0, y: 0 };
+            let nextDirection = { x: 0, y: 0 };
+            let score = 0;
+            let gameRunning = false;
+            let gamePaused = false;
+            let gameInterval = null;
+            const gameSpeed = 100;
+
+            // High score system
+            let highScores = loadHighScores();
+            let pendingScore = 0;
+            let scorePosition = -1;
+
+            function loadHighScores() {
+                try {
+                    const saved = localStorage.getItem('snakeHighScores');
+                    if (saved) {
+                        return JSON.parse(saved);
+                    }
+                } catch (e) {}
+                return [
+                    { name: '---', score: 0 },
+                    { name: '---', score: 0 },
+                    { name: '---', score: 0 }
+                ];
+            }
+
+            function saveHighScores() {
+                try {
+                    localStorage.setItem('snakeHighScores', JSON.stringify(highScores));
+                } catch (e) {}
+            }
+
+            function displayHighScores() {
+                highscoresEl.innerHTML = highScores.map((hs, i) =>
+                    `<div>${i + 1}. ${hs.name.toUpperCase().padEnd(3, '-')} : ${hs.score}</div>`
+                ).join('');
+            }
+
+            function checkHighScore(newScore) {
+                for (let i = 0; i < highScores.length; i++) {
+                    if (newScore > highScores[i].score) {
+                        return i;
+                    }
+                }
+                return -1;
+            }
+
+            function addHighScore(name, newScore, position) {
+                const entry = { name: name.toUpperCase().substring(0, 3) || '???', score: newScore };
+                highScores.splice(position, 0, entry);
+                highScores = highScores.slice(0, 3);
+                saveHighScores();
+                displayHighScores();
+            }
+
+            function updateKeyDisplay(key) {
+                if (keyDisplay) keyDisplay.textContent = key;
+            }
+
+            function initGame() {
+                snake = [{ x: Math.floor(tileCount / 2), y: Math.floor(tileCount / 2) }];
+                direction = { x: 0, y: 0 };
+                nextDirection = { x: 0, y: 0 };
+                score = 0;
+                scoreEl.textContent = score;
+                placeFood();
+                gameOverEl.classList.remove('show');
+                initialsForm.style.display = 'none';
+                updateKeyDisplay('None');
+            }
+
+            function placeFood() {
+                food = {
+                    x: Math.floor(Math.random() * tileCount),
+                    y: Math.floor(Math.random() * tileCount)
+                };
+                for (let segment of snake) {
+                    if (segment.x === food.x && segment.y === food.y) {
+                        placeFood();
+                        return;
+                    }
+                }
+            }
+
+            function draw() {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                ctx.strokeStyle = 'rgba(104, 159, 171, 0.1)';
+                ctx.lineWidth = 1;
+                for (let i = 0; i <= tileCount; i++) {
+                    ctx.beginPath();
+                    ctx.moveTo(i * gridSize, 0);
+                    ctx.lineTo(i * gridSize, canvas.height);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(0, i * gridSize);
+                    ctx.lineTo(canvas.width, i * gridSize);
+                    ctx.stroke();
+                }
+
+                ctx.fillStyle = '#ff6b6b';
+                ctx.shadowColor = '#ff6b6b';
+                ctx.shadowBlur = 10;
+                ctx.beginPath();
+                ctx.arc(food.x * gridSize + gridSize / 2, food.y * gridSize + gridSize / 2, gridSize / 2 - 2, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.shadowBlur = 0;
+
+                snake.forEach((segment, index) => {
+                    const isHead = index === 0;
+                    ctx.fillStyle = isHead ? '#A5E4CC' : '#689fab';
+                    ctx.shadowColor = isHead ? '#A5E4CC' : '#689fab';
+                    ctx.shadowBlur = isHead ? 15 : 5;
+                    ctx.fillRect(segment.x * gridSize + 1, segment.y * gridSize + 1, gridSize - 2, gridSize - 2);
+                });
+                ctx.shadowBlur = 0;
+
+                if (gamePaused) {
+                    ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    ctx.fillStyle = '#A5E4CC';
+                    ctx.font = '30px "Kode Mono", monospace';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('PAUSED', canvas.width / 2, canvas.height / 2);
+                }
+            }
+
+            function update() {
+                if (!gameRunning || gamePaused) return;
+
+                direction = { ...nextDirection };
+                const head = { x: snake[0].x + direction.x, y: snake[0].y + direction.y };
+
+                if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount) {
+                    gameOver();
+                    return;
+                }
+
+                for (let segment of snake) {
+                    if (head.x === segment.x && head.y === segment.y) {
+                        gameOver();
+                        return;
+                    }
+                }
+
+                snake.unshift(head);
+
+                if (head.x === food.x && head.y === food.y) {
+                    score += 10;
+                    scoreEl.textContent = score;
+                    placeFood();
+                } else {
+                    snake.pop();
+                }
+
+                draw();
+            }
+
+            function gameOver() {
+                gameRunning = false;
+                clearInterval(gameInterval);
+                finalScoreEl.textContent = score;
+                gameOverEl.classList.add('show');
+                startBtn.textContent = 'Start Game';
+
+                // Check for high score
+                scorePosition = checkHighScore(score);
+                if (scorePosition !== -1 && score > 0) {
+                    pendingScore = score;
+                    initialsForm.style.display = 'block';
+                    initialsInput.value = '';
+                    initialsInput.focus();
+                } else {
+                    initialsForm.style.display = 'none';
+                }
+            }
+
+            function submitScore() {
+                if (scorePosition !== -1 && pendingScore > 0) {
+                    const initials = initialsInput.value.toUpperCase() || '???';
+                    addHighScore(initials, pendingScore, scorePosition);
+                    initialsForm.style.display = 'none';
+                    scorePosition = -1;
+                    pendingScore = 0;
+                }
+            }
+
+            function startGame() {
+                if (gameRunning) {
+                    gamePaused = !gamePaused;
+                    startBtn.textContent = gamePaused ? 'Resume' : 'Pause';
+                    draw();
+                    return;
+                }
+
+                initGame();
+                gameRunning = true;
+                gamePaused = false;
+                startBtn.textContent = 'Pause';
+                nextDirection = { x: 1, y: 0 };
+                updateKeyDisplay('Right');
+                gameInterval = setInterval(update, gameSpeed);
+                draw();
+            }
+
+            startBtn.addEventListener('click', startGame);
+            restartBtn.addEventListener('click', startGame);
+            submitScoreBtn.addEventListener('click', submitScore);
+            initialsInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    submitScore();
+                }
+            });
+
+            // Keyboard controls - prevent scrolling
+            document.addEventListener('keydown', (e) => {
+                const gameKeys = ['arrowup', 'arrowdown', 'arrowleft', 'arrowright', 'w', 'a', 's', 'd', ' '];
+                if (gameKeys.includes(e.key.toLowerCase()) && document.activeElement !== initialsInput) {
+                    e.preventDefault();
+                }
+
+                if (!gameRunning || document.activeElement === initialsInput) return;
+
+                switch(e.key.toLowerCase()) {
+                    case 'arrowup': case 'w':
+                        if (direction.y !== 1) { nextDirection = { x: 0, y: -1 }; updateKeyDisplay('Up'); }
+                        break;
+                    case 'arrowdown': case 's':
+                        if (direction.y !== -1) { nextDirection = { x: 0, y: 1 }; updateKeyDisplay('Down'); }
+                        break;
+                    case 'arrowleft': case 'a':
+                        if (direction.x !== 1) { nextDirection = { x: -1, y: 0 }; updateKeyDisplay('Left'); }
+                        break;
+                    case 'arrowright': case 'd':
+                        if (direction.x !== -1) { nextDirection = { x: 1, y: 0 }; updateKeyDisplay('Right'); }
+                        break;
+                    case ' ':
+                        gamePaused = !gamePaused;
+                        startBtn.textContent = gamePaused ? 'Resume' : 'Pause';
+                        updateKeyDisplay(gamePaused ? 'Paused' : 'Space');
+                        draw();
+                        break;
+                }
+            });
+
+            // Mobile controls
+            document.querySelectorAll('.mobile-btn[data-snake-dir]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const dir = btn.dataset.snakeDir;
+                    if (!gameRunning && dir !== 'pause') {
+                        startGame();
+                        return;
+                    }
+                    switch(dir) {
+                        case 'up': if (direction.y !== 1) { nextDirection = { x: 0, y: -1 }; updateKeyDisplay('Up'); } break;
+                        case 'down': if (direction.y !== -1) { nextDirection = { x: 0, y: 1 }; updateKeyDisplay('Down'); } break;
+                        case 'left': if (direction.x !== 1) { nextDirection = { x: -1, y: 0 }; updateKeyDisplay('Left'); } break;
+                        case 'right': if (direction.x !== -1) { nextDirection = { x: 1, y: 0 }; updateKeyDisplay('Right'); } break;
+                        case 'pause':
+                            if (gameRunning) {
+                                gamePaused = !gamePaused;
+                                startBtn.textContent = gamePaused ? 'Resume' : 'Pause';
+                                updateKeyDisplay(gamePaused ? 'Paused' : 'None');
+                                draw();
+                            }
+                            break;
+                    }
+                });
+            });
+
+            // Initialize
+            displayHighScores();
+            initGame();
+            draw();
+        })();
+    </script>
+
+    <!-- Pacman Game Script -->
+    <script>
+        (function() {
+            const canvas = document.getElementById('pacman-canvas');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+            const scoreEl = document.getElementById('pacman-score');
+            const finalScoreEl = document.getElementById('pacman-final-score');
+            const gameOverEl = document.getElementById('pacman-game-over');
+            const startBtn = document.getElementById('pacman-start');
+            const restartBtn = document.getElementById('pacman-restart');
+
+            const gridSize = 20;
+            const tileCount = canvas.width / gridSize;
+
+            let pacman = { x: 10, y: 10 };
+            let direction = { x: 0, y: 0 };
+            let nextDirection = { x: 0, y: 0 };
+            let score = 0;
+            let dots = [];
+            let ghosts = [];
+            let gameRunning = false;
+            let gameInterval = null;
+            const gameSpeed = 100;
+
+            const ghostColors = ['#ff0000', '#00ffff', '#ffb8ff'];
+            const ghostSpawnPoints = [3, 9, 18];
+            let spawnedGhosts = 0;
+
+            function initGame() {
+                pacman = { x: Math.floor(tileCount / 2), y: Math.floor(tileCount / 2) };
+                direction = { x: 0, y: 0 };
+                nextDirection = { x: 0, y: 0 };
+                score = 0;
+                spawnedGhosts = 0;
+                scoreEl.textContent = score;
+                gameOverEl.classList.remove('show');
+
+                // Create dots
+                dots = [];
+                for (let x = 0; x < tileCount; x++) {
+                    for (let y = 0; y < tileCount; y++) {
+                        if (x !== pacman.x || y !== pacman.y) {
+                            if (Math.random() < 0.3) {
+                                dots.push({ x, y });
+                            }
+                        }
+                    }
+                }
+
+                ghosts = [];
+            }
+
+            function spawnGhost() {
+                if (spawnedGhosts >= 3) return;
+
+                let gx, gy;
+                do {
+                    gx = Math.floor(Math.random() * tileCount);
+                    gy = Math.floor(Math.random() * tileCount);
+                } while (Math.abs(gx - pacman.x) < 5 && Math.abs(gy - pacman.y) < 5);
+
+                ghosts.push({
+                    x: gx,
+                    y: gy,
+                    color: ghostColors[spawnedGhosts],
+                    dx: Math.random() < 0.5 ? 1 : -1,
+                    dy: Math.random() < 0.5 ? 1 : -1
+                });
+                spawnedGhosts++;
+            }
+
+            function draw() {
+                // Clear
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.9)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                // Grid
+                ctx.strokeStyle = 'rgba(104, 159, 171, 0.1)';
+                ctx.lineWidth = 1;
+                for (let i = 0; i <= tileCount; i++) {
+                    ctx.beginPath();
+                    ctx.moveTo(i * gridSize, 0);
+                    ctx.lineTo(i * gridSize, canvas.height);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(0, i * gridSize);
+                    ctx.lineTo(canvas.width, i * gridSize);
+                    ctx.stroke();
+                }
+
+                // Dots
+                ctx.fillStyle = '#ffff00';
+                dots.forEach(dot => {
+                    ctx.beginPath();
+                    ctx.arc(dot.x * gridSize + gridSize / 2, dot.y * gridSize + gridSize / 2, 4, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+
+                // Ghosts
+                ghosts.forEach(ghost => {
+                    ctx.fillStyle = ghost.color;
+                    ctx.shadowColor = ghost.color;
+                    ctx.shadowBlur = 10;
+
+                    // Ghost body
+                    ctx.beginPath();
+                    ctx.arc(ghost.x * gridSize + gridSize / 2, ghost.y * gridSize + gridSize / 2 - 2, gridSize / 2 - 2, Math.PI, 0, false);
+                    ctx.lineTo(ghost.x * gridSize + gridSize - 2, ghost.y * gridSize + gridSize - 2);
+                    ctx.lineTo(ghost.x * gridSize + gridSize - 6, ghost.y * gridSize + gridSize - 6);
+                    ctx.lineTo(ghost.x * gridSize + gridSize / 2, ghost.y * gridSize + gridSize - 2);
+                    ctx.lineTo(ghost.x * gridSize + 6, ghost.y * gridSize + gridSize - 6);
+                    ctx.lineTo(ghost.x * gridSize + 2, ghost.y * gridSize + gridSize - 2);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    // Eyes
+                    ctx.fillStyle = 'white';
+                    ctx.shadowBlur = 0;
+                    ctx.beginPath();
+                    ctx.arc(ghost.x * gridSize + gridSize / 3, ghost.y * gridSize + gridSize / 2 - 2, 3, 0, Math.PI * 2);
+                    ctx.arc(ghost.x * gridSize + gridSize * 2 / 3, ghost.y * gridSize + gridSize / 2 - 2, 3, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.fillStyle = 'blue';
+                    ctx.beginPath();
+                    ctx.arc(ghost.x * gridSize + gridSize / 3 + 1, ghost.y * gridSize + gridSize / 2 - 2, 1.5, 0, Math.PI * 2);
+                    ctx.arc(ghost.x * gridSize + gridSize * 2 / 3 + 1, ghost.y * gridSize + gridSize / 2 - 2, 1.5, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+
+                // Pacman
+                ctx.fillStyle = '#ffff00';
+                ctx.shadowColor = '#ffff00';
+                ctx.shadowBlur = 15;
+
+                const mouthAngle = 0.2 * Math.PI;
+                let startAngle = mouthAngle;
+                let endAngle = 2 * Math.PI - mouthAngle;
+
+                // Rotate based on direction
+                if (direction.x === 1) { startAngle = mouthAngle; endAngle = 2 * Math.PI - mouthAngle; }
+                else if (direction.x === -1) { startAngle = Math.PI + mouthAngle; endAngle = Math.PI - mouthAngle; }
+                else if (direction.y === -1) { startAngle = 1.5 * Math.PI + mouthAngle; endAngle = 1.5 * Math.PI - mouthAngle; }
+                else if (direction.y === 1) { startAngle = 0.5 * Math.PI + mouthAngle; endAngle = 0.5 * Math.PI - mouthAngle; }
+
+                ctx.beginPath();
+                ctx.moveTo(pacman.x * gridSize + gridSize / 2, pacman.y * gridSize + gridSize / 2);
+                ctx.arc(pacman.x * gridSize + gridSize / 2, pacman.y * gridSize + gridSize / 2, gridSize / 2 - 2, startAngle, endAngle);
+                ctx.closePath();
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+
+            function update() {
+                if (!gameRunning) return;
+
+                direction = { ...nextDirection };
+
+                // Move pacman
+                let newX = pacman.x + direction.x;
+                let newY = pacman.y + direction.y;
+
+                // Wrap around
+                if (newX < 0) newX = tileCount - 1;
+                if (newX >= tileCount) newX = 0;
+                if (newY < 0) newY = tileCount - 1;
+                if (newY >= tileCount) newY = 0;
+
+                pacman.x = newX;
+                pacman.y = newY;
+
+                // Check dot collision
+                for (let i = dots.length - 1; i >= 0; i--) {
+                    if (dots[i].x === pacman.x && dots[i].y === pacman.y) {
+                        dots.splice(i, 1);
+                        score++;
+                        scoreEl.textContent = score;
+
+                        // Spawn ghost at certain points
+                        if (ghostSpawnPoints.includes(score)) {
+                            spawnGhost();
+                        }
+                    }
+                }
+
+                // Move ghosts
+                ghosts.forEach(ghost => {
+                    // Simple AI: move towards pacman sometimes, random other times
+                    if (Math.random() < 0.3) {
+                        if (pacman.x > ghost.x) ghost.dx = 1;
+                        else if (pacman.x < ghost.x) ghost.dx = -1;
+                        if (pacman.y > ghost.y) ghost.dy = 1;
+                        else if (pacman.y < ghost.y) ghost.dy = -1;
+                    }
+
+                    if (Math.random() < 0.5) {
+                        ghost.x += ghost.dx;
+                    } else {
+                        ghost.y += ghost.dy;
+                    }
+
+                    // Wrap around
+                    if (ghost.x < 0) ghost.x = tileCount - 1;
+                    if (ghost.x >= tileCount) ghost.x = 0;
+                    if (ghost.y < 0) ghost.y = tileCount - 1;
+                    if (ghost.y >= tileCount) ghost.y = 0;
+
+                    // Check collision with pacman
+                    if (ghost.x === pacman.x && ghost.y === pacman.y) {
+                        gameOver();
+                    }
+                });
+
+                draw();
+            }
+
+            function gameOver() {
+                gameRunning = false;
+                clearInterval(gameInterval);
+                finalScoreEl.textContent = score;
+                gameOverEl.classList.add('show');
+                startBtn.textContent = 'Start Game';
+            }
+
+            function startGame() {
+                initGame();
+                gameRunning = true;
+                startBtn.textContent = 'Restart';
+                nextDirection = { x: 1, y: 0 };
+                gameInterval = setInterval(update, gameSpeed);
+                draw();
+            }
+
+            startBtn.addEventListener('click', startGame);
+            restartBtn.addEventListener('click', startGame);
+
+            // Keyboard controls
+            document.addEventListener('keydown', (e) => {
+                if (!gameRunning) return;
+
+                switch(e.key.toLowerCase()) {
+                    case 'arrowup': case 'w':
+                        nextDirection = { x: 0, y: -1 };
+                        break;
+                    case 'arrowdown': case 's':
+                        nextDirection = { x: 0, y: 1 };
+                        break;
+                    case 'arrowleft': case 'a':
+                        nextDirection = { x: -1, y: 0 };
+                        break;
+                    case 'arrowright': case 'd':
+                        nextDirection = { x: 1, y: 0 };
+                        break;
+                }
+            });
+
+            // Mobile controls
+            document.querySelectorAll('.mobile-btn[data-pac-dir]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const dir = btn.dataset.pacDir;
+                    if (!gameRunning && dir !== 'stop') {
+                        startGame();
+                        return;
+                    }
+                    switch(dir) {
+                        case 'up': nextDirection = { x: 0, y: -1 }; break;
+                        case 'down': nextDirection = { x: 0, y: 1 }; break;
+                        case 'left': nextDirection = { x: -1, y: 0 }; break;
+                        case 'right': nextDirection = { x: 1, y: 0 }; break;
+                    }
+                });
+            });
+
+            initGame();
+            draw();
+        })();
+    </script>
+</body>
+</html>

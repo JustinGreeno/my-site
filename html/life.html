@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life | Justin Greeno</title>
+    <meta name="description" content="Personal life of Justin Greeno - adventures and moments outside of code.">
+
+    <!-- CSS -->
+    <link href="../css/style.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+    <link rel="manifest" href="../images/site.webmanifest">
+    <meta name="theme-color" content="#012F0B">
+
+    <style>
+        /* Auto-scrolling Carousel with side arrows */
+        .carousel-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .carousel-wrapper {
+            flex: 1;
+            overflow: hidden;
+            padding: 1rem 0;
+        }
+        .carousel-track {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: transform 0.05s linear;
+        }
+        .carousel-item {
+            flex: 0 0 auto;
+            text-decoration: none;
+        }
+        .carousel-item img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid rgba(104, 159, 171, 0.25);
+            box-shadow: 6px 10px 50px rgba(0, 0, 0, 0.8);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .carousel-item:hover img {
+            transform: scale(1.05);
+            box-shadow: 10px 15px 60px rgba(0, 0, 0, 0.9);
+        }
+        .carousel-arrow {
+            flex: 0 0 auto;
+            background: var(--glass-bg, rgba(1, 47, 11, 0.85));
+            border: 1px solid rgba(104, 159, 171, 0.25);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--accent-teal, #689fab);
+            font-size: 0.9rem;
+            box-shadow: 4px 6px 20px rgba(0, 0, 0, 0.6);
+            z-index: 10;
+        }
+        .carousel-arrow:hover {
+            background: var(--accent-teal, #689fab);
+            color: var(--primary-green, #012F0B);
+            transform: scale(1.1);
+        }
+        @media (min-width: 768px) {
+            .carousel-item img {
+                width: 220px;
+                height: 220px;
+            }
+            .carousel-arrow {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+        }
+        @media (min-width: 1024px) {
+            .carousel-item img {
+                width: 280px;
+                height: 280px;
+            }
+            .carousel-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="../images/pixel_justin.gif" alt="Justin Greeno">
+                <span class="logo-text">JustinGreeno.dev</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="pixel-art.html">Pixel Art</a></li>
+                    <li><a href="devlogs.html">Devlogs</a></li>
+                    <li><a href="life.html" class="active">Life</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="webgames.html">Web Games</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Search Bar -->
+            <div class="search-container">
+                <form class="search-form" id="search-form">
+                    <input type="text" class="search-input" id="search-input" placeholder="Search..." autocomplete="off">
+                    <button type="submit" class="search-btn">Go</button>
+                </form>
+                <div class="search-results" id="search-results"></div>
+            </div>
+
+            <!-- Page Title -->
+            <section class="hero" style="padding: 1.5rem;">
+                <h1>Life Outside Code</h1>
+                <p class="tagline">Adventures & Personal Moments</p>
+            </section>
+
+            <!-- Photo Carousel -->
+            <section class="glass-panel">
+                <h2 class="text-center">Photo Gallery</h2>
+                <div class="carousel-container">
+                    <button class="carousel-arrow" id="carousel-left" title="Speed up left">&larr;</button>
+                    <div class="carousel-wrapper">
+                        <div class="carousel-track" id="carousel-track">
+                            <!-- Set 1 -->
+                            <div class="carousel-item"><img src="../images/life/PXL_20251227_173333359.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/1765184582944.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20251208-030143~2.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20250315-184159.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20250315-183326~3.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20250315-183402~3.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20250311-152128.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-185022.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184811.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184831.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184858.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184740.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184531.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184516.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184648.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/20240811_112504.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/PXL_20240809_194807527.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/PXL_20240424_235108565.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20240411-165353.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Messenger_creation_468eedeb-f8d0-467b-8a38-1e9ca495ca08.jpeg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20240311-072607.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20240311-052258.png" alt="Life photo"></div>
+                            <!-- Set 2 -->
+                            <div class="carousel-item"><img src="../images/life/PXL_20251227_173333359.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/1765184582944.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20251208-030143~2.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20250315-184159.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20250315-183326~3.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20250315-183402~3.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20250311-152128.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-185022.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184811.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184831.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184858.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184740.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184531.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184516.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184648.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/20240811_112504.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/PXL_20240809_194807527.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/PXL_20240424_235108565.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20240411-165353.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Messenger_creation_468eedeb-f8d0-467b-8a38-1e9ca495ca08.jpeg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20240311-072607.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20240311-052258.png" alt="Life photo"></div>
+                            <!-- Set 3 -->
+                            <div class="carousel-item"><img src="../images/life/PXL_20251227_173333359.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/1765184582944.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20251208-030143~2.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20250315-184159.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20250315-183326~3.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20250315-183402~3.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20250311-152128.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-185022.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184811.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184831.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184858.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184740.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184531.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184516.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184648.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/20240811_112504.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/PXL_20240809_194807527.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/PXL_20240424_235108565.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20240411-165353.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Messenger_creation_468eedeb-f8d0-467b-8a38-1e9ca495ca08.jpeg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20240311-072607.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20240311-052258.png" alt="Life photo"></div>
+                            <!-- Set 4 -->
+                            <div class="carousel-item"><img src="../images/life/PXL_20251227_173333359.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/1765184582944.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20251208-030143~2.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20250315-184159.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20250315-183326~3.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20250315-183402~3.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20250311-152128.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-185022.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184811.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184831.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184858.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184740.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184531.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184516.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184648.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/20240811_112504.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/PXL_20240809_194807527.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/PXL_20240424_235108565.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20240411-165353.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Messenger_creation_468eedeb-f8d0-467b-8a38-1e9ca495ca08.jpeg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20240311-072607.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20240311-052258.png" alt="Life photo"></div>
+                            <!-- Set 5 -->
+                            <div class="carousel-item"><img src="../images/life/PXL_20251227_173333359.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/1765184582944.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20251208-030143~2.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20250315-184159.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20250315-183326~3.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20250315-183402~3.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20250311-152128.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-185022.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184811.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184831.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184858.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184740.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184531.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184516.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20241005-184648.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/20240811_112504.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/PXL_20240809_194807527.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/PXL_20240424_235108565.jpg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20240411-165353.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Messenger_creation_468eedeb-f8d0-467b-8a38-1e9ca495ca08.jpeg" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20240311-072607.png" alt="Life photo"></div>
+                            <div class="carousel-item"><img src="../images/life/Screenshot_20240311-052258.png" alt="Life photo"></div>
+                        </div>
+                    </div>
+                    <button class="carousel-arrow" id="carousel-right" title="Speed up right">&rarr;</button>
+                </div>
+            </section>
+
+            <!-- Instagram Link -->
+            <section class="glass-panel text-center">
+                <h2>Follow My Journey</h2>
+                <p>
+                    Want to see more of my daily life, adventures, and random moments? Follow me on Instagram for the full picture!
+                </p>
+                <div class="mt-2">
+                    <a href="https://www.instagram.com/justingreeno" target="_blank" class="btn">
+                        Follow on Instagram
+                    </a>
+                </div>
+                <div class="social-links mt-2">
+                    <a href="https://www.instagram.com/justingreeno" target="_blank" class="social-link" title="Instagram" style="width: 80px; height: 80px;">
+                        <img src="../images/insta.png" alt="Instagram" style="width: 50px; height: 50px;">
+                    </a>
+                </div>
+            </section>
+
+            <!-- Personal Background -->
+            <section class="glass-panel">
+                <h2>From Farm to City and Back</h2>
+                <p>
+                    I grew up on a farm in Nova Scotia, Canada. Those early years taught me the value of hard work, problem-solving, and perseverance. There's something about growing up surrounded by nature that stays with you.
+                </p>
+                <p>
+                    After high school, I moved to British Columbia where I spent 10+ years building a career in counseling, working with some of the most vulnerable populations during the opioid crisis. BC taught me resilience, empathy, and the importance of community.
+                </p>
+                <p>
+                    Recently, I moved back to Nova Scotia to care for my aging mother-in-law. It's been a journey coming home, reconnecting with my roots while pursuing new passions in web development and game design.
+                </p>
+            </section>
+
+            <!-- Interests -->
+            <section class="glass-panel">
+                <h2>What I Love</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div class="glass-panel-light">
+                        <h3>Gardening</h3>
+                        <p>There's something meditative about growing your own food and flowers. My garden is my happy place.</p>
+                    </div>
+                    <div class="glass-panel-light">
+                        <h3>Retro Gaming</h3>
+                        <p>Classic RPGs and retro games are my jam. They inspire my game development work on Darkness Blooms.</p>
+                    </div>
+                    <div class="glass-panel-light">
+                        <h3>Pixel Art</h3>
+                        <p>Creating pixel art is my creative outlet. There's something meditative about placing each pixel just right.</p>
+                    </div>
+                    <div class="glass-panel-light">
+                        <h3>Learning</h3>
+                        <p>Always picking up new skills, whether it's a new programming language or a new art technique.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Connect Section -->
+            <section class="glass-panel text-center">
+                <h2>Let's Connect</h2>
+                <p>I love meeting new people and hearing their stories. Feel free to reach out!</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/justingreeno" target="_blank" class="social-link" title="Instagram">
+                        <img src="../images/insta.png" alt="Instagram">
+                    </a>
+                    <a href="https://discord.gg/FTskDEdAtj" target="_blank" class="social-link" title="Discord">
+                        <img src="../images/discord.png" alt="Discord">
+                    </a>
+                    <a href="https://www.youtube.com/justingreeno" target="_blank" class="social-link" title="YouTube">
+                        <img src="../images/yt.png" alt="YouTube">
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.youtube.com/justingreeno" target="_blank" class="social-link" title="YouTube">
+                    <img src="../images/yt.png" alt="YouTube">
+                </a>
+                <a href="https://www.twitch.tv/darknessblooms" target="_blank" class="social-link" title="Twitch">
+                    <img src="../images/twitch.png" alt="Twitch">
+                </a>
+                <a href="https://www.instagram.com/justingreeno" target="_blank" class="social-link" title="Instagram">
+                    <img src="../images/insta.png" alt="Instagram">
+                </a>
+                <a href="https://discord.gg/FTskDEdAtj" target="_blank" class="social-link" title="Discord">
+                    <img src="../images/discord.png" alt="Discord">
+                </a>
+                <a href="https://www.patreon.com/u55408845" target="_blank" class="social-link" title="Patreon">
+                    <img src="../images/patreon.png" alt="Patreon">
+                </a>
+            </div>
+            <p>&copy; 2025 JustinGreeno.dev | Nova Scotia, Canada</p>
+        </div>
+    </footer>
+
+    <script src="../javascript/main.js"></script>
+    <script>
+        // Smooth carousel with hover-based arrow speed control
+        (function() {
+            const track = document.getElementById('carousel-track');
+            const leftBtn = document.getElementById('carousel-left');
+            const rightBtn = document.getElementById('carousel-right');
+
+            if (!track) return;
+
+            // Start in the middle so we can scroll both directions
+            let position = 0;
+            let baseSpeed = 0.5;
+            let currentSpeed = baseSpeed;
+            let direction = 1;
+            let isTrackHovered = false;
+            let isLeftHovered = false;
+            let isRightHovered = false;
+            let initialized = false;
+
+            function animate() {
+                // Set initial position to middle after first frame (when track has width)
+                if (!initialized && track.scrollWidth > 0) {
+                    position = -(track.scrollWidth * 0.4);
+                    initialized = true;
+                }
+
+                if (!isTrackHovered || isLeftHovered || isRightHovered) {
+                    // Left arrow = scroll left (show content from right), Right arrow = scroll right (show content from left)
+                    if (isLeftHovered) {
+                        direction = -1;
+                        currentSpeed = 4;
+                    } else if (isRightHovered) {
+                        direction = 1;
+                        currentSpeed = 4;
+                    } else {
+                        currentSpeed = baseSpeed;
+                    }
+
+                    position -= currentSpeed * direction;
+                    track.style.transform = `translateX(${position}px)`;
+                }
+
+                requestAnimationFrame(animate);
+            }
+
+            track.addEventListener('mouseenter', () => { isTrackHovered = true; });
+            track.addEventListener('mouseleave', () => { isTrackHovered = false; });
+
+            leftBtn.addEventListener('mouseenter', () => { isLeftHovered = true; });
+            leftBtn.addEventListener('mouseleave', () => { isLeftHovered = false; });
+
+            rightBtn.addEventListener('mouseenter', () => { isRightHovered = true; });
+            rightBtn.addEventListener('mouseleave', () => { isRightHovered = false; });
+
+            animate();
+        })();
+    </script>
+</body>
+</html>
