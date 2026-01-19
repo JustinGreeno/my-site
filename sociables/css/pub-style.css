@@ -1,0 +1,1089 @@
+/* Sociables Pub & Eatery - Irish/Celtic Pub Style */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap');
+
+:root {
+    /* Warm pub colors */
+    --dark-wood: #1a0f0a;
+    --medium-wood: #3d2517;
+    --light-wood: #8b5a2b;
+    --rich-wood: #5c3d2e;
+    --brass: #b5a642;
+    --gold: #d4af37;
+    --antique-gold: #c9a227;
+    --cream: #f5f0e1;
+    --warm-white: #fff8e7;
+    --parchment: #f4e4bc;
+    --deep-green: #1a4d2e;
+    --celtic-green: #2d6a4f;
+    --tartan-red: #8b2323;
+    --tartan-blue: #1e3a5f;
+    --beer-amber: #e67e22;
+    --shadow-dark: rgba(0, 0, 0, 0.7);
+    --wood-grain: #4a3728;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: var(--dark-wood) url('../../images/sociables/logos and branding/simple wood grid.png');
+    background-size: 150px;
+    color: var(--cream);
+    min-height: 100vh;
+    line-height: 1.6;
+    position: relative;
+}
+
+/* Plaid texture class */
+.plaid-bg {
+    background-image: url('../../images/sociables/logos and branding/plaid grid.png');
+    background-size: 400px;
+    background-repeat: repeat;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* Header */
+header {
+    background: linear-gradient(180deg, var(--dark-wood) 0%, rgba(42, 24, 16, 0.95) 100%);
+    border-bottom: 4px solid var(--brass);
+    padding: 0.25rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px var(--shadow-dark);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--gold);
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.logo-img.header-main-logo {
+    height: 135px;
+    max-width: 338px;
+    object-fit: contain;
+    margin: -10px 0 -17px 0;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.8)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.9));
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+.logo-text {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px var(--shadow-dark);
+    color: var(--gold);
+    white-space: nowrap;
+}
+
+.logo-tagline {
+    font-size: 0.75rem;
+    color: var(--cream);
+    opacity: 0.8;
+}
+
+/* Open/Closed Status Banner */
+.status-banner {
+    background: linear-gradient(145deg, var(--rich-wood), var(--medium-wood));
+    border: 2px solid var(--brass);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    margin: 0.5rem auto;
+    max-width: fit-content;
+}
+
+.status-banner.open {
+    border-color: #4CAF50;
+}
+
+.status-banner.closed {
+    border-color: #f44336;
+}
+
+.status-text {
+    font-family: 'Merriweather', serif;
+    font-size: 0.95rem;
+    color: var(--cream);
+}
+
+.status-text strong {
+    color: var(--gold);
+}
+
+nav ul {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--cream);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    border: 2px solid transparent;
+}
+
+nav a:hover,
+nav a.active {
+    background: var(--brass);
+    color: var(--dark-wood);
+    border-color: var(--gold);
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 4rem 1rem;
+    background: linear-gradient(rgba(42, 24, 16, 0.85), rgba(42, 24, 16, 0.9)),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%23b5a642" stroke-width="2" opacity="0.1"/></svg>');
+    border-bottom: 3px solid var(--brass);
+}
+
+.hero h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 5vw, 4rem);
+    color: var(--gold);
+    text-shadow: 3px 3px 6px var(--shadow-dark);
+    margin-bottom: 1rem;
+}
+
+.hero .tagline {
+    font-family: 'Merriweather', serif;
+    font-size: 1.2rem;
+    color: var(--cream);
+    font-style: italic;
+}
+
+/* Panels */
+.panel {
+    background: linear-gradient(145deg, rgba(74, 44, 26, 0.95), rgba(42, 24, 16, 0.95));
+    border: 3px solid var(--brass);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow:
+        inset 0 2px 10px rgba(255, 255, 255, 0.05),
+        0 8px 30px var(--shadow-dark);
+}
+
+.panel h2 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--brass);
+    padding-bottom: 0.5rem;
+}
+
+.panel h3 {
+    font-family: 'Merriweather', serif;
+    color: var(--brass);
+    margin: 1.5rem 0 0.75rem;
+}
+
+.panel p {
+    color: var(--cream);
+    margin-bottom: 1rem;
+}
+
+/* Menu Styles */
+.menu-tabs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--brass);
+    padding-bottom: 0.5rem;
+}
+
+.menu-tab {
+    background: var(--medium-wood);
+    border: 2px solid var(--brass);
+    color: var(--cream);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.menu-tab:hover,
+.menu-tab.active {
+    background: var(--brass);
+    color: var(--dark-wood);
+}
+
+.menu-section {
+    display: none;
+}
+
+.menu-section.active {
+    display: block;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1rem 0;
+    border-bottom: 1px dashed var(--light-wood);
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+}
+
+.menu-item-name {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    color: var(--cream);
+    font-size: 1.1rem;
+}
+
+.menu-item-desc {
+    font-size: 0.9rem;
+    color: var(--parchment);
+    opacity: 0.8;
+    margin-top: 0.25rem;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    background: var(--dark-wood);
+    color: var(--gold);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: 'Merriweather', serif;
+    border: 2px solid var(--gold);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 3px 3px 10px var(--shadow-dark);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 5px 5px 15px var(--shadow-dark);
+    background: var(--gold);
+    color: var(--dark-wood);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--gold);
+    border: 2px solid var(--gold);
+}
+
+.btn-outline:hover {
+    background: var(--gold);
+    color: var(--dark-wood);
+}
+
+/* Info Grid */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.info-card {
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--light-wood);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.info-card h3 {
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+}
+
+/* Hours Table */
+.hours-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.hours-table td {
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--light-wood);
+}
+
+.hours-table td:first-child {
+    font-weight: 600;
+    color: var(--brass);
+}
+
+/* Contact Form */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 500px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-family: 'Merriweather', serif;
+    color: var(--brass);
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--light-wood);
+    border-radius: 8px;
+    padding: 0.75rem;
+    color: var(--cream);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* Photo Gallery */
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.photo-item {
+    aspect-ratio: 1;
+    background: var(--medium-wood);
+    border: 3px solid var(--brass);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--brass);
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Floating Footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(180deg, rgba(26, 15, 10, 0.98), var(--dark-wood));
+    border-top: 4px solid var(--gold);
+    padding: 1.25rem 1.5rem;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.5);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.footer-logo {
+    height: 70px;
+    width: auto;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5));
+}
+
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.footer-title {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.footer-address {
+    color: var(--cream);
+    font-size: 1rem;
+}
+
+.footer-address a {
+    color: var(--cream);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.footer-address a:hover {
+    color: var(--gold);
+}
+
+.footer-center {
+    text-align: center;
+}
+
+.footer-hours {
+    font-family: 'Merriweather', serif;
+    color: var(--brass);
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--brass);
+    border-radius: 8px;
+    background: rgba(0,0,0,0.3);
+}
+
+.footer-hours.open {
+    color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+.footer-hours.closed {
+    color: #f44336;
+    border-color: #f44336;
+}
+
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.75rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.social-link {
+    color: var(--gold);
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border: 2px solid var(--brass);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    background: rgba(0,0,0,0.2);
+}
+
+.social-link:hover {
+    background: var(--brass);
+    color: var(--dark-wood);
+}
+
+.footer-credit {
+    font-size: 0.85rem;
+    color: var(--cream);
+}
+
+.footer-credit a {
+    color: var(--brass);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.footer-credit a:hover {
+    color: var(--gold);
+}
+
+.footer-secret {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    opacity: 0.1;
+    font-size: 0.8rem;
+    transition: opacity 0.3s ease;
+}
+
+.footer-secret a {
+    color: var(--brass);
+    text-decoration: none;
+}
+
+.footer-secret:hover {
+    opacity: 0.5;
+}
+
+/* Add padding to main to account for fixed footer */
+main {
+    padding-bottom: 140px;
+}
+
+@media (max-width: 768px) {
+    footer {
+        padding: 0.5rem 0.75rem;
+    }
+
+    .footer-content {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .footer-left {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .footer-logo {
+        height: 35px;
+    }
+
+    .footer-title {
+        font-size: 0.85rem;
+    }
+
+    .footer-address {
+        font-size: 0.7rem;
+    }
+
+    .footer-center {
+        order: 3;
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer-hours {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.5rem;
+    }
+
+    .footer-right .social-links {
+        display: none;
+    }
+
+    .footer-credit {
+        font-size: 0.65rem;
+    }
+
+    main {
+        padding-bottom: 100px;
+    }
+}
+
+/* Celtic decoration */
+.celtic-border {
+    border: 3px solid var(--brass);
+    border-image: repeating-linear-gradient(
+        45deg,
+        var(--brass),
+        var(--brass) 10px,
+        var(--gold) 10px,
+        var(--gold) 20px
+    ) 3;
+}
+
+/* Utility */
+.text-center {
+    text-align: center;
+}
+
+.mt-2 {
+    margin-top: 1rem;
+}
+
+.mt-3 {
+    margin-top: 1.5rem;
+}
+
+/* Carousel Styles */
+.carousel-section {
+    background: linear-gradient(145deg, rgba(61, 37, 23, 0.95), rgba(26, 15, 10, 0.98));
+    border: 4px solid var(--brass);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow:
+        inset 0 0 30px rgba(0, 0, 0, 0.5),
+        0 10px 40px var(--shadow-dark);
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        /* Plaid/tartan pattern overlay */
+        url('../../images/sociables/logos and branding/plaid grid.png'),
+        /* Celtic knot corners */
+        radial-gradient(circle 30px at 30px 30px, var(--brass) 0%, transparent 60%),
+        radial-gradient(circle 30px at calc(100% - 30px) 30px, var(--brass) 0%, transparent 60%),
+        radial-gradient(circle 30px at 30px calc(100% - 30px), var(--brass) 0%, transparent 60%),
+        radial-gradient(circle 30px at calc(100% - 30px) calc(100% - 30px), var(--brass) 0%, transparent 60%);
+    background-size: 400px auto, auto, auto, auto, auto;
+    opacity: 0.12;
+    pointer-events: none;
+}
+
+.carousel-section h2 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 6px var(--shadow-dark);
+}
+
+.carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    padding: 1rem 0;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+}
+
+/* Speed control zones */
+.carousel-speed-zone {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 20%;
+    z-index: 5;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-speed-zone:hover {
+    opacity: 1;
+}
+
+.carousel-speed-zone.left {
+    left: 0;
+    background: linear-gradient(90deg, rgba(26, 15, 10, 0.6), transparent);
+}
+
+.carousel-speed-zone.right {
+    right: 0;
+    background: linear-gradient(-90deg, rgba(26, 15, 10, 0.6), transparent);
+}
+
+.carousel-speed-zone::after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    border: 3px solid var(--gold);
+    border-radius: 50%;
+    background: rgba(0,0,0,0.5);
+}
+
+.carousel-speed-zone.left::after {
+    content: '<<';
+    color: var(--gold);
+    font-weight: bold;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-speed-zone.right::after {
+    content: '>>';
+    color: var(--gold);
+    font-weight: bold;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-item {
+    flex-shrink: 0;
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(145deg, var(--medium-wood), var(--dark-wood));
+    border: 3px solid var(--brass);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+        inset 0 2px 10px rgba(255,255,255,0.05),
+        0 5px 20px var(--shadow-dark);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-item:hover {
+    transform: scale(1.05);
+    box-shadow:
+        inset 0 2px 10px rgba(255,255,255,0.1),
+        0 8px 30px var(--shadow-dark),
+        0 0 20px rgba(212, 175, 55, 0.3);
+    border-color: var(--gold);
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-item.logo-item {
+    background: linear-gradient(145deg, var(--rich-wood), var(--medium-wood));
+    padding: 1rem;
+}
+
+.carousel-item.logo-item img {
+    object-fit: contain;
+}
+
+.carousel-placeholder {
+    color: var(--brass);
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+    text-align: center;
+    padding: 1rem;
+}
+
+@keyframes scroll-carousel {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Carousel navigation arrows */
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(145deg, var(--brass), var(--gold));
+    color: var(--dark-wood);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 4px 15px var(--shadow-dark);
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.carousel-nav:hover {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 20px var(--shadow-dark);
+}
+
+.carousel-nav.prev {
+    left: 10px;
+}
+
+.carousel-nav.next {
+    right: 10px;
+}
+
+/* Contact Banner */
+.contact-banner {
+    background: linear-gradient(135deg, var(--rich-wood), var(--medium-wood));
+    border: 4px solid var(--gold);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem 0;
+    text-align: center;
+    box-shadow:
+        inset 0 0 20px rgba(0,0,0,0.3),
+        0 8px 30px var(--shadow-dark);
+}
+
+.contact-banner h2 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.contact-info-large {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1.5rem 0;
+}
+
+.contact-item {
+    background: rgba(0,0,0,0.3);
+    border: 2px solid var(--brass);
+    border-radius: 10px;
+    padding: 1.5rem 2rem;
+    min-width: 250px;
+}
+
+.contact-item h3 {
+    font-family: 'Cinzel', serif;
+    color: var(--brass);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.contact-item p {
+    font-size: 1.3rem;
+    color: var(--cream);
+    font-weight: 600;
+}
+
+.contact-item a {
+    color: var(--gold);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: var(--cream);
+    text-decoration: underline;
+}
+
+.phone-number {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem !important;
+    color: var(--gold) !important;
+}
+
+/* Map Link Button */
+.map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--dark-wood);
+    color: var(--gold);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: 'Merriweather', serif;
+    border: 2px solid var(--gold);
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 3px 3px 10px var(--shadow-dark);
+}
+
+.map-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 5px 5px 15px var(--shadow-dark);
+    background: var(--gold);
+    color: var(--dark-wood);
+}
+
+/* Celtic Knot Divider */
+.celtic-divider {
+    height: 30px;
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 10px,
+            var(--brass) 10px,
+            var(--brass) 12px,
+            transparent 12px,
+            transparent 20px
+        );
+    margin: 2rem 0;
+    opacity: 0.5;
+    position: relative;
+}
+
+.celtic-divider::before,
+.celtic-divider::after {
+    content: '⚜';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold);
+    font-size: 1.5rem;
+    background: var(--dark-wood);
+    padding: 0 0.5rem;
+}
+
+.celtic-divider::before {
+    left: 10%;
+}
+
+.celtic-divider::after {
+    right: 10%;
+}
+
+/* Enhanced Header with brass details */
+header {
+    background: linear-gradient(180deg, var(--dark-wood) 0%, var(--medium-wood) 50%, var(--dark-wood) 100%);
+    border-bottom: 5px solid;
+    border-image: linear-gradient(90deg, var(--dark-wood), var(--brass), var(--gold), var(--brass), var(--dark-wood)) 1;
+    padding: 0.25rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 25px var(--shadow-dark);
+    overflow: hidden;
+}
+
+/* Enhanced Panels with wood texture */
+.panel {
+    background:
+        linear-gradient(145deg, rgba(61, 37, 23, 0.85), rgba(26, 15, 10, 0.85)),
+        url('../../images/sociables/logos and branding/simple wood grid.png');
+    background-size: 100%, 100px;
+    border: 4px solid var(--brass);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow:
+        inset 0 2px 15px rgba(255, 255, 255, 0.03),
+        inset 0 -2px 15px rgba(0, 0, 0, 0.3),
+        0 10px 40px var(--shadow-dark);
+    position: relative;
+}
+
+/* Wood frame corners */
+.panel::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border: 4px solid transparent;
+    border-radius: 19px;
+    background:
+        linear-gradient(var(--dark-wood), var(--dark-wood)) padding-box,
+        linear-gradient(135deg, var(--gold) 0%, var(--brass) 25%, var(--light-wood) 50%, var(--brass) 75%, var(--gold) 100%) border-box;
+    z-index: -1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        justify-content: center;
+    }
+
+    .logo-text {
+        font-size: 1.4rem;
+    }
+
+    .menu-tabs {
+        justify-content: center;
+    }
+
+    .carousel-item {
+        width: 150px;
+        height: 150px;
+    }
+
+    .contact-info-large {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-item {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .phone-number {
+        font-size: 1.4rem !important;
+    }
+}
+
+@media (min-width: 769px) {
+    .carousel-item {
+        width: 220px;
+        height: 220px;
+    }
+}

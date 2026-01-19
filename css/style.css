@@ -692,6 +692,40 @@ footer p {
   margin-bottom: 0;
 }
 
+/* Secret S Icon */
+.footer-secret {
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+.footer-secret:hover {
+  opacity: 1;
+}
+
+.footer-secret a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border-solid);
+  border-radius: 4px;
+  color: var(--accent-teal);
+  text-decoration: none;
+  font-family: 'Kode Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.footer-secret a:hover {
+  background: var(--accent-teal);
+  color: var(--primary-green);
+}
+
 /* Game Container Styles */
 .game-container {
   padding: 1rem;

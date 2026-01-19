@@ -15,9 +15,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="../images/pixel_justin.gif">
+    <link rel="icon" type="image/gif" href="../images/pixel_justin.gif">
     <link rel="manifest" href="../images/site.webmanifest">
     <meta name="theme-color" content="#012F0B">
 
@@ -119,6 +118,7 @@
                     <li><a href="life.html">Life</a></li>
                     <li><a href="resume.html">Resume</a></li>
                     <li><a href="webgames.html" class="active">Web Games</a></li>
+                    <li><a href="webdesign.html">Web Design</a></li>
                 </ul>
             </nav>
         </div>
@@ -203,16 +203,34 @@
 
             <!-- Pacman Game -->
             <section class="glass-panel game-section" id="pacman-section">
-                <h2>Pac-Man</h2>
-                <p class="text-center">Eat the dots and avoid the ghosts! Ghosts spawn at 3, 9, and 18 points.</p>
+                <h2>Pacman Survival</h2>
+                <p class="text-center">Survive as long as you can! Only 6 dots at a time. Ghosts spawn at 3, 10, 20, and 30 points (max 3).</p>
 
-                <div class="game-score">Score: <span id="pacman-score">0</span></div>
+                <div class="pacman-scores" style="display: flex; justify-content: space-around; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin: 1rem 0;">
+                    <div class="score-display" style="text-align: center;">
+                        <h3 style="margin: 0; color: var(--accent-teal, #689fab);">Score</h3>
+                        <div id="pacman-score" style="font-size: 2.5rem; font-family: 'Kode Mono', monospace; color: #A5E4CC;">0</div>
+                    </div>
+                    <div class="highscore-display" style="text-align: center;">
+                        <h3 style="margin: 0; color: var(--accent-teal, #689fab);">High Scores</h3>
+                        <div id="pacman-highscores" style="font-family: 'Kode Mono', monospace; font-size: 1rem; color: #A5E4CC;">
+                            <div>1. --- : 0</div>
+                            <div>2. --- : 0</div>
+                            <div>3. --- : 0</div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="game-canvas-container" style="position: relative;">
                     <canvas id="pacman-canvas" width="400" height="400"></canvas>
                     <div class="game-over-overlay" id="pacman-game-over">
                         <h3 style="color: #A5E4CC;">Game Over!</h3>
                         <p style="color: #689fab;">Final Score: <span id="pacman-final-score">0</span></p>
+                        <div id="pacman-initials-form" style="display: none; margin: 1rem 0;">
+                            <p style="color: #A5E4CC;">New High Score! Enter your initials:</p>
+                            <input type="text" id="pacman-initials" maxlength="3" style="width: 80px; padding: 0.5rem; font-size: 1.5rem; text-align: center; text-transform: uppercase; background: rgba(0,0,0,0.5); border: 2px solid #689fab; border-radius: 5px; color: #A5E4CC; font-family: 'Kode Mono', monospace;">
+                            <button class="game-btn" id="pacman-submit-score" style="margin-left: 0.5rem;">Submit</button>
+                        </div>
                         <button class="game-btn" id="pacman-restart">Play Again</button>
                     </div>
                 </div>
@@ -238,6 +256,25 @@
                     <button class="mobile-btn stop" data-pac-dir="stop">&#9632;</button>
                     <button class="mobile-btn right" data-pac-dir="right">&#9654;</button>
                     <button class="mobile-btn down" data-pac-dir="down">&#9660;</button>
+                </div>
+            </section>
+
+            <!-- Darkness Blooms Exploring Sprites Game -->
+            <section class="glass-panel game-section" id="sprites-section">
+                <h2>Darkness Blooms: Exploring Sprites</h2>
+                <p class="text-center">Explore and interact with sprites from the Darkness Blooms game!</p>
+
+                <div class="game-canvas-container" style="position: relative;">
+                    <canvas id="sprites-canvas" width="400" height="400"></canvas>
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: #A5E4CC;">
+                        <p style="font-size: 1.2rem; margin-bottom: 1rem;">Coming Soon!</p>
+                        <p style="color: #689fab;">Sprite viewer in development</p>
+                    </div>
+                </div>
+
+                <div class="game-instructions">
+                    <h4>About This Feature</h4>
+                    <p>Soon you'll be able to explore and interact with various character sprites and animations from Darkness Blooms!</p>
                 </div>
             </section>
 
@@ -290,6 +327,9 @@
                 </a>
             </div>
             <p>&copy; 2025 JustinGreeno.dev | Nova Scotia, Canada</p>
+            <div class="footer-secret">
+                <a href="../sociables/index.html" title="Sociables Pub">S</a>
+            </div>
         </div>
     </footer>
 
@@ -610,9 +650,14 @@
             const gameOverEl = document.getElementById('pacman-game-over');
             const startBtn = document.getElementById('pacman-start');
             const restartBtn = document.getElementById('pacman-restart');
+            const highscoresEl = document.getElementById('pacman-highscores');
+            const initialsForm = document.getElementById('pacman-initials-form');
+            const initialsInput = document.getElementById('pacman-initials');
+            const submitScoreBtn = document.getElementById('pacman-submit-score');
 
             const gridSize = 20;
             const tileCount = canvas.width / gridSize;
+            const maxDots = 6; // Only 6 dots at a time
 
             let pacman = { x: 10, y: 10 };
             let direction = { x: 0, y: 0 };
@@ -624,9 +669,85 @@
             let gameInterval = null;
             const gameSpeed = 100;
 
-            const ghostColors = ['#ff0000', '#00ffff', '#ffb8ff'];
-            const ghostSpawnPoints = [3, 9, 18];
+            const ghostColors = ['#ff0000', '#00ffff', '#ffb8ff', '#ff8c00'];
+            const ghostSpawnPoints = [3, 10, 20, 30]; // Updated spawn points
             let spawnedGhosts = 0;
+
+            // High score system
+            let highScores = loadHighScores();
+            let pendingScore = 0;
+            let scorePosition = -1;
+
+            function loadHighScores() {
+                try {
+                    const saved = localStorage.getItem('pacmanHighScores');
+                    if (saved) {
+                        return JSON.parse(saved);
+                    }
+                } catch (e) {}
+                return [
+                    { name: '---', score: 0 },
+                    { name: '---', score: 0 },
+                    { name: '---', score: 0 }
+                ];
+            }
+
+            function saveHighScores() {
+                try {
+                    localStorage.setItem('pacmanHighScores', JSON.stringify(highScores));
+                } catch (e) {}
+            }
+
+            function displayHighScores() {
+                highscoresEl.innerHTML = highScores.map((hs, i) =>
+                    `<div>${i + 1}. ${hs.name.toUpperCase().padEnd(3, '-')} : ${hs.score}</div>`
+                ).join('');
+            }
+
+            function checkHighScore(newScore) {
+                for (let i = 0; i < highScores.length; i++) {
+                    if (newScore > highScores[i].score) {
+                        return i;
+                    }
+                }
+                return -1;
+            }
+
+            function addHighScore(name, newScore, position) {
+                const entry = { name: name.toUpperCase().substring(0, 3) || '???', score: newScore };
+                highScores.splice(position, 0, entry);
+                highScores = highScores.slice(0, 3);
+                saveHighScores();
+                displayHighScores();
+            }
+
+            function placeDot() {
+                let attempts = 0;
+                while (attempts < 100) {
+                    const x = Math.floor(Math.random() * tileCount);
+                    const y = Math.floor(Math.random() * tileCount);
+
+                    // Check if not on pacman or existing dot
+                    if (x === pacman.x && y === pacman.y) {
+                        attempts++;
+                        continue;
+                    }
+
+                    let onExistingDot = false;
+                    for (let dot of dots) {
+                        if (dot.x === x && dot.y === y) {
+                            onExistingDot = true;
+                            break;
+                        }
+                    }
+
+                    if (!onExistingDot) {
+                        dots.push({ x, y });
+                        return;
+                    }
+                    attempts++;
+                }
+            }
 
             function initGame() {
                 pacman = { x: Math.floor(tileCount / 2), y: Math.floor(tileCount / 2) };
@@ -636,24 +757,19 @@
                 spawnedGhosts = 0;
                 scoreEl.textContent = score;
                 gameOverEl.classList.remove('show');
+                initialsForm.style.display = 'none';
 
-                // Create dots
+                // Create exactly 6 dots
                 dots = [];
-                for (let x = 0; x < tileCount; x++) {
-                    for (let y = 0; y < tileCount; y++) {
-                        if (x !== pacman.x || y !== pacman.y) {
-                            if (Math.random() < 0.3) {
-                                dots.push({ x, y });
-                            }
-                        }
-                    }
+                for (let i = 0; i < maxDots; i++) {
+                    placeDot();
                 }
 
                 ghosts = [];
             }
 
             function spawnGhost() {
-                if (spawnedGhosts >= 3) return;
+                if (spawnedGhosts >= 4) return;
 
                 let gx, gy;
                 do {
@@ -777,8 +893,11 @@
                         score++;
                         scoreEl.textContent = score;
 
+                        // Spawn a new dot to replace the eaten one
+                        placeDot();
+
                         // Spawn ghost at certain points
-                        if (ghostSpawnPoints.includes(score)) {
+                        if (ghostSpawnPoints.includes(score) && spawnedGhosts < 4) {
                             spawnGhost();
                         }
                     }
@@ -821,6 +940,27 @@
                 finalScoreEl.textContent = score;
                 gameOverEl.classList.add('show');
                 startBtn.textContent = 'Start Game';
+
+                // Check for high score
+                scorePosition = checkHighScore(score);
+                if (scorePosition !== -1 && score > 0) {
+                    pendingScore = score;
+                    initialsForm.style.display = 'block';
+                    initialsInput.value = '';
+                    initialsInput.focus();
+                } else {
+                    initialsForm.style.display = 'none';
+                }
+            }
+
+            function submitScore() {
+                if (scorePosition !== -1 && pendingScore > 0) {
+                    const initials = initialsInput.value.toUpperCase() || '???';
+                    addHighScore(initials, pendingScore, scorePosition);
+                    initialsForm.style.display = 'none';
+                    scorePosition = -1;
+                    pendingScore = 0;
+                }
             }
 
             function startGame() {
@@ -834,6 +974,13 @@
 
             startBtn.addEventListener('click', startGame);
             restartBtn.addEventListener('click', startGame);
+            submitScoreBtn.addEventListener('click', submitScore);
+            initialsInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    submitScore();
+                }
+            });
 
             // Keyboard controls
             document.addEventListener('keydown', (e) => {
@@ -872,6 +1019,8 @@
                 });
             });
 
+            // Initialize
+            displayHighScores();
             initGame();
             draw();
         })();

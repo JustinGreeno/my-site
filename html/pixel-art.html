@@ -15,9 +15,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="../images/pixel_justin.gif">
+    <link rel="icon" type="image/gif" href="../images/pixel_justin.gif">
     <link rel="manifest" href="../images/site.webmanifest">
     <meta name="theme-color" content="#012F0B">
 
@@ -108,6 +107,72 @@
                 font-size: 1.2rem;
             }
         }
+        /* Smaller green potion images */
+        .carousel-item img[src*="green potion"] {
+            width: 60px;
+        }
+        @media (min-width: 768px) {
+            .carousel-item img[src*="green potion"] {
+                width: 75px;
+            }
+        }
+        @media (min-width: 1024px) {
+            .carousel-item img[src*="green potion"] {
+                width: 90px;
+            }
+        }
+        /* Lightbox for test scenes */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: var(--accent-teal, #689fab);
+            color: var(--primary-green, #012F0B);
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .lightbox-close:hover {
+            transform: scale(1.1);
+            background: #A5E4CC;
+        }
+        .test-scene-link {
+            cursor: zoom-in;
+        }
     </style>
 </head>
 <body>
@@ -126,6 +191,7 @@
                     <li><a href="life.html">Life</a></li>
                     <li><a href="resume.html">Resume</a></li>
                     <li><a href="webgames.html">Web Games</a></li>
+                    <li><a href="webdesign.html">Web Design</a></li>
                 </ul>
             </nav>
         </div>
@@ -156,96 +222,111 @@
                     <button class="carousel-arrow" id="carousel-left" title="Speed up left">&larr;</button>
                     <div class="carousel-wrapper">
                         <div class="carousel-track" id="carousel-track">
-                            <!-- Set 1 -->
+                            <!-- Set 1 (20 items with new images spread out) -->
                             <a href="#billys-house" class="carousel-item"><img src="../images/house_art.gif" alt="Billy's House"><span>Billy's House</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png.png" alt="Character"><span>Character</span></a>
                             <a href="#stardew-title" class="carousel-item"><img src="../images/title.gif" alt="Stardew Valley Title"><span>Stardew Title</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/DarknessBlooms - TestScene1 - PC, Mac & Linux Standalone - Unity 2020.3.4f1 Personal_ _DX11_ 2022-02-02 9_40_36 AM (2).png" alt="Test Scene"><span>Test Scene</span></a>
                             <a href="#mushroom-towers" class="carousel-item"><img src="../images/mushTower.gif" alt="Mushroom Towers"><span>Mushroom Towers</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png2.png" alt="Character"><span>Character</span></a>
                             <a href="#tree-stumps" class="carousel-item"><img src="../images/stump.gif" alt="Tree Stumps"><span>Tree Stumps</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/DarknessBlooms - TestScene1 - PC, Mac & Linux Standalone - Unity 2020.3.4f1 Personal_ _DX11_ 2022-02-02 9_41_41 AM (2).png" alt="Test Scene"><span>Test Scene</span></a>
+                            <a href="#green-potion" class="carousel-item"><img src="../images/gif green potion.gif" alt="Green Potion"><span>Green Potion</span></a>
                             <a href="#veggies" class="carousel-item"><img src="../images/veg.gif" alt="Veggies"><span>Veggies</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png.png" alt="Character"><span>Character</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/DarknessBlooms - TestScene1 - PC, Mac & Linux Standalone - Unity 2020.3.4f1 Personal_ _DX11_ 2022-02-02 9_43_02 AM (2).png" alt="Test Scene"><span>Test Scene</span></a>
                             <a href="#treasure-chests" class="carousel-item"><img src="../images/Pick a chest gif 2.0.gif" alt="Treasure Chests"><span>Chests</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png2.png" alt="Character"><span>Character</span></a>
                             <a href="#windmills" class="carousel-item"><img src="../images/Windmills 3.0 Gif .gif" alt="Windmills"><span>Windmills</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/DarknessBlooms - TestScene1 - PC, Mac & Linux Standalone - Unity 2020.3.4f1 Personal_ _DX11_ 2022-02-02 9_44_53 AM (2).png" alt="Test Scene"><span>Test Scene</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png.png" alt="Character"><span>Character</span></a>
                             <a href="#convoy" class="carousel-item"><img src="../images/gif REAL SCUESS THIS ONE.gif" alt="Convoy"><span>Convoy</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/DarknessBlooms - TestScene1 - PC, Mac & Linux Standalone - Unity 2020.3.4f1 Personal_ _DX11_ 2022-02-02 9_46_55 AM (2).png" alt="Test Scene"><span>Test Scene</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png2.png" alt="Character"><span>Character</span></a>
                             <!-- Set 2 -->
                             <a href="#billys-house" class="carousel-item"><img src="../images/house_art.gif" alt="Billy's House"><span>Billy's House</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png.png" alt="Character"><span>Character</span></a>
                             <a href="#stardew-title" class="carousel-item"><img src="../images/title.gif" alt="Stardew Valley Title"><span>Stardew Title</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/DarknessBlooms - TestScene1 - PC, Mac & Linux Standalone - Unity 2020.3.4f1 Personal_ _DX11_ 2022-02-02 9_40_36 AM (2).png" alt="Test Scene"><span>Test Scene</span></a>
                             <a href="#mushroom-towers" class="carousel-item"><img src="../images/mushTower.gif" alt="Mushroom Towers"><span>Mushroom Towers</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png2.png" alt="Character"><span>Character</span></a>
                             <a href="#tree-stumps" class="carousel-item"><img src="../images/stump.gif" alt="Tree Stumps"><span>Tree Stumps</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/DarknessBlooms - TestScene1 - PC, Mac & Linux Standalone - Unity 2020.3.4f1 Personal_ _DX11_ 2022-02-02 9_41_41 AM (2).png" alt="Test Scene"><span>Test Scene</span></a>
+                            <a href="#green-potion" class="carousel-item"><img src="../images/gif green potion.gif" alt="Green Potion"><span>Green Potion</span></a>
                             <a href="#veggies" class="carousel-item"><img src="../images/veg.gif" alt="Veggies"><span>Veggies</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png.png" alt="Character"><span>Character</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/DarknessBlooms - TestScene1 - PC, Mac & Linux Standalone - Unity 2020.3.4f1 Personal_ _DX11_ 2022-02-02 9_43_02 AM (2).png" alt="Test Scene"><span>Test Scene</span></a>
                             <a href="#treasure-chests" class="carousel-item"><img src="../images/Pick a chest gif 2.0.gif" alt="Treasure Chests"><span>Chests</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png2.png" alt="Character"><span>Character</span></a>
                             <a href="#windmills" class="carousel-item"><img src="../images/Windmills 3.0 Gif .gif" alt="Windmills"><span>Windmills</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/DarknessBlooms - TestScene1 - PC, Mac & Linux Standalone - Unity 2020.3.4f1 Personal_ _DX11_ 2022-02-02 9_44_53 AM (2).png" alt="Test Scene"><span>Test Scene</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png.png" alt="Character"><span>Character</span></a>
                             <a href="#convoy" class="carousel-item"><img src="../images/gif REAL SCUESS THIS ONE.gif" alt="Convoy"><span>Convoy</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/DarknessBlooms - TestScene1 - PC, Mac & Linux Standalone - Unity 2020.3.4f1 Personal_ _DX11_ 2022-02-02 9_46_55 AM (2).png" alt="Test Scene"><span>Test Scene</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png2.png" alt="Character"><span>Character</span></a>
                             <!-- Set 3 -->
                             <a href="#billys-house" class="carousel-item"><img src="../images/house_art.gif" alt="Billy's House"><span>Billy's House</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png.png" alt="Character"><span>Character</span></a>
                             <a href="#stardew-title" class="carousel-item"><img src="../images/title.gif" alt="Stardew Valley Title"><span>Stardew Title</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/DarknessBlooms - TestScene1 - PC, Mac & Linux Standalone - Unity 2020.3.4f1 Personal_ _DX11_ 2022-02-02 9_40_36 AM (2).png" alt="Test Scene"><span>Test Scene</span></a>
                             <a href="#mushroom-towers" class="carousel-item"><img src="../images/mushTower.gif" alt="Mushroom Towers"><span>Mushroom Towers</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png2.png" alt="Character"><span>Character</span></a>
                             <a href="#tree-stumps" class="carousel-item"><img src="../images/stump.gif" alt="Tree Stumps"><span>Tree Stumps</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/DarknessBlooms - TestScene1 - PC, Mac & Linux Standalone - Unity 2020.3.4f1 Personal_ _DX11_ 2022-02-02 9_41_41 AM (2).png" alt="Test Scene"><span>Test Scene</span></a>
+                            <a href="#green-potion" class="carousel-item"><img src="../images/gif green potion.gif" alt="Green Potion"><span>Green Potion</span></a>
                             <a href="#veggies" class="carousel-item"><img src="../images/veg.gif" alt="Veggies"><span>Veggies</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png.png" alt="Character"><span>Character</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/DarknessBlooms - TestScene1 - PC, Mac & Linux Standalone - Unity 2020.3.4f1 Personal_ _DX11_ 2022-02-02 9_43_02 AM (2).png" alt="Test Scene"><span>Test Scene</span></a>
                             <a href="#treasure-chests" class="carousel-item"><img src="../images/Pick a chest gif 2.0.gif" alt="Treasure Chests"><span>Chests</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png2.png" alt="Character"><span>Character</span></a>
                             <a href="#windmills" class="carousel-item"><img src="../images/Windmills 3.0 Gif .gif" alt="Windmills"><span>Windmills</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/DarknessBlooms - TestScene1 - PC, Mac & Linux Standalone - Unity 2020.3.4f1 Personal_ _DX11_ 2022-02-02 9_44_53 AM (2).png" alt="Test Scene"><span>Test Scene</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png.png" alt="Character"><span>Character</span></a>
                             <a href="#convoy" class="carousel-item"><img src="../images/gif REAL SCUESS THIS ONE.gif" alt="Convoy"><span>Convoy</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/DarknessBlooms - TestScene1 - PC, Mac & Linux Standalone - Unity 2020.3.4f1 Personal_ _DX11_ 2022-02-02 9_46_55 AM (2).png" alt="Test Scene"><span>Test Scene</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png2.png" alt="Character"><span>Character</span></a>
                             <!-- Set 4 -->
                             <a href="#billys-house" class="carousel-item"><img src="../images/house_art.gif" alt="Billy's House"><span>Billy's House</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png.png" alt="Character"><span>Character</span></a>
                             <a href="#stardew-title" class="carousel-item"><img src="../images/title.gif" alt="Stardew Valley Title"><span>Stardew Title</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/DarknessBlooms - TestScene1 - PC, Mac & Linux Standalone - Unity 2020.3.4f1 Personal_ _DX11_ 2022-02-02 9_40_36 AM (2).png" alt="Test Scene"><span>Test Scene</span></a>
                             <a href="#mushroom-towers" class="carousel-item"><img src="../images/mushTower.gif" alt="Mushroom Towers"><span>Mushroom Towers</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png2.png" alt="Character"><span>Character</span></a>
                             <a href="#tree-stumps" class="carousel-item"><img src="../images/stump.gif" alt="Tree Stumps"><span>Tree Stumps</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/DarknessBlooms - TestScene1 - PC, Mac & Linux Standalone - Unity 2020.3.4f1 Personal_ _DX11_ 2022-02-02 9_41_41 AM (2).png" alt="Test Scene"><span>Test Scene</span></a>
+                            <a href="#green-potion" class="carousel-item"><img src="../images/gif green potion.gif" alt="Green Potion"><span>Green Potion</span></a>
                             <a href="#veggies" class="carousel-item"><img src="../images/veg.gif" alt="Veggies"><span>Veggies</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png.png" alt="Character"><span>Character</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/DarknessBlooms - TestScene1 - PC, Mac & Linux Standalone - Unity 2020.3.4f1 Personal_ _DX11_ 2022-02-02 9_43_02 AM (2).png" alt="Test Scene"><span>Test Scene</span></a>
                             <a href="#treasure-chests" class="carousel-item"><img src="../images/Pick a chest gif 2.0.gif" alt="Treasure Chests"><span>Chests</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png2.png" alt="Character"><span>Character</span></a>
                             <a href="#windmills" class="carousel-item"><img src="../images/Windmills 3.0 Gif .gif" alt="Windmills"><span>Windmills</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/DarknessBlooms - TestScene1 - PC, Mac & Linux Standalone - Unity 2020.3.4f1 Personal_ _DX11_ 2022-02-02 9_44_53 AM (2).png" alt="Test Scene"><span>Test Scene</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png.png" alt="Character"><span>Character</span></a>
                             <a href="#convoy" class="carousel-item"><img src="../images/gif REAL SCUESS THIS ONE.gif" alt="Convoy"><span>Convoy</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/DarknessBlooms - TestScene1 - PC, Mac & Linux Standalone - Unity 2020.3.4f1 Personal_ _DX11_ 2022-02-02 9_46_55 AM (2).png" alt="Test Scene"><span>Test Scene</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png2.png" alt="Character"><span>Character</span></a>
                             <!-- Set 5 -->
                             <a href="#billys-house" class="carousel-item"><img src="../images/house_art.gif" alt="Billy's House"><span>Billy's House</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png.png" alt="Character"><span>Character</span></a>
                             <a href="#stardew-title" class="carousel-item"><img src="../images/title.gif" alt="Stardew Valley Title"><span>Stardew Title</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/DarknessBlooms - TestScene1 - PC, Mac & Linux Standalone - Unity 2020.3.4f1 Personal_ _DX11_ 2022-02-02 9_40_36 AM (2).png" alt="Test Scene"><span>Test Scene</span></a>
                             <a href="#mushroom-towers" class="carousel-item"><img src="../images/mushTower.gif" alt="Mushroom Towers"><span>Mushroom Towers</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png2.png" alt="Character"><span>Character</span></a>
                             <a href="#tree-stumps" class="carousel-item"><img src="../images/stump.gif" alt="Tree Stumps"><span>Tree Stumps</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/DarknessBlooms - TestScene1 - PC, Mac & Linux Standalone - Unity 2020.3.4f1 Personal_ _DX11_ 2022-02-02 9_41_41 AM (2).png" alt="Test Scene"><span>Test Scene</span></a>
+                            <a href="#green-potion" class="carousel-item"><img src="../images/gif green potion.gif" alt="Green Potion"><span>Green Potion</span></a>
                             <a href="#veggies" class="carousel-item"><img src="../images/veg.gif" alt="Veggies"><span>Veggies</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png.png" alt="Character"><span>Character</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/DarknessBlooms - TestScene1 - PC, Mac & Linux Standalone - Unity 2020.3.4f1 Personal_ _DX11_ 2022-02-02 9_43_02 AM (2).png" alt="Test Scene"><span>Test Scene</span></a>
                             <a href="#treasure-chests" class="carousel-item"><img src="../images/Pick a chest gif 2.0.gif" alt="Treasure Chests"><span>Chests</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png2.png" alt="Character"><span>Character</span></a>
                             <a href="#windmills" class="carousel-item"><img src="../images/Windmills 3.0 Gif .gif" alt="Windmills"><span>Windmills</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/DarknessBlooms - TestScene1 - PC, Mac & Linux Standalone - Unity 2020.3.4f1 Personal_ _DX11_ 2022-02-02 9_44_53 AM (2).png" alt="Test Scene"><span>Test Scene</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png.png" alt="Character"><span>Character</span></a>
                             <a href="#convoy" class="carousel-item"><img src="../images/gif REAL SCUESS THIS ONE.gif" alt="Convoy"><span>Convoy</span></a>
-                            <!-- Set 6 -->
-                            <a href="#billys-house" class="carousel-item"><img src="../images/house_art.gif" alt="Billy's House"><span>Billy's House</span></a>
-                            <a href="#stardew-title" class="carousel-item"><img src="../images/title.gif" alt="Stardew Valley Title"><span>Stardew Title</span></a>
-                            <a href="#mushroom-towers" class="carousel-item"><img src="../images/mushTower.gif" alt="Mushroom Towers"><span>Mushroom Towers</span></a>
-                            <a href="#tree-stumps" class="carousel-item"><img src="../images/stump.gif" alt="Tree Stumps"><span>Tree Stumps</span></a>
-                            <a href="#veggies" class="carousel-item"><img src="../images/veg.gif" alt="Veggies"><span>Veggies</span></a>
-                            <a href="#treasure-chests" class="carousel-item"><img src="../images/Pick a chest gif 2.0.gif" alt="Treasure Chests"><span>Chests</span></a>
-                            <a href="#windmills" class="carousel-item"><img src="../images/Windmills 3.0 Gif .gif" alt="Windmills"><span>Windmills</span></a>
-                            <a href="#convoy" class="carousel-item"><img src="../images/gif REAL SCUESS THIS ONE.gif" alt="Convoy"><span>Convoy</span></a>
-                            <!-- Set 7 -->
-                            <a href="#billys-house" class="carousel-item"><img src="../images/house_art.gif" alt="Billy's House"><span>Billy's House</span></a>
-                            <a href="#stardew-title" class="carousel-item"><img src="../images/title.gif" alt="Stardew Valley Title"><span>Stardew Title</span></a>
-                            <a href="#mushroom-towers" class="carousel-item"><img src="../images/mushTower.gif" alt="Mushroom Towers"><span>Mushroom Towers</span></a>
-                            <a href="#tree-stumps" class="carousel-item"><img src="../images/stump.gif" alt="Tree Stumps"><span>Tree Stumps</span></a>
-                            <a href="#veggies" class="carousel-item"><img src="../images/veg.gif" alt="Veggies"><span>Veggies</span></a>
-                            <a href="#treasure-chests" class="carousel-item"><img src="../images/Pick a chest gif 2.0.gif" alt="Treasure Chests"><span>Chests</span></a>
-                            <a href="#windmills" class="carousel-item"><img src="../images/Windmills 3.0 Gif .gif" alt="Windmills"><span>Windmills</span></a>
-                            <a href="#convoy" class="carousel-item"><img src="../images/gif REAL SCUESS THIS ONE.gif" alt="Convoy"><span>Convoy</span></a>
-                            <!-- Set 8 -->
-                            <a href="#billys-house" class="carousel-item"><img src="../images/house_art.gif" alt="Billy's House"><span>Billy's House</span></a>
-                            <a href="#stardew-title" class="carousel-item"><img src="../images/title.gif" alt="Stardew Valley Title"><span>Stardew Title</span></a>
-                            <a href="#mushroom-towers" class="carousel-item"><img src="../images/mushTower.gif" alt="Mushroom Towers"><span>Mushroom Towers</span></a>
-                            <a href="#tree-stumps" class="carousel-item"><img src="../images/stump.gif" alt="Tree Stumps"><span>Tree Stumps</span></a>
-                            <a href="#veggies" class="carousel-item"><img src="../images/veg.gif" alt="Veggies"><span>Veggies</span></a>
-                            <a href="#treasure-chests" class="carousel-item"><img src="../images/Pick a chest gif 2.0.gif" alt="Treasure Chests"><span>Chests</span></a>
-                            <a href="#windmills" class="carousel-item"><img src="../images/Windmills 3.0 Gif .gif" alt="Windmills"><span>Windmills</span></a>
-                            <a href="#convoy" class="carousel-item"><img src="../images/gif REAL SCUESS THIS ONE.gif" alt="Convoy"><span>Convoy</span></a>
-                            <!-- Set 9 -->
-                            <a href="#billys-house" class="carousel-item"><img src="../images/house_art.gif" alt="Billy's House"><span>Billy's House</span></a>
-                            <a href="#stardew-title" class="carousel-item"><img src="../images/title.gif" alt="Stardew Valley Title"><span>Stardew Title</span></a>
-                            <a href="#mushroom-towers" class="carousel-item"><img src="../images/mushTower.gif" alt="Mushroom Towers"><span>Mushroom Towers</span></a>
-                            <a href="#tree-stumps" class="carousel-item"><img src="../images/stump.gif" alt="Tree Stumps"><span>Tree Stumps</span></a>
-                            <a href="#veggies" class="carousel-item"><img src="../images/veg.gif" alt="Veggies"><span>Veggies</span></a>
-                            <a href="#treasure-chests" class="carousel-item"><img src="../images/Pick a chest gif 2.0.gif" alt="Treasure Chests"><span>Chests</span></a>
-                            <a href="#windmills" class="carousel-item"><img src="../images/Windmills 3.0 Gif .gif" alt="Windmills"><span>Windmills</span></a>
-                            <a href="#convoy" class="carousel-item"><img src="../images/gif REAL SCUESS THIS ONE.gif" alt="Convoy"><span>Convoy</span></a>
-                            <!-- Set 10 -->
-                            <a href="#billys-house" class="carousel-item"><img src="../images/house_art.gif" alt="Billy's House"><span>Billy's House</span></a>
-                            <a href="#stardew-title" class="carousel-item"><img src="../images/title.gif" alt="Stardew Valley Title"><span>Stardew Title</span></a>
-                            <a href="#mushroom-towers" class="carousel-item"><img src="../images/mushTower.gif" alt="Mushroom Towers"><span>Mushroom Towers</span></a>
-                            <a href="#tree-stumps" class="carousel-item"><img src="../images/stump.gif" alt="Tree Stumps"><span>Tree Stumps</span></a>
-                            <a href="#veggies" class="carousel-item"><img src="../images/veg.gif" alt="Veggies"><span>Veggies</span></a>
-                            <a href="#treasure-chests" class="carousel-item"><img src="../images/Pick a chest gif 2.0.gif" alt="Treasure Chests"><span>Chests</span></a>
-                            <a href="#windmills" class="carousel-item"><img src="../images/Windmills 3.0 Gif .gif" alt="Windmills"><span>Windmills</span></a>
-                            <a href="#convoy" class="carousel-item"><img src="../images/gif REAL SCUESS THIS ONE.gif" alt="Convoy"><span>Convoy</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/DarknessBlooms - TestScene1 - PC, Mac & Linux Standalone - Unity 2020.3.4f1 Personal_ _DX11_ 2022-02-02 9_46_55 AM (2).png" alt="Test Scene"><span>Test Scene</span></a>
+                            <a href="#" class="carousel-item"><img src="../images/Char PNG Clear 6 times png2.png" alt="Character"><span>Character</span></a>
                         </div>
                     </div>
                     <button class="carousel-arrow" id="carousel-right" title="Speed up right">&rarr;</button>
@@ -400,6 +481,14 @@
         </div>
     </main>
 
+    <!-- Lightbox for Test Scenes -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightbox-close">&times;</button>
+            <img src="" alt="Test Scene" id="lightbox-img">
+        </div>
+    </div>
+
     <footer>
         <div class="footer-content">
             <div class="social-links">
@@ -420,6 +509,9 @@
                 </a>
             </div>
             <p>&copy; 2025 JustinGreeno.dev | Nova Scotia, Canada</p>
+            <div class="footer-secret">
+                <a href="../sociables/index.html" title="Sociables Pub">S</a>
+            </div>
         </div>
     </footer>
 
@@ -483,6 +575,50 @@
 
             // Start animation
             animate();
+        })();
+
+        // Lightbox functionality for test scenes
+        (function() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxClose = document.getElementById('lightbox-close');
+
+            // Find all test scene images in carousel
+            document.querySelectorAll('.carousel-item').forEach(item => {
+                const img = item.querySelector('img');
+                if (img && img.src.includes('TestScene')) {
+                    item.classList.add('test-scene-link');
+                    item.href = '#';
+                    item.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        lightboxImg.src = img.src;
+                        lightbox.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    });
+                }
+            });
+
+            // Close lightbox
+            lightboxClose.addEventListener('click', () => {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            // Close on background click
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Close on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
         })();
     </script>
 </body>
