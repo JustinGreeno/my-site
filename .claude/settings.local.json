@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(dir /s /b \"C:\\\\Users\\\\justi\\\\Desktop\\\\my-site\\\\images\\\\sociables\")"
+      "Bash(dir /s /b \"C:\\\\Users\\\\justi\\\\Desktop\\\\my-site\\\\images\\\\sociables\")",
+      "Bash(dir \"C:\\\\Users\\\\justi\\\\Desktop\\\\my-site\\\\nellys\\\\images\")",
+      "Bash(dir:*)",
+      "Bash(findstr:*)"
     ]
   }
 }

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Specials | Nelly's Grill & Dairy Bar</title>
+    <meta name="description" content="Weekly specials at Nelly's Grill & Dairy Bar - Check out our daily deals in West Pugwash, NS.">
+
+    <!-- CSS -->
+    <link href="css/pub-style.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/gif" href="../images/pixel_justin.gif">
+    <meta name="theme-color" content="#2a1810">
+
+    <style>
+        .specials-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .special-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            border-left: 6px solid var(--teal);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .special-card:nth-child(2) {
+            border-left-color: var(--coral);
+        }
+
+        .special-card:nth-child(3) {
+            border-left-color: var(--sunset-orange);
+        }
+
+        .special-card:nth-child(4) {
+            border-left-color: var(--seafoam);
+        }
+
+        .special-day {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.6rem;
+            color: var(--teal-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .special-title {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .special-desc {
+            font-size: 1.1rem;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        .special-note {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--cream);
+            border-radius: 12px;
+            text-align: center;
+            border: 3px solid var(--teal);
+        }
+
+        .special-note p {
+            font-size: 1.1rem;
+            color: #333;
+            margin: 0;
+        }
+
+        .special-note a {
+            color: var(--teal-dark);
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="images/logos/Nelly Logo This One.png" alt="Nelly's Grill & Dairy Bar" class="logo-img header-main-logo">
+                <span class="logo-text">Nelly's Grill & Dairy Bar</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="specials.html" class="active">Specials</a></li>
+                    <li><a href="photos.html">Photos</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Weekly Specials</h1>
+            <p class="tagline">Great Deals Every Day We're Open!</p>
+        </section>
+
+        <div class="container">
+            <section class="panel">
+                <h2>Our Weekly Specials</h2>
+                <p style="font-size: 1.1rem; color: #333;">Stop by and enjoy these great deals throughout the week!</p>
+
+                <div class="specials-grid">
+                    <div class="special-card">
+                        <div class="special-day">Thursday</div>
+                        <div class="special-title">Fish & Chips Special</div>
+                        <div class="special-desc">Fresh Atlantic haddock with hand-cut fries. A Nova Scotia classic to start your weekend right!</div>
+                    </div>
+
+                    <div class="special-card">
+                        <div class="special-day">Friday</div>
+                        <div class="special-title">Seafood Friday</div>
+                        <div class="special-desc">Try our famous Seafood Platter or Lobster Roll! Fresh from the Atlantic, perfect for Friday dinner.</div>
+                    </div>
+
+                    <div class="special-card">
+                        <div class="special-day">Saturday</div>
+                        <div class="special-title">Family Bucket Day</div>
+                        <div class="special-desc">Nelly's Fried Chicken Bucket - 9 pieces with large fries, coleslaw & gravy. Feed the whole family!</div>
+                    </div>
+
+                    <div class="special-card">
+                        <div class="special-day">Sunday</div>
+                        <div class="special-title">Sunday Dinner</div>
+                        <div class="special-desc">Relax with comfort food classics. Pan-fried haddock dinner or Southern fried chicken with all the fixings.</div>
+                    </div>
+                </div>
+
+                <div class="special-note">
+                    <p>Specials may change seasonally. Follow us on <a href="https://www.facebook.com/nellysgrillanddairybar" target="_blank">Facebook</a> for the latest updates!</p>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2>Hours of Operation</h2>
+                <table class="hours-table">
+                    <tr><td>Thursday</td><td>11:00 AM - 7:00 PM</td></tr>
+                    <tr><td>Friday</td><td>11:00 AM - 7:00 PM</td></tr>
+                    <tr><td>Saturday</td><td>11:00 AM - 7:00 PM</td></tr>
+                    <tr><td>Sunday</td><td>11:00 AM - 7:00 PM</td></tr>
+                    <tr><td>Monday - Wednesday</td><td>Closed</td></tr>
+                </table>
+            </section>
+
+            <!-- CTA -->
+            <section class="contact-banner">
+                <h2>Questions?</h2>
+                <p style="margin-bottom: 1rem; font-size: 1.1rem;">Give us a call for more info or to place an order!</p>
+                <p class="phone-number"><a href="tel:9022432129">(902) 243-2129</a></p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <img src="images/logos/Nellys Logo2.png" alt="Nelly's" class="footer-logo">
+                <div class="footer-info">
+                    <span class="footer-title">Nelly's Grill & Dairy Bar</span>
+                    <span class="footer-address">
+                        <a href="https://www.google.com/maps/search/?api=1&query=8890+RT-6+West+Pugwash+NS+B0K+1K0" target="_blank">
+                            8890 RT-6, West Pugwash, NS
+                        </a>
+                        | <a href="tel:9022432129">(902) 243-2129</a>
+                    </span>
+                </div>
+            </div>
+            <div class="footer-center">
+                <span class="footer-hours" id="footer-hours">Checking hours...</span>
+            </div>
+            <div class="footer-right">
+                <div class="social-links">
+                    <a href="https://www.facebook.com/nellysgrillanddairybar" target="_blank" class="social-link">FB</a>
+                </div>
+                <span class="footer-credit">
+                    <a href="../html/index.html">Website by Justin Greeno</a>
+                </span>
+            </div>
+        </div>
+        <div class="footer-secret">
+            <a href="../html/index.html" title="JustinGreeno.dev">J</a>
+        </div>
+    </footer>
+
+    <script>
+        // Nelly's Hours - Thu-Sun 11AM-7PM, Closed Mon-Wed
+        const hours = {
+            0: { open: 11, close: 19, name: 'Sunday' },
+            1: { open: 0, close: 0, name: 'Monday' },
+            2: { open: 0, close: 0, name: 'Tuesday' },
+            3: { open: 0, close: 0, name: 'Wednesday' },
+            4: { open: 11, close: 19, name: 'Thursday' },
+            5: { open: 11, close: 19, name: 'Friday' },
+            6: { open: 11, close: 19, name: 'Saturday' }
+        };
+
+        function formatTime(hour) {
+            if (hour === 0 || hour === 12) return '12:00 PM';
+            if (hour > 12) return (hour - 12) + ':00 PM';
+            return hour + ':00 AM';
+        }
+
+        function getNextOpenDay(fromDay) {
+            for (let i = 1; i <= 7; i++) {
+                const checkDay = (fromDay + i) % 7;
+                if (hours[checkDay].open > 0) {
+                    return hours[checkDay];
+                }
+            }
+            return hours[fromDay];
+        }
+
+        function updateFooterHours() {
+            const now = new Date();
+            const day = now.getDay();
+            const currentHour = now.getHours();
+            const todayHours = hours[day];
+            const footerHours = document.getElementById('footer-hours');
+
+            const isClosed = todayHours.open === 0;
+            const isOpen = !isClosed && currentHour >= todayHours.open && currentHour < todayHours.close;
+
+            if (isOpen) {
+                footerHours.classList.add('open');
+                footerHours.innerHTML = `Open until ${formatTime(todayHours.close)}`;
+            } else {
+                footerHours.classList.add('closed');
+                if (isClosed) {
+                    const nextOpen = getNextOpenDay(day);
+                    footerHours.innerHTML = `Closed - Open ${nextOpen.name} ${formatTime(nextOpen.open)}`;
+                } else if (currentHour < todayHours.open) {
+                    footerHours.innerHTML = `Closed - Open ${todayHours.name} ${formatTime(todayHours.open)}`;
+                } else {
+                    const nextOpen = getNextOpenDay(day);
+                    footerHours.innerHTML = `Closed - Open ${nextOpen.name} ${formatTime(nextOpen.open)}`;
+                }
+            }
+        }
+        updateFooterHours();
+    </script>
+</body>
+</html>

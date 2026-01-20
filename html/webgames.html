@@ -873,6 +873,10 @@
 
                 direction = { ...nextDirection };
 
+                // Store old pacman position for pass-through detection
+                const oldPacX = pacman.x;
+                const oldPacY = pacman.y;
+
                 // Move pacman
                 let newX = pacman.x + direction.x;
                 let newY = pacman.y + direction.y;
@@ -903,20 +907,33 @@
                     }
                 }
 
-                // Move ghosts
+                // Move ghosts and check collisions
                 ghosts.forEach(ghost => {
+                    // Check collision BEFORE moving (in case pacman moved into ghost)
+                    if (ghost.x === pacman.x && ghost.y === pacman.y) {
+                        gameOver();
+                        return;
+                    }
+
+                    // Store old position for pass-through detection
+                    const oldGhostX = ghost.x;
+                    const oldGhostY = ghost.y;
+
                     // Simple AI: move towards pacman sometimes, random other times
-                    if (Math.random() < 0.3) {
+                    if (Math.random() < 0.4) {
                         if (pacman.x > ghost.x) ghost.dx = 1;
                         else if (pacman.x < ghost.x) ghost.dx = -1;
                         if (pacman.y > ghost.y) ghost.dy = 1;
                         else if (pacman.y < ghost.y) ghost.dy = -1;
                     }
 
-                    if (Math.random() < 0.5) {
-                        ghost.x += ghost.dx;
-                    } else {
-                        ghost.y += ghost.dy;
+                    // Ghosts move more frequently (70% of the time instead of 50%)
+                    if (Math.random() < 0.7) {
+                        if (Math.random() < 0.5) {
+                            ghost.x += ghost.dx;
+                        } else {
+                            ghost.y += ghost.dy;
+                        }
                     }
 
                     // Wrap around
@@ -925,9 +942,17 @@
                     if (ghost.y < 0) ghost.y = tileCount - 1;
                     if (ghost.y >= tileCount) ghost.y = 0;
 
-                    // Check collision with pacman
+                    // Check collision AFTER moving
                     if (ghost.x === pacman.x && ghost.y === pacman.y) {
                         gameOver();
+                        return;
+                    }
+
+                    // Check for pass-through collision (ghost and pacman swapped places)
+                    if (ghost.x === oldPacX && ghost.y === oldPacY &&
+                        oldGhostX === pacman.x && oldGhostY === pacman.y) {
+                        gameOver();
+                        return;
                     }
                 });
 

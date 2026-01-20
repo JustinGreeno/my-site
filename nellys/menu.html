@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | Nelly's Grill & Dairy Bar</title>
+    <meta name="description" content="View the menu at Nelly's Grill & Dairy Bar - Family favorites, ice cream, and comfort food in West Pugwash, NS.">
+
+    <!-- CSS -->
+    <link href="css/pub-style.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/gif" href="../images/pixel_justin.gif">
+    <meta name="theme-color" content="#2a1810">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="images/logos/Nelly Logo This One.png" alt="Nelly's Grill & Dairy Bar" class="logo-img header-main-logo">
+                <span class="logo-text">Nelly's Grill & Dairy Bar</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html" class="active">Menu</a></li>
+                    <li><a href="specials.html">Specials</a></li>
+                    <li><a href="photos.html">Photos</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Our Menu</h1>
+            <p class="tagline">Fresh Seafood, Burgers & Ice Cream</p>
+        </section>
+
+        <div class="container">
+            <!-- Food Carousel -->
+            <section class="carousel-section">
+                <h2>Fresh From Our Kitchen</h2>
+                <div class="carousel-wrapper">
+                    <div class="carousel-speed-zone left"></div>
+                    <div class="carousel-speed-zone right"></div>
+                    <div class="carousel-track">
+                        <div class="carousel-item">
+                            <img src="images/food/Nelly's Grill and Dairy Bar - Google Maps - Google Chrome 2026-01-20 10_36_04 AM.png" alt="Delicious food">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/food/Nelly's Grill and Dairy Bar - Google Maps - Google Chrome 2026-01-20 10_35_57 AM.png" alt="Fresh seafood">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/food/Nelly's Grill and Dairy Bar - Google Maps - Google Chrome 2026-01-20 10_35_52 AM.png" alt="Tasty meals">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/food/Nelly's Grill and Dairy Bar - Google Maps - Google Chrome 2026-01-20 10_35_45 AM.png" alt="Comfort food">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/food/Nelly's Grill and Dairy Bar - Google Maps - Google Chrome 2026-01-20 10_35_31 AM.png" alt="Great eats">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/food/Facebook - Google Chrome 2026-01-20 2_15_32 AM.png" alt="Kitchen fresh">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/food/Facebook - Google Chrome 2026-01-20 2_15_23 AM.png" alt="Home cooking">
+                        </div>
+                        <!-- DUPLICATE for seamless loop -->
+                        <div class="carousel-item">
+                            <img src="images/food/Nelly's Grill and Dairy Bar - Google Maps - Google Chrome 2026-01-20 10_36_04 AM.png" alt="Delicious food">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/food/Nelly's Grill and Dairy Bar - Google Maps - Google Chrome 2026-01-20 10_35_57 AM.png" alt="Fresh seafood">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/food/Nelly's Grill and Dairy Bar - Google Maps - Google Chrome 2026-01-20 10_35_52 AM.png" alt="Tasty meals">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/food/Nelly's Grill and Dairy Bar - Google Maps - Google Chrome 2026-01-20 10_35_45 AM.png" alt="Comfort food">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/food/Nelly's Grill and Dairy Bar - Google Maps - Google Chrome 2026-01-20 10_35_31 AM.png" alt="Great eats">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/food/Facebook - Google Chrome 2026-01-20 2_15_32 AM.png" alt="Kitchen fresh">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/food/Facebook - Google Chrome 2026-01-20 2_15_23 AM.png" alt="Home cooking">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel">
+                <p class="text-center" style="font-style: italic; margin-bottom: 1.5rem;">
+                    HST not included · Prices subject to change · Licensed for takeout or home delivery (NSLC rules apply)
+                </p>
+
+                <!-- Menu Tabs -->
+                <div class="menu-tabs">
+                    <button class="menu-tab active" data-tab="seafood">Seafood</button>
+                    <button class="menu-tab" data-tab="chicken">Chicken</button>
+                    <button class="menu-tab" data-tab="burgers">Burgers</button>
+                    <button class="menu-tab" data-tab="pizza">Pizza</button>
+                    <button class="menu-tab" data-tab="snacks">Snacks</button>
+                    <button class="menu-tab" data-tab="more">More</button>
+                </div>
+
+                <!-- Seafood -->
+                <div class="menu-section active" id="seafood">
+                    <h3>🐟 From the Sea</h3>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Haddock & Fries (1 pc)</div>
+                            <div class="menu-item-desc">Golden battered Atlantic haddock with fries</div>
+                        </div>
+                        <div class="menu-item-price">$13–$14</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Haddock & Fries (2 pc)</div>
+                            <div class="menu-item-desc">Double the fish, double the delicious</div>
+                        </div>
+                        <div class="menu-item-price">$16–$18</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Pan Fried Haddock Dinner</div>
+                            <div class="menu-item-desc">With fries or mash & veg</div>
+                        </div>
+                        <div class="menu-item-price">$16–$19</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Haddock Burger & Fries</div>
+                            <div class="menu-item-desc">Fresh haddock on a bun with fries</div>
+                        </div>
+                        <div class="menu-item-price">$12–$14</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Scallops & Fries</div>
+                            <div class="menu-item-desc">Fresh Nova Scotia scallops with fries</div>
+                        </div>
+                        <div class="menu-item-price">$19–$24</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">🦞 Lobster Roll & Coleslaw</div>
+                            <div class="menu-item-desc">Fresh Nova Scotia lobster on a toasted buttered roll</div>
+                        </div>
+                        <div class="menu-item-price">$19</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Clam Platter</div>
+                            <div class="menu-item-desc">Five Islands clams & fries</div>
+                        </div>
+                        <div class="menu-item-price">$19–$24</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Seafood Platter</div>
+                            <div class="menu-item-desc">Clams, scallops, haddock & fries — the works!</div>
+                        </div>
+                        <div class="menu-item-price">$20–$26</div>
+                    </div>
+
+                    <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 1rem;">Add Fries to any item — $5</p>
+                </div>
+
+                <!-- Chicken -->
+                <div class="menu-section" id="chicken">
+                    <h3>🍗 Southern Fried Chicken</h3>
+                    <p style="font-size: 1rem; color: #333; margin-bottom: 1rem;">Served with fries or mash, potato & coleslaw</p>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">2 pc Fried Chicken</div>
+                            <div class="menu-item-desc">With fries or mash, potato & coleslaw</div>
+                        </div>
+                        <div class="menu-item-price">$12–$14</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">3 pc Fried Chicken</div>
+                            <div class="menu-item-desc">With fries or mash, potato & coleslaw</div>
+                        </div>
+                        <div class="menu-item-price">$14–$16</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Chicken Tenders & Fries</div>
+                            <div class="menu-item-desc">Crispy chicken tenders with fries</div>
+                        </div>
+                        <div class="menu-item-price">$12–$14</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Crispy Chicken Burger & Fries</div>
+                            <div class="menu-item-desc">Crispy chicken breast on a bun with fries</div>
+                        </div>
+                        <div class="menu-item-price">$12–$14</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">🪣 Bucket of Nelly's Fried Chicken</div>
+                            <div class="menu-item-desc">9 crispy chicken pieces, large fries, coleslaw & gravy</div>
+                        </div>
+                        <div class="menu-item-price">$30–$39</div>
+                    </div>
+
+                    <p style="font-size: 1rem; color: #333; margin-top: 1rem;">Upgrade side to Salad, Onion Rings, or Poutine — $2.50–$3.00</p>
+                </div>
+
+                <!-- Burgers & Sandwiches -->
+                <div class="menu-section" id="burgers">
+                    <h3>🍔 Burgers</h3>
+                    <p style="font-size: 1rem; color: #333; margin-bottom: 1rem;">Homemade, fresh local beef & charbroiled · Make any burger a platter — $5.00 extra</p>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Classic Burger</div>
+                            <div class="menu-item-desc">Fresh local beef, charbroiled to perfection</div>
+                        </div>
+                        <div class="menu-item-price">$6–$7</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Double Classic Burger</div>
+                            <div class="menu-item-desc">Two patties for the hungry</div>
+                        </div>
+                        <div class="menu-item-price">$8</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Mozza & Mushroom Burger</div>
+                            <div class="menu-item-desc">Topped with melted mozzarella and sautéed mushrooms</div>
+                        </div>
+                        <div class="menu-item-price">$7–$8</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">🔥 Inferno Burger</div>
+                            <div class="menu-item-desc">Banana peppers, sriracha mayo, lettuce, tomato & cheddar</div>
+                        </div>
+                        <div class="menu-item-price">$7–$8</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Jumbo Hotdog</div>
+                            <div class="menu-item-desc">Classic jumbo dog with your choice of toppings</div>
+                        </div>
+                        <div class="menu-item-price">$7–$8</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Nelly's Mess</div>
+                            <div class="menu-item-desc">Ground beef & onions on mash or fries, topped with gravy & peas</div>
+                        </div>
+                        <div class="menu-item-price">$12–$14</div>
+                    </div>
+
+                    <p style="font-size: 1rem; color: #333; margin-top: 1rem;">Extras: Double Burger +$3 · Bacon or Cheese +$1 · Gravy, sauces, coleslaw +$2 · Add curd or cheese +$3</p>
+
+                    <h3 style="margin-top: 2rem;">🥪 Sandwiches</h3>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Club & Fries</div>
+                            <div class="menu-item-desc">Classic triple-decker club sandwich with fries</div>
+                        </div>
+                        <div class="menu-item-price">$15–$17</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Toasted BLT & Fries</div>
+                            <div class="menu-item-desc">Bacon, lettuce, tomato on toasted bread with fries</div>
+                        </div>
+                        <div class="menu-item-price">$13–$14</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Toasted Western & Fries</div>
+                            <div class="menu-item-desc">Western sandwich on toasted bread with fries</div>
+                        </div>
+                        <div class="menu-item-price">$13–$14</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Hot Hamburger or Chicken & Fries</div>
+                            <div class="menu-item-desc">Open-faced with gravy and fries</div>
+                        </div>
+                        <div class="menu-item-price">$14–$16</div>
+                    </div>
+                </div>
+
+                <!-- Pizza -->
+                <div class="menu-section" id="pizza">
+                    <h3>🍕 Fresh Pizza</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 1rem;">Available in 9" / 12" / 16"</p>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Plain (Sauce & Cheese)</div>
+                            <div class="menu-item-desc">Classic cheese pizza</div>
+                        </div>
+                        <div class="menu-item-price">$9 / $13 / $17–18</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Meatlovers</div>
+                            <div class="menu-item-desc">Pepperoni, bacon, salami, ground beef</div>
+                        </div>
+                        <div class="menu-item-price">$14–15 / $21–23 / $26–28</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Deluxe</div>
+                            <div class="menu-item-desc">Pepperoni, bacon, green pepper, mushroom, onion</div>
+                        </div>
+                        <div class="menu-item-price">$14–15 / $19–23 / $25–28</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Hawaiian</div>
+                            <div class="menu-item-desc">Ham, pineapple, green pepper</div>
+                        </div>
+                        <div class="menu-item-price">$14–15 / $21–23 / $26–28</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Vegetarian</div>
+                            <div class="menu-item-desc">Tomato, onion, green pepper, mushroom, olive</div>
+                        </div>
+                        <div class="menu-item-price">$13–15 / $21–23 / $26–28</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Donair Pizza</div>
+                            <div class="menu-item-desc">East coast classic — donair meat with sweet sauce</div>
+                        </div>
+                        <div class="menu-item-price">$13 / $21 / $26</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Garlic Fingers</div>
+                            <div class="menu-item-desc">Cheesy garlic goodness</div>
+                        </div>
+                        <div class="menu-item-price">$9 / $14 / $18</div>
+                    </div>
+
+                    <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 1rem;">Extras: Additional Toppings +$2/$2.50/$3 · Extra Cheese +$2/$4/$5 · Add Bacon to Garlic Fingers +$2/$3/$4</p>
+                </div>
+
+                <!-- Snacks -->
+                <div class="menu-section" id="snacks">
+                    <h3>🍟 Snacks & Stuff</h3>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">1 lb Naked Chicken Wings</div>
+                            <div class="menu-item-desc">A pound of crispy wings, naked or tossed in your choice of sauce</div>
+                        </div>
+                        <div class="menu-item-price">$14–$16</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">2 lb Bucket of Naked Wings</div>
+                            <div class="menu-item-desc">Two pounds of wings with 2 sauces</div>
+                        </div>
+                        <div class="menu-item-price">$25–$28</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Hand Cut Fries</div>
+                            <div class="menu-item-desc">Fresh cut and golden fried</div>
+                        </div>
+                        <div class="menu-item-price">$6–$7</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Poutine</div>
+                            <div class="menu-item-desc">Fries, cheese curds & gravy</div>
+                        </div>
+                        <div class="menu-item-price">$9–$10</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Onion Rings</div>
+                            <div class="menu-item-desc">Golden battered and crispy</div>
+                        </div>
+                        <div class="menu-item-price">$7–$8</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Cheesy Mozza Sticks</div>
+                            <div class="menu-item-desc">Breaded mozzarella sticks, golden fried</div>
+                        </div>
+                        <div class="menu-item-price">$7–$8</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Deep Fried Dill Pickles</div>
+                            <div class="menu-item-desc">Crispy fried pickle spears</div>
+                        </div>
+                        <div class="menu-item-price">$7–$8</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Pub Style Deep Fried Pepperoni</div>
+                            <div class="menu-item-desc">Nova Scotia classic!</div>
+                        </div>
+                        <div class="menu-item-price">$7–$8</div>
+                    </div>
+
+                    <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 1rem;">Add Ground Beef, Chicken, or Beef to Poutine — $3</p>
+                </div>
+
+                <!-- More -->
+                <div class="menu-section" id="more">
+                    <h3>🥣 Soups & Salads</h3>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Seafood Chowder & Roll</div>
+                            <div class="menu-item-desc">Lobster, scallops, shrimp & haddock in creamy chowder</div>
+                        </div>
+                        <div class="menu-item-price">$15–$17</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Tossed or Caesar Salad</div>
+                            <div class="menu-item-desc">Fresh garden salad or classic Caesar</div>
+                        </div>
+                        <div class="menu-item-price">$8–$11</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Chicken Caesar Wrap / Salad</div>
+                            <div class="menu-item-desc">Grilled chicken with Caesar salad, wrapped or on a bed of greens</div>
+                        </div>
+                        <div class="menu-item-price">$12–$15</div>
+                    </div>
+
+                    <h3 style="margin-top: 2rem;">👶 Kids Meals</h3>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Grilled Cheese & Fries</div>
+                            <div class="menu-item-desc">Classic grilled cheese with fries</div>
+                        </div>
+                        <div class="menu-item-price">$8–$10</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Hot Dog & Fries</div>
+                            <div class="menu-item-desc">Kid-sized hot dog with fries</div>
+                        </div>
+                        <div class="menu-item-price">$8–$10</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Chicken Tenders & Fries</div>
+                            <div class="menu-item-desc">Kid-sized chicken tenders with fries</div>
+                        </div>
+                        <div class="menu-item-price">$8–$10</div>
+                    </div>
+
+                    <h3 style="margin-top: 2rem;">🍰 Desserts</h3>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Cake or Pie</div>
+                            <div class="menu-item-desc">Ask your server for today's selection</div>
+                        </div>
+                        <div class="menu-item-price">$5.50</div>
+                    </div>
+
+                    <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">Add a scoop of Ice Cream — $1.00</p>
+
+                    <h3 style="margin-top: 2rem;">🥤 Beverages</h3>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Coffee / Tea</div>
+                            <div class="menu-item-desc">Fresh brewed</div>
+                        </div>
+                        <div class="menu-item-price">$1.75–$2.00</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Hot Chocolate</div>
+                            <div class="menu-item-desc">Rich and creamy</div>
+                        </div>
+                        <div class="menu-item-price">$1.75</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Canned Pop / Water (500ml)</div>
+                            <div class="menu-item-desc">Assorted soft drinks and bottled water</div>
+                        </div>
+                        <div class="menu-item-price">$1.75–$2.00</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Bottled Pop</div>
+                            <div class="menu-item-desc">Larger size bottles</div>
+                        </div>
+                        <div class="menu-item-price">$2.50–$3.00</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Milk (500ml)</div>
+                            <div class="menu-item-desc">Cold and fresh</div>
+                        </div>
+                        <div class="menu-item-price">$2.60–$3.00</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">🍺 Domestic Beer or Draught</div>
+                            <div class="menu-item-desc">Ask about our selection</div>
+                        </div>
+                        <div class="menu-item-price">$6.00</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">🍷 House Wine</div>
+                            <div class="menu-item-desc">Pinot Grigio White or Merlot Red</div>
+                        </div>
+                        <div class="menu-item-price">$7.00</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Note -->
+            <section class="panel text-center">
+                <h2>Daily Specials</h2>
+                <p>Check our Facebook for daily specials and events!</p>
+                <div class="mt-2">
+                    <a href="https://www.facebook.com/nellysgrillanddairybar" target="_blank" class="btn">Follow Us on Facebook</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <img src="images/logos/Nellys Logo2.png" alt="Nelly's" class="footer-logo">
+                <div class="footer-info">
+                    <span class="footer-title">Nelly's Grill & Dairy Bar</span>
+                    <span class="footer-address">
+                        <a href="https://www.google.com/maps/search/?api=1&query=8890+RT-6+West+Pugwash+NS+B0K+1K0" target="_blank">
+                            8890 RT-6, West Pugwash, NS
+                        </a>
+                        | <a href="tel:9022432129">(902) 243-2129</a>
+                    </span>
+                </div>
+            </div>
+            <div class="footer-center">
+                <span class="footer-hours" id="footer-hours">Checking hours...</span>
+            </div>
+            <div class="footer-right">
+                <div class="social-links">
+                                        <a href="https://www.facebook.com/nellysgrillanddairybar" target="_blank" class="social-link">FB</a>
+                </div>
+                <span class="footer-credit">
+                    <a href="../html/index.html">Website by Justin Greeno</a>
+                </span>
+            </div>
+        </div>
+        <div class="footer-secret">
+            <a href="../html/index.html" title="JustinGreeno.dev">J</a>
+        </div>
+    </footer>
+
+    <script>
+        // Menu tab functionality
+        const tabs = document.querySelectorAll('.menu-tab');
+        const sections = document.querySelectorAll('.menu-section');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active from all tabs and sections
+                tabs.forEach(t => t.classList.remove('active'));
+                sections.forEach(s => s.classList.remove('active'));
+
+                // Add active to clicked tab and corresponding section
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        // Nelly's Hours - Thu-Sun 11AM-7PM, Closed Mon-Wed
+        const hours = {
+            0: { open: 11, close: 19, name: 'Sunday' },      // Sunday 11AM-7PM
+            1: { open: 0, close: 0, name: 'Monday' },        // Closed
+            2: { open: 0, close: 0, name: 'Tuesday' },       // Closed
+            3: { open: 0, close: 0, name: 'Wednesday' },     // Closed
+            4: { open: 11, close: 19, name: 'Thursday' },    // Thursday 11AM-7PM
+            5: { open: 11, close: 19, name: 'Friday' },      // Friday 11AM-7PM
+            6: { open: 11, close: 19, name: 'Saturday' }     // Saturday 11AM-7PM
+        };
+
+        function formatTime(hour) {
+            if (hour === 0 || hour === 12) return '12:00 PM';
+            if (hour === 24) return '12:00 AM';
+            if (hour > 12) return (hour - 12) + ':00 PM';
+            return hour + ':00 AM';
+        }
+
+        function getNextOpenDay(fromDay) {
+            for (let i = 1; i <= 7; i++) {
+                const checkDay = (fromDay + i) % 7;
+                if (hours[checkDay].open > 0) {
+                    return hours[checkDay];
+                }
+            }
+            return hours[fromDay];
+        }
+
+        function updateFooterHours() {
+            const now = new Date();
+            const day = now.getDay();
+            const currentHour = now.getHours();
+            const todayHours = hours[day];
+            const footerHours = document.getElementById('footer-hours');
+
+            const isClosed = todayHours.open === 0;
+            const isOpen = !isClosed && currentHour >= todayHours.open && currentHour < todayHours.close;
+
+            if (isOpen) {
+                footerHours.classList.add('open');
+                footerHours.innerHTML = `Open until ${formatTime(todayHours.close)}`;
+            } else {
+                footerHours.classList.add('closed');
+                if (isClosed) {
+                    const nextOpen = getNextOpenDay(day);
+                    footerHours.innerHTML = `Closed - Open ${nextOpen.name} ${formatTime(nextOpen.open)}`;
+                } else if (currentHour < todayHours.open) {
+                    footerHours.innerHTML = `Closed - Open ${todayHours.name} ${formatTime(todayHours.open)}`;
+                } else {
+                    const nextOpen = getNextOpenDay(day);
+                    footerHours.innerHTML = `Closed - Open ${nextOpen.name} ${formatTime(nextOpen.open)}`;
+                }
+            }
+        }
+        updateFooterHours();
+
+        // Smooth Carousel Scrolling
+        function initCarousel(carouselWrapper) {
+            const track = carouselWrapper.querySelector('.carousel-track');
+            const leftZone = carouselWrapper.querySelector('.carousel-speed-zone.left');
+            const rightZone = carouselWrapper.querySelector('.carousel-speed-zone.right');
+
+            if (!track) return;
+
+            let position = 0;
+            let speed = 1;
+            let direction = 1;
+            let baseSpeed = 1;
+
+            const itemWidth = track.children[0]?.offsetWidth + 24 || 224;
+            const itemCount = Math.floor(track.children.length / 2);
+            const resetPoint = itemWidth * itemCount;
+
+            function animate() {
+                position += speed * direction;
+                if (position >= resetPoint) position = 0;
+                else if (position < 0) position = resetPoint - 1;
+                track.style.transform = `translateX(-${position}px)`;
+                requestAnimationFrame(animate);
+            }
+
+            if (leftZone) {
+                leftZone.addEventListener('mouseenter', () => { direction = -1; speed = 4; });
+                leftZone.addEventListener('mouseleave', () => { direction = 1; speed = baseSpeed; });
+            }
+            if (rightZone) {
+                rightZone.addEventListener('mouseenter', () => { direction = 1; speed = 4; });
+                rightZone.addEventListener('mouseleave', () => { speed = baseSpeed; });
+            }
+
+            animate();
+        }
+
+        document.querySelectorAll('.carousel-wrapper').forEach(initCarousel);
+    </script>
+</body>
+</html>
