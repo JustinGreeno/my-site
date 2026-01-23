@@ -209,9 +209,69 @@ function setActiveNavItem() {
     });
 }
 
+// ==========================================
+// SCROLL ANIMATIONS (Intersection Observer)
+// ==========================================
+
+/**
+ * Initialize scroll-triggered animations
+ */
+function initScrollAnimations() {
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+
+    if (animatedElements.length === 0) return;
+
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        animatedElements.forEach(el => observer.observe(el));
+    } else {
+        // Fallback for older browsers - show everything
+        animatedElements.forEach(el => el.classList.add('visible'));
+    }
+}
+
+/**
+ * Initialize parallax scrolling effect
+ */
+function initParallax() {
+    const parallaxElements = document.querySelectorAll('.parallax-bg');
+
+    if (parallaxElements.length === 0) return;
+
+    let ticking = false;
+
+    function updateParallax() {
+        const scrollY = window.pageYOffset;
+        parallaxElements.forEach(el => {
+            const speed = parseFloat(el.dataset.speed) || 0.3;
+            el.style.transform = `translateY(${scrollY * speed}px)`;
+        });
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(updateParallax);
+            ticking = true;
+        }
+    }, { passive: true });
+}
+
 // Run on page load
 document.addEventListener('DOMContentLoaded', () => {
     setActiveNavItem();
+    initScrollAnimations();
+    initParallax();
 });
 
 // Console greeting

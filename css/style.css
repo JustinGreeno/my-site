@@ -373,6 +373,122 @@ main {
   50% { transform: translateY(-8px); }
 }
 
+/* ==========================================
+   SCROLL ANIMATIONS
+   ========================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Scroll animation base class */
+.animate-on-scroll {
+  opacity: 0;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+}
+
+.animate-on-scroll.fade-up {
+  transform: translateY(30px);
+}
+
+.animate-on-scroll.fade-up.visible {
+  transform: translateY(0);
+}
+
+.animate-on-scroll.fade-left {
+  transform: translateX(-30px);
+}
+
+.animate-on-scroll.fade-left.visible {
+  transform: translateX(0);
+}
+
+.animate-on-scroll.fade-right {
+  transform: translateX(30px);
+}
+
+.animate-on-scroll.fade-right.visible {
+  transform: translateX(0);
+}
+
+.animate-on-scroll.scale-in {
+  transform: scale(0.9);
+}
+
+.animate-on-scroll.scale-in.visible {
+  transform: scale(1);
+}
+
+/* Staggered animation delays */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+.delay-6 { transition-delay: 0.6s; }
+
+/* Parallax background */
+.parallax-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-bg {
+  position: absolute;
+  top: -20%;
+  left: 0;
+  width: 100%;
+  height: 140%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  will-change: transform;
+  z-index: -1;
+}
+
 .hero h1 {
   font-size: 2rem;
   margin-bottom: 0.25rem;
@@ -728,6 +844,39 @@ footer p {
   color: var(--primary-green);
 }
 
+.footer-secret-left {
+  position: absolute;
+  left: 10px;
+  bottom: 5px;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+.footer-secret-left:hover {
+  opacity: 1;
+}
+
+.footer-secret-left a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border-solid);
+  border-radius: 4px;
+  color: var(--accent-teal);
+  text-decoration: none;
+  font-family: 'Kode Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.footer-secret-left a:hover {
+  background: var(--accent-teal);
+  color: var(--primary-green);
+}
+
 /* Game Container Styles */
 .game-container {
   padding: 1rem;
@@ -831,6 +980,293 @@ footer p {
   color: var(--primary-green);
 }
 
+/* ==========================================
+   EXPERIMENTS LAB SECTION
+   ========================================== */
+.experiments-section {
+  text-align: center;
+}
+
+.experiments-section .tagline {
+  color: var(--accent-teal);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.experiments-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.experiment-card {
+  background: var(--gradient-green-alt);
+  border: 2px solid var(--glass-border);
+  border-radius: var(--border-radius-lg);
+  padding: 1.5rem;
+  text-decoration: none;
+  transition: var(--transition);
+  box-shadow: var(--shadow-deep);
+  position: relative;
+  overflow: hidden;
+  display: block;
+}
+
+.experiment-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--accent-teal), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.experiment-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+}
+
+.experiment-card:hover::before {
+  opacity: 1;
+}
+
+.experiment-card.react-card:hover {
+  border-color: #61dafb;
+}
+
+.experiment-card.react-card:hover::before {
+  background: linear-gradient(90deg, transparent, #61dafb, transparent);
+}
+
+.experiment-card.js-card:hover {
+  border-color: #f7df1e;
+}
+
+.experiment-card.js-card:hover::before {
+  background: linear-gradient(90deg, transparent, #f7df1e, transparent);
+}
+
+.experiment-icon {
+  margin-bottom: 1rem;
+}
+
+.experiment-icon svg {
+  width: 60px;
+  height: 60px;
+}
+
+.js-logo-icon {
+  width: 60px;
+  height: 60px;
+  background: #f7df1e;
+  color: #000;
+  font-family: "Kode Mono", monospace;
+  font-size: 1.8rem;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.experiment-card h3 {
+  color: var(--text-white);
+  margin-bottom: 0.5rem;
+}
+
+.experiment-card p {
+  color: var(--text-light);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.experiment-tag {
+  display: inline-block;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  color: var(--accent-teal);
+}
+
+/* ==========================================
+   RESPONSIVE GAME CANVAS
+   ========================================== */
+.game-canvas-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.game-canvas-wrapper canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  border: 1px solid var(--glass-border-solid);
+  border-radius: var(--border-radius);
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-deep), var(--shadow-inset);
+}
+
+.game-over-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  text-align: center;
+}
+
+.game-over-overlay.active {
+  display: flex;
+}
+
+.game-over-overlay h3 {
+  color: var(--accent-teal);
+  margin-bottom: 0.5rem;
+}
+
+.game-over-overlay input {
+  width: 80px;
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius);
+  color: var(--text-white);
+  margin: 0.5rem 0;
+}
+
+/* Mobile Controls - Improved */
+.mobile-controls {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 8px;
+  max-width: 220px;
+  margin: 1.5rem auto;
+  aspect-ratio: 1;
+}
+
+.mobile-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--glass-bg);
+  border: 2px solid var(--glass-border-solid);
+  border-radius: 12px;
+  color: var(--accent-teal);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: var(--shadow-medium);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  min-height: 60px;
+}
+
+.mobile-btn:active {
+  background: var(--accent-teal);
+  color: var(--primary-green);
+  transform: scale(0.95);
+}
+
+.mobile-btn.empty {
+  visibility: hidden;
+}
+
+/* Score display improvements */
+.score-display {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.score-item {
+  text-align: center;
+}
+
+.score-label {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  display: block;
+}
+
+.score-value {
+  font-family: "Kode Mono", monospace;
+  font-size: 1.4rem;
+  color: var(--accent-teal);
+}
+
+/* High scores list */
+.high-scores-list {
+  list-style: none;
+  margin: 0.5rem 0;
+  padding: 0;
+}
+
+.high-scores-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.high-scores-list li:last-child {
+  border-bottom: none;
+}
+
+/* Landscape orientation for games */
+@media (orientation: landscape) and (max-height: 500px) {
+  .game-section .glass-panel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .game-canvas-wrapper {
+    flex: 1;
+    max-width: 50%;
+  }
+
+  .mobile-controls {
+    flex: 0 0 180px;
+    margin: 0;
+    max-width: 180px;
+  }
+
+  .game-instructions {
+    width: 100%;
+  }
+}
+
+/* Hide mobile controls on desktop */
+@media (min-width: 768px) {
+  .mobile-controls {
+    display: none;
+  }
+}
+
 /* Utility Classes */
 .text-center { text-align: center; }
 .text-left { text-align: left; }
@@ -914,6 +1350,10 @@ footer p {
   .snake-canvas {
     width: 400px;
     height: 400px;
+  }
+
+  .experiments-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 

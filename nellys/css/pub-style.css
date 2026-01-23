@@ -818,10 +818,11 @@ main {
 
 .carousel-section h2 {
     font-family: 'Cinzel', serif;
-    color: var(--gold);
+    color: #fff;
     text-align: center;
     font-size: 2rem;
     margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
     text-shadow: 2px 2px 6px var(--shadow-dark);
 }
 

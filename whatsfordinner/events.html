@@ -3,340 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events | Sociables Pub & Eatery</title>
-    <meta name="description" content="Events at Sociables Pub & Eatery - Wing Nights, Karaoke, Sports Games, and more in Springhill, NS.">
+    <title>Events | What's For Dinner - Route 6 Bar & Grill</title>
+    <meta name="description" content="Events at What's For Dinner - Route 6 Bar & Grill - Live music, specials, and more in Pugwash, NS.">
 
     <!-- CSS -->
     <link href="css/pub-style.css" rel="stylesheet">
 
     <!-- Favicon -->
     <link rel="icon" type="image/gif" href="../images/pixel_justin.gif">
-    <meta name="theme-color" content="#2a1810">
+    <meta name="theme-color" content="#1a1a1a">
 
     <style>
-        /* Events Page - Accessible Agenda-Style Calendar */
-        .agenda-calendar {
-            margin-top: 1.5rem;
-        }
-
-        .agenda-week {
-            margin-bottom: 1.5rem;
-        }
-
-        .agenda-week-header {
-            font-family: 'Cinzel', serif;
-            color: var(--gold);
-            font-size: 1.1rem;
-            padding: 0.75rem 1rem;
-            background: linear-gradient(90deg, rgba(181, 166, 66, 0.3), transparent);
-            border-left: 4px solid var(--gold);
-            margin-bottom: 0.75rem;
-        }
-
-        .agenda-day {
-            display: flex;
-            align-items: stretch;
-            margin-bottom: 0.5rem;
+        .event-card {
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 8px;
-            overflow: hidden;
-            background: rgba(42, 24, 16, 0.6);
-            border: 1px solid rgba(139, 90, 43, 0.3);
-            transition: all 0.3s ease;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1rem;
+            border-left: 5px solid var(--neon-orange);
         }
 
-        .agenda-day:hover {
-            background: rgba(92, 61, 46, 0.7);
-            border-color: var(--brass);
-            transform: translateX(5px);
-        }
-
-        .agenda-day.today {
-            border: 2px solid var(--gold);
-            background: rgba(181, 166, 66, 0.15);
-        }
-
-        .agenda-day.no-events {
-            opacity: 0.5;
-        }
-
-        .agenda-date {
-            min-width: 80px;
-            padding: 0.75rem;
-            background: rgba(0, 0, 0, 0.3);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-right: 2px solid rgba(181, 166, 66, 0.3);
-        }
-
-        .agenda-date .day-name {
-            font-family: 'Merriweather', serif;
-            font-size: 0.75rem;
-            color: var(--brass);
-            text-transform: uppercase;
+        .event-day {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
             letter-spacing: 1px;
         }
 
-        .agenda-date .day-num {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--cream);
-            line-height: 1;
-        }
-
-        .agenda-events {
-            flex: 1;
-            padding: 0.75rem 1rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        .agenda-event {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            font-size: 0.9rem;
+        .event-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
             font-weight: 600;
-            transition: transform 0.2s ease;
-        }
-
-        .agenda-event:hover {
-            transform: scale(1.05);
-        }
-
-        .agenda-event .event-icon {
-            font-size: 1.1rem;
-        }
-
-        /* High Contrast Event Colors - WCAG AA Compliant */
-        .agenda-event.wings {
-            background: #D35400;
-            color: #FFFFFF;
-            border: 2px solid #E67E22;
-        }
-
-        .agenda-event.karaoke {
-            background: #7D3C98;
-            color: #FFFFFF;
-            border: 2px solid #9B59B6;
-        }
-
-        .agenda-event.apps {
-            background: #B7950B;
-            color: #1A0F0A;
-            border: 2px solid #D4AC0D;
-        }
-
-        .agenda-event.sports {
-            background: #1A5276;
-            color: #FFFFFF;
-            border: 2px solid #2980B9;
-        }
-
-        .agenda-event.special {
-            background: #B9770E;
-            color: #FFFFFF;
-            border: 2px solid #D4AF37;
-        }
-
-        .no-events-text {
-            color: var(--cream);
-            opacity: 0.6;
-            font-style: italic;
-            font-size: 0.85rem;
-        }
-
-        /* Legend */
-        .calendar-legend {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.85rem;
-            color: var(--cream);
-        }
-
-        .legend-dot {
-            width: 16px;
-            height: 16px;
-            border-radius: 4px;
-        }
-
-        .legend-dot.wings { background: #D35400; }
-        .legend-dot.karaoke { background: #7D3C98; }
-        .legend-dot.apps { background: #B7950B; }
-        .legend-dot.sports { background: #1A5276; }
-        .legend-dot.special { background: #B9770E; }
-
-        .weekly-events {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .event-card {
-            background: linear-gradient(145deg, rgba(61, 37, 23, 0.95), rgba(26, 15, 10, 0.95));
-            border: 3px solid var(--brass);
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .event-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px var(--shadow-dark), 0 0 20px rgba(212, 175, 55, 0.2);
-        }
-
-        .event-card h3 {
-            font-family: 'Cinzel', serif;
-            color: var(--gold);
-            font-size: 1.4rem;
+            color: #ff6b35;
             margin-bottom: 0.5rem;
         }
 
-        .event-card .day {
-            font-family: 'Merriweather', serif;
-            color: var(--brass);
-            font-size: 1.1rem;
-            margin-bottom: 0.75rem;
+        .event-desc {
+            font-size: 1rem;
+            color: #444;
+            line-height: 1.5;
         }
 
-        .event-card .time {
-            color: var(--cream);
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-bottom: 0.75rem;
-        }
-
-        .event-card p {
-            color: var(--cream);
-            font-size: 0.95rem;
-        }
-
-        .event-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .upcoming-events {
-            margin-top: 1.5rem;
-        }
-
-        .upcoming-event {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-            padding: 1rem;
-            background: rgba(0,0,0,0.2);
-            border: 2px solid var(--light-wood);
-            border-radius: 10px;
-            margin-bottom: 1rem;
-        }
-
-        .upcoming-event:hover {
-            border-color: var(--brass);
-        }
-
-        .upcoming-date {
-            background: linear-gradient(145deg, var(--brass), var(--gold));
-            color: var(--dark-wood);
-            padding: 0.75rem 1rem;
+        .event-note {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--steel-medium);
             border-radius: 8px;
             text-align: center;
-            min-width: 70px;
+            border: 2px solid var(--neon-orange);
         }
 
-        .upcoming-date .month {
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .upcoming-date .day {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            line-height: 1;
-        }
-
-        .upcoming-info h4 {
-            font-family: 'Merriweather', serif;
-            color: var(--gold);
+        .event-note p {
             font-size: 1.1rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .upcoming-info p {
-            color: var(--cream);
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        @media (max-width: 768px) {
-            .agenda-date {
-                min-width: 60px;
-                padding: 0.5rem;
-            }
-
-            .agenda-date .day-num {
-                font-size: 1.2rem;
-            }
-
-            .agenda-date .day-name {
-                font-size: 0.65rem;
-            }
-
-            .agenda-event {
-                padding: 0.4rem 0.75rem;
-                font-size: 0.8rem;
-            }
-
-            .agenda-event .event-icon {
-                font-size: 1rem;
-            }
-
-            .upcoming-event {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .weekly-events {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .event-card {
-                padding: 1rem;
-            }
-
-            .event-icon {
-                font-size: 1.8rem;
-            }
-
-            .event-card h3 {
-                font-size: 1rem;
-            }
-
-            .calendar-legend {
-                justify-content: center;
-            }
+            color: #e8e8e8;
+            margin: 0;
         }
     </style>
 </head>
@@ -344,7 +64,8 @@
     <header>
         <div class="container header-content">
             <a href="index.html" class="logo">
-                <img src="../images/sociables/logos and branding/sociables logo best use this.png" alt="Sociables Pub & Eatery" class="logo-img header-main-logo">
+                <img src="images/icons/whats for dinner logo.png" alt="What's For Dinner" class="logo-img header-main-logo">
+                <span class="logo-text">Route 6 Bar & Grill</span>
             </a>
             <nav>
                 <ul>
@@ -360,353 +81,58 @@
 
     <main>
         <section class="hero">
-            <h1>Events & Specials</h1>
-            <p class="tagline">There's Always Something Happening at Sociables</p>
+            <h1>Events & Entertainment</h1>
+            <p class="tagline">Live Music & Good Times</p>
         </section>
 
         <div class="container">
-            <!-- Weekly Events -->
             <section class="panel">
-                <h2>Weekly Events</h2>
-                <p>Join us throughout the week for our regular specials and entertainment!</p>
+                <h2>What's Happening</h2>
+                <p style="font-size: 1.1rem; color: #e8e8e8;">Check back for upcoming events and live entertainment!</p>
 
-                <div class="weekly-events">
+                <div style="margin-top: 1.5rem;">
                     <div class="event-card">
-                        <div class="event-icon">🍗</div>
-                        <h3>Wing Night</h3>
-                        <div class="day">Every Tuesday</div>
-                        <div class="time">5:00 PM - Close</div>
-                        <p>Half-price wings all night! Choose from our delicious flavors: BBQ, Hot, Honey Garlic, Salt & Pepper, and more.</p>
+                        <div class="event-day">Live Music Nights</div>
+                        <div class="event-title">Local Artists & Bands</div>
+                        <div class="event-desc">We regularly host live music featuring local talent. Check with us for upcoming performances!</div>
                     </div>
 
                     <div class="event-card">
-                        <div class="event-icon">🍟</div>
-                        <h3>Half-Price Apps</h3>
-                        <div class="day">Every Wednesday</div>
-                        <div class="time">4:00 PM - 7:00 PM</div>
-                        <p>50% off all appetizers during happy hour! Perfect for after-work gatherings with friends.</p>
+                        <div class="event-day">Specials</div>
+                        <div class="event-title">Weekly Deals</div>
+                        <div class="event-desc">Ask about our weekly specials when you visit. Great food at great prices!</div>
                     </div>
 
                     <div class="event-card">
-                        <div class="event-icon">🎤</div>
-                        <h3>Karaoke Night</h3>
-                        <div class="day">Every Thursday</div>
-                        <div class="time">8:00 PM - 11:00 PM</div>
-                        <p>Show off your singing skills! All genres welcome. Drink specials available for brave performers.</p>
+                        <div class="event-day">Private Events</div>
+                        <div class="event-title">Book Your Party</div>
+                        <div class="event-desc">Looking to host a private event? Contact us to discuss options for your celebration.</div>
                     </div>
+                </div>
 
-                    <div class="event-card">
-                        <div class="event-icon">🏒</div>
-                        <h3>Sports Night</h3>
-                        <div class="day">Friday & Saturday</div>
-                        <div class="time">Game Times Vary</div>
-                        <p>Catch all the big games on our TVs! NHL, NFL, UFC, and more. Special game-day appetizer platters available.</p>
-                    </div>
+                <div class="event-note">
+                    <p>For the latest events and updates, give us a call at <a href="tel:9023994142" style="color: #ff6b35; font-weight: 600;">(902) 399-4142</a> or email <a href="mailto:contact@wfdnm.ca" style="color: #ff6b35; font-weight: 600;">contact@wfdnm.ca</a></p>
                 </div>
             </section>
 
-            <div class="celtic-divider"></div>
-
-            <!-- January Calendar - Accessible Agenda Format -->
             <section class="panel">
-                <h2>Upcoming Events</h2>
-                <p>See what's happening at Sociables!</p>
-
-                <!-- Legend -->
-                <div class="calendar-legend" role="region" aria-label="Event color legend">
-                    <div class="legend-item">
-                        <span class="legend-dot wings" aria-hidden="true"></span>
-                        <span>Wing Night</span>
-                    </div>
-                    <div class="legend-item">
-                        <span class="legend-dot apps" aria-hidden="true"></span>
-                        <span>Half-Price Apps</span>
-                    </div>
-                    <div class="legend-item">
-                        <span class="legend-dot karaoke" aria-hidden="true"></span>
-                        <span>Karaoke</span>
-                    </div>
-                    <div class="legend-item">
-                        <span class="legend-dot sports" aria-hidden="true"></span>
-                        <span>Sports</span>
-                    </div>
-                    <div class="legend-item">
-                        <span class="legend-dot special" aria-hidden="true"></span>
-                        <span>Special Event</span>
-                    </div>
-                </div>
-
-                <div class="agenda-calendar" role="list" aria-label="Upcoming events">
-                    <!-- TODAY - Jan 19 -->
-                    <div class="agenda-week">
-                        <div class="agenda-week-header">TODAY - Sunday, January 19th</div>
-
-                        <div class="agenda-day today" role="listitem">
-                            <div class="agenda-date">
-                                <span class="day-name">TODAY</span>
-                                <span class="day-num">19</span>
-                            </div>
-                            <div class="agenda-events">
-                                <span class="agenda-event sports">
-                                    <span class="event-icon" aria-hidden="true">🏈</span>
-                                    NFL Playoffs - 1:00 PM
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- This Week: Jan 20-25 -->
-                    <div class="agenda-week">
-                        <div class="agenda-week-header">This Week</div>
-
-                        <div class="agenda-day no-events" role="listitem">
-                            <div class="agenda-date">
-                                <span class="day-name">Mon</span>
-                                <span class="day-num">20</span>
-                            </div>
-                            <div class="agenda-events">
-                                <span class="no-events-text">No scheduled events</span>
-                            </div>
-                        </div>
-
-                        <div class="agenda-day" role="listitem">
-                            <div class="agenda-date">
-                                <span class="day-name">Tue</span>
-                                <span class="day-num">21</span>
-                            </div>
-                            <div class="agenda-events">
-                                <span class="agenda-event wings">
-                                    <span class="event-icon" aria-hidden="true">🍗</span>
-                                    Wing Night - 5:00 PM
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="agenda-day" role="listitem">
-                            <div class="agenda-date">
-                                <span class="day-name">Wed</span>
-                                <span class="day-num">22</span>
-                            </div>
-                            <div class="agenda-events">
-                                <span class="agenda-event apps">
-                                    <span class="event-icon" aria-hidden="true">🍟</span>
-                                    Half-Price Apps - 4:00 PM
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="agenda-day" role="listitem">
-                            <div class="agenda-date">
-                                <span class="day-name">Thu</span>
-                                <span class="day-num">23</span>
-                            </div>
-                            <div class="agenda-events">
-                                <span class="agenda-event karaoke">
-                                    <span class="event-icon" aria-hidden="true">🎤</span>
-                                    Karaoke Night - 8:00 PM
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="agenda-day" role="listitem">
-                            <div class="agenda-date">
-                                <span class="day-name">Fri</span>
-                                <span class="day-num">24</span>
-                            </div>
-                            <div class="agenda-events">
-                                <span class="agenda-event sports">
-                                    <span class="event-icon" aria-hidden="true">🏒</span>
-                                    NHL Hockey - 7:00 PM
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="agenda-day" role="listitem">
-                            <div class="agenda-date">
-                                <span class="day-name">Sat</span>
-                                <span class="day-num">25</span>
-                            </div>
-                            <div class="agenda-events">
-                                <span class="agenda-event special">
-                                    <span class="event-icon" aria-hidden="true">🥊</span>
-                                    UFC Fight Night Party - 7:00 PM
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Next Week: Jan 26-31 -->
-                    <div class="agenda-week">
-                        <div class="agenda-week-header">Next Week</div>
-
-                        <div class="agenda-day" role="listitem">
-                            <div class="agenda-date">
-                                <span class="day-name">Sun</span>
-                                <span class="day-num">26</span>
-                            </div>
-                            <div class="agenda-events">
-                                <span class="agenda-event sports">
-                                    <span class="event-icon" aria-hidden="true">🏈</span>
-                                    NFL Conference Championships - 3:00 PM
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="agenda-day no-events" role="listitem">
-                            <div class="agenda-date">
-                                <span class="day-name">Mon</span>
-                                <span class="day-num">27</span>
-                            </div>
-                            <div class="agenda-events">
-                                <span class="no-events-text">No scheduled events</span>
-                            </div>
-                        </div>
-
-                        <div class="agenda-day" role="listitem">
-                            <div class="agenda-date">
-                                <span class="day-name">Tue</span>
-                                <span class="day-num">28</span>
-                            </div>
-                            <div class="agenda-events">
-                                <span class="agenda-event wings">
-                                    <span class="event-icon" aria-hidden="true">🍗</span>
-                                    Wing Night - 5:00 PM
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="agenda-day" role="listitem">
-                            <div class="agenda-date">
-                                <span class="day-name">Wed</span>
-                                <span class="day-num">29</span>
-                            </div>
-                            <div class="agenda-events">
-                                <span class="agenda-event apps">
-                                    <span class="event-icon" aria-hidden="true">🍟</span>
-                                    Half-Price Apps - 4:00 PM
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="agenda-day" role="listitem">
-                            <div class="agenda-date">
-                                <span class="day-name">Thu</span>
-                                <span class="day-num">30</span>
-                            </div>
-                            <div class="agenda-events">
-                                <span class="agenda-event karaoke">
-                                    <span class="event-icon" aria-hidden="true">🎤</span>
-                                    Karaoke Night - 8:00 PM
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="agenda-day" role="listitem">
-                            <div class="agenda-date">
-                                <span class="day-name">Fri</span>
-                                <span class="day-num">31</span>
-                            </div>
-                            <div class="agenda-events">
-                                <span class="agenda-event sports">
-                                    <span class="event-icon" aria-hidden="true">🏒</span>
-                                    NHL Hockey - 7:00 PM
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- February Preview -->
-                    <div class="agenda-week">
-                        <div class="agenda-week-header">Coming in February</div>
-
-                        <div class="agenda-day" role="listitem">
-                            <div class="agenda-date">
-                                <span class="day-name">Sun</span>
-                                <span class="day-num">2</span>
-                            </div>
-                            <div class="agenda-events">
-                                <span class="agenda-event special">
-                                    <span class="event-icon" aria-hidden="true">🏈</span>
-                                    Super Bowl Party - 6:00 PM
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="agenda-day" role="listitem">
-                            <div class="agenda-date">
-                                <span class="day-name">Sat</span>
-                                <span class="day-num">14</span>
-                            </div>
-                            <div class="agenda-events">
-                                <span class="agenda-event special">
-                                    <span class="event-icon" aria-hidden="true">💕</span>
-                                    Valentine's Day Special - 5:00 PM
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <div class="celtic-divider"></div>
-
-            <!-- Upcoming Special Events -->
-            <section class="panel">
-                <h2>Upcoming Special Events</h2>
-                <p>Mark your calendars for these special occasions!</p>
-
-                <div class="upcoming-events">
-                    <div class="upcoming-event">
-                        <div class="upcoming-date">
-                            <div class="month">Jan</div>
-                            <div class="day">25</div>
-                        </div>
-                        <div class="upcoming-info">
-                            <h4>UFC Fight Night Watch Party</h4>
-                            <p>Big screen viewing, appetizer specials, and drink deals. Doors open at 7 PM!</p>
-                        </div>
-                    </div>
-
-                    <div class="upcoming-event">
-                        <div class="upcoming-date">
-                            <div class="month">Feb</div>
-                            <div class="day">2</div>
-                        </div>
-                        <div class="upcoming-info">
-                            <h4>Super Bowl Sunday Party</h4>
-                            <p>The biggest football game of the year! Wing platters, nacho stations, and more.</p>
-                        </div>
-                    </div>
-
-                    <div class="upcoming-event">
-                        <div class="upcoming-date">
-                            <div class="month">Feb</div>
-                            <div class="day">14</div>
-                        </div>
-                        <div class="upcoming-info">
-                            <h4>Valentine's Day Special</h4>
-                            <p>Romantic dinner for two with special menu. Reservations recommended!</p>
-                        </div>
-                    </div>
-
-                    <div class="upcoming-event">
-                        <div class="upcoming-date">
-                            <div class="month">Mar</div>
-                            <div class="day">17</div>
-                        </div>
-                        <div class="upcoming-info">
-                            <h4>St. Patrick's Day Celebration</h4>
-                            <p>Our biggest party of the year! Live music, Irish specials, and green beer. Don't miss it!</p>
-                        </div>
-                    </div>
-                </div>
+                <h2>Hours of Operation</h2>
+                <table class="hours-table">
+                    <tr><td>Monday</td><td>11:00 AM - 9:00 PM</td></tr>
+                    <tr><td>Tuesday</td><td>11:00 AM - 9:00 PM</td></tr>
+                    <tr><td>Wednesday</td><td>11:00 AM - 9:00 PM</td></tr>
+                    <tr><td>Thursday</td><td>11:00 AM - 10:00 PM</td></tr>
+                    <tr><td>Friday</td><td>11:00 AM - 10:00 PM</td></tr>
+                    <tr><td>Saturday</td><td>8:00 AM - 10:00 PM</td></tr>
+                    <tr><td>Sunday</td><td>8:00 AM - 9:00 PM</td></tr>
+                </table>
             </section>
 
             <!-- CTA -->
             <section class="contact-banner">
-                <h2>Questions About Events?</h2>
-                <p style="margin-bottom: 1rem;">Want to book a private event or have questions? Give us a call!</p>
-                <p class="phone-number"><a href="tel:9027633100">(902) 763-3100</a></p>
+                <h2>Questions?</h2>
+                <p style="margin-bottom: 1rem; font-size: 1.1rem; color: #c0c0c0;">Give us a call for more info about events!</p>
+                <p class="phone-number"><a href="tel:9023994142">(902) 399-4142</a></p>
             </section>
         </div>
     </main>
@@ -714,14 +140,14 @@
     <footer>
         <div class="footer-content">
             <div class="footer-left">
-                <img src="../images/sociables/logos and branding/LOGO11.png" alt="Sociables" class="footer-logo">
+                <img src="images/icons/whats for dinner logo.png" alt="What's For Dinner" class="footer-logo">
                 <div class="footer-info">
-                    <span class="footer-title">Sociables Pub & Eatery</span>
+                    <span class="footer-title">What's For Dinner - Route 6 Bar & Grill</span>
                     <span class="footer-address">
-                        <a href="https://www.google.com/maps/search/?api=1&query=25+Main+Street+Springhill+NS+B0M+1X0" target="_blank">
-                            25 Main Street, Springhill, NS
+                        <a href="https://www.google.com/maps/search/?api=1&query=11054+Route+6+Pugwash+NS" target="_blank">
+                            11054 Route 6, Pugwash, NS
                         </a>
-                        | <a href="tel:9027633100">(902) 763-3100</a>
+                        | <a href="tel:9023994142">(902) 399-4142</a>
                     </span>
                 </div>
             </div>
@@ -730,8 +156,7 @@
             </div>
             <div class="footer-right">
                 <div class="social-links">
-                    <a href="https://www.instagram.com/sociablespub" target="_blank" class="social-link">IG</a>
-                    <a href="https://www.facebook.com/SociablesPubandEatery" target="_blank" class="social-link">FB</a>
+                    <a href="mailto:contact@wfdnm.ca" class="social-link" title="Email">@</a>
                 </div>
                 <span class="footer-credit">
                     <a href="../html/index.html">Website by Justin Greeno</a>
@@ -745,19 +170,27 @@
 
     <script>
         const hours = {
-            0: { open: 12, close: 20, name: 'Sunday' },
-            1: { open: 11, close: 20, name: 'Monday' },
-            2: { open: 11, close: 20, name: 'Tuesday' },
-            3: { open: 11, close: 21, name: 'Wednesday' },
-            4: { open: 11, close: 23, name: 'Thursday' },
-            5: { open: 11, close: 22, name: 'Friday' },
-            6: { open: 11, close: 22, name: 'Saturday' }
+            0: { open: 8, close: 21, name: 'Sunday' },       // Sunday 8AM-9PM
+            1: { open: 11, close: 21, name: 'Monday' },      // Monday 11AM-9PM
+            2: { open: 11, close: 21, name: 'Tuesday' },     // Tuesday 11AM-9PM
+            3: { open: 11, close: 21, name: 'Wednesday' },   // Wednesday 11AM-9PM
+            4: { open: 11, close: 22, name: 'Thursday' },    // Thursday 11AM-10PM
+            5: { open: 11, close: 22, name: 'Friday' },      // Friday 11AM-10PM
+            6: { open: 8, close: 22, name: 'Saturday' }      // Saturday 8AM-10PM
         };
 
         function formatTime(hour) {
             if (hour === 0 || hour === 12) return '12:00 PM';
             if (hour > 12) return (hour - 12) + ':00 PM';
             return hour + ':00 AM';
+        }
+
+        function getNextOpenDay(fromDay) {
+            for (let i = 1; i <= 7; i++) {
+                const checkDay = (fromDay + i) % 7;
+                if (hours[checkDay].open > 0) return hours[checkDay];
+            }
+            return hours[fromDay];
         }
 
         function updateFooterHours() {
@@ -767,19 +200,22 @@
             const todayHours = hours[day];
             const footerHours = document.getElementById('footer-hours');
 
-            if (currentHour >= todayHours.open && currentHour < todayHours.close) {
+            const isClosed = todayHours.open === 0;
+            const isOpen = !isClosed && currentHour >= todayHours.open && currentHour < todayHours.close;
+
+            if (isOpen) {
                 footerHours.classList.add('open');
                 footerHours.innerHTML = `Open until ${formatTime(todayHours.close)}`;
             } else {
                 footerHours.classList.add('closed');
-                if (currentHour < todayHours.open) {
-                    // Before opening - show today's hours
+                if (isClosed) {
+                    const nextOpen = getNextOpenDay(day);
+                    footerHours.innerHTML = `Closed - Open ${nextOpen.name} ${formatTime(nextOpen.open)}`;
+                } else if (currentHour < todayHours.open) {
                     footerHours.innerHTML = `Closed - Open ${todayHours.name} ${formatTime(todayHours.open)}`;
                 } else {
-                    // After closing - show tomorrow's hours
-                    const tomorrow = (day + 1) % 7;
-                    const tomorrowHours = hours[tomorrow];
-                    footerHours.innerHTML = `Closed - Open ${tomorrowHours.name} ${formatTime(tomorrowHours.open)}`;
+                    const nextOpen = getNextOpenDay(day);
+                    footerHours.innerHTML = `Closed - Open ${nextOpen.name} ${formatTime(nextOpen.open)}`;
                 }
             }
         }

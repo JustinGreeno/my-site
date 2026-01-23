@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Showcase | Justin Greeno</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- React from CDN -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/gif" href="../images/pixel_justin.gif">
+
+    <style>
+        :root {
+            --primary-green: #012F0B;
+            --dark-green: #051E03;
+            --accent-teal: #689fab;
+            --text-light: #A5E4CC;
+            --glass-bg: rgba(1, 47, 11, 0.85);
+            --glass-border: rgba(104, 159, 171, 0.3);
+            --react-blue: #61dafb;
+            --code-bg: #1a1a2e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Kode Mono', monospace;
+            background: linear-gradient(135deg, var(--dark-green) 0%, var(--primary-green) 50%, #0a3d12 100%);
+            color: var(--text-light);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        header {
+            background: var(--glass-bg);
+            border-bottom: 2px solid var(--react-blue);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--react-blue);
+        }
+
+        .logo img {
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .logo-text {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .back-link {
+            color: var(--accent-teal);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--accent-teal);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: var(--accent-teal);
+            color: var(--primary-green);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: var(--glass-bg);
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 1px solid var(--glass-border);
+        }
+
+        .hero h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--react-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            opacity: 0.9;
+        }
+
+        .react-logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+            animation: spin 20s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .demo-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .demo-card h3 {
+            font-family: 'Oswald', sans-serif;
+            color: var(--react-blue);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .demo-card .hook-tag {
+            font-size: 0.7rem;
+            background: var(--react-blue);
+            color: var(--primary-green);
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Kode Mono', monospace;
+        }
+
+        .demo-card p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        .demo-content {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            min-height: 100px;
+        }
+
+        button {
+            font-family: 'Kode Mono', monospace;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin: 0.25rem;
+        }
+
+        .btn-primary {
+            background: var(--react-blue);
+            color: var(--primary-green);
+        }
+
+        .btn-primary:hover {
+            background: #4fc3f7;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--accent-teal);
+            color: var(--accent-teal);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-teal);
+            color: var(--primary-green);
+        }
+
+        .btn-danger {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #ee5a5a;
+        }
+
+        input, select {
+            font-family: 'Kode Mono', monospace;
+            padding: 0.5rem;
+            border: 1px solid var(--glass-border);
+            border-radius: 4px;
+            background: rgba(0, 0, 0, 0.3);
+            color: var(--text-light);
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--react-blue);
+        }
+
+        .counter-display {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--react-blue);
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .todo-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+        }
+
+        .todo-item.completed span {
+            text-decoration: line-through;
+            opacity: 0.5;
+        }
+
+        .todo-item input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .timer-display {
+            font-size: 2rem;
+            font-family: 'Kode Mono', monospace;
+            color: var(--react-blue);
+            text-align: center;
+        }
+
+        .theme-preview {
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .user-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--react-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--primary-green);
+        }
+
+        .loading-skeleton {
+            background: linear-gradient(90deg, rgba(255,255,255,0.1) 25%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.1) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 4px;
+            height: 20px;
+            margin-bottom: 0.5rem;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .form-row {
+            margin-bottom: 0.75rem;
+        }
+
+        .form-row label {
+            display: block;
+            font-size: 0.85rem;
+            margin-bottom: 0.25rem;
+            color: var(--accent-teal);
+        }
+
+        .validation-error {
+            color: #ff6b6b;
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+        }
+
+        .validation-success {
+            color: #69db7c;
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+        }
+
+        .skills-section {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .skills-section h2 {
+            font-family: 'Oswald', sans-serif;
+            color: var(--react-blue);
+            margin-bottom: 1rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-item {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--react-blue);
+        }
+
+        .skill-item h4 {
+            color: var(--accent-teal);
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-item code {
+            font-size: 0.8rem;
+            background: var(--code-bg);
+            padding: 0.1rem 0.3rem;
+            border-radius: 3px;
+            color: var(--react-blue);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        footer p {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        .color-swatch {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0.25rem;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .color-swatch:hover, .color-swatch.selected {
+            transform: scale(1.2);
+            border-color: white;
+        }
+
+        .drag-item {
+            padding: 0.75rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+            cursor: grab;
+            border-left: 3px solid var(--react-blue);
+            transition: all 0.2s ease;
+        }
+
+        .drag-item:hover {
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .drag-item.dragging {
+            opacity: 0.5;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tab {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            color: var(--text-light);
+            cursor: pointer;
+            border-radius: 4px 4px 0 0;
+            transition: all 0.2s ease;
+        }
+
+        .tab.active {
+            background: var(--react-blue);
+            color: var(--primary-green);
+            border-color: var(--react-blue);
+        }
+
+        .tab-content {
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 0 8px 8px 8px;
+        }
+
+        .progress-bar {
+            height: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0.5rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--react-blue), var(--accent-teal));
+            transition: width 0.3s ease;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <img src="../images/pixel_justin.gif" alt="Justin Greeno">
+                <span class="logo-text">React Showcase</span>
+            </a>
+            <a href="index.html" class="back-link">Back to Portfolio</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="root"></div>
+    </main>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef, useReducer, useCallback, useMemo, useContext, createContext } = React;
+
+        // Theme Context for demonstrating useContext
+        const ThemeContext = createContext();
+
+        // Custom Hook: useLocalStorage
+        function useLocalStorage(key, initialValue) {
+            const [storedValue, setStoredValue] = useState(() => {
+                try {
+                    const item = window.localStorage.getItem(key);
+                    return item ? JSON.parse(item) : initialValue;
+                } catch (error) {
+                    return initialValue;
+                }
+            });
+
+            const setValue = (value) => {
+                try {
+                    setStoredValue(value);
+                    window.localStorage.setItem(key, JSON.stringify(value));
+                } catch (error) {
+                    console.error(error);
+                }
+            };
+
+            return [storedValue, setValue];
+        }
+
+        // Custom Hook: useDebounce
+        function useDebounce(value, delay) {
+            const [debouncedValue, setDebouncedValue] = useState(value);
+
+            useEffect(() => {
+                const handler = setTimeout(() => {
+                    setDebouncedValue(value);
+                }, delay);
+
+                return () => clearTimeout(handler);
+            }, [value, delay]);
+
+            return debouncedValue;
+        }
+
+        // Demo 1: Counter with useState
+        function CounterDemo() {
+            const [count, setCount] = useState(0);
+
+            return (
+                <div className="demo-card">
+                    <h3>Counter <span className="hook-tag">useState</span></h3>
+                    <p>Basic state management with useState hook</p>
+                    <div className="demo-content">
+                        <div className="counter-display">{count}</div>
+                        <div style={{textAlign: 'center'}}>
+                            <button className="btn-secondary" onClick={() => setCount(c => c - 1)}>-</button>
+                            <button className="btn-primary" onClick={() => setCount(c => c + 1)}>+</button>
+                            <button className="btn-danger" onClick={() => setCount(0)}>Reset</button>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        // Demo 2: Timer with useEffect
+        function TimerDemo() {
+            const [seconds, setSeconds] = useState(0);
+            const [isRunning, setIsRunning] = useState(false);
+
+            useEffect(() => {
+                let interval = null;
+                if (isRunning) {
+                    interval = setInterval(() => {
+                        setSeconds(s => s + 1);
+                    }, 1000);
+                }
+                return () => clearInterval(interval);
+            }, [isRunning]);
+
+            const formatTime = (s) => {
+                const mins = Math.floor(s / 60);
+                const secs = s % 60;
+                return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            };
+
+            return (
+                <div className="demo-card">
+                    <h3>Stopwatch <span className="hook-tag">useEffect</span></h3>
+                    <p>Side effects and cleanup with useEffect</p>
+                    <div className="demo-content">
+                        <div className="timer-display">{formatTime(seconds)}</div>
+                        <div style={{textAlign: 'center'}}>
+                            <button className="btn-primary" onClick={() => setIsRunning(!isRunning)}>
+                                {isRunning ? 'Pause' : 'Start'}
+                            </button>
+                            <button className="btn-danger" onClick={() => { setIsRunning(false); setSeconds(0); }}>
+                                Reset
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        // Demo 3: Todo List with useReducer
+        const todoReducer = (state, action) => {
+            switch (action.type) {
+                case 'ADD':
+                    return [...state, { id: Date.now(), text: action.payload, completed: false }];
+                case 'TOGGLE':
+                    return state.map(todo =>
+                        todo.id === action.payload ? { ...todo, completed: !todo.completed } : todo
+                    );
+                case 'DELETE':
+                    return state.filter(todo => todo.id !== action.payload);
+                default:
+                    return state;
+            }
+        };
+
+        function TodoDemo() {
+            const [todos, dispatch] = useReducer(todoReducer, [
+                { id: 1, text: 'Learn React Hooks', completed: true },
+                { id: 2, text: 'Build awesome projects', completed: false }
+            ]);
+            const [input, setInput] = useState('');
+
+            const handleAdd = (e) => {
+                e.preventDefault();
+                if (input.trim()) {
+                    dispatch({ type: 'ADD', payload: input });
+                    setInput('');
+                }
+            };
+
+            return (
+                <div className="demo-card">
+                    <h3>Todo List <span className="hook-tag">useReducer</span></h3>
+                    <p>Complex state logic with useReducer</p>
+                    <div className="demo-content">
+                        <form onSubmit={handleAdd} style={{display: 'flex', gap: '0.5rem', marginBottom: '1rem'}}>
+                            <input
+                                value={input}
+                                onChange={(e) => setInput(e.target.value)}
+                                placeholder="Add a task..."
+                                style={{flex: 1}}
+                            />
+                            <button type="submit" className="btn-primary">Add</button>
+                        </form>
+                        {todos.map(todo => (
+                            <div key={todo.id} className={`todo-item ${todo.completed ? 'completed' : ''}`}>
+                                <input
+                                    type="checkbox"
+                                    checked={todo.completed}
+                                    onChange={() => dispatch({ type: 'TOGGLE', payload: todo.id })}
+                                />
+                                <span style={{flex: 1}}>{todo.text}</span>
+                                <button className="btn-danger" style={{padding: '0.25rem 0.5rem', fontSize: '0.8rem'}}
+                                    onClick={() => dispatch({ type: 'DELETE', payload: todo.id })}>X</button>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            );
+        }
+
+        // Demo 4: Ref Demo
+        function RefDemo() {
+            const inputRef = useRef(null);
+            const renderCount = useRef(0);
+            const [value, setValue] = useState('');
+
+            renderCount.current++;
+
+            return (
+                <div className="demo-card">
+                    <h3>DOM Reference <span className="hook-tag">useRef</span></h3>
+                    <p>Direct DOM access and persistent values</p>
+                    <div className="demo-content">
+                        <input
+                            ref={inputRef}
+                            value={value}
+                            onChange={(e) => setValue(e.target.value)}
+                            placeholder="Type something..."
+                        />
+                        <div style={{marginTop: '0.5rem'}}>
+                            <button className="btn-primary" onClick={() => inputRef.current.focus()}>
+                                Focus Input
+                            </button>
+                            <button className="btn-secondary" onClick={() => inputRef.current.select()}>
+                                Select All
+                            </button>
+                        </div>
+                        <p style={{marginTop: '1rem', fontSize: '0.85rem'}}>
+                            Render count: <strong>{renderCount.current}</strong>
+                        </p>
+                    </div>
+                </div>
+            );
+        }
+
+        // Demo 5: Memoization
+        function MemoDemo() {
+            const [count, setCount] = useState(0);
+            const [otherState, setOtherState] = useState(0);
+
+            const expensiveCalculation = useMemo(() => {
+                console.log('Calculating...');
+                let result = 0;
+                for (let i = 0; i < count * 1000; i++) {
+                    result += i;
+                }
+                return result;
+            }, [count]);
+
+            const increment = useCallback(() => {
+                setCount(c => c + 1);
+            }, []);
+
+            return (
+                <div className="demo-card">
+                    <h3>Memoization <span className="hook-tag">useMemo</span> <span className="hook-tag">useCallback</span></h3>
+                    <p>Performance optimization with memoization</p>
+                    <div className="demo-content">
+                        <p>Count: <strong>{count}</strong></p>
+                        <p>Expensive result: <strong>{expensiveCalculation.toLocaleString()}</strong></p>
+                        <p>Other state: <strong>{otherState}</strong></p>
+                        <div style={{marginTop: '0.5rem'}}>
+                            <button className="btn-primary" onClick={increment}>Increment (triggers calc)</button>
+                            <button className="btn-secondary" onClick={() => setOtherState(s => s + 1)}>
+                                Other (no calc)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        // Demo 6: Custom Hook - Debounced Search
+        function SearchDemo() {
+            const [query, setQuery] = useState('');
+            const debouncedQuery = useDebounce(query, 500);
+            const [results, setResults] = useState([]);
+
+            useEffect(() => {
+                if (debouncedQuery) {
+                    // Simulate API search
+                    const mockResults = ['React', 'Redux', 'Router', 'Relay', 'Recoil']
+                        .filter(r => r.toLowerCase().includes(debouncedQuery.toLowerCase()));
+                    setResults(mockResults);
+                } else {
+                    setResults([]);
+                }
+            }, [debouncedQuery]);
+
+            return (
+                <div className="demo-card">
+                    <h3>Debounced Search <span className="hook-tag">Custom Hook</span></h3>
+                    <p>Custom useDebounce hook for optimized search</p>
+                    <div className="demo-content">
+                        <input
+                            value={query}
+                            onChange={(e) => setQuery(e.target.value)}
+                            placeholder="Search (try 'r')..."
+                        />
+                        <p style={{fontSize: '0.85rem', opacity: 0.7}}>
+                            Debounced: "{debouncedQuery}"
+                        </p>
+                        {results.length > 0 && (
+                            <div style={{marginTop: '0.5rem'}}>
+                                {results.map(r => (
+                                    <div key={r} style={{padding: '0.25rem 0.5rem', background: 'rgba(0,0,0,0.2)', marginBottom: '0.25rem', borderRadius: '4px'}}>
+                                        {r}
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
+        }
+
+        // Demo 7: Form with Validation
+        function FormDemo() {
+            const [form, setForm] = useState({ name: '', email: '', message: '' });
+            const [errors, setErrors] = useState({});
+            const [submitted, setSubmitted] = useState(false);
+
+            const validate = () => {
+                const newErrors = {};
+                if (!form.name.trim()) newErrors.name = 'Name is required';
+                if (!form.email.includes('@')) newErrors.email = 'Valid email required';
+                if (form.message.length < 10) newErrors.message = 'Message must be 10+ chars';
+                setErrors(newErrors);
+                return Object.keys(newErrors).length === 0;
+            };
+
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                if (validate()) {
+                    setSubmitted(true);
+                    setTimeout(() => setSubmitted(false), 2000);
+                }
+            };
+
+            return (
+                <div className="demo-card">
+                    <h3>Form Validation <span className="hook-tag">Controlled Components</span></h3>
+                    <p>Real-time validation with controlled inputs</p>
+                    <div className="demo-content">
+                        {submitted ? (
+                            <div className="validation-success" style={{textAlign: 'center', padding: '2rem'}}>
+                                Form submitted successfully!
+                            </div>
+                        ) : (
+                            <form onSubmit={handleSubmit}>
+                                <div className="form-row">
+                                    <label>Name</label>
+                                    <input
+                                        value={form.name}
+                                        onChange={(e) => setForm({...form, name: e.target.value})}
+                                    />
+                                    {errors.name && <div className="validation-error">{errors.name}</div>}
+                                </div>
+                                <div className="form-row">
+                                    <label>Email</label>
+                                    <input
+                                        value={form.email}
+                                        onChange={(e) => setForm({...form, email: e.target.value})}
+                                    />
+                                    {errors.email && <div className="validation-error">{errors.email}</div>}
+                                </div>
+                                <div className="form-row">
+                                    <label>Message</label>
+                                    <input
+                                        value={form.message}
+                                        onChange={(e) => setForm({...form, message: e.target.value})}
+                                    />
+                                    {errors.message && <div className="validation-error">{errors.message}</div>}
+                                </div>
+                                <button type="submit" className="btn-primary">Submit</button>
+                            </form>
+                        )}
+                    </div>
+                </div>
+            );
+        }
+
+        // Demo 8: Data Fetching Simulation
+        function FetchDemo() {
+            const [users, setUsers] = useState([]);
+            const [loading, setLoading] = useState(false);
+
+            const fetchUsers = async () => {
+                setLoading(true);
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                setUsers([
+                    { id: 1, name: 'Alice Johnson', role: 'Developer' },
+                    { id: 2, name: 'Bob Smith', role: 'Designer' },
+                    { id: 3, name: 'Carol White', role: 'Manager' }
+                ]);
+                setLoading(false);
+            };
+
+            return (
+                <div className="demo-card">
+                    <h3>Data Fetching <span className="hook-tag">async/await</span></h3>
+                    <p>Loading states and async data handling</p>
+                    <div className="demo-content">
+                        <button className="btn-primary" onClick={fetchUsers} disabled={loading}>
+                            {loading ? 'Loading...' : 'Fetch Users'}
+                        </button>
+                        <div style={{marginTop: '1rem'}}>
+                            {loading ? (
+                                <>
+                                    <div className="loading-skeleton" style={{width: '80%'}}></div>
+                                    <div className="loading-skeleton" style={{width: '60%'}}></div>
+                                    <div className="loading-skeleton" style={{width: '70%'}}></div>
+                                </>
+                            ) : (
+                                users.map(user => (
+                                    <div key={user.id} className="user-card">
+                                        <div className="user-avatar">{user.name[0]}</div>
+                                        <div>
+                                            <div style={{fontWeight: 'bold'}}>{user.name}</div>
+                                            <div style={{fontSize: '0.85rem', opacity: 0.7}}>{user.role}</div>
+                                        </div>
+                                    </div>
+                                ))
+                            )}
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        // Demo 9: Tabs Component
+        function TabsDemo() {
+            const [activeTab, setActiveTab] = useState(0);
+            const tabs = [
+                { label: 'Profile', content: 'User profile information goes here. This demonstrates component composition.' },
+                { label: 'Settings', content: 'Application settings panel. Tabs are a common UI pattern in React.' },
+                { label: 'Activity', content: 'Recent activity log. Each tab maintains its own state and content.' }
+            ];
+
+            return (
+                <div className="demo-card">
+                    <h3>Tab Component <span className="hook-tag">Composition</span></h3>
+                    <p>Reusable component with composition pattern</p>
+                    <div className="demo-content">
+                        <div className="tabs">
+                            {tabs.map((tab, index) => (
+                                <button
+                                    key={index}
+                                    className={`tab ${activeTab === index ? 'active' : ''}`}
+                                    onClick={() => setActiveTab(index)}
+                                >
+                                    {tab.label}
+                                </button>
+                            ))}
+                        </div>
+                        <div className="tab-content">
+                            {tabs[activeTab].content}
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        // Demo 10: Progress with Animation
+        function ProgressDemo() {
+            const [progress, setProgress] = useState(0);
+            const [isRunning, setIsRunning] = useState(false);
+
+            useEffect(() => {
+                let interval;
+                if (isRunning && progress < 100) {
+                    interval = setInterval(() => {
+                        setProgress(p => Math.min(p + Math.random() * 10, 100));
+                    }, 200);
+                }
+                if (progress >= 100) {
+                    setIsRunning(false);
+                }
+                return () => clearInterval(interval);
+            }, [isRunning, progress]);
+
+            return (
+                <div className="demo-card">
+                    <h3>Progress Animation <span className="hook-tag">CSS + State</span></h3>
+                    <p>Smooth animations with React state</p>
+                    <div className="demo-content">
+                        <div className="progress-bar">
+                            <div className="progress-fill" style={{width: `${progress}%`}}></div>
+                        </div>
+                        <p style={{textAlign: 'center'}}>{Math.round(progress)}%</p>
+                        <div style={{textAlign: 'center'}}>
+                            <button className="btn-primary" onClick={() => setIsRunning(true)} disabled={isRunning || progress >= 100}>
+                                {progress >= 100 ? 'Complete!' : isRunning ? 'Running...' : 'Start'}
+                            </button>
+                            <button className="btn-danger" onClick={() => { setProgress(0); setIsRunning(false); }}>
+                                Reset
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        // Main App Component
+        function App() {
+            return (
+                <>
+                    <section className="hero">
+                        <svg className="react-logo" viewBox="-11.5 -10.23 23 20.46">
+                            <circle cx="0" cy="0" r="2.05" fill="#61dafb"/>
+                            <g stroke="#61dafb" strokeWidth="1" fill="none">
+                                <ellipse rx="11" ry="4.2"/>
+                                <ellipse rx="11" ry="4.2" transform="rotate(60)"/>
+                                <ellipse rx="11" ry="4.2" transform="rotate(120)"/>
+                            </g>
+                        </svg>
+                        <h1>React Skills Showcase</h1>
+                        <p>Interactive demonstrations of React hooks, patterns, and best practices</p>
+                    </section>
+
+                    <section className="skills-section">
+                        <h2>Skills Demonstrated</h2>
+                        <div className="skills-grid">
+                            <div className="skill-item">
+                                <h4>React Hooks</h4>
+                                <code>useState</code> <code>useEffect</code> <code>useRef</code> <code>useReducer</code> <code>useMemo</code> <code>useCallback</code> <code>useContext</code>
+                            </div>
+                            <div className="skill-item">
+                                <h4>Custom Hooks</h4>
+                                <code>useLocalStorage</code> <code>useDebounce</code>
+                            </div>
+                            <div className="skill-item">
+                                <h4>Patterns</h4>
+                                <code>Composition</code> <code>Controlled Components</code> <code>State Lifting</code>
+                            </div>
+                            <div className="skill-item">
+                                <h4>Concepts</h4>
+                                <code>Virtual DOM</code> <code>Reconciliation</code> <code>Memoization</code>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div className="demo-grid">
+                        <CounterDemo />
+                        <TimerDemo />
+                        <TodoDemo />
+                        <RefDemo />
+                        <MemoDemo />
+                        <SearchDemo />
+                        <FormDemo />
+                        <FetchDemo />
+                        <TabsDemo />
+                        <ProgressDemo />
+                    </div>
+
+                    <footer>
+                        <p>Built with React 18 | All demos are interactive and fully functional</p>
+                        <p style={{marginTop: '0.5rem'}}>Justin Greeno - Web Developer</p>
+                    </footer>
+                </>
+            );
+        }
+
+        // Render the app
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>

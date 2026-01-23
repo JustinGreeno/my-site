@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Showcase | Justin Greeno</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/gif" href="../images/pixel_justin.gif">
+
+    <style>
+        :root {
+            --primary-green: #012F0B;
+            --dark-green: #051E03;
+            --accent-teal: #689fab;
+            --text-light: #A5E4CC;
+            --glass-bg: rgba(1, 47, 11, 0.85);
+            --glass-border: rgba(104, 159, 171, 0.3);
+            --js-yellow: #f7df1e;
+            --code-bg: #1a1a2e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Kode Mono', monospace;
+            background: linear-gradient(135deg, var(--dark-green) 0%, var(--primary-green) 50%, #0a3d12 100%);
+            color: var(--text-light);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        header {
+            background: var(--glass-bg);
+            border-bottom: 2px solid var(--js-yellow);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--js-yellow);
+        }
+
+        .logo img {
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .logo-text {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .back-link {
+            color: var(--accent-teal);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--accent-teal);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: var(--accent-teal);
+            color: var(--primary-green);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: var(--glass-bg);
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 1px solid var(--glass-border);
+        }
+
+        .hero h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--js-yellow);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            opacity: 0.9;
+        }
+
+        .js-logo {
+            width: 80px;
+            height: 80px;
+            background: var(--js-yellow);
+            color: #000;
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            border-radius: 8px;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .demo-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .demo-card h3 {
+            font-family: 'Oswald', sans-serif;
+            color: var(--js-yellow);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .demo-card .concept-tag {
+            font-size: 0.7rem;
+            background: var(--js-yellow);
+            color: #000;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Kode Mono', monospace;
+        }
+
+        .demo-card p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        .demo-content {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            min-height: 100px;
+        }
+
+        button {
+            font-family: 'Kode Mono', monospace;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin: 0.25rem;
+        }
+
+        .btn-primary {
+            background: var(--js-yellow);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background: #e6cf1a;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--accent-teal);
+            color: var(--accent-teal);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-teal);
+            color: var(--primary-green);
+        }
+
+        .btn-danger {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #ee5a5a;
+        }
+
+        input, select, textarea {
+            font-family: 'Kode Mono', monospace;
+            padding: 0.5rem;
+            border: 1px solid var(--glass-border);
+            border-radius: 4px;
+            background: rgba(0, 0, 0, 0.3);
+            color: var(--text-light);
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--js-yellow);
+        }
+
+        .code-block {
+            background: var(--code-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            margin: 0.5rem 0;
+        }
+
+        .output-area {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 0.75rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            min-height: 40px;
+            font-size: 0.9rem;
+        }
+
+        .skills-section {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .skills-section h2 {
+            font-family: 'Oswald', sans-serif;
+            color: var(--js-yellow);
+            margin-bottom: 1rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-item {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--js-yellow);
+        }
+
+        .skill-item h4 {
+            color: var(--accent-teal);
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-item code {
+            font-size: 0.8rem;
+            background: var(--code-bg);
+            padding: 0.1rem 0.3rem;
+            border-radius: 3px;
+            color: var(--js-yellow);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        footer p {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        .array-display {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .array-item {
+            background: var(--js-yellow);
+            color: #000;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .promise-status {
+            padding: 0.5rem;
+            border-radius: 4px;
+            margin: 0.5rem 0;
+            text-align: center;
+        }
+
+        .promise-pending {
+            background: rgba(247, 223, 30, 0.2);
+            border: 1px solid var(--js-yellow);
+        }
+
+        .promise-resolved {
+            background: rgba(105, 219, 124, 0.2);
+            border: 1px solid #69db7c;
+        }
+
+        .promise-rejected {
+            background: rgba(255, 107, 107, 0.2);
+            border: 1px solid #ff6b6b;
+        }
+
+        .object-tree {
+            font-size: 0.85rem;
+            padding-left: 1rem;
+        }
+
+        .object-tree .key {
+            color: var(--js-yellow);
+        }
+
+        .object-tree .value {
+            color: var(--accent-teal);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <img src="../images/pixel_justin.gif" alt="Justin Greeno">
+                <span class="logo-text">JavaScript Showcase</span>
+            </a>
+            <a href="index.html" class="back-link">Back to Portfolio</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <div class="js-logo">JS</div>
+            <h1>JavaScript Skills Showcase</h1>
+            <p>Interactive demonstrations of JavaScript fundamentals, ES6+ features, and async programming</p>
+        </section>
+
+        <section class="skills-section">
+            <h2>Skills Demonstrated</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <h4>ES6+ Features</h4>
+                    <code>Arrow Functions</code> <code>Destructuring</code> <code>Spread/Rest</code> <code>Template Literals</code>
+                </div>
+                <div class="skill-item">
+                    <h4>Array Methods</h4>
+                    <code>map</code> <code>filter</code> <code>reduce</code> <code>sort</code> <code>find</code>
+                </div>
+                <div class="skill-item">
+                    <h4>Async Programming</h4>
+                    <code>Promises</code> <code>async/await</code> <code>fetch</code> <code>Callbacks</code>
+                </div>
+                <div class="skill-item">
+                    <h4>Core Concepts</h4>
+                    <code>Closures</code> <code>Scope</code> <code>this</code> <code>Prototypes</code>
+                </div>
+            </div>
+        </section>
+
+        <div class="demo-grid">
+            <!-- Demo 1: Array Methods -->
+            <div class="demo-card">
+                <h3>Array Methods <span class="concept-tag">map/filter/reduce</span></h3>
+                <p>Transform and manipulate arrays with functional methods</p>
+                <div class="demo-content">
+                    <div id="array-source" class="array-display"></div>
+                    <div style="margin: 1rem 0;">
+                        <button class="btn-primary" onclick="demoMap()">Map (x2)</button>
+                        <button class="btn-secondary" onclick="demoFilter()">Filter (even)</button>
+                        <button class="btn-primary" onclick="demoReduce()">Reduce (sum)</button>
+                        <button class="btn-danger" onclick="resetArray()">Reset</button>
+                    </div>
+                    <div class="output-area" id="array-output">Click a button to transform the array</div>
+                </div>
+            </div>
+
+            <!-- Demo 2: Promises -->
+            <div class="demo-card">
+                <h3>Promises <span class="concept-tag">async/await</span></h3>
+                <p>Handle asynchronous operations elegantly</p>
+                <div class="demo-content">
+                    <button class="btn-primary" onclick="runPromise(true)">Resolve Promise</button>
+                    <button class="btn-danger" onclick="runPromise(false)">Reject Promise</button>
+                    <div id="promise-status" class="promise-status promise-pending">Ready to run...</div>
+                    <div class="output-area" id="promise-output"></div>
+                </div>
+            </div>
+
+            <!-- Demo 3: Destructuring -->
+            <div class="demo-card">
+                <h3>Destructuring <span class="concept-tag">ES6</span></h3>
+                <p>Extract values from objects and arrays efficiently</p>
+                <div class="demo-content">
+                    <div class="code-block" id="destruct-code">
+const user = { name: 'Justin', role: 'Developer' };
+const { name, role } = user;
+                    </div>
+                    <button class="btn-primary" onclick="demoDestruct('object')">Object Destruct</button>
+                    <button class="btn-secondary" onclick="demoDestruct('array')">Array Destruct</button>
+                    <div class="output-area" id="destruct-output"></div>
+                </div>
+            </div>
+
+            <!-- Demo 4: Closures -->
+            <div class="demo-card">
+                <h3>Closures <span class="concept-tag">Scope</span></h3>
+                <p>Functions that remember their lexical environment</p>
+                <div class="demo-content">
+                    <p>Counter using closure:</p>
+                    <div style="font-size: 2rem; text-align: center; margin: 1rem 0; color: var(--js-yellow);" id="closure-count">0</div>
+                    <div style="text-align: center;">
+                        <button class="btn-secondary" onclick="closureCounter.decrement()">-</button>
+                        <button class="btn-primary" onclick="closureCounter.increment()">+</button>
+                        <button class="btn-danger" onclick="closureCounter.reset()">Reset</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 5: Template Literals -->
+            <div class="demo-card">
+                <h3>Template Literals <span class="concept-tag">ES6</span></h3>
+                <p>Dynamic string creation with embedded expressions</p>
+                <div class="demo-content">
+                    <input type="text" id="template-name" placeholder="Enter your name" value="Developer">
+                    <input type="number" id="template-exp" placeholder="Years of experience" value="5">
+                    <button class="btn-primary" onclick="demoTemplate()">Generate Message</button>
+                    <div class="output-area" id="template-output"></div>
+                </div>
+            </div>
+
+            <!-- Demo 6: Spread Operator -->
+            <div class="demo-card">
+                <h3>Spread/Rest <span class="concept-tag">ES6</span></h3>
+                <p>Expand and collect array/object elements</p>
+                <div class="demo-content">
+                    <div class="code-block">const merged = [...arr1, ...arr2];</div>
+                    <button class="btn-primary" onclick="demoSpread('merge')">Merge Arrays</button>
+                    <button class="btn-secondary" onclick="demoSpread('clone')">Clone Object</button>
+                    <button class="btn-primary" onclick="demoSpread('rest')">Rest Params</button>
+                    <div class="output-area" id="spread-output"></div>
+                </div>
+            </div>
+
+            <!-- Demo 7: Object Methods -->
+            <div class="demo-card">
+                <h3>Object Methods <span class="concept-tag">keys/values/entries</span></h3>
+                <p>Iterate and transform objects efficiently</p>
+                <div class="demo-content">
+                    <div class="object-tree" id="object-display"></div>
+                    <button class="btn-primary" onclick="demoObject('keys')">Object.keys()</button>
+                    <button class="btn-secondary" onclick="demoObject('values')">Object.values()</button>
+                    <button class="btn-primary" onclick="demoObject('entries')">Object.entries()</button>
+                    <div class="output-area" id="object-output"></div>
+                </div>
+            </div>
+
+            <!-- Demo 8: Fetch API -->
+            <div class="demo-card">
+                <h3>Fetch API <span class="concept-tag">HTTP Requests</span></h3>
+                <p>Make network requests with the modern Fetch API</p>
+                <div class="demo-content">
+                    <button class="btn-primary" onclick="demoFetch()">Fetch Random User</button>
+                    <div class="output-area" id="fetch-output">Click to fetch data from API</div>
+                </div>
+            </div>
+
+            <!-- Demo 9: Event Handling -->
+            <div class="demo-card">
+                <h3>Event Handling <span class="concept-tag">DOM Events</span></h3>
+                <p>Respond to user interactions dynamically</p>
+                <div class="demo-content">
+                    <div id="event-box" style="background: var(--js-yellow); color: #000; padding: 2rem; text-align: center; border-radius: 8px; cursor: pointer; user-select: none;">
+                        Hover, click, or type!
+                    </div>
+                    <input type="text" id="event-input" placeholder="Type here..." style="margin-top: 0.5rem;">
+                    <div class="output-area" id="event-output">Events will appear here</div>
+                </div>
+            </div>
+
+            <!-- Demo 10: Local Storage -->
+            <div class="demo-card">
+                <h3>Local Storage <span class="concept-tag">Web Storage API</span></h3>
+                <p>Persist data in the browser</p>
+                <div class="demo-content">
+                    <input type="text" id="storage-key" placeholder="Key" value="myData">
+                    <input type="text" id="storage-value" placeholder="Value" value="Hello JavaScript!">
+                    <button class="btn-primary" onclick="demoStorage('save')">Save</button>
+                    <button class="btn-secondary" onclick="demoStorage('load')">Load</button>
+                    <button class="btn-danger" onclick="demoStorage('clear')">Clear</button>
+                    <div class="output-area" id="storage-output"></div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Built with Vanilla JavaScript | All demos are interactive and fully functional</p>
+            <p style="margin-top: 0.5rem;">Justin Greeno - Web Developer</p>
+        </footer>
+    </main>
+
+    <script>
+        // Demo 1: Array Methods
+        let sourceArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+        function renderArray(arr, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = arr.map(n => `<span class="array-item">${n}</span>`).join('');
+        }
+
+        function resetArray() {
+            sourceArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            renderArray(sourceArray, 'array-source');
+            document.getElementById('array-output').textContent = 'Array reset!';
+        }
+
+        function demoMap() {
+            const result = sourceArray.map(x => x * 2);
+            document.getElementById('array-output').innerHTML =
+                `<code>map(x => x * 2)</code><br>Result: [${result.join(', ')}]`;
+        }
+
+        function demoFilter() {
+            const result = sourceArray.filter(x => x % 2 === 0);
+            document.getElementById('array-output').innerHTML =
+                `<code>filter(x => x % 2 === 0)</code><br>Result: [${result.join(', ')}]`;
+        }
+
+        function demoReduce() {
+            const result = sourceArray.reduce((acc, x) => acc + x, 0);
+            document.getElementById('array-output').innerHTML =
+                `<code>reduce((acc, x) => acc + x, 0)</code><br>Result: ${result}`;
+        }
+
+        // Initialize array display
+        renderArray(sourceArray, 'array-source');
+
+        // Demo 2: Promises
+        async function runPromise(shouldResolve) {
+            const statusEl = document.getElementById('promise-status');
+            const outputEl = document.getElementById('promise-output');
+
+            statusEl.className = 'promise-status promise-pending';
+            statusEl.textContent = 'Promise pending...';
+            outputEl.textContent = '';
+
+            const myPromise = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (shouldResolve) {
+                        resolve('Data fetched successfully!');
+                    } else {
+                        reject('Network error occurred');
+                    }
+                }, 1500);
+            });
+
+            try {
+                const result = await myPromise;
+                statusEl.className = 'promise-status promise-resolved';
+                statusEl.textContent = 'Promise resolved!';
+                outputEl.textContent = result;
+            } catch (error) {
+                statusEl.className = 'promise-status promise-rejected';
+                statusEl.textContent = 'Promise rejected!';
+                outputEl.textContent = error;
+            }
+        }
+
+        // Demo 3: Destructuring
+        function demoDestruct(type) {
+            const codeEl = document.getElementById('destruct-code');
+            const outputEl = document.getElementById('destruct-output');
+
+            if (type === 'object') {
+                const user = { name: 'Justin', role: 'Developer', skills: ['JS', 'React'] };
+                const { name, role, skills } = user;
+                codeEl.textContent = `const user = { name: 'Justin', role: 'Developer', skills: ['JS', 'React'] };\nconst { name, role, skills } = user;`;
+                outputEl.innerHTML = `name: "${name}"<br>role: "${role}"<br>skills: [${skills.join(', ')}]`;
+            } else {
+                const colors = ['red', 'green', 'blue', 'yellow'];
+                const [first, second, ...rest] = colors;
+                codeEl.textContent = `const colors = ['red', 'green', 'blue', 'yellow'];\nconst [first, second, ...rest] = colors;`;
+                outputEl.innerHTML = `first: "${first}"<br>second: "${second}"<br>rest: [${rest.join(', ')}]`;
+            }
+        }
+
+        // Demo 4: Closures
+        const closureCounter = (function() {
+            let count = 0;
+
+            function updateDisplay() {
+                document.getElementById('closure-count').textContent = count;
+            }
+
+            return {
+                increment: function() { count++; updateDisplay(); },
+                decrement: function() { count--; updateDisplay(); },
+                reset: function() { count = 0; updateDisplay(); },
+                getCount: function() { return count; }
+            };
+        })();
+
+        // Demo 5: Template Literals
+        function demoTemplate() {
+            const name = document.getElementById('template-name').value || 'Developer';
+            const exp = document.getElementById('template-exp').value || 0;
+
+            const message = `Hello, ${name}!
+With ${exp} years of experience, you are ${exp >= 5 ? 'a senior' : 'a growing'} developer.
+Keep coding! Current time: ${new Date().toLocaleTimeString()}`;
+
+            document.getElementById('template-output').textContent = message;
+        }
+
+        // Demo 6: Spread/Rest
+        function demoSpread(type) {
+            const outputEl = document.getElementById('spread-output');
+
+            if (type === 'merge') {
+                const arr1 = [1, 2, 3];
+                const arr2 = [4, 5, 6];
+                const merged = [...arr1, ...arr2];
+                outputEl.innerHTML = `arr1: [${arr1}]<br>arr2: [${arr2}]<br>merged: [${merged}]`;
+            } else if (type === 'clone') {
+                const original = { a: 1, b: 2 };
+                const clone = { ...original, c: 3 };
+                outputEl.innerHTML = `original: ${JSON.stringify(original)}<br>clone: ${JSON.stringify(clone)}`;
+            } else {
+                function sum(...numbers) {
+                    return numbers.reduce((a, b) => a + b, 0);
+                }
+                outputEl.innerHTML = `sum(1, 2, 3, 4, 5) = ${sum(1, 2, 3, 4, 5)}<br>Using rest parameter: ...numbers`;
+            }
+        }
+
+        // Demo 7: Object Methods
+        const sampleObject = {
+            name: 'Justin',
+            role: 'Developer',
+            skills: 3,
+            active: true
+        };
+
+        document.getElementById('object-display').innerHTML =
+            Object.entries(sampleObject).map(([k, v]) =>
+                `<span class="key">${k}</span>: <span class="value">${v}</span>`
+            ).join('<br>');
+
+        function demoObject(method) {
+            const outputEl = document.getElementById('object-output');
+
+            if (method === 'keys') {
+                const keys = Object.keys(sampleObject);
+                outputEl.innerHTML = `Object.keys(): [${keys.map(k => `"${k}"`).join(', ')}]`;
+            } else if (method === 'values') {
+                const values = Object.values(sampleObject);
+                outputEl.innerHTML = `Object.values(): [${values.map(v => typeof v === 'string' ? `"${v}"` : v).join(', ')}]`;
+            } else {
+                const entries = Object.entries(sampleObject);
+                outputEl.innerHTML = `Object.entries():<br>${entries.map(([k, v]) => `["${k}", ${typeof v === 'string' ? `"${v}"` : v}]`).join('<br>')}`;
+            }
+        }
+
+        // Demo 8: Fetch API
+        async function demoFetch() {
+            const outputEl = document.getElementById('fetch-output');
+            outputEl.textContent = 'Fetching...';
+
+            try {
+                const response = await fetch('https://randomuser.me/api/');
+                const data = await response.json();
+                const user = data.results[0];
+
+                outputEl.innerHTML = `
+                    <strong>${user.name.first} ${user.name.last}</strong><br>
+                    Email: ${user.email}<br>
+                    Location: ${user.location.city}, ${user.location.country}
+                `;
+            } catch (error) {
+                outputEl.textContent = 'Error fetching data. Try again!';
+            }
+        }
+
+        // Demo 9: Event Handling
+        const eventBox = document.getElementById('event-box');
+        const eventInput = document.getElementById('event-input');
+        const eventOutput = document.getElementById('event-output');
+
+        eventBox.addEventListener('click', () => {
+            eventOutput.textContent = 'Click event fired!';
+            eventBox.style.background = '#' + Math.floor(Math.random()*16777215).toString(16);
+        });
+
+        eventBox.addEventListener('mouseenter', () => {
+            eventOutput.textContent = 'Mouse entered the box';
+        });
+
+        eventBox.addEventListener('mouseleave', () => {
+            eventOutput.textContent = 'Mouse left the box';
+        });
+
+        eventInput.addEventListener('input', (e) => {
+            eventOutput.textContent = `Typing: "${e.target.value}"`;
+        });
+
+        eventInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                eventOutput.textContent = `Enter pressed! Value: "${e.target.value}"`;
+            }
+        });
+
+        // Demo 10: Local Storage
+        function demoStorage(action) {
+            const key = document.getElementById('storage-key').value;
+            const value = document.getElementById('storage-value').value;
+            const outputEl = document.getElementById('storage-output');
+
+            if (action === 'save') {
+                localStorage.setItem(key, value);
+                outputEl.textContent = `Saved: "${key}" = "${value}"`;
+            } else if (action === 'load') {
+                const stored = localStorage.getItem(key);
+                outputEl.textContent = stored !== null ? `Loaded: "${key}" = "${stored}"` : `Key "${key}" not found`;
+            } else {
+                localStorage.removeItem(key);
+                outputEl.textContent = `Cleared: "${key}"`;
+            }
+        }
+    </script>
+</body>
+</html>
