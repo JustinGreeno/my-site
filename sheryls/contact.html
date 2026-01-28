@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Sheryl's Bakery & Cafe</title>
+    <meta name="description" content="Contact Sheryl's Bakery & Cafe in Pugwash, NS for orders or inquiries.">
+    <link href="css/pub-style.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../images/Sheryl's/logos/logo.png">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="../images/Sheryl's/logos/logo.png" alt="Sheryl's Bakery" class="logo-img header-main-logo" onerror="this.style.display='none'">
+                <span class="logo-text">Sheryl's Bakery & Cafe</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="specials.html">Specials</a></li>
+                    <li><a href="photos.html">Photos</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Contact Us</h1>
+            <p class="tagline">We'd Love to Hear From You</p>
+        </section>
+
+        <div class="container">
+            <!-- Contact Info Cards -->
+            <div class="info-cards">
+                <div class="info-card">
+                    <h3>Call Us</h3>
+                    <p><a href="tel:+19022432156">(902) 243-2156</a></p>
+                    <p>Best for quick questions & orders</p>
+                </div>
+                <div class="info-card">
+                    <h3>Visit Us</h3>
+                    <p><a href="https://www.google.com/maps/search/Sheryl's+Bakery+Pugwash+NS" target="_blank">10480 Durham St<br>Pugwash, NS B0K 1L0</a></p>
+                </div>
+                <div class="info-card">
+                    <h3>Email Us</h3>
+                    <p><a href="mailto:sherylsbakery@bellaliant.com">sherylsbakery@bellaliant.com</a></p>
+                    <p>For inquiries & orders</p>
+                </div>
+            </div>
+
+            <div class="flourish"></div>
+
+            <!-- Contact Form -->
+            <section class="panel-rustic animate-in">
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 2.4rem; color: var(--wood-brown); border-bottom: 3px solid var(--wheat);">Send Us a Message</h2>
+                <p class="handwritten" style="margin-top: 1rem;">Have a question, want to place a special order, or inquire about catering? Fill out the form below and we'll get back to you as soon as possible.</p>
+
+                <form class="contact-form mt-2" action="https://formspree.io/f/your-form-id" method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Jane Smith">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="jane@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number (Optional)</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Please select...</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="custom-cake">Custom Cake Order</option>
+                            <option value="catering">Catering Request</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" required placeholder="Tell us about your order, event, or question..."></textarea>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn">Send Message</button>
+                    </div>
+                </form>
+            </section>
+
+            <div class="flourish"></div>
+
+            <!-- Hours -->
+            <section class="panel-chalkboard animate-in">
+                <h2>Hours of Operation</h2>
+                <table class="hours-table" style="color: var(--cream);">
+                    <tr>
+                        <th>Day</th>
+                        <th>Hours</th>
+                    </tr>
+                    <tr>
+                        <td>Sunday</td>
+                        <td>Closed</td>
+                    </tr>
+                    <tr>
+                        <td>Monday</td>
+                        <td>Closed</td>
+                    </tr>
+                    <tr>
+                        <td>Tuesday - Friday</td>
+                        <td>7:00 AM - 4:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Saturday</td>
+                        <td>7:00 AM - 3:00 PM</td>
+                    </tr>
+                </table>
+            </section>
+
+            <div class="flourish"></div>
+
+            <!-- Map -->
+            <section class="panel-rustic animate-in">
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 2.4rem; color: var(--wood-brown); border-bottom: 3px solid var(--wheat);">Find Us</h2>
+                <div style="border-radius: 15px; overflow: hidden; border: 2px solid var(--yellow-dark);">
+                    <iframe
+                        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Sheryl's+Bakery,Pugwash,NS,Canada"
+                        width="100%"
+                        height="300"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <div class="text-center mt-2">
+                    <a href="https://www.google.com/maps/search/Sheryl's+Bakery+Pugwash+NS" target="_blank" class="btn btn-outline">Get Directions</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <img src="../images/Sheryl's/logos/logo.png" alt="Sheryl's" class="logo-img" onerror="this.style.display='none'">
+                <span class="logo-text">Sheryl's</span>
+            </div>
+            <div class="footer-center">
+                <span class="footer-hours" id="footer-hours">Checking hours...</span>
+            </div>
+            <div class="footer-right">
+                <div class="social-icons">
+                    <a href="tel:+19022432156" class="social-icon phone" title="Call Us">
+                        <span class="icon-symbol">#</span>
+                        <span class="icon-text">(902) 243-2156</span>
+                    </a>
+                    <a href="mailto:sherylsbakery@bellaliant.com" class="social-icon email" title="Email Us">
+                        <span class="icon-symbol">@</span>
+                        <span class="icon-text">sherylsbakery@bellaliant.com</span>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=100063612393498" class="social-icon facebook" title="Facebook" target="_blank">
+                        <span class="icon-symbol">f</span>
+                        <span class="icon-text">Facebook</span>
+                    </a>
+                </div>
+                <p>&copy; 2025 Sheryl's Bakery & Cafe</p>
+                <p class="footer-credit">Website by <a href="../html/index.html">Justin Greeno</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll-based gradient shift
+        function updateGradient() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            document.body.style.backgroundPosition = `${scrollPercent}% ${scrollPercent}%`;
+        }
+
+        window.addEventListener('scroll', updateGradient, { passive: true });
+        updateGradient();
+
+        // Hours configuration
+        const hours = {
+            0: { open: 0, close: 0, name: 'Sunday' },
+            1: { open: 0, close: 0, name: 'Monday' },
+            2: { open: 7, close: 16, name: 'Tuesday' },
+            3: { open: 7, close: 16, name: 'Wednesday' },
+            4: { open: 7, close: 16, name: 'Thursday' },
+            5: { open: 7, close: 16, name: 'Friday' },
+            6: { open: 7, close: 15, name: 'Saturday' }
+        };
+
+        function updateFooterHours() {
+            const now = new Date();
+            const day = now.getDay();
+            const hour = now.getHours();
+            const todayHours = hours[day];
+            const footerHours = document.getElementById('footer-hours');
+            if (!footerHours) return;
+
+            const isClosed = todayHours.open === 0;
+            const isOpen = !isClosed && hour >= todayHours.open && hour < todayHours.close;
+
+            if (isOpen) {
+                footerHours.classList.remove('closed');
+                footerHours.classList.add('open');
+                const closeTime = todayHours.close > 12 ? (todayHours.close - 12) + ':00 PM' : todayHours.close + ':00 AM';
+                footerHours.innerHTML = 'Open until ' + closeTime;
+            } else {
+                footerHours.classList.remove('open');
+                footerHours.classList.add('closed');
+                if (isClosed || hour >= todayHours.close) {
+                    let nextDay = (day + 1) % 7;
+                    while (hours[nextDay].open === 0) {
+                        nextDay = (nextDay + 1) % 7;
+                    }
+                    const openTime = hours[nextDay].open > 12 ? (hours[nextDay].open - 12) + ':00 PM' : hours[nextDay].open + ':00 AM';
+                    footerHours.innerHTML = 'Closed - Opens ' + hours[nextDay].name + ' ' + openTime;
+                } else {
+                    const openTime = todayHours.open > 12 ? (todayHours.open - 12) + ':00 PM' : todayHours.open + ':00 AM';
+                    footerHours.innerHTML = 'Closed - Opens today ' + openTime;
+                }
+            }
+        }
+        updateFooterHours();
+    </script>
+</body>
+</html>

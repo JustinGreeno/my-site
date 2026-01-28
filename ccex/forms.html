@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms & Documents | Cumberland County Exhibition</title>
+    <meta name="description" content="Download entry forms, rules, and documents for the Cumberland County Exhibition.">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/art/sign logo.png">
+    <style>
+        .forms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .form-card {
+            background: linear-gradient(145deg, var(--cream), var(--cream-dark));
+            border: 4px solid var(--wood-medium);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .form-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow-medium);
+            border-color: var(--barn-red);
+        }
+        .form-card h3 {
+            font-family: 'Roboto Slab', serif;
+            color: var(--wood-dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .form-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            flex-grow: 1;
+            margin-bottom: 1rem;
+        }
+        .form-card .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background: var(--barn-red);
+            color: var(--cream);
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+        .form-card .btn-download:hover {
+            background: var(--wood-dark);
+            transform: scale(1.05);
+        }
+        .form-category {
+            margin-top: 2rem;
+        }
+        .form-category h3 {
+            font-family: 'Alfa Slab One', serif;
+            color: var(--barn-red);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--rope-tan);
+        }
+        .search-results-info {
+            padding: 1rem;
+            background: var(--straw-light);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        .search-results-info.visible {
+            display: block;
+        }
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-light);
+        }
+        .highlight {
+            background-color: var(--straw);
+            padding: 0.1em 0.3em;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="images/art/sign logo.png" alt="CCEx" class="logo-img">
+                <span class="logo-tagline">Cumberland County Exhibition</span>
+            </a>
+            <nav>
+                <div class="hamburger" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="schedule-2025.html">Schedule</a></li>
+                    <li class="has-dropdown">
+                        <a href="#" class="active">Info</a>
+                        <ul class="dropdown">
+                            <li><a href="activities.html">Kids Activities</a></li>
+                            <li><a href="exhibitors.html">Exhibitors</a></li>
+                            <li><a href="vendors.html">Vendors</a></li>
+                            <li><a href="forms.html" class="active">Forms</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="merch.html">Merch</a></li>
+                    <li><a href="photos.html">Photos</a></li>
+                    <li class="has-dropdown">
+                        <a href="#">About</a>
+                        <ul class="dropdown">
+                            <li><a href="sponsors.html">Sponsors</a></li>
+                            <li><a href="members.html">Board</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Forms & Documents</h1>
+            <p class="tagline">Entry Forms, Rules & Information</p>
+        </section>
+
+        <div class="container">
+            <!-- Search Results Info -->
+            <div class="search-results-info" id="searchInfo">
+                Showing results for: <strong id="searchTerm"></strong>
+                <button onclick="clearSearch()" style="margin-left: 1rem; padding: 0.3rem 0.8rem; cursor: pointer;">Clear</button>
+            </div>
+
+            <!-- Intro -->
+            <section class="panel section-decorated">
+                <div class="animal-head left">
+                    <img src="images/art/cow facing right.png" alt="">
+                </div>
+                <div class="animal-head right">
+                    <img src="images/art/horse facing left.png" alt="">
+                </div>
+                <div class="horseshoe">
+                    <img src="images/art/horse shoe.png" alt="">
+                </div>
+                <h2>Download Entry Forms</h2>
+                <p>Find all the forms and documents you need to participate in the Cumberland County Exhibition. Download, print, and fill out the appropriate forms for your entries.</p>
+            </section>
+
+            <div class="divider-rope"></div>
+
+            <!-- Registration Forms -->
+            <section class="panel-wooden form-category" data-category="registration">
+                <h3>Online Registration</h3>
+                <div class="forms-grid">
+                    <div class="form-card" data-keywords="show shine kids children car vehicle registration">
+                        <h3>Kids Show 'N Shine Registration</h3>
+                        <p>Register for the Kids Show 'N Shine event for children 9 and under.</p>
+                        <a href="show-n-shine.html" class="btn-download">Register Online</a>
+                    </div>
+                    <div class="form-card" data-keywords="horse show exhibitor registration light horse">
+                        <h3>Horse Show Exhibitor Registration</h3>
+                        <p>Register to exhibit in the Light Horse Show competitions.</p>
+                        <a href="horse-registration.html" class="btn-download">Register Online</a>
+                    </div>
+                    <div class="form-card" data-keywords="vendor application food booth merchant">
+                        <h3>Vendor Application</h3>
+                        <p>Apply to become a vendor at the Cumberland County Exhibition.</p>
+                        <a href="vendor-application.html" class="btn-download">Apply Online</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Livestock Forms -->
+            <section class="panel form-category" data-category="livestock">
+                <h3>Livestock & Horse Forms</h3>
+                <div class="forms-grid">
+                    <div class="form-card" data-keywords="horse light horse show rules classes booklet">
+                        <h3>Light Horse Show Booklet 2025</h3>
+                        <p>Complete rules, classes, and schedule for the Light Horse Show.</p>
+                        <a href="images/forms and documents/CCex-Light Horse booklet 2025 .pdf" class="btn-download" target="_blank">Download PDF</a>
+                    </div>
+                    <div class="form-card" data-keywords="livestock traceability cattle sheep goat pig identification">
+                        <h3>Livestock Traceability Info Sheet</h3>
+                        <p>Required traceability information for all livestock entries.</p>
+                        <a href="images/forms and documents/LIVESTOCK TRACEABILITY INFO SHEET 2025 (1).pdf" class="btn-download" target="_blank">Download PDF</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Exhibition Hall Forms -->
+            <section class="panel-wooden form-category" data-category="exhibition">
+                <h3>Exhibition Hall Entry Forms</h3>
+                <div class="forms-grid">
+                    <div class="form-card" data-keywords="exhibition hall entry form general">
+                        <h3>Exhibition Hall Entry Form</h3>
+                        <p>General entry form for all Exhibition Hall categories.</p>
+                        <a href="images/forms and documents/Ex Hall entry form.pdf" class="btn-download" target="_blank">Download PDF</a>
+                    </div>
+                    <div class="form-card" data-keywords="vegetables garden produce department">
+                        <h3>Vegetables - Garden Department</h3>
+                        <p>Classes and rules for vegetable entries.</p>
+                        <a href="images/forms and documents/vegetables Garden Department.pdf" class="btn-download" target="_blank">Download PDF</a>
+                    </div>
+                    <div class="form-card" data-keywords="baking pickling preserves home crafts classes">
+                        <h3>Baking & Pickling - Classes 3-17</h3>
+                        <p>Home crafts department - baking and preserves classes.</p>
+                        <a href="images/forms and documents/baking-pickling Home Crafts Department Classes 3-17.pdf" class="btn-download" target="_blank">Download PDF</a>
+                    </div>
+                    <div class="form-card" data-keywords="arts crafts handmade classes">
+                        <h3>Arts & Crafts - Classes 18-26</h3>
+                        <p>Handmade arts and crafts entries.</p>
+                        <a href="images/forms and documents/arts and crafts Classes 18-26.pdf" class="btn-download" target="_blank">Download PDF</a>
+                    </div>
+                    <div class="form-card" data-keywords="flowers floral arrangements classes">
+                        <h3>Flowers - Classes 27-33</h3>
+                        <p>Floral entries and arrangements.</p>
+                        <a href="images/forms and documents/flowers Classes 27-33.pdf" class="btn-download" target="_blank">Download PDF</a>
+                    </div>
+                    <div class="form-card" data-keywords="children kids competition youth class">
+                        <h3>Children's Competition - Class 34</h3>
+                        <p>Special competition classes for young exhibitors.</p>
+                        <a href="images/forms and documents/Children's competition  Class 34.pdf" class="btn-download" target="_blank">Download PDF</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sponsorship -->
+            <section class="panel form-category" data-category="sponsor">
+                <h3>Sponsorship</h3>
+                <div class="forms-grid">
+                    <div class="form-card" data-keywords="sponsor sponsorship package business support">
+                        <h3>Sponsorship Package 2024</h3>
+                        <p>Information about sponsorship opportunities and levels.</p>
+                        <a href="images/forms and documents/2024-Sponsorship-Package.pdf" class="btn-download" target="_blank">Download PDF</a>
+                    </div>
+                </div>
+            </section>
+
+            <div class="divider-rope"></div>
+
+            <!-- Help Section -->
+            <section class="panel-rope text-center">
+                <h2>Need Help?</h2>
+                <p>If you have questions about any forms or entry requirements, please don't hesitate to reach out!</p>
+                <div class="mt-3">
+                    <a href="contact.html" class="btn">Contact Us</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <img src="images/art/sign logo.png" alt="CCEx" class="footer-logo">
+                <div>
+                    <span class="footer-title">Cumberland County Exhibition</span>
+                    <span class="footer-address">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Oxford+NS+Exhibition+Grounds" target="_blank">
+                            Exhibition Grounds, Oxford, NS
+                        </a>
+                    </span>
+                </div>
+            </div>
+            <div class="footer-center">
+                <div class="countdown-container">
+                    <div class="countdown-label">Countdown to CCEx 2026</div>
+                    <div class="countdown-timer" id="countdown">
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="days">---</span>
+                            <span class="countdown-unit">Days</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="hours">--</span>
+                            <span class="countdown-unit">Hours</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="mins">--</span>
+                            <span class="countdown-unit">Mins</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="secs">--</span>
+                            <span class="countdown-unit">Secs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-right">
+                <p>&copy; 2025 Cumberland County Exhibition</p>
+                <p class="footer-credit">Website by <a href="../html/index.html">Justin Greeno</a></p>
+            </div>
+        </div>
+        <div class="footer-secret">
+            <a href="../html/index.html" title="JustinGreeno.dev">J</a>
+        </div>
+    </footer>
+
+    <script>
+        // Parallax background
+        (function() {
+            const style = document.createElement('style');
+            style.id = 'parallax-style';
+            document.head.appendChild(style);
+
+            function updateParallax() {
+                const scrollY = window.pageYOffset;
+                const translateY = scrollY * 0.15;
+                style.textContent = `body::before { transform: translateY(-${translateY}px); }`;
+            }
+
+            window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), { passive: true });
+            updateParallax();
+        })();
+
+        // Search/Filter functionality
+        function filterForms() {
+            const query = document.getElementById('siteSearch').value.trim().toLowerCase();
+            const cards = document.querySelectorAll('.form-card');
+            const categories = document.querySelectorAll('.form-category');
+            const searchInfo = document.getElementById('searchInfo');
+            const searchTerm = document.getElementById('searchTerm');
+
+            if (!query) {
+                clearSearch();
+                return;
+            }
+
+            searchInfo.classList.add('visible');
+            searchTerm.textContent = query;
+
+            let hasResults = false;
+
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const desc = card.querySelector('p').textContent.toLowerCase();
+                const keywords = card.dataset.keywords || '';
+                const searchText = title + ' ' + desc + ' ' + keywords;
+
+                if (searchText.includes(query)) {
+                    card.style.display = 'flex';
+                    hasResults = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Hide empty categories
+            categories.forEach(category => {
+                const visibleCards = category.querySelectorAll('.form-card[style*="flex"], .form-card:not([style])');
+                const hiddenCards = category.querySelectorAll('.form-card[style*="none"]');
+
+                if (hiddenCards.length === category.querySelectorAll('.form-card').length) {
+                    category.style.display = 'none';
+                } else {
+                    category.style.display = 'block';
+                }
+            });
+        }
+
+        function clearSearch() {
+            document.getElementById('siteSearch').value = '';
+            document.getElementById('searchInfo').classList.remove('visible');
+            document.querySelectorAll('.form-card').forEach(card => card.style.display = 'flex');
+            document.querySelectorAll('.form-category').forEach(cat => cat.style.display = 'block');
+        }
+
+        // Allow Enter key to trigger search
+        document.getElementById('siteSearch').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                filterForms();
+            }
+        });
+
+        // Check for search query in URL
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            const searchQuery = params.get('search');
+            if (searchQuery) {
+                document.getElementById('siteSearch').value = searchQuery;
+                filterForms();
+            }
+        })();
+    </script>
+</body>
+</html>

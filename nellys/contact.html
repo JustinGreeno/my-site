@@ -226,6 +226,22 @@
             }
         }
         updateFooterHours();
+
+        // Parallax background
+        (function() {
+            const style = document.createElement('style');
+            style.id = 'parallax-style';
+            document.head.appendChild(style);
+
+            function updateParallax() {
+                const scrollY = window.pageYOffset;
+                const translateY = scrollY * 0.2;
+                style.textContent = `body::before { transform: translateY(-${translateY}px); }`;
+            }
+
+            window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), { passive: true });
+            updateParallax();
+        })();
     </script>
 </body>
 </html>

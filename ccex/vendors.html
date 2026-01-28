@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Info | Cumberland County Exhibition</title>
+    <meta name="description" content="Information for vendors at the Cumberland County Exhibition - food, crafts, merchandise, and more.">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/art/sign logo.png">
+    <style>
+        .vendor-type {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .vendor-card {
+            background: var(--cream);
+            border: 4px solid var(--wood-medium);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 6px 20px var(--shadow-medium);
+            transition: all 0.3s ease;
+        }
+        .vendor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px var(--shadow-dark);
+            border-color: var(--straw);
+        }
+        .vendor-card h3 {
+            font-family: 'Alfa Slab One', serif;
+            color: var(--wood-dark);
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+        }
+        .vendor-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .pricing-card {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+            border: 4px solid var(--wood-medium);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .pricing-card.featured {
+            border-color: var(--barn-red);
+            transform: scale(1.02);
+        }
+        .pricing-card.featured::before {
+            content: 'POPULAR';
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: var(--barn-red);
+            color: white;
+            padding: 0.25rem 2.5rem;
+            font-size: 0.75rem;
+            font-weight: bold;
+            transform: rotate(45deg);
+        }
+        .pricing-card h3 {
+            font-family: 'Alfa Slab One', serif;
+            color: var(--wood-dark);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        .pricing-amount {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--barn-red);
+            margin: 1rem 0;
+        }
+        .pricing-amount span {
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+        .pricing-features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            border-bottom: 1px dashed var(--rope-tan);
+        }
+        .pricing-features li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--barn-red);
+            font-weight: bold;
+        }
+        .requirements-box {
+            background: var(--straw-light);
+            border: 3px solid var(--straw);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        .requirements-box h3 {
+            color: var(--wood-dark);
+            margin-bottom: 1rem;
+            font-family: 'Alfa Slab One', serif;
+        }
+        .requirements-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        .requirement-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+        .requirement-item::before {
+            content: '!';
+            background: var(--barn-red);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .deadline-banner {
+            background: linear-gradient(90deg, var(--wood-dark), var(--barn-red), var(--wood-dark));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+        .deadline-banner h3 {
+            font-family: 'Alfa Slab One', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .faq-item {
+            background: var(--cream);
+            border: 2px solid var(--rope-tan);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        .faq-question {
+            background: var(--cream-dark);
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-question:hover {
+            background: var(--straw-light);
+        }
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        .faq-question.active::after {
+            transform: rotate(45deg);
+        }
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+        .faq-answer.active {
+            padding: 1.5rem;
+            max-height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="images/art/sign logo.png" alt="CCEx" class="logo-img">
+                <span class="logo-tagline">Cumberland County Exhibition</span>
+            </a>
+            <nav>
+                <div class="hamburger" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="schedule-2025.html">Schedule</a></li>
+                    <li class="has-dropdown">
+                        <a href="#" class="active">Info</a>
+                        <ul class="dropdown">
+                            <li><a href="activities.html">Kids Activities</a></li>
+                            <li><a href="exhibitors.html">Exhibitors</a></li>
+                            <li><a href="vendors.html" class="active">Vendors</a></li>
+                            <li><a href="forms.html">Forms</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="merch.html">Merch</a></li>
+                    <li><a href="photos.html">Photos</a></li>
+                    <li class="has-dropdown">
+                        <a href="#">About</a>
+                        <ul class="dropdown">
+                            <li><a href="sponsors.html">Sponsors</a></li>
+                            <li><a href="members.html">Board</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Vendor Information</h1>
+            <p class="tagline">Join Us at the Fair!</p>
+        </section>
+
+        <div class="container">
+            <section class="panel animate-in section-decorated">
+                <div class="animal-head left">
+                    <img src="images/art/chicken facing right.png" alt="">
+                </div>
+                <div class="animal-head right">
+                    <img src="images/art/horse facing left.png" alt="">
+                </div>
+                <div class="horseshoe">
+                    <img src="images/art/horse shoe.png" alt="">
+                </div>
+                <h2>Become a Vendor</h2>
+                <p>The Cumberland County Exhibition attracts thousands of visitors each year, making it an excellent opportunity for vendors to showcase their products and services. We welcome food vendors, craft sellers, agricultural suppliers, and more!</p>
+            </section>
+
+            <!-- Vendor Types -->
+            <h2 style="text-align: center; margin: 2rem 0 1rem;">Vendor Categories</h2>
+            <div class="vendor-type">
+                <div class="vendor-card">
+                    <div class="vendor-icon">🍔</div>
+                    <h3>Food Vendors</h3>
+                    <p>Serve fair favorites like fries, burgers, cotton candy, and more. Food trucks and trailers welcome!</p>
+                </div>
+                <div class="vendor-card">
+                    <div class="vendor-icon">🎨</div>
+                    <h3>Craft Vendors</h3>
+                    <p>Sell handmade crafts, artwork, jewelry, and unique creations in our craft marketplace.</p>
+                </div>
+                <div class="vendor-card">
+                    <div class="vendor-icon">🚜</div>
+                    <h3>Agricultural</h3>
+                    <p>Farm equipment, supplies, seeds, and agricultural products relevant to our farming community.</p>
+                </div>
+                <div class="vendor-card">
+                    <div class="vendor-icon">🛍️</div>
+                    <h3>Merchandise</h3>
+                    <p>General merchandise, clothing, accessories, and retail products.</p>
+                </div>
+            </div>
+
+            <div class="divider-rope"></div>
+
+            <!-- Pricing -->
+            <h2 style="text-align: center; margin: 2rem 0 1rem;">Booth Pricing</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Craft Booth</h3>
+                    <div class="pricing-amount">$150 <span>/weekend</span></div>
+                    <ul class="pricing-features">
+                        <li>10' x 10' indoor space</li>
+                        <li>One 6' table included</li>
+                        <li>2 vendor passes</li>
+                        <li>Indoor location</li>
+                    </ul>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Outdoor Booth</h3>
+                    <div class="pricing-amount">$200 <span>/weekend</span></div>
+                    <ul class="pricing-features">
+                        <li>15' x 15' outdoor space</li>
+                        <li>High-traffic location</li>
+                        <li>4 vendor passes</li>
+                        <li>Electrical hookup available</li>
+                    </ul>
+                </div>
+                <div class="pricing-card">
+                    <h3>Food Vendor</h3>
+                    <div class="pricing-amount">$400 <span>/weekend</span></div>
+                    <ul class="pricing-features">
+                        <li>Prime food court location</li>
+                        <li>Electrical & water access</li>
+                        <li>4 vendor passes</li>
+                        <li>Exclusive menu approval</li>
+                    </ul>
+                </div>
+            </div>
+            <p style="text-align: center; color: var(--text-light);">* Full exhibition (both weekends) discounts available. Contact us for details.</p>
+
+            <!-- Deadline Banner -->
+            <div class="deadline-banner">
+                <h3>Application Deadline</h3>
+                <p style="font-size: 1.5rem; font-weight: bold;">August 1, 2025</p>
+                <p>Space is limited! Apply early to secure your preferred location.</p>
+            </div>
+
+            <!-- Requirements -->
+            <div class="requirements-box">
+                <h3>Vendor Requirements</h3>
+                <div class="requirements-list">
+                    <div class="requirement-item">
+                        Valid business license or vendor permit
+                    </div>
+                    <div class="requirement-item">
+                        Liability insurance ($2M minimum)
+                    </div>
+                    <div class="requirement-item">
+                        Food vendors: Health inspection certificate
+                    </div>
+                    <div class="requirement-item">
+                        Electrical equipment must be CSA approved
+                    </div>
+                    <div class="requirement-item">
+                        Setup completed before opening each day
+                    </div>
+                    <div class="requirement-item">
+                        Must remain open during all fair hours
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider-rope"></div>
+
+            <!-- FAQ -->
+            <section class="panel-wooden">
+                <h2>Frequently Asked Questions</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        What are the fair hours?
+                    </div>
+                    <div class="faq-answer">
+                        <p>The fair is open Friday 5PM-10PM, Saturday 10AM-10PM, Sunday 10AM-6PM, and Monday 10AM-4PM. Vendors are expected to be open during all operating hours.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        When can I set up my booth?
+                    </div>
+                    <div class="faq-answer">
+                        <p>Vendor setup is available starting Thursday afternoon from 2PM-8PM, and Friday morning from 8AM-4PM. All booths must be ready before the fair opens Friday at 5PM.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Is electrical power included?
+                    </div>
+                    <div class="faq-answer">
+                        <p>Electrical hookups are available for an additional $50 per weekend. Please indicate your power needs on your application (standard 120V or 240V).</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Can I sell food without a food truck?
+                    </div>
+                    <div class="faq-answer">
+                        <p>Pre-packaged foods and baked goods may be sold from craft booths with proper labeling. All other food sales require a food vendor space and health inspection certificate.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        What happens if it rains?
+                    </div>
+                    <div class="faq-answer">
+                        <p>Outdoor vendors should have their own tent/canopy. The fair operates rain or shine. Indoor craft vendors are protected from weather.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Apply CTA -->
+            <section class="panel text-center">
+                <h2>Ready to Apply?</h2>
+                <p>Contact us to receive a vendor application package. We'll work with you to find the perfect spot for your business!</p>
+                <div class="mt-3">
+                    <a href="contact.html" class="btn">Contact Us to Apply</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <img src="images/art/sign logo.png" alt="CCEx" class="footer-logo">
+                <div>
+                    <span class="footer-title">Cumberland County Exhibition</span>
+                    <span class="footer-address">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Oxford+NS+Exhibition+Grounds" target="_blank">
+                            Exhibition Grounds, Oxford, NS
+                        </a>
+                    </span>
+                </div>
+            </div>
+            <div class="footer-center">
+                <div class="countdown-container">
+                    <div class="countdown-label">Countdown to CCEx 2026</div>
+                    <div class="countdown-timer" id="countdown">
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="days">---</span>
+                            <span class="countdown-unit">Days</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="hours">--</span>
+                            <span class="countdown-unit">Hours</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="mins">--</span>
+                            <span class="countdown-unit">Mins</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="secs">--</span>
+                            <span class="countdown-unit">Secs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-right">
+                <p>&copy; 2025 Cumberland County Exhibition</p>
+                <p class="footer-credit">Website by <a href="../html/index.html">Justin Greeno</a></p>
+            </div>
+        </div>
+        <div class="footer-secret">
+            <a href="../html/index.html" title="JustinGreeno.dev">J</a>
+        </div>
+    </footer>
+
+    <script>
+        // Parallax background
+        (function() {
+            const style = document.createElement('style');
+            style.id = 'parallax-style';
+            document.head.appendChild(style);
+
+            function updateParallax() {
+                const scrollY = window.pageYOffset;
+                const translateY = scrollY * 0.15;
+                style.textContent = `body::before { transform: translateY(-${translateY}px); }`;
+            }
+
+            window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), { passive: true });
+            updateParallax();
+        })();
+
+        // Toggle FAQ
+        function toggleFaq(question) {
+            question.classList.toggle('active');
+            const answer = question.nextElementSibling;
+            answer.classList.toggle('active');
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('navMenu');
+            const hamburger = document.querySelector('.hamburger');
+            menu.classList.toggle('mobile-open');
+            hamburger.classList.toggle('active');
+        }
+
+        document.querySelectorAll('.has-dropdown > a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 1024) {
+                    e.preventDefault();
+                    this.parentElement.classList.toggle('open');
+                }
+            });
+        });
+
+        document.addEventListener('click', function(e) {
+            const nav = document.querySelector('nav');
+            const hamburger = document.querySelector('.hamburger');
+            if (!nav.contains(e.target) && window.innerWidth <= 1024) {
+                document.getElementById('navMenu').classList.remove('mobile-open');
+                hamburger.classList.remove('active');
+            }
+        });
+
+        // Countdown timer
+        (function() {
+            const targetDate = new Date('August 22, 2026 00:00:00').getTime();
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+                if (distance < 0) { document.getElementById('countdown').innerHTML = '<span>CCEx 2026 is HERE!</span>'; return; }
+                document.getElementById('days').textContent = Math.floor(distance / (1000 * 60 * 60 * 24));
+                document.getElementById('hours').textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                document.getElementById('mins').textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                document.getElementById('secs').textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+            }
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        })();
+
+        // Random animals
+        (function() {
+            const animalsRight = ['images/art/cow facing right.png', 'images/art/horse facing right.png', 'images/art/chicken facing right.png', 'images/art/sheep head facing right.png'];
+            const animalsLeft = ['images/art/horse facing left.png', 'images/art/chicken facing left.png'];
+            document.querySelectorAll('.animal-head.left img').forEach(img => { img.src = animalsRight[Math.floor(Math.random() * animalsRight.length)]; });
+            document.querySelectorAll('.animal-head.right img').forEach(img => { img.src = animalsLeft[Math.floor(Math.random() * animalsLeft.length)]; });
+        })();
+    </script>
+</body>
+</html>

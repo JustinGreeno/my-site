@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horse Show Exhibitor Registration | Cumberland County Exhibition</title>
+    <meta name="description" content="Register for the CCEx Light Horse Show 2025 - Classes for all ages and skill levels!">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/art/sign logo.png">
+    <style>
+        .registration-form {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .form-section {
+            background: var(--cream);
+            border: 3px solid var(--wood-medium);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .form-section h3 {
+            font-family: 'Alfa Slab One', serif;
+            color: var(--barn-red);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--rope-tan);
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            font-family: 'Roboto Slab', serif;
+            font-weight: 600;
+            color: var(--wood-dark);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        .form-group label .required {
+            color: var(--barn-red);
+            margin-left: 0.25rem;
+        }
+        .form-group .hint {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 3px solid var(--rope-tan);
+            border-radius: 8px;
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            background: var(--cream);
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--barn-red);
+            box-shadow: 0 0 0 4px rgba(139, 37, 0, 0.15), inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            background: var(--cream-dark);
+            border-radius: 6px;
+            transition: background 0.3s ease;
+        }
+        .checkbox-option:hover {
+            background: var(--straw-light);
+        }
+        .checkbox-option input[type="checkbox"] {
+            width: auto;
+            cursor: pointer;
+            accent-color: var(--barn-red);
+            transform: scale(1.2);
+        }
+        .checkbox-option span {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+        .horse-entry {
+            background: var(--cream-dark);
+            border: 2px dashed var(--rope-tan);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        .horse-entry h4 {
+            font-family: 'Roboto Slab', serif;
+            color: var(--wood-dark);
+            margin-bottom: 1rem;
+        }
+        .btn-add-horse {
+            background: var(--straw);
+            color: var(--wood-dark);
+            padding: 0.8rem 1.5rem;
+            border: 3px solid var(--rope-tan);
+            border-radius: 8px;
+            font-family: 'Roboto Slab', serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-add-horse:hover {
+            background: var(--hay);
+            transform: translateY(-2px);
+        }
+        .btn-remove-horse {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--barn-red);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+        .form-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        .btn-submit {
+            background: linear-gradient(180deg, var(--barn-red-light), var(--barn-red));
+            color: var(--cream);
+            padding: 1rem 3rem;
+            border: 4px solid var(--straw);
+            border-radius: 8px;
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px var(--shadow-medium);
+        }
+        .btn-submit:hover {
+            background: linear-gradient(180deg, var(--wood-light), var(--wood-medium));
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px var(--shadow-dark);
+        }
+        .btn-clear {
+            background: transparent;
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            border: 2px solid var(--rope-tan);
+            border-radius: 8px;
+            font-family: 'Roboto Slab', serif;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-clear:hover {
+            background: var(--cream-dark);
+            border-color: var(--wood-medium);
+        }
+        .fee-summary {
+            background: var(--straw-light);
+            border: 3px solid var(--straw);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .fee-summary h4 {
+            font-family: 'Alfa Slab One', serif;
+            color: var(--wood-dark);
+            margin-bottom: 1rem;
+        }
+        .fee-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed var(--rope-tan);
+        }
+        .fee-total {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0 0;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--barn-red);
+        }
+        .form-note {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: var(--straw-light);
+            border-radius: 8px;
+            border: 2px solid var(--straw);
+            font-size: 0.95rem;
+            color: var(--wood-dark);
+        }
+        .info-box {
+            background: linear-gradient(135deg, var(--hay) 0%, var(--straw-light) 100%);
+            border: 4px solid var(--wood-medium);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .info-box h3 {
+            font-family: 'Alfa Slab One', serif;
+            color: var(--wood-dark);
+            margin-bottom: 0.75rem;
+        }
+        .info-box ul {
+            margin-left: 1.5rem;
+        }
+        .info-box li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="images/art/sign logo.png" alt="CCEx" class="logo-img">
+                <span class="logo-tagline">Cumberland County Exhibition</span>
+            </a>
+            <nav>
+                <div class="hamburger" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="schedule-2025.html">Schedule</a></li>
+                    <li class="has-dropdown">
+                        <a href="#" class="active">Info</a>
+                        <ul class="dropdown">
+                            <li><a href="activities.html">Kids Activities</a></li>
+                            <li><a href="exhibitors.html">Exhibitors</a></li>
+                            <li><a href="vendors.html">Vendors</a></li>
+                            <li><a href="forms.html">Forms</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="merch.html">Merch</a></li>
+                    <li><a href="photos.html">Photos</a></li>
+                    <li class="has-dropdown">
+                        <a href="#">About</a>
+                        <ul class="dropdown">
+                            <li><a href="sponsors.html">Sponsors</a></li>
+                            <li><a href="members.html">Board</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Horse Show Registration</h1>
+            <p class="tagline">Light Horse Show 2025</p>
+        </section>
+
+        <div class="container">
+            <!-- Info Box -->
+            <div class="info-box">
+                <h3>Registration Information</h3>
+                <ul>
+                    <li><strong>Entry Fee:</strong> $10 per class</li>
+                    <li><strong>Stall Fee:</strong> $25 per stall (optional)</li>
+                    <li><strong>Registration Deadline:</strong> August 15, 2025</li>
+                    <li>Download the complete <a href="images/forms and documents/CCex-Light Horse booklet 2025 .pdf" style="color: var(--barn-red); font-weight: 600;">Light Horse Show Booklet</a> for rules and class descriptions.</li>
+                </ul>
+            </div>
+
+            <!-- Registration Form -->
+            <section class="panel-wooden">
+                <h2>Exhibitor Registration Form</h2>
+
+                <form class="registration-form" id="horseRegistrationForm">
+                    <!-- Exhibitor Information -->
+                    <div class="form-section">
+                        <h3>Exhibitor Information</h3>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="exhibitorName">Full Name <span class="required">*</span></label>
+                                <input type="text" id="exhibitorName" name="exhibitorName" required placeholder="Your full name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" required placeholder="your@email.com">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone Number <span class="required">*</span></label>
+                                <input type="tel" id="phone" name="phone" required placeholder="(902) 555-1234">
+                            </div>
+                            <div class="form-group">
+                                <label for="age">Age as of Show Date</label>
+                                <input type="number" id="age" name="age" min="1" placeholder="Your age">
+                                <p class="hint">Required for age-restricted classes</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Mailing Address <span class="required">*</span></label>
+                            <textarea id="address" name="address" required placeholder="Street Address&#10;City, Province  Postal Code"></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="club">Club/Organization</label>
+                                <input type="text" id="club" name="club" placeholder="4-H Club, Riding Club, etc.">
+                            </div>
+                            <div class="form-group">
+                                <label for="experience">Years of Experience</label>
+                                <select id="experience" name="experience">
+                                    <option value="">Select...</option>
+                                    <option value="beginner">Beginner (0-2 years)</option>
+                                    <option value="intermediate">Intermediate (3-5 years)</option>
+                                    <option value="advanced">Advanced (6+ years)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Horse Information -->
+                    <div class="form-section">
+                        <h3>Horse Information</h3>
+                        <p>Add each horse you will be showing. You can add multiple horses.</p>
+
+                        <div id="horsesContainer">
+                            <div class="horse-entry" data-horse="1">
+                                <h4>Horse #1</h4>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Horse Name <span class="required">*</span></label>
+                                        <input type="text" name="horseName1" required placeholder="Registered or barn name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Breed</label>
+                                        <input type="text" name="horseBreed1" placeholder="Quarter Horse, Arabian, etc.">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Age</label>
+                                        <input type="number" name="horseAge1" min="1" placeholder="Horse's age">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Color</label>
+                                        <input type="text" name="horseColor1" placeholder="Bay, Chestnut, etc.">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Registration Number (if applicable)</label>
+                                    <input type="text" name="horseReg1" placeholder="Breed registry number">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn-add-horse" onclick="addHorse()">+ Add Another Horse</button>
+                    </div>
+
+                    <!-- Classes -->
+                    <div class="form-section">
+                        <h3>Class Entries</h3>
+                        <p>Select all classes you wish to enter. Entry fee is $10 per class.</p>
+
+                        <div class="form-group">
+                            <label>Halter Classes</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="classes" value="halter-mare">
+                                    <span>Halter - Mare</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="classes" value="halter-gelding">
+                                    <span>Halter - Gelding</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="classes" value="halter-stallion">
+                                    <span>Halter - Stallion</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="classes" value="halter-yearling">
+                                    <span>Halter - Yearling</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Showmanship Classes</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="classes" value="showmanship-junior">
+                                    <span>Jr. Showmanship (12 & under)</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="classes" value="showmanship-intermediate">
+                                    <span>Int. Showmanship (13-17)</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="classes" value="showmanship-senior">
+                                    <span>Sr. Showmanship (18+)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>English Classes</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="classes" value="english-pleasure">
+                                    <span>English Pleasure</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="classes" value="english-equitation">
+                                    <span>English Equitation</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="classes" value="hunter-under-saddle">
+                                    <span>Hunter Under Saddle</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Western Classes</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="classes" value="western-pleasure">
+                                    <span>Western Pleasure</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="classes" value="western-horsemanship">
+                                    <span>Western Horsemanship</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="classes" value="ranch-riding">
+                                    <span>Ranch Riding</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="classes" value="trail">
+                                    <span>Trail</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Other Classes</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="classes" value="leadline">
+                                    <span>Leadline (6 & under)</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="classes" value="walk-trot">
+                                    <span>Walk-Trot (Beginner)</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="classes" value="costume">
+                                    <span>Costume Class</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stabling -->
+                    <div class="form-section">
+                        <h3>Stabling (Optional)</h3>
+
+                        <div class="form-group">
+                            <label for="stalls">Number of Stalls Needed</label>
+                            <select id="stalls" name="stalls" onchange="updateFees()">
+                                <option value="0">No stalls needed</option>
+                                <option value="1">1 Stall ($25)</option>
+                                <option value="2">2 Stalls ($50)</option>
+                                <option value="3">3 Stalls ($75)</option>
+                                <option value="4">4 Stalls ($100)</option>
+                            </select>
+                            <p class="hint">Stalls are available Friday through Sunday</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="specialNeeds">Special Requirements</label>
+                            <textarea id="specialNeeds" name="specialNeeds" placeholder="Any special needs for stabling, accessibility requirements, etc."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Fee Summary -->
+                    <div class="fee-summary">
+                        <h4>Entry Fee Summary</h4>
+                        <div class="fee-item">
+                            <span>Classes (<span id="classCount">0</span> x $10):</span>
+                            <span>$<span id="classFee">0</span></span>
+                        </div>
+                        <div class="fee-item">
+                            <span>Stalls (<span id="stallCount">0</span> x $25):</span>
+                            <span>$<span id="stallFee">0</span></span>
+                        </div>
+                        <div class="fee-total">
+                            <span>Total Due:</span>
+                            <span>$<span id="totalFee">0</span></span>
+                        </div>
+                        <p class="hint" style="margin-top: 1rem;">Payment can be made at check-in or by contacting us in advance.</p>
+                    </div>
+
+                    <!-- Comments -->
+                    <div class="form-section">
+                        <h3>Additional Information</h3>
+                        <div class="form-group">
+                            <label for="comments">Comments or Questions</label>
+                            <textarea id="comments" name="comments" placeholder="Any additional information, questions, or special requests..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Form Buttons -->
+                    <div class="form-buttons">
+                        <button type="submit" class="btn-submit">Submit Registration</button>
+                        <button type="reset" class="btn-clear" onclick="resetForm()">Clear Form</button>
+                    </div>
+
+                    <div class="form-note">
+                        A copy of your registration will be emailed to the address you provided.
+                    </div>
+                </form>
+            </section>
+
+            <!-- Contact Info -->
+            <section class="panel text-center">
+                <h2>Questions?</h2>
+                <p>For more information about the Light Horse Show, download the <a href="images/forms and documents/CCex-Light Horse booklet 2025 .pdf" style="color: var(--barn-red); font-weight: 600;">Show Booklet</a> or <a href="contact.html" style="color: var(--barn-red); font-weight: 600;">contact us</a>.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <img src="images/art/sign logo.png" alt="CCEx" class="footer-logo">
+                <div>
+                    <span class="footer-title">Cumberland County Exhibition</span>
+                    <span class="footer-address">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Oxford+NS+Exhibition+Grounds" target="_blank">
+                            Exhibition Grounds, Oxford, NS
+                        </a>
+                    </span>
+                </div>
+            </div>
+            <div class="footer-center">
+                <div class="countdown-container">
+                    <div class="countdown-label">Countdown to CCEx 2026</div>
+                    <div class="countdown-timer" id="countdown">
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="days">---</span>
+                            <span class="countdown-unit">Days</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="hours">--</span>
+                            <span class="countdown-unit">Hours</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="mins">--</span>
+                            <span class="countdown-unit">Mins</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="secs">--</span>
+                            <span class="countdown-unit">Secs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-right">
+                <p>&copy; 2025 Cumberland County Exhibition</p>
+                <p class="footer-credit">Website by <a href="../html/index.html">Justin Greeno</a></p>
+            </div>
+        </div>
+        <div class="footer-secret">
+            <a href="../html/index.html" title="JustinGreeno.dev">J</a>
+        </div>
+    </footer>
+
+    <script>
+        // Parallax background
+        (function() {
+            const style = document.createElement('style');
+            style.id = 'parallax-style';
+            document.head.appendChild(style);
+
+            function updateParallax() {
+                const scrollY = window.pageYOffset;
+                const translateY = scrollY * 0.15;
+                style.textContent = `body::before { transform: translateY(-${translateY}px); }`;
+            }
+
+            window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), { passive: true });
+            updateParallax();
+        })();
+
+        let horseCount = 1;
+
+        // Add another horse entry
+        function addHorse() {
+            horseCount++;
+            const container = document.getElementById('horsesContainer');
+            const newEntry = document.createElement('div');
+            newEntry.className = 'horse-entry';
+            newEntry.dataset.horse = horseCount;
+            newEntry.innerHTML = `
+                <button type="button" class="btn-remove-horse" onclick="removeHorse(${horseCount})">&times;</button>
+                <h4>Horse #${horseCount}</h4>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Horse Name <span class="required">*</span></label>
+                        <input type="text" name="horseName${horseCount}" required placeholder="Registered or barn name">
+                    </div>
+                    <div class="form-group">
+                        <label>Breed</label>
+                        <input type="text" name="horseBreed${horseCount}" placeholder="Quarter Horse, Arabian, etc.">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Age</label>
+                        <input type="number" name="horseAge${horseCount}" min="1" placeholder="Horse's age">
+                    </div>
+                    <div class="form-group">
+                        <label>Color</label>
+                        <input type="text" name="horseColor${horseCount}" placeholder="Bay, Chestnut, etc.">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Registration Number (if applicable)</label>
+                    <input type="text" name="horseReg${horseCount}" placeholder="Breed registry number">
+                </div>
+            `;
+            container.appendChild(newEntry);
+        }
+
+        // Remove a horse entry
+        function removeHorse(num) {
+            const entry = document.querySelector(`.horse-entry[data-horse="${num}"]`);
+            if (entry) {
+                entry.remove();
+            }
+        }
+
+        // Update fee calculations
+        function updateFees() {
+            const classes = document.querySelectorAll('input[name="classes"]:checked').length;
+            const stalls = parseInt(document.getElementById('stalls').value) || 0;
+
+            const classFee = classes * 10;
+            const stallFee = stalls * 25;
+            const total = classFee + stallFee;
+
+            document.getElementById('classCount').textContent = classes;
+            document.getElementById('classFee').textContent = classFee;
+            document.getElementById('stallCount').textContent = stalls;
+            document.getElementById('stallFee').textContent = stallFee;
+            document.getElementById('totalFee').textContent = total;
+        }
+
+        // Add event listeners to checkboxes
+        document.querySelectorAll('input[name="classes"]').forEach(checkbox => {
+            checkbox.addEventListener('change', updateFees);
+        });
+
+        // Reset form
+        function resetForm() {
+            horseCount = 1;
+            document.getElementById('horsesContainer').innerHTML = `
+                <div class="horse-entry" data-horse="1">
+                    <h4>Horse #1</h4>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Horse Name <span class="required">*</span></label>
+                            <input type="text" name="horseName1" required placeholder="Registered or barn name">
+                        </div>
+                        <div class="form-group">
+                            <label>Breed</label>
+                            <input type="text" name="horseBreed1" placeholder="Quarter Horse, Arabian, etc.">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Age</label>
+                            <input type="number" name="horseAge1" min="1" placeholder="Horse's age">
+                        </div>
+                        <div class="form-group">
+                            <label>Color</label>
+                            <input type="text" name="horseColor1" placeholder="Bay, Chestnut, etc.">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Registration Number (if applicable)</label>
+                        <input type="text" name="horseReg1" placeholder="Breed registry number">
+                    </div>
+                </div>
+            `;
+            updateFees();
+        }
+
+        // Form submission
+        document.getElementById('horseRegistrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Gather form data
+            const exhibitorName = document.getElementById('exhibitorName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const age = document.getElementById('age').value;
+            const address = document.getElementById('address').value;
+            const club = document.getElementById('club').value;
+            const experience = document.getElementById('experience').value;
+            const stalls = document.getElementById('stalls').value;
+            const specialNeeds = document.getElementById('specialNeeds').value;
+            const comments = document.getElementById('comments').value;
+
+            // Get horses
+            let horsesText = '';
+            document.querySelectorAll('.horse-entry').forEach((entry, i) => {
+                const num = i + 1;
+                const name = entry.querySelector(`input[name="horseName${entry.dataset.horse}"]`)?.value || '';
+                const breed = entry.querySelector(`input[name="horseBreed${entry.dataset.horse}"]`)?.value || '';
+                const horseAge = entry.querySelector(`input[name="horseAge${entry.dataset.horse}"]`)?.value || '';
+                const color = entry.querySelector(`input[name="horseColor${entry.dataset.horse}"]`)?.value || '';
+                const reg = entry.querySelector(`input[name="horseReg${entry.dataset.horse}"]`)?.value || '';
+
+                if (name) {
+                    horsesText += `\nHorse #${num}:\n`;
+                    horsesText += `  Name: ${name}\n`;
+                    if (breed) horsesText += `  Breed: ${breed}\n`;
+                    if (horseAge) horsesText += `  Age: ${horseAge}\n`;
+                    if (color) horsesText += `  Color: ${color}\n`;
+                    if (reg) horsesText += `  Registration: ${reg}\n`;
+                }
+            });
+
+            // Get classes
+            const selectedClasses = [];
+            document.querySelectorAll('input[name="classes"]:checked').forEach(cb => {
+                selectedClasses.push(cb.parentElement.querySelector('span').textContent);
+            });
+
+            // Calculate fees
+            const classFee = selectedClasses.length * 10;
+            const stallFee = parseInt(stalls) * 25;
+            const total = classFee + stallFee;
+
+            // Build email
+            const subject = `HORSE SHOW REGISTRATION - ${exhibitorName}`;
+
+            let body = `CCEx Light Horse Show 2025 Registration\n`;
+            body += `========================================\n\n`;
+            body += `EXHIBITOR INFORMATION\n`;
+            body += `---------------------\n`;
+            body += `Name: ${exhibitorName}\n`;
+            body += `Email: ${email}\n`;
+            body += `Phone: ${phone}\n`;
+            if (age) body += `Age: ${age}\n`;
+            body += `Address:\n${address}\n`;
+            if (club) body += `Club/Organization: ${club}\n`;
+            if (experience) body += `Experience Level: ${experience}\n`;
+
+            body += `\nHORSE INFORMATION\n`;
+            body += `-----------------`;
+            body += horsesText;
+
+            body += `\nCLASS ENTRIES\n`;
+            body += `-------------\n`;
+            if (selectedClasses.length > 0) {
+                selectedClasses.forEach(c => body += `- ${c}\n`);
+            } else {
+                body += `No classes selected\n`;
+            }
+
+            body += `\nSTABLING\n`;
+            body += `--------\n`;
+            body += `Stalls requested: ${stalls}\n`;
+            if (specialNeeds) body += `Special needs: ${specialNeeds}\n`;
+
+            body += `\nFEE SUMMARY\n`;
+            body += `-----------\n`;
+            body += `Classes (${selectedClasses.length} x $10): $${classFee}\n`;
+            body += `Stalls (${stalls} x $25): $${stallFee}\n`;
+            body += `TOTAL DUE: $${total}\n`;
+
+            if (comments) {
+                body += `\nCOMMENTS\n`;
+                body += `--------\n`;
+                body += `${comments}\n`;
+            }
+
+            body += `\n========================================\n`;
+            body += `Submitted via cumberlandcountyex.com`;
+
+            // Create mailto link
+            const mailtoLink = `mailto:livestock@ccex.ca?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoLink;
+
+            alert('Your email client will open with the registration details. Please send the email to complete your registration.\n\nIf your email client doesn\'t open, please email livestock@ccex.ca directly with your registration information.');
+        });
+
+        // Initialize fees
+        updateFees();
+    </script>
+</body>
+</html>

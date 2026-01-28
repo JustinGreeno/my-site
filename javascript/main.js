@@ -241,7 +241,7 @@ function initScrollAnimations() {
 }
 
 /**
- * Initialize parallax scrolling effect
+ * Initialize parallax scrolling effect for elements
  */
 function initParallax() {
     const parallaxElements = document.querySelectorAll('.parallax-bg');
@@ -267,11 +267,48 @@ function initParallax() {
     }, { passive: true });
 }
 
+/**
+ * Initialize background parallax effect
+ * Creates a parallax between the tiled background and content
+ */
+function initBackgroundParallax() {
+    let ticking = false;
+
+    // Create a style element for dynamic background position
+    const style = document.createElement('style');
+    style.id = 'parallax-bg-style';
+    document.head.appendChild(style);
+
+    function updateBackgroundParallax() {
+        const scrollY = window.pageYOffset;
+        const parallaxSpeed = 0.15; // Background moves at 15% of scroll speed (slower)
+        const translateY = scrollY * parallaxSpeed;
+
+        style.textContent = `
+            body::before {
+                transform: translateY(-${translateY}px);
+            }
+        `;
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(updateBackgroundParallax);
+            ticking = true;
+        }
+    }, { passive: true });
+
+    // Initial call
+    updateBackgroundParallax();
+}
+
 // Run on page load
 document.addEventListener('DOMContentLoaded', () => {
     setActiveNavItem();
     initScrollAnimations();
     initParallax();
+    initBackgroundParallax();
 });
 
 // Console greeting

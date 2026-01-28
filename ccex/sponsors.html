@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsors | Cumberland County Exhibition</title>
+    <meta name="description" content="Thank you to our generous sponsors who make the Cumberland County Exhibition possible!">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/art/sign logo.png">
+    <style>
+        .sponsor-tier {
+            margin: 2rem 0;
+        }
+        .sponsor-tier-header {
+            background: linear-gradient(90deg, var(--wood-dark), var(--wood-medium));
+            color: var(--straw-light);
+            padding: 1rem 1.5rem;
+            font-family: 'Alfa Slab One', serif;
+            font-size: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            text-align: center;
+            border: 3px solid var(--rope-tan);
+        }
+        .sponsor-tier-header.platinum {
+            background: linear-gradient(135deg, #E5E4E2 0%, #9C9C9C 50%, #E5E4E2 100%);
+            color: var(--wood-dark);
+            border-color: #9C9C9C;
+        }
+        .sponsor-tier-header.gold {
+            background: linear-gradient(135deg, #FFD700 0%, #DAA520 50%, #FFD700 100%);
+            color: var(--wood-dark);
+            border-color: #DAA520;
+        }
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .sponsor-card {
+            background: var(--cream);
+            border: 4px solid var(--wood-medium);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 6px 20px var(--shadow-medium);
+            transition: all 0.3s ease;
+        }
+        .sponsor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px var(--shadow-dark);
+            border-color: var(--straw);
+        }
+        .sponsor-card.platinum {
+            border-color: #9C9C9C;
+            background: linear-gradient(145deg, #f8f8f8, var(--cream));
+        }
+        .sponsor-card.gold {
+            border-color: #DAA520;
+            background: linear-gradient(145deg, #fffef0, var(--cream));
+        }
+        .sponsor-name {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--wood-dark);
+            margin-bottom: 0.5rem;
+        }
+        .sponsor-location {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+        .sponsor-logo-placeholder {
+            width: 150px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background: var(--cream-dark);
+            border: 2px dashed var(--rope-tan);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="images/art/sign logo.png" alt="CCEx" class="logo-img">
+                <span class="logo-tagline">Cumberland County Exhibition</span>
+            </a>
+            <nav>
+                <div class="hamburger" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="schedule-2025.html">Schedule</a></li>
+                    <li class="has-dropdown">
+                        <a href="#">Info</a>
+                        <ul class="dropdown">
+                            <li><a href="activities.html">Kids Activities</a></li>
+                            <li><a href="exhibitors.html">Exhibitors</a></li>
+                            <li><a href="vendors.html">Vendors</a></li>
+                            <li><a href="forms.html">Forms</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="merch.html">Merch</a></li>
+                    <li><a href="photos.html">Photos</a></li>
+                    <li class="has-dropdown">
+                        <a href="#" class="active">About</a>
+                        <ul class="dropdown">
+                            <li><a href="sponsors.html" class="active">Sponsors</a></li>
+                            <li><a href="members.html">Board</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Our Sponsors</h1>
+            <p class="tagline">Thank You for Your Support!</p>
+        </section>
+
+        <div class="container">
+            <section class="panel animate-in section-decorated">
+                <div class="animal-head left">
+                    <img src="images/art/cow facing right.png" alt="">
+                </div>
+                <div class="animal-head right">
+                    <img src="images/art/horse facing left.png" alt="">
+                </div>
+                <div class="horseshoe">
+                    <img src="images/art/horse shoe.png" alt="">
+                </div>
+                <h2>Supporting Our Community</h2>
+                <p>The Cumberland County Exhibition would not be possible without the generous support of our sponsors. These local businesses and organizations help us keep this beloved tradition alive for families throughout the region.</p>
+            </section>
+
+            <!-- Become a Sponsor CTA (Top) -->
+            <div class="sponsor-cta">
+                <h3>Become a 2025 Sponsor!</h3>
+                <p>Join our family of sponsors and help support this cherished community tradition. Sponsorship packages are available at various levels.</p>
+                <a href="images/forms and documents/2024-Sponsorship-Package.pdf" class="btn" target="_blank">Download Sponsorship Package</a>
+            </div>
+
+            <!-- Platinum Sponsors -->
+            <div class="sponsor-tier">
+                <div class="sponsor-tier-header platinum">Platinum Sponsors</div>
+                <div class="sponsors-grid">
+                    <div class="sponsor-card platinum">
+                        <div class="sponsor-logo-placeholder">Logo</div>
+                        <div class="sponsor-name">Municipality of Cumberland</div>
+                        <div class="sponsor-location">Cumberland County, NS</div>
+                    </div>
+                    <div class="sponsor-card platinum">
+                        <div class="sponsor-logo-placeholder">Logo</div>
+                        <div class="sponsor-name">Kubota</div>
+                        <div class="sponsor-location">Agricultural Equipment</div>
+                    </div>
+                    <div class="sponsor-card platinum">
+                        <div class="sponsor-logo-placeholder">Logo</div>
+                        <div class="sponsor-name">Eastern Powersports</div>
+                        <div class="sponsor-location">Amherst, NS</div>
+                    </div>
+                    <div class="sponsor-card platinum">
+                        <div class="sponsor-logo-placeholder">Logo</div>
+                        <div class="sponsor-name">Tantramar Chev</div>
+                        <div class="sponsor-location">Amherst, NS</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gold Sponsors -->
+            <div class="sponsor-tier">
+                <div class="sponsor-tier-header gold">Gold Sponsors</div>
+                <div class="sponsors-grid">
+                    <div class="sponsor-card gold">
+                        <div class="sponsor-logo-placeholder">Logo</div>
+                        <div class="sponsor-name">Casey Concrete</div>
+                        <div class="sponsor-location">Concrete Services</div>
+                    </div>
+                    <div class="sponsor-card gold">
+                        <div class="sponsor-logo-placeholder">Logo</div>
+                        <div class="sponsor-name">Fort Equipment</div>
+                        <div class="sponsor-location">Equipment Sales & Service</div>
+                    </div>
+                    <div class="sponsor-card gold">
+                        <div class="sponsor-logo-placeholder">Logo</div>
+                        <div class="sponsor-name">Cross Roads</div>
+                        <div class="sponsor-location">Cumberland County</div>
+                    </div>
+                    <div class="sponsor-card gold">
+                        <div class="sponsor-logo-placeholder">Logo</div>
+                        <div class="sponsor-name">Mervil Rushton Building Movers</div>
+                        <div class="sponsor-location">Building & Moving Services</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Sponsors -->
+            <div class="sponsor-tier">
+                <div class="sponsor-tier-header">Event Sponsors</div>
+                <div class="sponsors-grid">
+                    <div class="sponsor-card">
+                        <div class="sponsor-name">Baxter Trucking</div>
+                        <div class="sponsor-location">Barrel Racing Events</div>
+                    </div>
+                    <div class="sponsor-card">
+                        <div class="sponsor-name">Royal LePage Cumberland Realty</div>
+                        <div class="sponsor-location">Pole Bending & Western Pleasure</div>
+                    </div>
+                    <div class="sponsor-card">
+                        <div class="sponsor-name">Carters Sports Cresting</div>
+                        <div class="sponsor-location">Equitation Classes</div>
+                    </div>
+                    <div class="sponsor-card">
+                        <div class="sponsor-name">Tony Mitchell Royal LePage</div>
+                        <div class="sponsor-location">Western Pleasure Stake</div>
+                    </div>
+                    <div class="sponsor-card">
+                        <div class="sponsor-name">Maltby Stables</div>
+                        <div class="sponsor-location">English Pleasure Stake</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider-rope"></div>
+
+            <!-- Become a Sponsor (Bottom) -->
+            <div class="sponsor-cta">
+                <h3>Ready to Become a Sponsor?</h3>
+                <p>Download our sponsorship package for details on levels and benefits, or contact us directly to discuss opportunities!</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="images/forms and documents/2024-Sponsorship-Package.pdf" class="btn" target="_blank">Download Sponsorship Package</a>
+                    <a href="contact.html" class="btn" style="background: var(--cream); color: var(--barn-red);">Contact Us</a>
+                </div>
+            </div>
+
+            <!-- Sponsor Benefits -->
+            <section class="panel">
+                <h2>Sponsorship Benefits</h2>
+                <div class="info-cards">
+                    <div class="info-card">
+                        <h3>Brand Visibility</h3>
+                        <p>Your logo on signage, programs, and promotional materials seen by thousands of fair-goers.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Community Connection</h3>
+                        <p>Associate your business with a beloved local tradition and show your community support.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Event Recognition</h3>
+                        <p>PA announcements, dedicated event naming, and social media features.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <img src="images/art/sign logo.png" alt="CCEx" class="footer-logo">
+                <div>
+                    <span class="footer-title">Cumberland County Exhibition</span>
+                    <span class="footer-address">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Oxford+NS+Exhibition+Grounds" target="_blank">
+                            Exhibition Grounds, Oxford, NS
+                        </a>
+                    </span>
+                </div>
+            </div>
+            <div class="footer-center">
+                <div class="countdown-container">
+                    <div class="countdown-label">Countdown to CCEx 2026</div>
+                    <div class="countdown-timer" id="countdown">
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="days">---</span>
+                            <span class="countdown-unit">Days</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="hours">--</span>
+                            <span class="countdown-unit">Hours</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="mins">--</span>
+                            <span class="countdown-unit">Mins</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="secs">--</span>
+                            <span class="countdown-unit">Secs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-right">
+                <p>&copy; 2025 Cumberland County Exhibition</p>
+                <p class="footer-credit">Website by <a href="../html/index.html">Justin Greeno</a></p>
+            </div>
+        </div>
+        <div class="footer-secret">
+            <a href="../html/index.html" title="JustinGreeno.dev">J</a>
+        </div>
+    </footer>
+
+    <script>
+        // Parallax background
+        (function() {
+            const style = document.createElement('style');
+            style.id = 'parallax-style';
+            document.head.appendChild(style);
+
+            function updateParallax() {
+                const scrollY = window.pageYOffset;
+                const translateY = scrollY * 0.15;
+                style.textContent = `body::before { transform: translateY(-${translateY}px); }`;
+            }
+
+            window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), { passive: true });
+            updateParallax();
+        })();
+    </script>
+</body>
+</html>

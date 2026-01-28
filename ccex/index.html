@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cumberland County Exhibition | CCEx</title>
+    <meta name="description" content="Cumberland County Exhibition - Nova Scotia's Premier Agricultural Fair. Join us for livestock shows, 4-H competitions, midway rides, and family fun!">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/art/sign logo.png">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="images/art/sign logo.png" alt="CCEx" class="logo-img">
+                <span class="logo-tagline">Cumberland County Exhibition</span>
+            </a>
+            <nav>
+                <div class="hamburger" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul id="navMenu">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="schedule-2025.html">Schedule</a></li>
+                    <li class="has-dropdown">
+                        <a href="#">Info</a>
+                        <ul class="dropdown">
+                            <li><a href="activities.html">Kids Activities</a></li>
+                            <li><a href="exhibitors.html">Exhibitors</a></li>
+                            <li><a href="vendors.html">Vendors</a></li>
+                            <li><a href="forms.html">Forms</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="merch.html">Merch</a></li>
+                    <li><a href="photos.html">Photos</a></li>
+                    <li class="has-dropdown">
+                        <a href="#">About</a>
+                        <ul class="dropdown">
+                            <li><a href="sponsors.html">Sponsors</a></li>
+                            <li><a href="members.html">Board</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Full width search bar -->
+    <div class="search-bar-container">
+        <div class="search-bar">
+            <input type="text" placeholder="Search forms, events, information..." id="siteSearch">
+            <button onclick="performSearch()">Search</button>
+        </div>
+    </div>
+
+    <main>
+        <section class="hero">
+            <img src="images/art/sign logo.png" alt="CCEx" class="hero-logo">
+            <h1>Cumberland County Exhibition</h1>
+            <p class="tagline">Nova Scotia's Premier Agricultural Fair</p>
+            <div class="date-badge swing">August 22-25 & Aug 30 - Sept 1, 2025</div>
+        </section>
+
+        <div class="container">
+            <!-- Welcome Panel -->
+            <section class="panel animate-in section-decorated">
+                <div class="animal-head left">
+                    <img src="images/art/cow facing right.png" alt="">
+                </div>
+                <div class="animal-head right">
+                    <img src="images/art/horse facing left.png" alt="">
+                </div>
+                <div class="horseshoe">
+                    <img src="images/art/horse shoe.png" alt="">
+                </div>
+                <h2>Welcome to the Fair!</h2>
+                <p>For over a century, the Cumberland County Exhibition has brought together families, farmers, and fun-seekers from across Nova Scotia. Our annual agricultural fair celebrates the heart of rural life with livestock shows, 4-H competitions, homemade treats, and entertainment for all ages.</p>
+                <p>From the smell of fresh hay to the excitement of the midway, CCEx is where memories are made and traditions are kept alive. Join us this fall for another unforgettable celebration of our agricultural heritage!</p>
+            </section>
+
+            <!-- Info Cards -->
+            <div class="info-cards">
+                <div class="info-card">
+                    <h3>Livestock Shows</h3>
+                    <p>Cattle, horses, sheep, goats, poultry and more! Watch our farmers showcase their finest animals.</p>
+                </div>
+                <div class="info-card">
+                    <h3>4-H Competitions</h3>
+                    <p>Young farmers demonstrate their skills in showmanship, judging, and agricultural knowledge.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Midway & Rides</h3>
+                    <p>Thrilling rides, carnival games, and family fun for visitors of all ages!</p>
+                </div>
+            </div>
+
+            <div class="divider-rope"></div>
+
+            <!-- Fair Highlights -->
+            <section class="panel-wooden section-decorated">
+                <div class="animal-head left">
+                    <img src="images/art/chicken facing right.png" alt="">
+                </div>
+                <div class="animal-head right">
+                    <img src="images/art/horse facing left.png" alt="">
+                </div>
+                <div class="horseshoe">
+                    <img src="images/art/horse shoe.png" alt="">
+                </div>
+                <h2>Fair Highlights</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h3>Heavy Horse Pull</h3>
+                        <p>Watch powerful draft horses compete in this beloved tradition</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Demolition Derby</h3>
+                        <p>High-octane crashes and excitement under the lights</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Agricultural Hall</h3>
+                        <p>Prize-winning vegetables, preserves, and crafts on display</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Live Entertainment</h3>
+                        <p>Local bands and performers on the main stage</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Petting Zoo</h3>
+                        <p>Get up close with friendly farm animals</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Food Court</h3>
+                        <p>Fair favourites from fries to cotton candy</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="divider-rope"></div>
+
+            <!-- History Panel -->
+            <section class="panel-rope section-decorated">
+                <div class="animal-head left">
+                    <img src="images/art/cow facing right.png" alt="">
+                </div>
+                <div class="animal-head right">
+                    <img src="images/art/horse facing left.png" alt="">
+                </div>
+                <div class="horseshoe">
+                    <img src="images/art/horse shoe.png" alt="">
+                </div>
+                <h2>A Proud Tradition</h2>
+                <p>The Cumberland County Exhibition has been a cornerstone of community life in Nova Scotia for generations. What started as a simple gathering of local farmers has grown into one of the province's most anticipated annual events.</p>
+                <p>Each year, thousands of visitors walk through our gates to experience the authentic charm of a traditional agricultural fair. Whether you're a lifelong resident or a first-time visitor, the CCEx welcomes you to be part of our story.</p>
+                <div class="text-center mt-3">
+                    <a href="schedule-2025.html" class="btn">See Full Event Schedule</a>
+                </div>
+            </section>
+
+            <!-- Quick Info -->
+            <section class="panel section-decorated">
+                <div class="animal-head left">
+                    <img src="images/art/chicken facing right.png" alt="">
+                </div>
+                <div class="animal-head right">
+                    <img src="images/art/horse facing left.png" alt="">
+                </div>
+                <div class="horseshoe">
+                    <img src="images/art/horse shoe.png" alt="">
+                </div>
+                <h2>Plan Your Visit</h2>
+                <div class="info-cards">
+                    <div class="info-card">
+                        <h3>Location</h3>
+                        <p>Cumberland County Exhibition Grounds<br>Oxford, Nova Scotia</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Admission</h3>
+                        <p>Adults: $10<br>Children (6-12): $5<br>Under 6: Free</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Parking</h3>
+                        <p>Free parking available on grounds. Accessible parking near main entrance.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA -->
+            <section class="panel-wooden text-center section-decorated">
+                <div class="animal-head left">
+                    <img src="images/art/cow facing right.png" alt="">
+                </div>
+                <div class="animal-head right">
+                    <img src="images/art/horse facing left.png" alt="">
+                </div>
+                <div class="horseshoe">
+                    <img src="images/art/horse shoe.png" alt="">
+                </div>
+                <h2>Get Involved!</h2>
+                <p>The CCEx is run by dedicated volunteers who love our community. Whether you want to exhibit, compete, volunteer, or sponsor, there's a place for you at the fair!</p>
+                <div class="mt-3">
+                    <a href="contact.html" class="btn">Contact Us</a>
+                    <a href="members.html" class="btn btn-outline" style="margin-left: 1rem;">Meet Our Board</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <img src="images/art/sign logo.png" alt="CCEx" class="footer-logo">
+                <div>
+                    <span class="footer-title">Cumberland County Exhibition</span>
+                    <span class="footer-address">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Oxford+NS+Exhibition+Grounds" target="_blank">
+                            Exhibition Grounds, Oxford, NS
+                        </a>
+                    </span>
+                </div>
+            </div>
+            <div class="footer-center">
+                <div class="countdown-container">
+                    <div class="countdown-label">Countdown to CCEx 2026</div>
+                    <div class="countdown-timer" id="countdown">
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="days">---</span>
+                            <span class="countdown-unit">Days</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="hours">--</span>
+                            <span class="countdown-unit">Hours</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="mins">--</span>
+                            <span class="countdown-unit">Mins</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="secs">--</span>
+                            <span class="countdown-unit">Secs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-right">
+                <p>&copy; 2025 Cumberland County Exhibition</p>
+                <p class="footer-credit">Website by <a href="../html/index.html">Justin Greeno</a></p>
+            </div>
+        </div>
+        <div class="footer-secret">
+            <a href="../html/index.html" title="JustinGreeno.dev">J</a>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('navMenu');
+            const hamburger = document.querySelector('.hamburger');
+            menu.classList.toggle('mobile-open');
+            hamburger.classList.toggle('active');
+        }
+
+        // Dropdown toggle for mobile
+        document.querySelectorAll('.has-dropdown > a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 1024) {
+                    e.preventDefault();
+                    this.parentElement.classList.toggle('open');
+                }
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const nav = document.querySelector('nav');
+            const hamburger = document.querySelector('.hamburger');
+            if (!nav.contains(e.target) && window.innerWidth <= 1024) {
+                document.getElementById('navMenu').classList.remove('mobile-open');
+                hamburger.classList.remove('active');
+            }
+        });
+
+        // Search function
+        function performSearch() {
+            const query = document.getElementById('siteSearch').value.trim().toLowerCase();
+            if (query) {
+                // Redirect to forms page with search query for documents
+                window.location.href = 'forms.html?search=' + encodeURIComponent(query);
+            }
+        }
+
+        // Allow Enter key to trigger search
+        document.getElementById('siteSearch').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        // Parallax background
+        (function() {
+            const style = document.createElement('style');
+            style.id = 'parallax-style';
+            document.head.appendChild(style);
+
+            function updateParallax() {
+                const scrollY = window.pageYOffset;
+                const translateY = scrollY * 0.15;
+                style.textContent = `body::before { transform: translateY(-${translateY}px); }`;
+            }
+
+            window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), { passive: true });
+            updateParallax();
+        })();
+
+        // Scroll-triggered fade-in animations
+        (function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -100px 0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all panels and cards
+            document.querySelectorAll('.panel, .panel-wooden, .panel-rope, .info-card, .feature-item').forEach(el => {
+                el.classList.add('fade-in-section');
+                observer.observe(el);
+            });
+        })();
+
+        // Countdown timer to Aug 22, 2026
+        (function() {
+            const targetDate = new Date('August 22, 2026 00:00:00').getTime();
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+
+                if (distance < 0) {
+                    document.getElementById('countdown').innerHTML = '<span style="color: var(--straw-light);">CCEx 2026 is HERE!</span>';
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const secs = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = days;
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('mins').textContent = mins.toString().padStart(2, '0');
+                document.getElementById('secs').textContent = secs.toString().padStart(2, '0');
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        })();
+
+        // Random animal selection for decorations
+        (function() {
+            const animalsRight = [
+                'images/art/cow facing right.png',
+                'images/art/horse facing right.png',
+                'images/art/chicken facing right.png',
+                'images/art/sheep head facing right.png'
+            ];
+            const animalsLeft = [
+                'images/art/horse facing left.png',
+                'images/art/chicken facing left.png'
+            ];
+
+            function getRandomAnimal(arr) {
+                return arr[Math.floor(Math.random() * arr.length)];
+            }
+
+            // Randomize left animals (facing right)
+            document.querySelectorAll('.animal-head.left img').forEach(img => {
+                img.src = getRandomAnimal(animalsRight);
+            });
+
+            // Randomize right animals (facing left)
+            document.querySelectorAll('.animal-head.right img').forEach(img => {
+                img.src = getRandomAnimal(animalsLeft);
+            });
+        })();
+    </script>
+</body>
+</html>

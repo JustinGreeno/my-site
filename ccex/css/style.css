@@ -1,0 +1,2360 @@
+/* Cumberland County Exhibition - Country Fair Theme */
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Roboto+Slab:wght@400;500;600;700&family=Lato:wght@400;600;700&display=swap');
+
+:root {
+    /* Wood & Earth Tones */
+    --wood-dark: #3d2914;
+    --wood-medium: #5c3d1e;
+    --wood-light: #8b5a2b;
+    --wood-grain: #6b4423;
+
+    /* Straw & Hay */
+    --straw: #d4a84b;
+    --straw-light: #e8c87a;
+    --hay: #c9a227;
+    --wheat: #deb887;
+
+    /* Earth & Barn */
+    --barn-red: #8b2500;
+    --barn-red-light: #a63d1f;
+    --earth-brown: #5c4033;
+    --soil: #3e2723;
+
+    /* Sky & Grass */
+    --sky-blue: #87ceeb;
+    --grass-green: #4a7c23;
+    --pasture: #6b8e23;
+
+    /* Cream & White */
+    --cream: #faf0dc;
+    --cream-dark: #f5e6c8;
+    --parchment: #f4e4bc;
+    --white: #ffffff;
+
+    /* Rope */
+    --rope-tan: #c4a35a;
+    --rope-dark: #a08040;
+
+    /* Text */
+    --text-dark: #2c1810;
+    --text-medium: #4a3728;
+    --text-light: #6b5344;
+
+    /* Shadows - EXTRA HARD (Dirty/Dusty) */
+    --shadow-soft: rgba(0, 0, 0, 0.45);
+    --shadow-medium: rgba(0, 0, 0, 0.65);
+    --shadow-dark: rgba(0, 0, 0, 0.85);
+    --shadow-warm: rgba(61, 41, 20, 0.6);
+    --shadow-dust: rgba(92, 64, 51, 0.4);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.1rem;
+    background:
+        linear-gradient(180deg,
+            rgba(180, 140, 100, 0.85) 0%,
+            rgba(160, 120, 80, 0.88) 30%,
+            rgba(140, 100, 60, 0.85) 70%,
+            rgba(120, 80, 50, 0.88) 100%
+        ),
+        url('../images/art/best floor.png');
+    background-size: auto, 400px;
+    background-attachment: fixed;
+    color: var(--text-dark);
+    min-height: 100vh;
+    line-height: 1.8;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Subtle lighting overlay for wood background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(ellipse at top center, rgba(255, 240, 200, 0.15) 0%, transparent 40%),
+        radial-gradient(ellipse at bottom center, rgba(0, 0, 0, 0.2) 0%, transparent 40%);
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* Subtle texture overlay */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='hay'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23hay)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* ============================================
+   HEADER - Wooden Barn Style
+   ============================================ */
+header {
+    background:
+        linear-gradient(180deg,
+            var(--wood-dark) 0%,
+            var(--wood-medium) 15%,
+            var(--wood-light) 50%,
+            var(--wood-medium) 85%,
+            var(--wood-dark) 100%
+        );
+    padding: 0.5rem 0 0 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow:
+        0 8px 30px var(--shadow-dark),
+        inset 0 2px 0 rgba(255,255,255,0.1);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: nowrap;
+    gap: 1rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--cream);
+    padding-bottom: 0.5rem;
+    flex-shrink: 0;
+}
+
+/* Logo image - no box, stands alone, BIGGER */
+.logo-img {
+    height: 100px;
+    width: auto;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    filter: drop-shadow(4px 5px 8px rgba(0, 0, 0, 0.8));
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+.logo-text {
+    font-family: 'Alfa Slab One', serif;
+    font-size: 1.8rem;
+    color: var(--straw-light);
+    text-shadow:
+        3px 3px 0 var(--wood-dark),
+        -1px -1px 0 var(--wood-dark);
+    letter-spacing: 1px;
+}
+
+.logo-tagline {
+    font-family: 'Roboto Slab', serif;
+    font-size: 0.85rem;
+    color: var(--cream);
+    opacity: 0.9;
+    display: block;
+    margin-top: -5px;
+}
+
+/* Navigation - Saloon Style Tabs aligned to bottom right */
+nav {
+    align-self: flex-end;
+    margin-left: auto;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 0.15rem;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    margin-bottom: -3px;
+    position: relative;
+}
+
+/* Dropdown container */
+nav li.has-dropdown {
+    position: relative;
+}
+
+nav li.has-dropdown > a::after {
+    content: ' ▾';
+    font-size: 0.7rem;
+    margin-left: 0.3rem;
+}
+
+/* Dropdown menu */
+nav .dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: auto;
+    min-width: 180px;
+    background: linear-gradient(180deg, var(--wood-medium), var(--wood-dark));
+    border: 3px solid var(--rope-tan);
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 8px 25px var(--shadow-dark);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 100;
+    padding: 0.5rem 0;
+}
+
+nav li.has-dropdown:hover .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+nav .dropdown li {
+    margin: 0;
+}
+
+nav .dropdown a {
+    display: block;
+    padding: 0.6rem 1rem;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    font-size: 0.9rem;
+    color: var(--cream);
+    text-shadow: 1px 1px 0 var(--wood-dark);
+    box-shadow: none;
+}
+
+nav .dropdown a:hover {
+    background: rgba(212, 168, 75, 0.3);
+    margin-bottom: 0;
+    border: none;
+}
+
+nav .dropdown a.active {
+    background: var(--straw);
+    color: var(--wood-dark);
+    text-shadow: none;
+    margin-bottom: 0;
+}
+
+nav a {
+    display: block;
+    padding: 0.5rem 0.7rem;
+    font-family: 'Alfa Slab One', serif;
+    font-size: 0.75rem;
+    color: var(--cream);
+    text-decoration: none;
+    background:
+        linear-gradient(180deg,
+            rgba(139, 90, 43, 0.95) 0%,
+            rgba(92, 61, 30, 0.98) 50%,
+            rgba(61, 41, 20, 0.95) 100%
+        );
+    border: 3px solid var(--rope-tan);
+    border-bottom: 3px solid var(--cream);
+    border-radius: 8px 8px 0 0;
+    transition: all 0.2s ease;
+    text-shadow: 1px 1px 0 var(--wood-dark);
+    position: relative;
+    box-shadow:
+        inset 0 2px 0 rgba(255,255,255,0.1),
+        0 -2px 8px rgba(0,0,0,0.3);
+    white-space: nowrap;
+}
+
+nav a::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    right: 3px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    border-radius: 2px;
+}
+
+nav a:hover {
+    background:
+        linear-gradient(180deg,
+            rgba(180, 120, 60, 0.98) 0%,
+            rgba(139, 90, 43, 0.98) 50%,
+            rgba(92, 61, 30, 0.98) 100%
+        );
+    margin-bottom: 2px;
+    border-color: var(--straw);
+    border-bottom-color: var(--cream);
+}
+
+nav a.active {
+    background:
+        linear-gradient(180deg,
+            var(--straw) 0%,
+            var(--straw-light) 50%,
+            var(--hay) 100%
+        );
+    color: var(--wood-dark);
+    text-shadow: none;
+    border-color: var(--rope-dark);
+    border-bottom-color: var(--cream);
+    margin-bottom: 4px;
+    box-shadow:
+        0 -4px 15px var(--shadow-soft),
+        inset 0 2px 0 rgba(255,255,255,0.3);
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 10px;
+    background: linear-gradient(180deg, var(--wood-light), var(--wood-medium));
+    border: 3px solid var(--rope-tan);
+    border-radius: 8px;
+    margin-bottom: -3px;
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: var(--cream);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger:hover span {
+    background: var(--straw);
+}
+
+/* Mobile menu open state */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* ============================================
+   HERO SECTION - Wooden Sign Style
+   ============================================ */
+.hero {
+    text-align: center;
+    padding: 4rem 1rem;
+    background: var(--wood-dark);
+    border-bottom: 10px solid var(--rope-tan);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle monochrome background image */
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        linear-gradient(
+            rgba(61, 41, 20, 0.85),
+            rgba(92, 61, 30, 0.88)
+        ),
+        url('../images/photos/541803018_1240062224816178_6600364531752553213_n.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(100%) sepia(30%);
+    opacity: 0.45;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 4px dashed var(--rope-tan);
+    border-radius: 8px;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-family: 'Alfa Slab One', serif;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    color: var(--straw-light);
+    text-shadow:
+        4px 4px 0 var(--wood-dark),
+        -2px -2px 0 var(--wood-dark),
+        2px -2px 0 var(--wood-dark),
+        -2px 2px 0 var(--wood-dark);
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero .tagline {
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.4rem;
+    color: var(--cream);
+    font-weight: 400;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    position: relative;
+    z-index: 2;
+}
+
+.hero .date-badge {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 1rem 2.5rem;
+    background: var(--barn-red);
+    color: var(--cream);
+    font-family: 'Alfa Slab One', serif;
+    font-size: 1.3rem;
+    border-radius: 8px;
+    border: 4px solid var(--straw);
+    box-shadow: 0 8px 25px var(--shadow-dark);
+    transform: rotate(-2deg);
+    position: relative;
+    z-index: 2;
+}
+
+/* Hero logo - large featured logo on home page - TWICE AS BIG */
+.hero-logo {
+    width: 400px;
+    max-width: 90vw;
+    height: auto;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(6px 8px 15px rgba(0, 0, 0, 0.7));
+    animation: heroLogoFloat 4s ease-in-out infinite;
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes heroLogoFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* ============================================
+   WOODEN SIGN PANELS
+   ============================================ */
+.panel {
+    background: linear-gradient(180deg,
+        var(--cream) 0%,
+        var(--cream-dark) 50%,
+        var(--parchment) 100%
+    );
+    border: 2px solid #333;
+    border-radius: 8px;
+    padding: 2.5rem;
+    margin: 2rem 0;
+    position: relative;
+    box-shadow: 0 8px 30px var(--shadow-medium);
+}
+
+/* Deep shadow for all headings */
+h1, h2 {
+    text-shadow:
+        3px 3px 0 rgba(0, 0, 0, 0.3),
+        5px 5px 10px rgba(0, 0, 0, 0.4);
+}
+
+.panel h2 {
+    font-family: 'Alfa Slab One', serif;
+    color: var(--wood-dark);
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 4px solid var(--straw);
+    position: relative;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.panel h3 {
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.4rem;
+    color: var(--wood-medium);
+    margin: 1.5rem 0 0.75rem;
+}
+
+.panel p {
+    color: var(--text-dark);
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+}
+
+/* Wooden Sign Style Panel - rich wood look */
+.panel-wooden {
+    background:
+        linear-gradient(180deg,
+            rgba(139, 90, 43, 0.95) 0%,
+            rgba(107, 68, 35, 0.98) 30%,
+            rgba(92, 61, 30, 0.95) 70%,
+            rgba(61, 41, 20, 0.98) 100%
+        ),
+        url('../images/art/best floor.png');
+    background-size: cover, cover;
+    background-position: center, center;
+    background-blend-mode: overlay;
+    border: 2px solid #333;
+    border-radius: 8px;
+    padding: 2.5rem;
+    margin: 2rem 0;
+    position: relative;
+    box-shadow: 0 8px 30px var(--shadow-medium);
+}
+
+.panel-wooden h2 {
+    font-family: 'Alfa Slab One', serif;
+    color: var(--straw-light);
+    font-size: 2.4rem;
+    text-shadow: 3px 3px 0 var(--wood-dark);
+    border-bottom: 4px solid var(--straw);
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.panel-wooden h3 {
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.4rem;
+    color: var(--straw);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    margin: 1rem 0 0.5rem;
+}
+
+.panel-wooden p {
+    color: var(--cream);
+    font-size: 1.2rem;
+}
+
+/* Info cards inside wooden panels need light text */
+.panel-wooden .info-card {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: var(--rope-tan);
+}
+
+.panel-wooden .info-card h3 {
+    color: var(--straw-light);
+}
+
+.panel-wooden .info-card p {
+    color: var(--cream);
+}
+
+/* Rope Border Panel - lighter cream */
+.panel-rope {
+    background: linear-gradient(180deg,
+        var(--straw-light) 0%,
+        var(--cream) 50%,
+        var(--straw-light) 100%
+    );
+    border: 2px solid #333;
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 2rem 0;
+    position: relative;
+    box-shadow: 0 8px 30px var(--shadow-medium);
+}
+
+.panel-rope h2 {
+    font-family: 'Alfa Slab One', serif;
+    color: var(--straw-light);
+    font-size: 2.2rem;
+    text-shadow: 2px 2px 0 var(--wood-dark);
+}
+
+.panel-rope p {
+    color: var(--cream);
+}
+
+/* ============================================
+   INFO CARDS - Barn Style
+   ============================================ */
+.info-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.info-card {
+    background: var(--cream);
+    border: 2px solid #333;
+    border-radius: 8px;
+    padding: 1.75rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px var(--shadow-medium);
+    position: relative;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px var(--shadow-dark);
+}
+
+.info-card h3 {
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.5rem;
+    color: var(--wood-dark);
+    margin-bottom: 0.75rem;
+}
+
+.info-card p {
+    color: var(--text-medium);
+    font-size: 1.15rem;
+    line-height: 1.6;
+}
+
+.info-card a {
+    color: var(--barn-red);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.info-card a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================
+   FEATURE GRID - Farm Icons
+   ============================================ */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.feature-item {
+    background: var(--cream);
+    border: 3px solid var(--rope-tan);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px var(--shadow-soft);
+}
+
+.feature-item:hover {
+    transform: translateY(-5px) rotate(1deg);
+    box-shadow: 0 12px 35px var(--shadow-medium);
+    border-color: var(--straw);
+}
+
+.feature-item h3 {
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.3rem;
+    color: var(--wood-dark);
+    margin-bottom: 0.5rem;
+}
+
+.feature-item p {
+    color: var(--text-light);
+    font-size: 1.05rem;
+}
+
+/* ============================================
+   PHOTO CAROUSEL - Endless Scroll
+   ============================================ */
+.carousel-section {
+    background:
+        linear-gradient(145deg, var(--wood-medium), var(--wood-dark));
+    border: 2px solid #333;
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 2rem 0;
+    position: relative;
+    overflow: visible;
+    box-shadow: 0 8px 30px var(--shadow-medium);
+}
+
+.carousel-section h2 {
+    font-family: 'Alfa Slab One', serif;
+    color: var(--straw-light);
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 3px 3px 0 var(--wood-dark);
+}
+
+.carousel-wrapper {
+    position: relative;
+    border-radius: 6px;
+}
+
+/* New carousel structure */
+.carousel-container {
+    position: relative;
+}
+
+.carousel-viewport {
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Carousel navigation arrows */
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+
+.carousel-nav.left {
+    left: -25px;
+}
+
+.carousel-nav.right {
+    right: -25px;
+}
+
+.carousel-nav:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes carouselScroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.carousel-item {
+    flex-shrink: 0;
+    width: 300px;
+    height: 220px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 4px solid var(--rope-tan);
+    box-shadow: 0 8px 30px var(--shadow-dark);
+    background: var(--cream);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 45px var(--shadow-dark);
+    z-index: 5;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Fade edges for carousel */
+.carousel-fade-left,
+.carousel-fade-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.carousel-fade-left {
+    left: 0;
+    background: linear-gradient(90deg, var(--wood-dark) 0%, rgba(61, 41, 20, 0.9) 30%, transparent 100%);
+}
+
+.carousel-fade-right {
+    right: 0;
+    background: linear-gradient(-90deg, var(--wood-dark) 0%, rgba(61, 41, 20, 0.9) 30%, transparent 100%);
+}
+
+/* Speed zones for interactive scroll (optional) */
+/* Hover zones for carousel direction control */
+.carousel-hover-zone {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 25%;
+    z-index: 15;
+    cursor: pointer;
+}
+
+.carousel-hover-zone.left {
+    left: 0;
+    background: linear-gradient(90deg, rgba(61, 41, 20, 0.3) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-hover-zone.right {
+    right: 0;
+    background: linear-gradient(-90deg, rgba(61, 41, 20, 0.3) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-hover-zone:hover {
+    opacity: 1;
+}
+
+/* Legacy speed zones */
+.carousel-speed-zone {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: 15;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.carousel-speed-zone.left {
+    left: 0;
+}
+
+.carousel-speed-zone.right {
+    right: 0;
+}
+
+/* ============================================
+   EVENTS - Timeline Style
+   ============================================ */
+.event-card {
+    background: var(--cream);
+    border: 4px solid var(--wood-medium);
+    border-left: 8px solid var(--barn-red);
+    border-radius: 0 8px 8px 0;
+    padding: 1.5rem 2rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 8px 25px var(--shadow-medium);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.event-card::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    background: var(--barn-red);
+    border: 4px solid var(--straw);
+    border-radius: 50%;
+    box-shadow: 0 4px 10px var(--shadow-medium);
+}
+
+.event-card:hover {
+    transform: translateX(10px);
+    box-shadow: 0 12px 35px var(--shadow-dark);
+}
+
+.event-date {
+    font-family: 'Alfa Slab One', serif;
+    font-size: 1.1rem;
+    color: var(--barn-red);
+    margin-bottom: 0.25rem;
+}
+
+.event-title {
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.5rem;
+    color: var(--wood-dark);
+    margin-bottom: 0.5rem;
+}
+
+.event-desc {
+    color: var(--text-medium);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.event-time {
+    display: inline-block;
+    margin-top: 0.75rem;
+    padding: 0.4rem 1rem;
+    background: var(--straw-light);
+    color: var(--wood-dark);
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* ============================================
+   MEMBER CARDS - Expandable
+   ============================================ */
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.member-card {
+    background: var(--cream);
+    border: 4px solid var(--wood-medium);
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 25px var(--shadow-medium);
+}
+
+.member-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px var(--shadow-dark);
+    border-color: var(--straw);
+}
+
+.member-photo {
+    width: 100%;
+    height: 200px;
+    background: var(--cream-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-bottom: 4px solid var(--rope-tan);
+}
+
+.member-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.member-photo-placeholder {
+    width: 120px;
+    height: 120px;
+    background:
+        linear-gradient(145deg, var(--wood-light), var(--wood-medium));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--cream);
+    border: 4px solid var(--rope-tan);
+}
+
+.member-info {
+    padding: 1.25rem;
+    text-align: center;
+}
+
+.member-name {
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.4rem;
+    color: var(--wood-dark);
+    margin-bottom: 0.25rem;
+}
+
+.member-title {
+    font-size: 1.05rem;
+    color: var(--barn-red);
+    font-weight: 600;
+}
+
+.member-bio {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0 1.25rem;
+    background: var(--parchment);
+    border-top: 0 solid var(--rope-tan);
+}
+
+.member-card.expanded .member-bio {
+    max-height: 500px;
+    padding: 1.25rem;
+    border-top-width: 3px;
+}
+
+.member-bio p {
+    color: var(--text-medium);
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.member-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.member-contact a {
+    color: var(--barn-red);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.member-contact a:hover {
+    text-decoration: underline;
+}
+
+/* Expand indicator */
+.member-expand {
+    padding: 0.5rem;
+    background: var(--straw-light);
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--wood-dark);
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.member-card:hover .member-expand {
+    background: var(--straw);
+}
+
+.member-card.expanded .member-expand {
+    background: var(--barn-red);
+    color: var(--cream);
+}
+
+/* ============================================
+   MODAL - Full Screen Member View
+   ============================================ */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--cream);
+    border: 6px solid var(--wood-medium);
+    border-radius: 12px;
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px var(--shadow-dark);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    background: var(--barn-red);
+    color: var(--cream);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px var(--shadow-medium);
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: var(--wood-dark);
+    transform: scale(1.1);
+}
+
+.modal-photo {
+    width: 100%;
+    height: 300px;
+    background: var(--cream-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 4px solid var(--rope-tan);
+}
+
+.modal-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.modal-body h2 {
+    font-family: 'Alfa Slab One', serif;
+    color: var(--wood-dark);
+    font-size: 2rem;
+    margin-bottom: 0.25rem;
+}
+
+.modal-body .member-title {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.modal-body p {
+    color: var(--text-medium);
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+/* ============================================
+   CONTACT FORM
+   ============================================ */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 600;
+    color: var(--wood-dark);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 1rem;
+    border: 3px solid var(--rope-tan);
+    border-radius: 8px;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.1rem;
+    background: var(--cream);
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--barn-red);
+    box-shadow: 0 0 0 4px rgba(139, 37, 0, 0.15);
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn {
+    display: inline-block;
+    background:
+        linear-gradient(180deg, var(--barn-red-light), var(--barn-red));
+    color: var(--cream);
+    padding: 0.9rem 2.5rem;
+    border: 4px solid var(--straw);
+    border-radius: 8px;
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 6px 20px var(--shadow-medium);
+}
+
+.btn:hover {
+    background:
+        linear-gradient(180deg, var(--wood-light), var(--wood-medium));
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px var(--shadow-dark);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--barn-red);
+    border: 4px solid var(--barn-red);
+}
+
+.btn-outline:hover {
+    background: var(--barn-red);
+    color: var(--cream);
+}
+
+/* ============================================
+   DIVIDERS - Using Rope PNG
+   ============================================ */
+.divider-rope {
+    margin: 3rem 0;
+    height: 2px;
+    background: #333;
+    position: relative;
+}
+
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+    background:
+        linear-gradient(180deg,
+            var(--wood-medium) 0%,
+            var(--wood-dark) 100%
+        );
+    border-top: 2px solid #333;
+    padding: 1rem 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Add padding to main content so footer doesn't cover it */
+main {
+    padding-bottom: 120px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Footer logo - no box */
+.footer-logo {
+    height: 60px;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    filter: drop-shadow(2px 3px 5px rgba(0, 0, 0, 0.7));
+}
+
+.footer-title {
+    font-family: 'Alfa Slab One', serif;
+    font-size: 1.3rem;
+    color: var(--straw-light);
+    display: block;
+}
+
+.footer-address {
+    font-size: 1rem;
+    color: var(--cream);
+}
+
+.footer-address a {
+    color: var(--straw-light);
+    text-decoration: none;
+}
+
+.footer-address a:hover {
+    text-decoration: underline;
+}
+
+.footer-center {
+    text-align: center;
+}
+
+.footer-dates {
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.1rem;
+    color: var(--straw);
+    font-weight: 600;
+}
+
+.footer-right {
+    text-align: right;
+}
+
+.footer-right p {
+    font-size: 1rem;
+    color: var(--cream);
+}
+
+.footer-credit {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.footer-credit a {
+    color: var(--straw-light);
+    text-decoration: none;
+}
+
+.footer-credit a:hover {
+    text-decoration: underline;
+}
+
+.footer-secret {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1000;
+}
+
+.footer-secret a {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: var(--wood-dark);
+    color: var(--straw);
+    text-align: center;
+    line-height: 24px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    border-radius: 4px;
+    text-decoration: none;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+
+.footer-secret a:hover {
+    opacity: 1;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes swing {
+    0%, 100% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.animate-in {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.swing {
+    animation: swing 3s ease-in-out infinite;
+    transform-origin: top center;
+}
+
+/* Scroll-triggered fade animations */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.fade-in-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Staggered delays */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+
+/* ============================================
+   GLASS SHINE EFFECT ON IMAGES
+   ============================================ */
+.glass-shine {
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-shine::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0) 20%,
+        rgba(255, 255, 255, 0.4) 50%,
+        rgba(255, 255, 255, 0) 80%,
+        transparent 100%
+    );
+    transform: skewX(-25deg);
+    transition: left 0.6s ease;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.glass-shine:hover::before {
+    left: 150%;
+}
+
+/* Glass frame effect */
+.glass-frame {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow:
+        inset 0 0 30px rgba(255, 255, 255, 0.1),
+        0 10px 40px var(--shadow-dark);
+}
+
+.glass-frame::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.15) 0%,
+        transparent 50%,
+        rgba(0, 0, 0, 0.1) 100%
+    );
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Apply glass shine to carousel items and member photos */
+.carousel-item,
+.member-photo,
+.info-card img,
+.feature-item img {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-item::before,
+.member-photo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0) 20%,
+        rgba(255, 255, 255, 0.35) 50%,
+        rgba(255, 255, 255, 0) 80%,
+        transparent 100%
+    );
+    transform: skewX(-25deg);
+    transition: left 0.7s ease;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.carousel-item:hover::before,
+.member-photo:hover::before {
+    left: 150%;
+}
+
+/* Subtle glass reflection overlay on images */
+.carousel-item::after,
+.member-photo::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        160deg,
+        rgba(255, 255, 255, 0.12) 0%,
+        transparent 40%,
+        transparent 60%,
+        rgba(0, 0, 0, 0.08) 100%
+    );
+    pointer-events: none;
+    z-index: 3;
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+.text-center { text-align: center; }
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+
+/* ============================================
+   RESPONSIVE - MOBILE FIRST
+   ============================================ */
+
+/* Tablet and below - show hamburger */
+@media (max-width: 1024px) {
+    .hamburger {
+        display: flex;
+    }
+
+    nav {
+        position: relative;
+    }
+
+    nav ul {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        flex-direction: column;
+        background: linear-gradient(180deg, var(--wood-medium), var(--wood-dark));
+        border: 4px solid var(--rope-tan);
+        border-radius: 0 0 12px 12px;
+        padding: 1rem;
+        gap: 0.5rem;
+        min-width: 220px;
+        box-shadow: 0 15px 40px var(--shadow-dark);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: all 0.3s ease;
+        z-index: 1000;
+    }
+
+    nav ul.mobile-open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    nav li {
+        margin-bottom: 0;
+    }
+
+    nav a {
+        border-radius: 8px;
+        border: 2px solid var(--rope-tan);
+        margin-bottom: 0;
+        font-size: 0.9rem;
+        padding: 0.7rem 1rem;
+        text-align: center;
+    }
+
+    nav a:hover,
+    nav a.active {
+        margin-bottom: 0;
+    }
+
+    /* Dropdown becomes expanded in mobile */
+    nav li.has-dropdown > a::after {
+        content: ' +';
+    }
+
+    nav .dropdown {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0.5rem 0 0 1rem;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    nav li.has-dropdown.open .dropdown {
+        max-height: 500px;
+    }
+
+    nav li.has-dropdown.open > a::after {
+        content: ' −';
+    }
+
+    nav .dropdown a {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.8rem;
+        background: rgba(0,0,0,0.2);
+        border-radius: 6px;
+        margin-bottom: 0.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    .logo-text {
+        font-size: 1.5rem;
+    }
+
+    .logo-tagline {
+        font-size: 0.75rem;
+    }
+
+    .hero h1 {
+        font-size: clamp(1.8rem, 8vw, 3rem);
+    }
+
+    .hero-logo {
+        width: 280px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+    }
+
+    .footer-left,
+    .footer-right {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .footer-left {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .countdown-timer {
+        gap: 0.5rem;
+    }
+
+    .countdown-number {
+        font-size: 1.1rem;
+    }
+
+    .panel {
+        padding: 1.5rem;
+    }
+
+    .search-bar {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .search-bar input {
+        border-radius: 25px;
+        border-right: 3px solid var(--rope-tan);
+    }
+
+    .search-bar button {
+        border-radius: 25px;
+        width: 100%;
+    }
+
+    main {
+        padding-bottom: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-img {
+        height: 60px;
+    }
+
+    .logo-tagline {
+        display: none;
+    }
+
+    .hero-logo {
+        width: 200px;
+    }
+
+    .hero .date-badge {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+    }
+
+    .panel {
+        padding: 1.25rem;
+        margin: 1.5rem 0;
+    }
+
+    .panel h2 {
+        font-size: 1.6rem;
+    }
+
+    .info-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .countdown-timer {
+        flex-wrap: wrap;
+    }
+
+    main {
+        padding-bottom: 250px;
+    }
+}
+
+/* ============================================
+   ANIMAL HEAD DECORATIONS
+   ============================================ */
+.section-decorated {
+    position: relative;
+}
+
+.animal-head {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    z-index: 10;
+    filter: drop-shadow(5px 6px 8px rgba(0, 0, 0, 0.8));
+    transition: transform 0.3s ease;
+}
+
+.animal-head img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+/* LEFT side animals - positioned at TOP LEFT corner */
+.animal-head.left {
+    left: -35px;
+    top: -35px;
+    transform: scaleX(1);
+}
+
+/* RIGHT side animals - positioned at TOP RIGHT corner */
+.animal-head.right {
+    right: -35px;
+    top: -35px;
+    transform: scaleX(1);
+}
+
+/* Slow gentle wiggle animation */
+@keyframes animalWiggle {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(2deg);
+    }
+    75% {
+        transform: rotate(-2deg);
+    }
+}
+
+.animal-head.left {
+    animation: animalWiggle 3s ease-in-out infinite;
+}
+
+.animal-head.right {
+    animation: animalWiggle 3s ease-in-out infinite;
+    animation-delay: 1.5s;
+}
+
+/* Hover effect on section makes animals wiggle more */
+.section-decorated:hover .animal-head.left {
+    animation: animalWiggle 1s ease-in-out infinite;
+}
+
+.section-decorated:hover .animal-head.right {
+    animation: animalWiggle 1s ease-in-out infinite;
+}
+
+/* Smaller animal heads for cards */
+.animal-head.small {
+    width: 45px;
+    height: 45px;
+}
+
+.animal-head.small.left {
+    left: -15px;
+    top: 10px;
+}
+
+.animal-head.small.right {
+    right: -15px;
+    top: 10px;
+}
+
+/* ============================================
+   HORSESHOE DECORATION (Bottom Left)
+   ============================================ */
+.horseshoe {
+    position: absolute;
+    bottom: -15px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    z-index: 10;
+    filter: drop-shadow(3px 4px 6px rgba(0, 0, 0, 0.6));
+}
+
+.horseshoe img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Gentle swinging animation for horseshoe */
+@keyframes horseshoeSwing {
+    0%, 100% {
+        transform: rotate(-5deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+}
+
+.horseshoe {
+    animation: horseshoeSwing 3s ease-in-out infinite;
+    transform-origin: center top;
+}
+
+/* Hover effect */
+.section-decorated:hover .horseshoe {
+    animation-duration: 1.5s;
+}
+
+/* Smaller horseshoe variant */
+.horseshoe.small {
+    width: 35px;
+    height: 35px;
+    bottom: -10px;
+    left: 15px;
+}
+
+/* Extra dusty/dirty texture overlay for panels */
+.panel-dusty::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='dust'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23dust)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+/* Coming Soon / TBD Badge */
+.badge-coming-soon {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--barn-red), #6b1a00);
+    color: var(--cream);
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 3px 10px var(--shadow-medium);
+    margin-left: 0.5rem;
+}
+
+.badge-tbd {
+    display: inline-block;
+    background: var(--wood-medium);
+    color: var(--straw-light);
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Responsive animal heads */
+@media (max-width: 768px) {
+    .animal-head {
+        width: 45px;
+        height: 45px;
+    }
+
+    .animal-head.left {
+        left: -10px;
+    }
+
+    .animal-head.right {
+        right: -10px;
+    }
+
+    .animal-head.small {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .animal-head {
+        display: none;
+    }
+}
+
+/* ============================================
+   RIBBON DECORATIONS
+   ============================================ */
+.section-ribbon {
+    position: relative;
+}
+
+.ribbon-decoration {
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    width: 45px;
+    height: auto;
+    z-index: 10;
+    filter: drop-shadow(2px 3px 4px rgba(0, 0, 0, 0.5));
+    transition: transform 0.3s ease;
+}
+
+.ribbon-decoration:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Alternate ribbon colors */
+.ribbon-green {
+    background-image: url('../images/art/green ribbon.png');
+}
+
+.ribbon-purple {
+    background-image: url('../images/art/purple ribbon.png');
+}
+
+/* Double ribbon for special sections */
+.ribbon-double {
+    display: flex;
+    gap: 5px;
+}
+
+.ribbon-double img {
+    width: 35px;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .ribbon-decoration {
+        width: 35px;
+        bottom: 10px;
+        right: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ribbon-decoration {
+        display: none;
+    }
+}
+
+/* ============================================
+   SEARCH BAR - Full width below header
+   ============================================ */
+.search-bar-container {
+    background: linear-gradient(180deg, var(--wood-dark), var(--soil));
+    padding: 0.5rem 1rem;
+    border-bottom: 4px solid var(--rope-tan);
+}
+
+.search-bar {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 0;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 0.6rem 1.2rem;
+    border: 3px solid var(--rope-tan);
+    border-right: none;
+    border-radius: 25px 0 0 25px;
+    background: var(--cream);
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    color: var(--text-dark);
+}
+
+.search-bar input:focus {
+    border-color: var(--straw);
+    box-shadow: 0 0 0 3px rgba(212, 168, 75, 0.3);
+}
+
+.search-bar input::placeholder {
+    color: var(--text-light);
+}
+
+.search-bar button {
+    padding: 0.6rem 2rem;
+    border: 3px solid var(--rope-tan);
+    border-radius: 0 25px 25px 0;
+    background: linear-gradient(180deg, var(--barn-red-light), var(--barn-red));
+    color: var(--cream);
+    font-family: 'Roboto Slab', serif;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-bar button:hover {
+    background: linear-gradient(180deg, var(--straw), var(--hay));
+    color: var(--wood-dark);
+}
+
+/* ============================================
+   COUNTDOWN TIMER
+   ============================================ */
+.countdown-container {
+    text-align: center;
+    color: var(--cream);
+}
+
+.countdown-label {
+    font-family: 'Roboto Slab', serif;
+    font-size: 0.85rem;
+    color: var(--straw-light);
+    margin-bottom: 0.25rem;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    font-family: 'Alfa Slab One', serif;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.countdown-number {
+    font-size: 1.4rem;
+    color: var(--straw-light);
+    text-shadow: 2px 2px 0 var(--wood-dark);
+}
+
+.countdown-unit {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.65rem;
+    color: var(--cream);
+    text-transform: uppercase;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+/* Sticky footer variant */
+.footer-sticky {
+    position: sticky;
+    bottom: 0;
+    z-index: 50;
+}
+
+/* ============================================
+   BECOME A SPONSOR CTA
+   ============================================ */
+.sponsor-cta {
+    background: linear-gradient(135deg, var(--barn-red) 0%, #6b1a00 100%);
+    color: var(--cream);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    margin: 2rem 0;
+    border: 4px solid var(--straw);
+    box-shadow: 0 8px 30px var(--shadow-dark);
+}
+
+.sponsor-cta h3 {
+    font-family: 'Alfa Slab One', serif;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--straw-light);
+}
+
+.sponsor-cta p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.sponsor-cta .btn {
+    background: var(--straw);
+    color: var(--wood-dark);
+    border-color: var(--cream);
+}
+
+.sponsor-cta .btn:hover {
+    background: var(--cream);
+    color: var(--barn-red);
+}
+
+/* ============================================
+   CAROUSEL ARROWS
+   ============================================ */
+/* Carousel arrows - overlay on sides */
+/* Carousel navigation buttons */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(51, 51, 51, 0.6);
+    border: 2px solid #333;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+    z-index: 20;
+}
+
+.carousel-btn.left {
+    left: 15px;
+}
+
+.carousel-btn.right {
+    right: 15px;
+}
+
+.carousel-btn:hover {
+    opacity: 1;
+    background: rgba(51, 51, 51, 0.9);
+    transform: translateY(-50%) scale(1.15);
+}
+
+.carousel-btn::before {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-top: 3px solid #fff;
+    border-right: 3px solid #fff;
+    margin: auto;
+}
+
+.carousel-btn.left::before {
+    transform: rotate(-135deg);
+    margin-left: 18px;
+}
+
+.carousel-btn.right::before {
+    transform: rotate(45deg);
+    margin-right: 18px;
+}
+
+/* Legacy arrow styles for backwards compatibility */
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    pointer-events: none;
+    z-index: 20;
+}
+
+.carousel-arrow {
+    width: 40px;
+    height: 40px;
+    background: rgba(61, 41, 20, 0.5);
+    border: 2px solid var(--rope-tan);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--cream);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px var(--shadow-dark);
+    pointer-events: all;
+    opacity: 0.8;
+}
+
+.carousel-arrow:hover {
+    background: linear-gradient(180deg, var(--barn-red-light), var(--barn-red));
+    transform: scale(1.15);
+    box-shadow: 0 6px 20px var(--shadow-dark);
+    opacity: 1;
+}
+
+.carousel-arrow.left::before {
+    content: '<';
+}
+
+.carousel-arrow.right::before {
+    content: '>';
+}

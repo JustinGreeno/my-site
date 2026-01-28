@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photos | Cumberland County Exhibition</title>
+    <meta name="description" content="Photo gallery from the Cumberland County Exhibition - livestock shows, midway fun, and country memories!">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/art/sign logo.png">
+
+    <style>
+        /* Placeholder photos with farm colors */
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--wood-medium);
+            background: linear-gradient(145deg, var(--cream), var(--cream-dark));
+        }
+        .photo-placeholder span {
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="images/art/sign logo.png" alt="CCEx" class="logo-img">
+                <span class="logo-tagline">Cumberland County Exhibition</span>
+            </a>
+            <nav>
+                <div class="hamburger" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="schedule-2025.html">Schedule</a></li>
+                    <li class="has-dropdown">
+                        <a href="#">Info</a>
+                        <ul class="dropdown">
+                            <li><a href="activities.html">Kids Activities</a></li>
+                            <li><a href="exhibitors.html">Exhibitors</a></li>
+                            <li><a href="vendors.html">Vendors</a></li>
+                            <li><a href="forms.html">Forms</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="merch.html">Merch</a></li>
+                    <li><a href="photos.html" class="active">Photos</a></li>
+                    <li class="has-dropdown">
+                        <a href="#">About</a>
+                        <ul class="dropdown">
+                            <li><a href="sponsors.html">Sponsors</a></li>
+                            <li><a href="members.html">Board</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Full width search bar -->
+    <div class="search-bar-container">
+        <div class="search-bar">
+            <input type="text" placeholder="Search forms, events, information..." id="siteSearch">
+            <button onclick="performSearch()">Search</button>
+        </div>
+    </div>
+
+    <main>
+        <section class="hero">
+            <h1>Photo Gallery</h1>
+            <p class="tagline">Memories from the Fair</p>
+        </section>
+
+        <div class="container">
+            <!-- Main Carousel -->
+            <section class="carousel-section">
+                <h2>Fair Highlights</h2>
+                <div class="carousel-container">
+                    <div class="carousel-viewport">
+                        <div class="carousel-track" id="carouselTrack">
+                            <!-- Photos will be duplicated 10x by JavaScript for seamless loop -->
+                        </div>
+                    </div>
+                    <button class="carousel-nav left" id="carouselLeft" aria-label="Scroll left">&lt;</button>
+                    <button class="carousel-nav right" id="carouselRight" aria-label="Scroll right">&gt;</button>
+                </div>
+            </section>
+
+            <div class="divider-rope"></div>
+
+            <!-- Livestock Photos -->
+            <section class="panel">
+                <h2>Livestock Shows</h2>
+                <p>Our livestock shows feature the finest animals from farms across Cumberland County and beyond.</p>
+
+                <div class="features-grid mt-2">
+                    <div class="feature-item">
+                        <div style="font-size: 3rem; margin-bottom: 0.5rem;">&#128004;</div>
+                        <h3>Beef Cattle</h3>
+                        <p>Angus, Hereford, Charolais and more</p>
+                    </div>
+                    <div class="feature-item">
+                        <div style="font-size: 3rem; margin-bottom: 0.5rem;">&#128014;</div>
+                        <h3>Heavy Horses</h3>
+                        <p>Clydesdales, Percherons, Belgians</p>
+                    </div>
+                    <div class="feature-item">
+                        <div style="font-size: 3rem; margin-bottom: 0.5rem;">&#128017;</div>
+                        <h3>Sheep & Lambs</h3>
+                        <p>Suffolk, Hampshire, Dorset</p>
+                    </div>
+                    <div class="feature-item">
+                        <div style="font-size: 3rem; margin-bottom: 0.5rem;">&#128016;</div>
+                        <h3>Goats</h3>
+                        <p>Boer, Nubian, Alpine</p>
+                    </div>
+                    <div class="feature-item">
+                        <div style="font-size: 3rem; margin-bottom: 0.5rem;">&#128019;</div>
+                        <h3>Poultry</h3>
+                        <p>Chickens, ducks, turkeys, geese</p>
+                    </div>
+                    <div class="feature-item">
+                        <div style="font-size: 3rem; margin-bottom: 0.5rem;">&#128007;</div>
+                        <h3>Rabbits</h3>
+                        <p>Various breeds on display</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="divider-rope"></div>
+
+            <!-- 4-H Section -->
+            <section class="panel-wooden">
+                <h2>4-H in Action</h2>
+                <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">Our 4-H members work year-round to raise and train their animals. The fair is their chance to shine and show what they've learned about responsibility, animal husbandry, and agricultural skills.</p>
+
+                <div class="info-cards">
+                    <div class="info-card">
+                        <h3>Showmanship</h3>
+                        <p>Judged on how well they present and handle their animals in the ring.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Conformation</h3>
+                        <p>Animals judged on breed standards and quality.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Achievement</h3>
+                        <p>Overall awards recognizing hard work and dedication.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Share Section -->
+            <section class="panel-rope text-center">
+                <h2>Share Your Photos!</h2>
+                <p>Did you take great photos at the fair? We'd love to see them! Tag us on social media or send them to us for a chance to be featured on our website.</p>
+                <div class="mt-3">
+                    <a href="contact.html" class="btn">Submit Your Photos</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <img src="images/art/sign logo.png" alt="CCEx" class="footer-logo">
+                <div>
+                    <span class="footer-title">Cumberland County Exhibition</span>
+                    <span class="footer-address">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Oxford+NS+Exhibition+Grounds" target="_blank">
+                            Exhibition Grounds, Oxford, NS
+                        </a>
+                    </span>
+                </div>
+            </div>
+            <div class="footer-center">
+                <div class="countdown-container">
+                    <div class="countdown-label">Countdown to CCEx 2026</div>
+                    <div class="countdown-timer" id="countdown">
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="days">---</span>
+                            <span class="countdown-unit">Days</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="hours">--</span>
+                            <span class="countdown-unit">Hours</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="mins">--</span>
+                            <span class="countdown-unit">Mins</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="secs">--</span>
+                            <span class="countdown-unit">Secs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-right">
+                <p>&copy; 2025 Cumberland County Exhibition</p>
+                <p class="footer-credit">Website by <a href="../html/index.html">Justin Greeno</a></p>
+            </div>
+        </div>
+        <div class="footer-secret">
+            <a href="../html/index.html" title="JustinGreeno.dev">J</a>
+        </div>
+    </footer>
+
+    <script>
+        // Parallax background
+        (function() {
+            const style = document.createElement('style');
+            style.id = 'parallax-style';
+            document.head.appendChild(style);
+
+            function updateParallax() {
+                const scrollY = window.pageYOffset;
+                const translateY = scrollY * 0.15;
+                style.textContent = `body::before { transform: translateY(-${translateY}px); }`;
+            }
+
+            window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), { passive: true });
+            updateParallax();
+        })();
+
+        // Photo Carousel - generates 10x duplicates for seamless loop
+        (function() {
+            const photos = [
+                'images/photos/545156113_1246012797554454_527781887835607702_n.jpg',
+                'images/photos/543497687_1242125264609874_44714512599230991_n.jpg',
+                'images/photos/540765803_1236975308458203_6091504835305573349_n.jpg',
+                'images/photos/541431021_1240062554816145_56214555998529616_n.jpg',
+                'images/photos/541628005_1240062544816146_8144413268111688797_n.jpg',
+                'images/photos/541850042_1240062514816149_8630535708679409303_n.jpg',
+                'images/photos/541432915_1240062481482819_7195246031313494511_n.jpg',
+                'images/photos/541803018_1240062224816178_6600364531752553213_n.jpg',
+                'images/photos/541523478_1239239061565161_6143454027555148766_n.jpg',
+                'images/photos/540910359_1239238608231873_3250056663851460604_n.jpg',
+                'images/photos/540900031_1238835624938838_8040224643733435944_n.jpg',
+                'images/photos/540679364_1237405831748484_3796079270512153002_n.jpg'
+            ];
+
+            const track = document.getElementById('carouselTrack');
+            const leftBtn = document.getElementById('carouselLeft');
+            const rightBtn = document.getElementById('carouselRight');
+
+            // Generate 10x duplicates
+            let html = '';
+            for (let i = 0; i < 10; i++) {
+                photos.forEach(photo => {
+                    html += `<div class="carousel-item"><img src="${photo}" alt="Exhibition photo"></div>`;
+                });
+            }
+            track.innerHTML = html;
+
+            // Animation variables
+            let position = 0;
+            let speed = 3;
+            let baseSpeed = 3;
+            let direction = 1;
+            const itemWidth = 316; // 300px + 16px gap
+            const oneSetWidth = itemWidth * photos.length;
+            const totalWidth = oneSetWidth * 10;
+            const midPoint = totalWidth / 2;
+
+            // Start in the middle for seamless looping both directions
+            position = midPoint;
+
+            function animate() {
+                position += speed * direction;
+
+                // Seamless loop - jump to middle when too far in either direction
+                if (position >= midPoint + oneSetWidth * 3) {
+                    position -= oneSetWidth;
+                }
+                if (position <= midPoint - oneSetWidth * 3) {
+                    position += oneSetWidth;
+                }
+
+                track.style.transform = `translateX(-${position}px)`;
+                requestAnimationFrame(animate);
+            }
+
+            // Button hover controls
+            leftBtn.addEventListener('mouseenter', () => { direction = -1; speed = 8; });
+            leftBtn.addEventListener('mouseleave', () => { direction = 1; speed = baseSpeed; });
+            rightBtn.addEventListener('mouseenter', () => { direction = 1; speed = 8; });
+            rightBtn.addEventListener('mouseleave', () => { speed = baseSpeed; });
+
+            // Touch support
+            leftBtn.addEventListener('touchstart', (e) => { e.preventDefault(); direction = -1; speed = 8; });
+            leftBtn.addEventListener('touchend', () => { direction = 1; speed = baseSpeed; });
+            rightBtn.addEventListener('touchstart', (e) => { e.preventDefault(); direction = 1; speed = 8; });
+            rightBtn.addEventListener('touchend', () => { speed = baseSpeed; });
+
+            animate();
+        })();
+
+        // Search function
+        function performSearch() {
+            const query = document.getElementById('siteSearch').value.trim().toLowerCase();
+            if (query) {
+                window.location.href = 'forms.html?search=' + encodeURIComponent(query);
+            }
+        }
+        document.getElementById('siteSearch').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') performSearch();
+        });
+    </script>
+</body>
+</html>

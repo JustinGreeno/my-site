@@ -70,31 +70,48 @@
         }
         .mobile-controls {
             display: grid;
-            grid-template-columns: repeat(3, 60px);
-            grid-template-rows: repeat(3, 60px);
-            gap: 5px;
-            justify-content: center;
-            margin-top: 1rem;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 10px;
+            max-width: 240px;
+            margin: 1.5rem auto;
+            aspect-ratio: 1;
         }
         .mobile-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             background: var(--glass-bg, rgba(1, 47, 11, 0.85));
-            border: 1px solid rgba(104, 159, 171, 0.25);
-            border-radius: 10px;
+            border: 2px solid rgba(104, 159, 171, 0.35);
+            border-radius: 12px;
             color: var(--accent-teal, #689fab);
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 4px 6px 20px rgba(0, 0, 0, 0.4);
+            transition: all 0.15s ease;
+            box-shadow: 4px 6px 20px rgba(0, 0, 0, 0.5);
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            min-height: 70px;
         }
-        .mobile-btn:hover, .mobile-btn:active {
+        .mobile-btn:active {
             background: var(--accent-teal, #689fab);
             color: var(--primary-green, #012F0B);
+            transform: scale(0.95);
         }
         .mobile-btn.up { grid-column: 2; grid-row: 1; }
         .mobile-btn.left { grid-column: 1; grid-row: 2; }
         .mobile-btn.stop { grid-column: 2; grid-row: 2; }
         .mobile-btn.right { grid-column: 3; grid-row: 2; }
         .mobile-btn.down { grid-column: 2; grid-row: 3; }
+        /* Responsive canvas */
+        .game-canvas-container {
+            max-width: 100%;
+            overflow: hidden;
+        }
+        #snake-canvas, #pacman-canvas {
+            max-width: 100%;
+            height: auto;
+        }
         @media (min-width: 768px) {
             .mobile-controls {
                 display: none;
@@ -142,7 +159,7 @@
             </section>
 
             <!-- Snake Game (First) -->
-            <section class="glass-panel game-section" id="snake-section">
+            <section class="glass-panel game-section animate-on-scroll fade-up" id="snake-section">
                 <h2>Snake</h2>
                 <p class="text-center">Classic Snake game! Eat the food to grow longer. Don't hit the walls or yourself!</p>
 
@@ -202,7 +219,7 @@
             </section>
 
             <!-- Pacman Game -->
-            <section class="glass-panel game-section" id="pacman-section">
+            <section class="glass-panel game-section animate-on-scroll fade-up" id="pacman-section">
                 <h2>Pacman Survival</h2>
                 <p class="text-center">Survive as long as you can! Only 6 dots at a time. Ghosts spawn at 3, 10, 20, and 30 points (max 3).</p>
 
@@ -260,7 +277,7 @@
             </section>
 
             <!-- Darkness Blooms Exploring Sprites Game -->
-            <section class="glass-panel game-section" id="sprites-section">
+            <section class="glass-panel game-section animate-on-scroll fade-up" id="sprites-section">
                 <h2>Darkness Blooms: Exploring Sprites</h2>
                 <p class="text-center">Explore and interact with sprites from the Darkness Blooms game!</p>
 
@@ -279,7 +296,7 @@
             </section>
 
             <!-- More Games Coming -->
-            <section class="glass-panel text-center">
+            <section class="glass-panel text-center animate-on-scroll fade-up">
                 <h2>More Games Coming Soon!</h2>
                 <p>I'm working on more browser-based games and interactive experiences.</p>
                 <div class="mt-2">
@@ -289,7 +306,7 @@
             </section>
 
             <!-- Stay Updated -->
-            <section class="glass-panel text-center">
+            <section class="glass-panel text-center animate-on-scroll fade-up">
                 <h2>Stay Updated</h2>
                 <p>Follow me on social media to know when new games are released!</p>
                 <div class="social-links">
@@ -311,6 +328,7 @@
         <div class="footer-content">
             <div class="footer-secret-left">
                 <a href="react-showcase.html" title="React">R</a>
+                <a href="javascript-showcase.html" title="JavaScript">J</a>
             </div>
             <div class="social-links">
                 <a href="https://www.youtube.com/justingreeno" target="_blank" class="social-link" title="YouTube">
@@ -332,6 +350,10 @@
             <p>&copy; 2025 JustinGreeno.dev | Nova Scotia, Canada</p>
             <div class="footer-secret">
                 <a href="../sociables/index.html" title="Sociables Pub">S</a>
+                <a href="../nellys/index.html" title="Nelly's Grill">N</a>
+                <a href="../whatsfordinner/index.html" title="What's For Dinner">W</a>
+                <a href="../sheryls/index.html" title="Sheryl's Bakery">S</a>
+                <a href="../ccex/index.html" title="Cumberland County Exhibition">C</a>
             </div>
         </div>
     </footer>
