@@ -6,7 +6,10 @@
     <title>Kids Activities | Cumberland County Exhibition</title>
     <meta name="description" content="Fun activities for children at the Cumberland County Exhibition - petting zoo, games, face painting, and more!">
     <link href="css/style.css" rel="stylesheet">
-    <link rel="icon" type="image/png" href="images/sign logo.png">
+    <link rel="icon" type="image/png" href="images/art/sign logo.png">
+    <script src="js/search.js" defer></script>
+    <script src="js/countdown.js" defer></script>
+    <script src="js/horseshoe.js" defer></script>
     <style>
         .activity-grid {
             display: grid;
@@ -122,6 +125,7 @@
                             <li><a href="exhibitors.html">Exhibitors</a></li>
                             <li><a href="vendors.html">Vendors</a></li>
                             <li><a href="forms.html">Forms</a></li>
+                            <li><a href="forms.html#registration">Register Online</a></li>
                         </ul>
                     </li>
                     <li><a href="merch.html">Merch</a></li>
@@ -142,9 +146,10 @@
     <!-- Full width search bar -->
     <div class="search-bar-container">
         <div class="search-bar">
-            <input type="text" placeholder="Search forms, events, information..." id="siteSearch">
+            <input type="text" placeholder="Search pages, forms, events, FAQ..." id="siteSearch" autocomplete="off">
             <button onclick="performSearch()">Search</button>
         </div>
+        <div class="search-dropdown" id="searchDropdown"></div>
     </div>
 
     <main>
@@ -426,6 +431,27 @@
         document.getElementById('siteSearch').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') performSearch();
         });
+
+        // Scroll-triggered Animal Head Animations
+        (function() {
+            const animalObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    } else {
+                        entry.target.classList.remove('visible');
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '-50px 0px -50px 0px',
+                threshold: 0.2
+            });
+
+            document.querySelectorAll('.animal-head').forEach(animal => {
+                animalObserver.observe(animal);
+            });
+        })();
     </script>
 </body>
 </html>

@@ -7,6 +7,9 @@
     <meta name="description" content="Contact the Cumberland County Exhibition for inquiries about exhibiting, volunteering, sponsorship, or general information.">
     <link href="css/style.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/art/sign logo.png">
+    <script src="js/search.js" defer></script>
+    <script src="js/countdown.js" defer></script>
+    <script src="js/horseshoe.js" defer></script>
 </head>
 <body>
     <header>
@@ -31,6 +34,7 @@
                             <li><a href="exhibitors.html">Exhibitors</a></li>
                             <li><a href="vendors.html">Vendors</a></li>
                             <li><a href="forms.html">Forms</a></li>
+                            <li><a href="forms.html#registration">Register Online</a></li>
                         </ul>
                     </li>
                     <li><a href="merch.html">Merch</a></li>
@@ -47,6 +51,15 @@
             </nav>
         </div>
     </header>
+
+    <!-- Full width search bar -->
+    <div class="search-bar-container">
+        <div class="search-bar">
+            <input type="text" placeholder="Search pages, forms, events, FAQ..." id="siteSearch" autocomplete="off">
+            <button onclick="performSearch()">Search</button>
+        </div>
+        <div class="search-dropdown" id="searchDropdown"></div>
+    </div>
 
     <main>
         <section class="hero">
@@ -183,20 +196,68 @@
             <section class="panel-rope">
                 <h2>Frequently Asked Questions</h2>
 
-                <h3>When is the fair?</h3>
-                <p>The Cumberland County Exhibition is held annually in September. Check our home page for exact dates.</p>
+                <div class="faq-list mt-2">
+                    <div class="faq-item">
+                        <button class="faq-question">When is the fair?</button>
+                        <div class="faq-answer">
+                            <p>The Cumberland County Exhibition runs over two weekends in late August and early September. For 2025, the dates are <strong>August 22-25</strong> (Weekend 1) and <strong>August 30 - September 1</strong> (Weekend 2). Weekend 1 features 4-H competitions and light horse shows, while Weekend 2 highlights beef shows, horse pulls, and the demolition derby. Check our <a href="schedule-2025.html">full schedule</a> for details.</p>
+                        </div>
+                    </div>
 
-                <h3>How much is admission?</h3>
-                <p>Adults: $10 | Children (6-12): $5 | Under 6: Free. Family passes and multi-day passes are available at the gate.</p>
+                    <div class="faq-item">
+                        <button class="faq-question">How much is admission?</button>
+                        <div class="faq-answer">
+                            <p><strong>Daily Admission:</strong><br>
+                            Adults (13+): $10<br>
+                            Children (6-12): $5<br>
+                            Children under 6: FREE<br><br>
+                            <strong>Weekend Passes</strong> are available at the gate. Family passes (2 adults + up to 4 children) offer great savings! Cash and card accepted at all entry points.</p>
+                        </div>
+                    </div>
 
-                <h3>Can I bring my dog?</h3>
-                <p>For the safety of our livestock, only service animals are permitted on the fairgrounds.</p>
+                    <div class="faq-item">
+                        <button class="faq-question">Can I bring my dog?</button>
+                        <div class="faq-answer">
+                            <p>For the safety and comfort of our livestock, <strong>only service animals</strong> are permitted on the fairgrounds during the exhibition. We appreciate your understanding – our farm animals can become stressed around unfamiliar pets, which affects their health and show performance. There are designated dog-friendly areas during specific events like the Pet Parade on Saturday.</p>
+                        </div>
+                    </div>
 
-                <h3>Is there accessible parking?</h3>
-                <p>Yes, accessible parking is available near the main entrance. Our grounds are mostly accessible, though some areas may have uneven surfaces.</p>
+                    <div class="faq-item">
+                        <button class="faq-question">Is there accessible parking?</button>
+                        <div class="faq-answer">
+                            <p>Yes! <strong>Accessible parking</strong> is available near the main entrance and is clearly marked. Our fairgrounds are mostly accessible on paved and gravel paths. Some areas near the livestock barns and back pastures may have uneven terrain. Golf cart transportation is available for those who need assistance getting around – just ask at the main gate. Accessible washroom facilities are located near the main entrance and industrial building.</p>
+                        </div>
+                    </div>
 
-                <h3>How do I enter livestock?</h3>
-                <p>Entry forms are available on our website closer to fair time. Contact our livestock director for more information.</p>
+                    <div class="faq-item">
+                        <button class="faq-question">How do I enter livestock?</button>
+                        <div class="faq-answer">
+                            <p>Livestock entry forms are available on our <a href="forms.html">Forms page</a> starting in June each year. Deadlines are typically 2-3 weeks before the fair. You'll need to provide proof of vaccination records and health certificates where required. For specific questions about cattle, horses, sheep, goats, or poultry entries, contact our livestock director at <a href="mailto:livestock@ccex.ca">livestock@ccex.ca</a>. 4-H members should coordinate through their club leaders.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">Is there food available on-site?</button>
+                        <div class="faq-answer">
+                            <p>Absolutely! Our <strong>food court</strong> features a variety of fair favourites including fresh-cut fries, burgers, hot dogs, BBQ, pizza, cotton candy, candy apples, and ice cream. Local vendors offer homemade baked goods, Maritime seafood, and specialty items. Vegetarian options are available. No outside food is permitted, but bottled water is allowed. ATM machines are located near the main entrance.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">How can I become a vendor or sponsor?</button>
+                        <div class="faq-answer">
+                            <p><strong>Vendors:</strong> Visit our <a href="vendors.html">Vendors page</a> for booth rental information and application forms. Space is limited and fills quickly!<br><br>
+                            <strong>Sponsors:</strong> The CCEx offers various sponsorship levels from event naming rights to banner advertising. Contact <a href="mailto:sponsors@ccex.ca">sponsors@ccex.ca</a> or visit our <a href="sponsors.html">Sponsors page</a> to learn about partnership opportunities and benefits.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">What happens if it rains?</button>
+                        <div class="faq-answer">
+                            <p>The fair runs <strong>rain or shine!</strong> Most livestock shows and arena events are covered. The Industrial Building, Exhibition Hall, and food areas provide shelter. We recommend bringing rain gear and wearing comfortable, waterproof footwear. Some outdoor events may be postponed or relocated in severe weather – announcements are made over the PA system and on our social media. No refunds for weather, but the fair atmosphere is just as wonderful in the rain!</p>
+                        </div>
+                    </div>
+                </div>
             </section>
         </div>
     </main>
@@ -248,6 +309,34 @@
     </footer>
 
     <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('navMenu');
+            const hamburger = document.querySelector('.hamburger');
+            menu.classList.toggle('mobile-open');
+            hamburger.classList.toggle('active');
+        }
+
+        // Dropdown toggle for mobile
+        document.querySelectorAll('.has-dropdown > a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 1024) {
+                    e.preventDefault();
+                    this.parentElement.classList.toggle('open');
+                }
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const nav = document.querySelector('nav');
+            const hamburger = document.querySelector('.hamburger');
+            if (!nav.contains(e.target) && window.innerWidth <= 1024) {
+                document.getElementById('navMenu').classList.remove('mobile-open');
+                hamburger.classList.remove('active');
+            }
+        });
+
         // Parallax background
         (function() {
             const style = document.createElement('style');
@@ -262,6 +351,99 @@
 
             window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), { passive: true });
             updateParallax();
+        })();
+
+        // Countdown timer to Aug 22, 2026
+        (function() {
+            const targetDate = new Date('August 22, 2026 00:00:00').getTime();
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+
+                if (distance < 0) {
+                    document.getElementById('countdown').innerHTML = '<span style="color: var(--straw-light);">CCEx 2026 is HERE!</span>';
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const secs = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = days;
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('mins').textContent = mins.toString().padStart(2, '0');
+                document.getElementById('secs').textContent = secs.toString().padStart(2, '0');
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        })();
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', function() {
+                const item = this.parentElement;
+                const wasActive = item.classList.contains('active');
+
+                // Close all FAQ items
+                document.querySelectorAll('.faq-item').forEach(faq => {
+                    faq.classList.remove('active');
+                });
+
+                // Open clicked item if it wasn't already open
+                if (!wasActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Random animal selection
+        (function() {
+            const animalsRight = [
+                'images/art/cow facing right.png',
+                'images/art/horse facing right.png',
+                'images/art/chicken facing right.png',
+                'images/art/sheep head facing right.png'
+            ];
+            const animalsLeft = [
+                'images/art/horse facing left.png',
+                'images/art/chicken facing left.png'
+            ];
+
+            function getRandomAnimal(arr) {
+                return arr[Math.floor(Math.random() * arr.length)];
+            }
+
+            document.querySelectorAll('.animal-head.left img').forEach(img => {
+                img.src = getRandomAnimal(animalsRight);
+            });
+
+            document.querySelectorAll('.animal-head.right img').forEach(img => {
+                img.src = getRandomAnimal(animalsLeft);
+            });
+        })();
+
+        // Scroll-triggered Animal Head Animations
+        (function() {
+            const animalObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    } else {
+                        entry.target.classList.remove('visible');
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '-50px 0px -50px 0px',
+                threshold: 0.2
+            });
+
+            document.querySelectorAll('.animal-head').forEach(animal => {
+                animalObserver.observe(animal);
+            });
         })();
     </script>
 </body>

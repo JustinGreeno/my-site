@@ -7,34 +7,44 @@
     <meta name="description" content="Full 2025 schedule for the Cumberland County Exhibition - Two weekends of 4-H shows, horse events, demolition derby, and family fun!">
     <link href="css/style.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/art/sign logo.png">
+    <script src="js/search.js" defer></script>
+    <script src="js/countdown.js" defer></script>
+    <script src="js/horseshoe.js" defer></script>
     <style>
         .weekend-tabs {
             display: flex;
-            gap: 0.5rem;
+            gap: 0;
             margin-bottom: 2rem;
             justify-content: center;
             flex-wrap: wrap;
+            background: var(--wood-dark);
+            border-radius: 12px;
+            padding: 6px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .weekend-tab {
-            padding: 1rem 2rem;
+            flex: 1;
+            padding: 1rem 1.5rem;
             font-family: 'Alfa Slab One', serif;
-            font-size: 1.2rem;
-            background: linear-gradient(180deg, var(--wood-light), var(--wood-medium));
+            font-size: 1.1rem;
+            background: transparent;
             color: var(--cream);
-            border: 4px solid var(--rope-tan);
+            border: none;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px var(--shadow-medium);
+            text-align: center;
+            min-width: 140px;
         }
         .weekend-tab:hover {
-            transform: translateY(-3px);
-            background: linear-gradient(180deg, var(--wood-medium), var(--wood-light));
+            background: rgba(255,255,255,0.1);
         }
         .weekend-tab.active {
-            background: linear-gradient(180deg, var(--straw), var(--hay));
+            background: var(--straw);
             color: var(--wood-dark);
-            border-color: var(--wood-dark);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
         .weekend-content {
             display: none;
@@ -122,6 +132,7 @@
                             <li><a href="exhibitors.html">Exhibitors</a></li>
                             <li><a href="vendors.html">Vendors</a></li>
                             <li><a href="forms.html">Forms</a></li>
+                            <li><a href="forms.html#registration">Register Online</a></li>
                         </ul>
                     </li>
                     <li><a href="merch.html">Merch</a></li>
@@ -142,9 +153,10 @@
     <!-- Full width search bar -->
     <div class="search-bar-container">
         <div class="search-bar">
-            <input type="text" placeholder="Search forms, events, information..." id="siteSearch">
+            <input type="text" placeholder="Search pages, forms, events, FAQ..." id="siteSearch" autocomplete="off">
             <button onclick="performSearch()">Search</button>
         </div>
+        <div class="search-dropdown" id="searchDropdown"></div>
     </div>
 
     <main>
@@ -839,6 +851,38 @@
                 img.src = getRandomAnimal(animalsLeft);
             });
         })();
+
+        // Scroll-triggered Animal Head Animations
+        (function() {
+            const animalObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    } else {
+                        entry.target.classList.remove('visible');
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '-50px 0px -50px 0px',
+                threshold: 0.2
+            });
+
+            document.querySelectorAll('.animal-head').forEach(animal => {
+                animalObserver.observe(animal);
+            });
+        })();
+
+        // Search function
+        function performSearch() {
+            const query = document.getElementById('siteSearch').value.trim().toLowerCase();
+            if (query) {
+                window.location.href = 'forms.html?search=' + encodeURIComponent(query);
+            }
+        }
+        document.getElementById('siteSearch').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') performSearch();
+        });
     </script>
 </body>
 </html>

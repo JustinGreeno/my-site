@@ -7,6 +7,9 @@
     <meta name="description" content="Photo gallery from the Cumberland County Exhibition - livestock shows, midway fun, and country memories!">
     <link href="css/style.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/art/sign logo.png">
+    <script src="js/search.js" defer></script>
+    <script src="js/countdown.js" defer></script>
+    <script src="js/horseshoe.js" defer></script>
 
     <style>
         /* Placeholder photos with farm colors */
@@ -52,6 +55,7 @@
                             <li><a href="exhibitors.html">Exhibitors</a></li>
                             <li><a href="vendors.html">Vendors</a></li>
                             <li><a href="forms.html">Forms</a></li>
+                            <li><a href="forms.html#registration">Register Online</a></li>
                         </ul>
                     </li>
                     <li><a href="merch.html">Merch</a></li>
@@ -72,9 +76,10 @@
     <!-- Full width search bar -->
     <div class="search-bar-container">
         <div class="search-bar">
-            <input type="text" placeholder="Search forms, events, information..." id="siteSearch">
+            <input type="text" placeholder="Search pages, forms, events, FAQ..." id="siteSearch" autocomplete="off">
             <button onclick="performSearch()">Search</button>
         </div>
+        <div class="search-dropdown" id="searchDropdown"></div>
     </div>
 
     <main>
@@ -256,58 +261,97 @@
             const track = document.getElementById('carouselTrack');
             const leftBtn = document.getElementById('carouselLeft');
             const rightBtn = document.getElementById('carouselRight');
+            const viewport = document.querySelector('.carousel-viewport');
 
             // Generate 10x duplicates
             let html = '';
             for (let i = 0; i < 10; i++) {
-                photos.forEach(photo => {
-                    html += `<div class="carousel-item"><img src="${photo}" alt="Exhibition photo"></div>`;
+                photos.forEach((photo, idx) => {
+                    html += `<div class="carousel-item" data-photo="${photo}"><img src="${photo}" alt="Exhibition photo ${idx + 1}"></div>`;
                 });
             }
             track.innerHTML = html;
 
             // Animation variables
             let position = 0;
-            let speed = 3;
-            let baseSpeed = 3;
+            let speed = 1;
+            let baseSpeed = 1;
             let direction = 1;
-            const itemWidth = 316; // 300px + 16px gap
+            let paused = false;
+            const itemWidth = 316;
             const oneSetWidth = itemWidth * photos.length;
-            const totalWidth = oneSetWidth * 10;
-            const midPoint = totalWidth / 2;
+            const midPoint = (oneSetWidth * 10) / 2;
 
-            // Start in the middle for seamless looping both directions
             position = midPoint;
 
             function animate() {
-                position += speed * direction;
-
-                // Seamless loop - jump to middle when too far in either direction
-                if (position >= midPoint + oneSetWidth * 3) {
-                    position -= oneSetWidth;
+                if (!paused) {
+                    position += speed * direction;
+                    if (position >= midPoint + oneSetWidth * 3) position -= oneSetWidth;
+                    if (position <= midPoint - oneSetWidth * 3) position += oneSetWidth;
+                    track.style.transform = `translateX(-${position}px)`;
                 }
-                if (position <= midPoint - oneSetWidth * 3) {
-                    position += oneSetWidth;
-                }
-
-                track.style.transform = `translateX(-${position}px)`;
                 requestAnimationFrame(animate);
             }
 
-            // Button hover controls
-            leftBtn.addEventListener('mouseenter', () => { direction = -1; speed = 8; });
+            // Button hover - speed up
+            leftBtn.addEventListener('mouseenter', () => { direction = -1; speed = 5; paused = false; });
             leftBtn.addEventListener('mouseleave', () => { direction = 1; speed = baseSpeed; });
-            rightBtn.addEventListener('mouseenter', () => { direction = 1; speed = 8; });
+            rightBtn.addEventListener('mouseenter', () => { direction = 1; speed = 5; paused = false; });
             rightBtn.addEventListener('mouseleave', () => { speed = baseSpeed; });
 
-            // Touch support
-            leftBtn.addEventListener('touchstart', (e) => { e.preventDefault(); direction = -1; speed = 8; });
-            leftBtn.addEventListener('touchend', () => { direction = 1; speed = baseSpeed; });
-            rightBtn.addEventListener('touchstart', (e) => { e.preventDefault(); direction = 1; speed = 8; });
-            rightBtn.addEventListener('touchend', () => { speed = baseSpeed; });
+            // Center hover - pause
+            viewport.addEventListener('mouseenter', () => { paused = true; });
+            viewport.addEventListener('mouseleave', () => { paused = false; });
+
+            // Click to open lightbox
+            track.addEventListener('click', (e) => {
+                const item = e.target.closest('.carousel-item');
+                if (item) {
+                    const photo = item.dataset.photo;
+                    openLightbox(photo);
+                }
+            });
 
             animate();
         })();
+
+        // Lightbox functionality
+        function openLightbox(src) {
+            const overlay = document.createElement('div');
+            overlay.className = 'lightbox-overlay';
+            overlay.innerHTML = `
+                <button class="lightbox-close">&times;</button>
+                <img src="${src}" alt="Exhibition photo" class="lightbox-img">
+            `;
+            document.body.appendChild(overlay);
+            document.body.style.overflow = 'hidden';
+
+            // Animate in
+            requestAnimationFrame(() => overlay.classList.add('active'));
+
+            // Close handlers
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay || e.target.classList.contains('lightbox-close')) {
+                    overlay.classList.remove('active');
+                    setTimeout(() => {
+                        overlay.remove();
+                        document.body.style.overflow = '';
+                    }, 300);
+                }
+            });
+
+            document.addEventListener('keydown', function escHandler(e) {
+                if (e.key === 'Escape') {
+                    overlay.classList.remove('active');
+                    setTimeout(() => {
+                        overlay.remove();
+                        document.body.style.overflow = '';
+                    }, 300);
+                    document.removeEventListener('keydown', escHandler);
+                }
+            });
+        }
 
         // Search function
         function performSearch() {
@@ -319,6 +363,34 @@
         document.getElementById('siteSearch').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') performSearch();
         });
+
+        // Countdown timer to Aug 22, 2026
+        (function() {
+            const targetDate = new Date('August 22, 2026 00:00:00').getTime();
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+
+                if (distance < 0) {
+                    document.getElementById('countdown').innerHTML = '<span style="color: var(--straw-light);">CCEx 2026 is HERE!</span>';
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const secs = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = days;
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('mins').textContent = mins.toString().padStart(2, '0');
+                document.getElementById('secs').textContent = secs.toString().padStart(2, '0');
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        })();
     </script>
 </body>
 </html>

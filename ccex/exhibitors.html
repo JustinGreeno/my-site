@@ -7,6 +7,9 @@
     <meta name="description" content="Information for exhibitors at the Cumberland County Exhibition - livestock, agriculture, crafts, and more.">
     <link href="css/style.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/art/sign logo.png">
+    <script src="js/search.js" defer></script>
+    <script src="js/countdown.js" defer></script>
+    <script src="js/horseshoe.js" defer></script>
     <style>
         .exhibitor-category {
             background: var(--cream);
@@ -153,6 +156,7 @@
                             <li><a href="exhibitors.html" class="active">Exhibitors</a></li>
                             <li><a href="vendors.html">Vendors</a></li>
                             <li><a href="forms.html">Forms</a></li>
+                            <li><a href="forms.html#registration">Register Online</a></li>
                         </ul>
                     </li>
                     <li><a href="merch.html">Merch</a></li>
@@ -169,6 +173,15 @@
             </nav>
         </div>
     </header>
+
+    <!-- Full width search bar -->
+    <div class="search-bar-container">
+        <div class="search-bar">
+            <input type="text" placeholder="Search pages, forms, events, FAQ..." id="siteSearch" autocomplete="off">
+            <button onclick="performSearch()">Search</button>
+        </div>
+        <div class="search-dropdown" id="searchDropdown"></div>
+    </div>
 
     <main>
         <section class="hero">
