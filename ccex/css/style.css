@@ -122,23 +122,13 @@ body::after {
    HEADER - Wooden Barn Style
    ============================================ */
 header {
-    background:
-        linear-gradient(180deg,
-            var(--wood-dark) 0%,
-            var(--wood-medium) 15%,
-            var(--wood-light) 50%,
-            var(--wood-medium) 85%,
-            var(--wood-dark) 100%
-        );
+    background: var(--wood-dark);
     padding: 0.5rem 0 0 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow:
-        0 8px 30px var(--shadow-dark),
-        inset 0 2px 0 rgba(255,255,255,0.1),
-        inset 0 -3px 0 rgba(0,0,0,0.4);
-    border-bottom: 5px solid #2a1810;
+    box-shadow: 0 4px 20px var(--shadow-dark);
+    overflow: visible;
 }
 
 .header-content {
@@ -155,7 +145,7 @@ header {
     gap: 0.75rem;
     text-decoration: none;
     color: var(--cream);
-    padding-bottom: 0.5rem;
+    padding-bottom: 0;
     flex-shrink: 0;
 }
 
@@ -166,7 +156,10 @@ header {
     border: none;
     border-radius: 0;
     background: transparent;
-    filter: drop-shadow(4px 5px 8px rgba(0, 0, 0, 0.8));
+    filter:
+        drop-shadow(0 0 1px rgba(232, 200, 122, 0.8))
+        drop-shadow(0 0 2px rgba(232, 200, 122, 0.7))
+        drop-shadow(0 0 3px rgba(232, 200, 122, 0.5));
     transition: transform 0.3s ease;
 }
 
@@ -185,33 +178,34 @@ header {
 }
 
 .logo-tagline {
-    font-family: 'Roboto Slab', serif;
-    font-size: 0.85rem;
-    color: var(--cream);
-    opacity: 0.9;
+    font-family: 'Alfa Slab One', serif;
+    font-size: 2.8rem;
+    color: var(--straw-light);
     display: block;
-    margin-top: -5px;
+    text-shadow:
+        3px 3px 0 var(--wood-dark),
+        -1px -1px 0 var(--wood-dark);
+    letter-spacing: 1px;
 }
 
-/* Navigation - Saloon Style Tabs aligned to bottom right */
+/* Navigation - Clean Simple Tabs */
 nav {
     align-self: flex-end;
     margin-left: auto;
+    position: relative;
+    bottom: -2px;
 }
 
 nav ul {
     display: flex;
     list-style: none;
-    gap: 0.15rem;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
-    align-items: flex-end;
+    gap: 2px;
     margin: 0;
     padding: 0;
+    align-items: flex-end;
 }
 
 nav li {
-    margin-bottom: -5px;
     position: relative;
 }
 
@@ -222,8 +216,9 @@ nav li.has-dropdown {
 
 nav li.has-dropdown > a::after {
     content: ' ▾';
-    font-size: 0.7rem;
-    margin-left: 0.3rem;
+    font-size: 0.6rem;
+    margin-left: 0.25rem;
+    opacity: 0.7;
 }
 
 /* Dropdown menu */
@@ -231,18 +226,18 @@ nav .dropdown {
     position: absolute;
     top: 100%;
     right: 0;
-    left: auto;
-    min-width: 180px;
-    background: linear-gradient(180deg, var(--wood-medium), var(--wood-dark));
-    border: 3px solid var(--rope-tan);
+    min-width: 170px;
+    background: var(--wood-dark);
+    border: 2px solid var(--rope-tan);
+    border-top: none;
     border-radius: 0 0 8px 8px;
-    box-shadow: 0 8px 25px var(--shadow-dark);
+    box-shadow: 0 8px 20px var(--shadow-dark);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
+    transform: translateY(-5px);
+    transition: all 0.2s ease;
     z-index: 100;
-    padding: 0.5rem 0;
+    padding: 0.4rem 0;
 }
 
 nav li.has-dropdown:hover .dropdown {
@@ -257,92 +252,55 @@ nav .dropdown li {
 
 nav .dropdown a {
     display: block;
-    padding: 0.6rem 1rem;
+    padding: 0.55rem 1rem;
     background: transparent;
     border: none;
     border-radius: 0;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
     color: var(--cream);
-    text-shadow: 1px 1px 0 var(--wood-dark);
+    text-shadow: none;
     box-shadow: none;
+    transition: background 0.2s ease;
 }
 
 nav .dropdown a:hover {
-    background: rgba(212, 168, 75, 0.3);
-    margin-bottom: 0;
-    border: none;
+    background: rgba(255,255,255,0.1);
 }
 
 nav .dropdown a.active {
     background: var(--straw);
     color: var(--wood-dark);
-    text-shadow: none;
-    margin-bottom: 0;
 }
 
+/* Main nav tabs */
 nav a {
     display: block;
-    padding: 0.5rem 0.7rem;
+    padding: 0.6rem 1rem;
     font-family: 'Alfa Slab One', serif;
     font-size: 0.75rem;
+    letter-spacing: 0.5px;
     color: var(--cream);
     text-decoration: none;
-    background:
-        linear-gradient(180deg,
-            rgba(139, 90, 43, 0.95) 0%,
-            rgba(92, 61, 30, 0.98) 50%,
-            rgba(61, 41, 20, 0.95) 100%
-        );
-    border: 3px solid var(--rope-tan);
-    border-bottom: 3px solid var(--cream);
+    background: var(--wood-medium);
+    border: 2px solid var(--rope-tan);
+    border-bottom: none;
     border-radius: 8px 8px 0 0;
     transition: all 0.2s ease;
-    text-shadow: 1px 1px 0 var(--wood-dark);
-    position: relative;
-    box-shadow:
-        inset 0 2px 0 rgba(255,255,255,0.1),
-        0 -2px 8px rgba(0,0,0,0.3);
     white-space: nowrap;
-}
-
-nav a::before {
-    content: '';
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    right: 3px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-    border-radius: 2px;
+    position: relative;
 }
 
 nav a:hover {
-    background:
-        linear-gradient(180deg,
-            rgba(180, 120, 60, 0.98) 0%,
-            rgba(139, 90, 43, 0.98) 50%,
-            rgba(92, 61, 30, 0.98) 100%
-        );
-    margin-bottom: 2px;
-    border-color: var(--straw);
-    border-bottom-color: var(--cream);
+    background: var(--wood-light);
+    color: var(--cream);
 }
 
 nav a.active {
-    background:
-        linear-gradient(180deg,
-            var(--straw) 0%,
-            var(--straw-light) 50%,
-            var(--hay) 100%
-        );
+    background: var(--straw);
     color: var(--wood-dark);
-    text-shadow: none;
-    border-color: var(--rope-dark);
-    border-bottom-color: var(--cream);
-    margin-bottom: 4px;
-    box-shadow:
-        0 -4px 15px var(--shadow-soft),
-        inset 0 2px 0 rgba(255,255,255,0.3);
+    border-color: var(--straw);
 }
 
 /* Hamburger Menu */
@@ -352,10 +310,10 @@ nav a.active {
     gap: 5px;
     cursor: pointer;
     padding: 10px;
-    background: linear-gradient(180deg, var(--wood-light), var(--wood-medium));
-    border: 3px solid var(--rope-tan);
-    border-radius: 8px;
-    margin-bottom: -3px;
+    background: var(--wood-medium);
+    border: 2px solid var(--rope-tan);
+    border-radius: 6px;
+    margin-bottom: 0;
 }
 
 .hamburger span {
@@ -478,7 +436,10 @@ nav a.active {
     max-width: 90vw;
     height: auto;
     margin-bottom: 1.5rem;
-    filter: drop-shadow(6px 8px 15px rgba(0, 0, 0, 0.7));
+    filter:
+        drop-shadow(0 0 1px rgba(232, 200, 122, 1))
+        drop-shadow(0 0 2px rgba(232, 200, 122, 1))
+        drop-shadow(0 0 3px rgba(232, 200, 122, 0.9));
     animation: heroLogoFloat 4s ease-in-out infinite;
     position: relative;
     z-index: 2;
@@ -1420,7 +1381,7 @@ main {
     border: none;
     border-radius: 0;
     background: transparent;
-    filter: drop-shadow(2px 3px 5px rgba(0, 0, 0, 0.7));
+    filter: drop-shadow(0 0 1px rgba(232, 200, 122, 0.8));
 }
 
 .footer-title {
@@ -1744,20 +1705,21 @@ main {
 
     nav ul {
         position: absolute;
-        top: 100%;
+        top: calc(100% + 8px);
         right: 0;
         flex-direction: column;
-        background: linear-gradient(180deg, var(--wood-medium), var(--wood-dark));
-        border: 4px solid var(--rope-tan);
-        border-radius: 0 0 12px 12px;
-        padding: 1rem;
-        gap: 0.5rem;
-        min-width: 220px;
-        box-shadow: 0 15px 40px var(--shadow-dark);
+        align-items: stretch;
+        background: var(--wood-dark);
+        border: 2px solid var(--rope-tan);
+        border-radius: 8px;
+        padding: 0.5rem;
+        gap: 2px;
+        min-width: 200px;
+        box-shadow: 0 10px 30px var(--shadow-dark);
         opacity: 0;
         visibility: hidden;
-        transform: translateY(-20px);
-        transition: all 0.3s ease;
+        transform: translateY(-10px);
+        transition: all 0.2s ease;
         z-index: 1000;
     }
 
@@ -1772,22 +1734,27 @@ main {
     }
 
     nav a {
-        border-radius: 8px;
-        border: 2px solid var(--rope-tan);
-        margin-bottom: 0;
-        font-size: 0.9rem;
-        padding: 0.7rem 1rem;
-        text-align: center;
+        border-radius: 6px;
+        border: none;
+        font-size: 0.85rem;
+        padding: 0.6rem 1rem;
+        text-align: left;
+        background: transparent;
     }
 
-    nav a:hover,
+    nav a:hover {
+        background: rgba(255,255,255,0.1);
+    }
+
     nav a.active {
-        margin-bottom: 0;
+        background: var(--straw);
+        color: var(--wood-dark);
     }
 
     /* Dropdown becomes expanded in mobile */
     nav li.has-dropdown > a::after {
         content: ' +';
+        float: right;
     }
 
     nav .dropdown {
@@ -1797,11 +1764,12 @@ main {
         transform: none;
         background: transparent;
         border: none;
+        border-radius: 0;
         box-shadow: none;
-        padding: 0.5rem 0 0 1rem;
+        padding: 0 0 0 1rem;
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease;
+        transition: max-height 0.2s ease;
     }
 
     nav li.has-dropdown.open .dropdown {
@@ -1813,11 +1781,10 @@ main {
     }
 
     nav .dropdown a {
-        font-size: 0.85rem;
-        padding: 0.5rem 0.8rem;
-        background: rgba(0,0,0,0.2);
-        border-radius: 6px;
-        margin-bottom: 0.3rem;
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+        background: transparent;
+        border-radius: 4px;
     }
 }
 
@@ -1832,7 +1799,7 @@ main {
     }
 
     .logo-tagline {
-        font-size: 0.75rem;
+        font-size: 2.2rem;
     }
 
     .hero h1 {
@@ -2154,9 +2121,9 @@ main {
    SEARCH BAR - Full width below header
    ============================================ */
 .search-bar-container {
-    background: linear-gradient(180deg, var(--wood-dark), var(--soil));
-    padding: 0.5rem 1rem;
-    border-bottom: 4px solid var(--rope-tan);
+    background: var(--straw);
+    padding: 0.6rem 1rem;
+    border-bottom: 3px solid var(--rope-tan);
 }
 
 .search-bar {
