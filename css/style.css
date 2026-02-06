@@ -1429,6 +1429,38 @@ footer p {
   }
 }
 
+/* Mobile Footer */
+@media (max-width: 768px) {
+  footer {
+    padding: 0.25rem 0.5rem;
+  }
+
+  footer .social-links {
+    margin: 0.15rem 0;
+    gap: 0.25rem;
+  }
+
+  footer .social-link {
+    width: 22px;
+    height: 22px;
+  }
+
+  footer .social-link img {
+    width: 13px;
+    height: 13px;
+  }
+
+  footer p {
+    font-size: 0.6rem;
+    margin-top: 0.1rem;
+  }
+
+  .footer-secret,
+  .footer-secret-left {
+    display: none;
+  }
+}
+
 /* Print Styles */
 @media print {
   header, footer, nav, .search-container {

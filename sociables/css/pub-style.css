@@ -620,8 +620,9 @@ main {
     }
 
     .footer-hours {
-        font-size: 0.75rem;
-        padding: 0.3rem 0.5rem;
+        font-size: 0.7rem;
+        padding: 0.2rem 0.4rem;
+        border-width: 1px;
     }
 
     .footer-right .social-links {
@@ -629,11 +630,50 @@ main {
     }
 
     .footer-credit {
-        font-size: 0.65rem;
+        font-size: 0.6rem;
+    }
+
+    .footer-secret {
+        display: none;
     }
 
     main {
-        padding-bottom: 100px;
+        padding-bottom: 85px;
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        padding: 0.3rem 0.5rem;
+    }
+
+    .footer-content {
+        gap: 0.3rem;
+    }
+
+    .footer-logo {
+        height: 25px;
+    }
+
+    .footer-title {
+        font-size: 0.75rem;
+    }
+
+    .footer-address {
+        display: none;
+    }
+
+    .footer-hours {
+        font-size: 0.65rem;
+        padding: 0.15rem 0.35rem;
+    }
+
+    .footer-credit {
+        font-size: 0.55rem;
+    }
+
+    main {
+        padding-bottom: 70px;
     }
 }
 

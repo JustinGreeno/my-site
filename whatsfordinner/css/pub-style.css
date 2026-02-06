@@ -791,17 +791,59 @@ main {
         font-size: 1.4rem;
     }
 
+    footer {
+        padding: 0.5rem 0.75rem;
+    }
+
     .footer-content {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
     }
 
     .footer-left {
-        flex-direction: column;
+        gap: 0.5rem;
     }
 
-    .footer-right {
-        align-items: center;
+    .footer-logo {
+        height: 35px;
+    }
+
+    .footer-title {
+        font-size: 0.85rem;
+    }
+
+    .footer-address {
+        font-size: 0.7rem;
+    }
+
+    .footer-center {
+        order: 3;
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer-hours {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.5rem;
+    }
+
+    .footer-right .social-links {
+        display: none;
+    }
+
+    .footer-credit {
+        font-size: 0.6rem;
+    }
+
+    .footer-secret {
+        display: none;
+    }
+
+    main {
+        padding-bottom: 85px;
     }
 
     .contact-info-large {
@@ -820,5 +862,40 @@ main {
 
     .menu-item-price {
         align-self: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        padding: 0.3rem 0.5rem;
+    }
+
+    .footer-content {
+        gap: 0.3rem;
+    }
+
+    .footer-logo {
+        height: 25px;
+    }
+
+    .footer-title {
+        font-size: 0.75rem;
+    }
+
+    .footer-address {
+        display: none;
+    }
+
+    .footer-hours {
+        font-size: 0.65rem;
+        padding: 0.15rem 0.35rem;
+    }
+
+    .footer-credit {
+        font-size: 0.55rem;
+    }
+
+    main {
+        padding-bottom: 70px;
     }
 }
