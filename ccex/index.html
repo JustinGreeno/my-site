@@ -254,6 +254,7 @@
                 </div>
             </div>
             <div class="footer-right">
+                <p><a href="https://www.facebook.com/cumberlandex/" target="_blank" style="color: var(--straw-light); text-decoration: none;">Follow us on Facebook</a></p>
                 <p>&copy; 2025 Cumberland County Exhibition</p>
                 <p class="footer-credit">Website by <a href="../html/index.html">Justin Greeno</a></p>
             </div>
@@ -362,9 +363,10 @@
                 return;
             }
 
+            const terms = typeof getSearchTerms === 'function' ? getSearchTerms(query) : new Set([query.toLowerCase()]);
             const results = searchIndex.filter(item => {
                 const searchText = `${item.title} ${item.desc} ${item.keywords}`.toLowerCase();
-                return searchText.includes(query.toLowerCase());
+                return [...terms].some(term => searchText.includes(term));
             });
 
             if (results.length === 0) {

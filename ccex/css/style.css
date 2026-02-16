@@ -433,6 +433,8 @@ nav a.active {
     transform: rotate(-2deg);
     position: relative;
     z-index: 2;
+    max-width: calc(100% - 2rem);
+    overflow-wrap: break-word;
 }
 
 /* Hero logo - large featured logo on home page - TWICE AS BIG */
@@ -1804,7 +1806,7 @@ main {
     }
 
     .logo-tagline {
-        font-size: 2.2rem;
+        font-size: clamp(1.2rem, 4vw, 2.2rem);
     }
 
     .hero h1 {

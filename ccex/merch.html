@@ -199,9 +199,10 @@
     <!-- Full width search bar -->
     <div class="search-bar-container">
         <div class="search-bar">
-            <input type="text" placeholder="Search forms, events, information..." id="siteSearch">
+            <input type="text" placeholder="Search pages, forms, events, FAQ..." id="siteSearch" autocomplete="off">
             <button onclick="performSearch()">Search</button>
         </div>
+        <div class="search-dropdown" id="searchDropdown"></div>
     </div>
 
     <main>
@@ -433,6 +434,7 @@
                 </div>
             </div>
             <div class="footer-right">
+                <p><a href="https://www.facebook.com/cumberlandex/" target="_blank" style="color: var(--straw-light); text-decoration: none;">Follow us on Facebook</a></p>
                 <p>&copy; 2025 Cumberland County Exhibition</p>
                 <p class="footer-credit">Website by <a href="../html/index.html">Justin Greeno</a></p>
             </div>

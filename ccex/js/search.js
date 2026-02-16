@@ -51,7 +51,7 @@ const searchIndex = [
     { type: 'info', icon: '📆', title: 'Fair Dates 2025', desc: 'Aug 22-25 & Aug 30 - Sept 1', url: 'index.html', keywords: 'dates when fair 2025 august september' },
     { type: 'info', icon: '⏰', title: 'Fair Hours', desc: 'Fri 5-10PM, Sat-Sun 10AM-10PM, Mon 10AM-4PM', url: 'vendors.html', keywords: 'hours times open close schedule' },
     { type: 'info', icon: '🌧️', title: 'Weather Policy', desc: 'Fair runs rain or shine', url: 'contact.html', keywords: 'weather rain policy refund' },
-    { type: 'info', icon: '📧', title: 'Email Contact', desc: 'info@ccex.ca', url: 'contact.html', keywords: 'email contact info address' },
+    { type: 'info', icon: '📧', title: 'Email Contact', desc: 'cumberlandexhibition@gmail.com', url: 'contact.html', keywords: 'email contact info address' },
     { type: 'info', icon: '♿', title: 'Accessibility', desc: 'Accessible parking and facilities', url: 'contact.html', keywords: 'accessible accessibility wheelchair handicap' },
     { type: 'info', icon: '🍽️', title: 'Food Available', desc: 'Food court with fair favorites', url: 'contact.html', keywords: 'food eating available vendors' },
     { type: 'info', icon: '💼', title: 'Become a Vendor', desc: 'Apply to sell at the fair', url: 'vendors.html', keywords: 'vendor apply sell booth' },
@@ -66,6 +66,34 @@ const searchIndex = [
     { type: 'info', icon: '🐔', title: 'Poultry Entry', desc: 'Enter poultry in the show', url: 'exhibitors.html', keywords: 'poultry entry chickens ducks turkeys geese' },
     { type: 'info', icon: '🐰', title: 'Rabbit Entry', desc: 'Enter rabbits in the show', url: 'exhibitors.html', keywords: 'rabbit entry bunny show' }
 ];
+
+// Animal synonym groups - searching any term matches all related terms
+const synonymGroups = [
+    ['cow', 'cattle', 'bovine', 'heifer', 'steer', 'bull', 'calf', 'ox'],
+    ['chicken', 'hen', 'rooster', 'cock', 'chick', 'chicks', 'poultry', 'fowl'],
+    ['horse', 'mare', 'stallion', 'colt', 'filly', 'foal', 'gelding', 'equine', 'pony', 'ponies'],
+    ['sheep', 'lamb', 'lambs', 'ewe', 'ram', 'ovine'],
+    ['goat', 'goats', 'kid', 'doe', 'buck', 'billy', 'nanny'],
+    ['pig', 'hog', 'sow', 'boar', 'piglet', 'swine'],
+    ['rabbit', 'bunny', 'bunnies', 'hare'],
+    ['duck', 'ducks', 'drake', 'duckling'],
+    ['turkey', 'turkeys', 'tom', 'gobbler'],
+    ['goose', 'geese', 'gander'],
+];
+
+function getSearchTerms(query) {
+    const q = query.toLowerCase();
+    const words = q.split(/\s+/);
+    const expanded = new Set(words);
+    for (const word of words) {
+        for (const group of synonymGroups) {
+            if (group.includes(word)) {
+                group.forEach(syn => expanded.add(syn));
+            }
+        }
+    }
+    return expanded;
+}
 
 // Initialize search when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
@@ -86,9 +114,10 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
+        const terms = getSearchTerms(query);
         const results = searchIndex.filter(item => {
             const searchText = `${item.title} ${item.desc} ${item.keywords}`.toLowerCase();
-            return searchText.includes(query.toLowerCase());
+            return [...terms].some(term => searchText.includes(term));
         });
 
         if (results.length === 0) {

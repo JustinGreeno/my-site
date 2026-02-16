@@ -3,104 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kids Activities | Cumberland County Exhibition</title>
-    <meta name="description" content="Fun activities for children at the Cumberland County Exhibition - petting zoo, games, face painting, and more!">
+    <title>4-H Programs | Cumberland County Exhibition</title>
+    <meta name="description" content="Learn about 4-H youth programs at the Cumberland County Exhibition - beef showmanship, horse shows, dairy competitions, and more!">
     <link href="css/style.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/art/Try Logo 1 white glow.png">
     <script src="js/search.js" defer></script>
     <script src="js/countdown.js" defer></script>
     <script src="js/horseshoe.js" defer></script>
-    <style>
-        .activity-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-        .activity-card {
-            background: var(--cream);
-            border: 4px solid var(--wood-medium);
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 6px 20px var(--shadow-medium);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .activity-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 8px;
-            background: linear-gradient(90deg, var(--straw), var(--hay), var(--straw));
-        }
-        .activity-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 35px var(--shadow-dark);
-            border-color: var(--straw);
-        }
-        .activity-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        .activity-card h3 {
-            font-family: 'Alfa Slab One', serif;
-            color: var(--wood-dark);
-            font-size: 1.4rem;
-            margin-bottom: 0.75rem;
-        }
-        .activity-card p {
-            color: var(--text);
-            line-height: 1.6;
-        }
-        .activity-time {
-            display: inline-block;
-            background: var(--wood-medium);
-            color: var(--straw-light);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-top: 1rem;
-            font-weight: 600;
-        }
-        .petting-zoo-section {
-            background: linear-gradient(135deg, var(--hay) 0%, var(--straw-light) 100%);
-            border: 4px solid var(--wood-medium);
-            border-radius: 12px;
-            padding: 2rem;
-            margin: 2rem 0;
-        }
-        .animals-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 1rem;
-        }
-        .animal-tag {
-            background: var(--cream);
-            border: 2px solid var(--rope-tan);
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            font-family: 'Roboto Slab', serif;
-            font-weight: 600;
-            color: var(--wood-dark);
-        }
-        .safety-note {
-            background: var(--cream);
-            border-left: 4px solid var(--barn-red);
-            padding: 1rem 1.5rem;
-            margin-top: 2rem;
-            border-radius: 0 8px 8px 0;
-        }
-        .safety-note h4 {
-            color: var(--barn-red);
-            margin-bottom: 0.5rem;
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -119,19 +28,20 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="schedule-2025.html">Schedule</a></li>
                     <li class="has-dropdown">
-                        <a href="#" class="active">Info</a>
+                        <a href="#">Info</a>
                         <ul class="dropdown">
-                            <li><a href="activities.html" class="active">Kids Activities</a></li>
+                            <li><a href="activities.html">Kids Activities</a></li>
                             <li><a href="exhibitors.html">Exhibitors</a></li>
                             <li><a href="vendors.html">Vendors</a></li>
                             <li><a href="forms.html">Forms</a></li>
                             <li><a href="forms.html#registration">Register Online</a></li>
+                            <li><a href="4h.html">4-H</a></li>
                         </ul>
                     </li>
                     <li><a href="merch.html">Merch</a></li>
                     <li><a href="photos.html">Photos</a></li>
                     <li class="has-dropdown">
-                        <a href="#">About</a>
+                        <a href="#" class="active">About</a>
                         <ul class="dropdown">
                             <li><a href="sponsors.html">Sponsors</a></li>
                             <li><a href="members.html">Board</a></li>
@@ -154,11 +64,12 @@
 
     <main>
         <section class="hero">
-            <h1>Kids Activities</h1>
-            <p class="tagline">Fun for the Whole Family!</p>
+            <h1>4-H at the Fair</h1>
+            <p class="tagline">Learn It. Do It. Live It.</p>
         </section>
 
         <div class="container">
+            <!-- What is 4-H? -->
             <section class="panel animate-in section-decorated">
                 <div class="animal-head left">
                     <img src="images/art/chicken facing right.png" alt="">
@@ -169,125 +80,71 @@
                 <div class="horseshoe">
                     <img src="images/art/horse shoe.png" alt="">
                 </div>
-                <h2>A Day of Adventure Awaits!</h2>
-                <p>The Cumberland County Exhibition is packed with activities designed to delight children of all ages. From meeting friendly farm animals to exciting games and creative activities, there's never a dull moment at the fair!</p>
+                <h2>What is 4-H?</h2>
+                <p>4-H is one of the largest youth development organizations in the world. The four H's stand for Head, Heart, Hands, and Health. Founded in the early 1900s, 4-H empowers young people ages 6-21 through hands-on learning in agriculture, STEM, healthy living, and civic engagement.</p>
             </section>
 
-            <!-- Petting Zoo Section -->
-            <div class="petting-zoo-section">
-                <h2 style="text-align: center; font-family: 'Alfa Slab One', serif; color: var(--wood-dark); margin-bottom: 1rem;">Petting Zoo</h2>
-                <p style="text-align: center; font-size: 1.1rem; color: var(--wood-dark);">Get up close and personal with friendly farm animals! Our petting zoo is a favorite among young visitors.</p>
-                <div class="animals-list">
-                    <span class="animal-tag">Baby Goats</span>
-                    <span class="animal-tag">Lambs</span>
-                    <span class="animal-tag">Bunnies</span>
-                    <span class="animal-tag">Chicks</span>
-                    <span class="animal-tag">Ducklings</span>
-                    <span class="animal-tag">Calves</span>
-                    <span class="animal-tag">Piglets</span>
-                    <span class="animal-tag">Ponies</span>
-                </div>
-                <p style="text-align: center; margin-top: 1rem; font-style: italic;">Open daily throughout the fair!</p>
-            </div>
-
             <div class="divider-rope"></div>
 
-            <!-- Activities Grid -->
-            <h2 style="text-align: center; margin-bottom: 1rem;">Activities & Entertainment</h2>
-            <div class="activity-grid">
-                <div class="activity-card">
-                    <div class="activity-icon">🎨</div>
-                    <h3>Face Painting</h3>
-                    <p>Transform into your favorite animal, superhero, or butterfly with our talented face painters!</p>
-                    <span class="activity-time">11 AM - 5 PM Daily</span>
-                </div>
-
-                <div class="activity-card">
-                    <div class="activity-icon">🎪</div>
-                    <h3>Midway Rides</h3>
-                    <p>From gentle carousel rides to thrilling spins, the midway has something for every age and thrill level.</p>
-                    <span class="activity-time">Opens at Noon</span>
-                </div>
-
-                <div class="activity-card">
-                    <div class="activity-icon">🎯</div>
-                    <h3>Carnival Games</h3>
-                    <p>Test your skills at ring toss, balloon darts, and more! Win prizes for the whole family.</p>
-                    <span class="activity-time">All Day</span>
-                </div>
-
-                <div class="activity-card">
-                    <div class="activity-icon">🌾</div>
-                    <h3>Hay Bale Maze</h3>
-                    <p>Navigate through our fun hay bale maze! Perfect for kids who love adventure.</p>
-                    <span class="activity-time">10 AM - Dusk</span>
-                </div>
-
-                <div class="activity-card">
-                    <div class="activity-icon">🎈</div>
-                    <h3>Balloon Animals</h3>
-                    <p>Watch amazing balloon artists create dogs, swords, flowers, and more!</p>
-                    <span class="activity-time">Weekends Only</span>
-                </div>
-
-                <div class="activity-card">
-                    <div class="activity-icon">🏆</div>
-                    <h3>Kids Competitions</h3>
-                    <p>Pie eating contests, sack races, and other fun competitions with ribbons and prizes!</p>
-                    <span class="activity-time">See Schedule</span>
-                </div>
-
-                <div class="activity-card">
-                    <div class="activity-icon">🐴</div>
-                    <h3>Pony Rides</h3>
-                    <p>Gentle pony rides for children. A memorable experience they'll treasure!</p>
-                    <span class="activity-time">12 PM - 4 PM</span>
-                </div>
-
-                <div class="activity-card">
-                    <div class="activity-icon">🌽</div>
-                    <h3>Agricultural Discovery</h3>
-                    <p>Learn about farming, plant seeds, and discover where food comes from!</p>
-                    <span class="activity-time">Educational Tent</span>
-                </div>
-            </div>
-
-            <div class="divider-rope"></div>
-
-            <!-- 4-H Information -->
+            <!-- History of 4-H in Nova Scotia -->
             <section class="panel-wooden">
-                <h2>4-H Youth Programs</h2>
-                <p>The Cumberland County Exhibition is proud to host 4-H competitions and demonstrations throughout the fair. Watch young farmers showcase their animals and skills in:</p>
+                <h2>History of 4-H in Nova Scotia</h2>
+                <p>4-H has been a cornerstone of rural youth development in Nova Scotia for over 100 years. The program began in the early 1900s when agricultural colleges started boys' and girls' clubs to teach modern farming techniques. In Nova Scotia, 4-H clubs have been active since the 1920s, growing from small community groups into a province-wide network of clubs that teach skills ranging from traditional livestock showing to public speaking and community service. The Cumberland County Exhibition has been proud to host 4-H competitions since its earliest days, providing a stage for young members to showcase their hard work and dedication.</p>
+            </section>
+
+            <div class="divider-rope"></div>
+
+            <!-- 4-H at CCEx -->
+            <section class="panel">
+                <h2>4-H at CCEx</h2>
+                <p>4-H members are a vital part of the Cumberland County Exhibition. Throughout the fair, young participants showcase their skills, knowledge, and dedication across a variety of competitions and demonstrations.</p>
                 <div class="info-cards" style="margin-top: 1.5rem;">
                     <div class="info-card">
                         <h3>Beef Showmanship</h3>
-                        <p>See 4-H members present their cattle with pride and skill.</p>
+                        <p>Members present and handle cattle, judged on their skill and knowledge.</p>
                     </div>
                     <div class="info-card">
-                        <h3>Horse Shows</h3>
-                        <p>Western pleasure, equitation, and more competitive events.</p>
+                        <h3>Light Horse Shows</h3>
+                        <p>Riding and horsemanship competitions across multiple disciplines.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Dairy Shows</h3>
+                        <p>Showing and presenting dairy cattle breeds.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Dog Shows</h3>
+                        <p>Obedience and handling demonstrations.</p>
                     </div>
                     <div class="info-card">
                         <h3>Small Animals</h3>
-                        <p>Rabbits, poultry, and other small animals on display.</p>
+                        <p>Rabbits, poultry, and other small animal presentations.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Tug of War</h3>
+                        <p>Team competition between 4-H clubs.</p>
                     </div>
                 </div>
-                <p style="margin-top: 1.5rem; text-align: center;"><strong>Interested in 4-H?</strong> Visit our information booth to learn how your child can get involved!</p>
             </section>
 
-            <!-- Safety Note -->
-            <div class="safety-note">
-                <h4>Parent & Guardian Information</h4>
-                <p>For your child's safety, please supervise children at all times, especially around animals and rides. Hand washing stations are available throughout the grounds. Lost children should be reported to the main office immediately.</p>
-            </div>
+            <div class="divider-rope"></div>
 
-            <!-- CTA -->
-            <section class="panel text-center" style="margin-top: 2rem;">
-                <h2>Plan Your Family Day</h2>
-                <p>Check our full schedule for specific event times and locations. We recommend arriving early to experience everything the fair has to offer!</p>
-                <div class="mt-3">
-                    <a href="schedule-2025.html" class="btn">View Full Schedule</a>
+            <!-- The 4-H Pledge -->
+            <section class="panel-rope text-center">
+                <h2>The 4-H Pledge</h2>
+                <p style="font-size: 1.2rem; line-height: 1.8; margin-top: 1rem;">"I pledge my <strong>HEAD</strong> to clearer thinking, my <strong>HEART</strong> to greater loyalty, my <strong>HANDS</strong> to larger service, and my <strong>HEALTH</strong> to better living, for my club, my community, my country, and my world."</p>
+            </section>
+
+            <div class="divider-rope"></div>
+
+            <!-- Get Involved -->
+            <section class="panel-wooden text-center">
+                <h2>Get Involved</h2>
+                <p>Interested in joining 4-H? Contact your local 4-H club or reach out to us for more information. 4-H is open to youth ages 6-21 and there's a project for every interest!</p>
+                <div class="mt-3" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="contact.html" class="btn">Contact Us</a>
+                    <a href="https://www.4-hnovascotia.ca/" target="_blank" class="btn">Learn More About 4-H</a>
                 </div>
+                <p style="margin-top: 1.5rem;">For questions about 4-H events at CCEx, email us at <a href="mailto:cumberlandexhibition@gmail.com">cumberlandexhibition@gmail.com</a></p>
             </section>
         </div>
     </main>
@@ -329,7 +186,7 @@
                 </div>
             </div>
             <div class="footer-right">
-                <p><a href="https://www.facebook.com/cumberlandex/" target="_blank" style="color: var(--straw-light); text-decoration: none;">Follow us on Facebook</a></p>
+                <a href="https://www.facebook.com/cumberlandex/" target="_blank" class="footer-social">Facebook</a>
                 <p>&copy; 2025 Cumberland County Exhibition</p>
                 <p class="footer-credit">Website by <a href="../html/index.html">Justin Greeno</a></p>
             </div>
@@ -367,6 +224,22 @@
                 hamburger.classList.remove('active');
             }
         });
+
+        // Parallax background
+        (function() {
+            const style = document.createElement('style');
+            style.id = 'parallax-style';
+            document.head.appendChild(style);
+
+            function updateParallax() {
+                const scrollY = window.pageYOffset;
+                const translateY = scrollY * 0.15;
+                style.textContent = `body::before { transform: translateY(-${translateY}px); }`;
+            }
+
+            window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), { passive: true });
+            updateParallax();
+        })();
 
         // Countdown timer to Aug 22, 2026
         (function() {
