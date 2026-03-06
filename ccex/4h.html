@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>4-H Programs | Cumberland County Exhibition</title>
     <meta name="description" content="Learn about 4-H youth programs at the Cumberland County Exhibition - beef showmanship, horse shows, dairy competitions, and more!">
+    <meta name="keywords" content="4-H, CCEx 4-H, youth agriculture, beef showmanship, horse shows, Nova Scotia 4-H, Cumberland County">
     <link href="css/style.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/art/Try Logo 1 white glow.png">
     <script src="js/search.js" defer></script>
@@ -62,6 +63,10 @@
         <div class="search-dropdown" id="searchDropdown"></div>
     </div>
 
+    <div class="site-notice">
+        <strong>Site Update in Progress:</strong> Some information including dates, prices, and schedules may reflect previous years. Updated details coming soon!
+    </div>
+
     <main>
         <section class="hero">
             <h1>4-H at the Fair</h1>
@@ -72,13 +77,13 @@
             <!-- What is 4-H? -->
             <section class="panel animate-in section-decorated">
                 <div class="animal-head left">
-                    <img src="images/art/chicken facing right.png" alt="">
+                    <img src="images/art/chicken facing right.png" alt="Decorative farm animal">
                 </div>
                 <div class="animal-head right">
-                    <img src="images/art/horse facing left.png" alt="">
+                    <img src="images/art/horse facing left.png" alt="Decorative farm animal">
                 </div>
                 <div class="horseshoe">
-                    <img src="images/art/horse shoe.png" alt="">
+                    <img src="images/art/horse shoe.png" alt="Decorative horseshoe">
                 </div>
                 <h2>What is 4-H?</h2>
                 <p>4-H is one of the largest youth development organizations in the world. The four H's stand for Head, Heart, Hands, and Health. Founded in the early 1900s, 4-H empowers young people ages 6-21 through hands-on learning in agriculture, STEM, healthy living, and civic engagement.</p>
@@ -98,7 +103,7 @@
             <section class="panel">
                 <h2>4-H at CCEx</h2>
                 <p>4-H members are a vital part of the Cumberland County Exhibition. Throughout the fair, young participants showcase their skills, knowledge, and dedication across a variety of competitions and demonstrations.</p>
-                <div class="info-cards" style="margin-top: 1.5rem;">
+                <div class="info-cards mt-3">
                     <div class="info-card">
                         <h3>Beef Showmanship</h3>
                         <p>Members present and handle cattle, judged on their skill and knowledge.</p>
@@ -131,7 +136,7 @@
             <!-- The 4-H Pledge -->
             <section class="panel-rope text-center">
                 <h2>The 4-H Pledge</h2>
-                <p style="font-size: 1.2rem; line-height: 1.8; margin-top: 1rem;">"I pledge my <strong>HEAD</strong> to clearer thinking, my <strong>HEART</strong> to greater loyalty, my <strong>HANDS</strong> to larger service, and my <strong>HEALTH</strong> to better living, for my club, my community, my country, and my world."</p>
+                <p class="inline-note" style="font-size: 1.2rem; line-height: 1.8;">"I pledge my <strong>HEAD</strong> to clearer thinking, my <strong>HEART</strong> to greater loyalty, my <strong>HANDS</strong> to larger service, and my <strong>HEALTH</strong> to better living, for my club, my community, my country, and my world."</p>
             </section>
 
             <div class="divider-rope"></div>
@@ -144,8 +149,15 @@
                     <a href="contact.html" class="btn">Contact Us</a>
                     <a href="https://www.4-hnovascotia.ca/" target="_blank" class="btn">Learn More About 4-H</a>
                 </div>
-                <p style="margin-top: 1.5rem;">For questions about 4-H events at CCEx, email us at <a href="mailto:cumberlandexhibition@gmail.com">cumberlandexhibition@gmail.com</a></p>
+                <p class="mt-3">For questions about 4-H events at CCEx, email us at <a href="mailto:cumberlandexhibition@gmail.com">cumberlandexhibition@gmail.com</a></p>
             </section>
+
+        <!-- Become a Sponsor CTA -->
+        <div class="sponsor-cta">
+            <h3>Become a Sponsor!</h3>
+            <p>Support the Cumberland County Exhibition and put your business in front of thousands of visitors. Sponsorship packages available for every budget!</p>
+            <a href="sponsors.html" class="btn">View Sponsorship Opportunities</a>
+        </div>
         </div>
     </main>
 
@@ -186,7 +198,7 @@
                 </div>
             </div>
             <div class="footer-right">
-                <a href="https://www.facebook.com/cumberlandex/" target="_blank" class="footer-social">Facebook</a>
+                <p><a href="https://www.facebook.com/cumberlandex/" target="_blank" class="footer-social-link">Follow us on Facebook</a></p>
                 <p>&copy; 2025 Cumberland County Exhibition</p>
                 <p class="footer-credit">Website by <a href="../html/index.html">Justin Greeno</a></p>
             </div>
@@ -239,34 +251,6 @@
 
             window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), { passive: true });
             updateParallax();
-        })();
-
-        // Countdown timer to Aug 22, 2026
-        (function() {
-            const targetDate = new Date('August 22, 2026 00:00:00').getTime();
-
-            function updateCountdown() {
-                const now = new Date().getTime();
-                const distance = targetDate - now;
-
-                if (distance < 0) {
-                    document.getElementById('countdown').innerHTML = '<span style="color: var(--straw-light);">CCEx 2026 is HERE!</span>';
-                    return;
-                }
-
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const secs = Math.floor((distance % (1000 * 60)) / 1000);
-
-                document.getElementById('days').textContent = days;
-                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-                document.getElementById('mins').textContent = mins.toString().padStart(2, '0');
-                document.getElementById('secs').textContent = secs.toString().padStart(2, '0');
-            }
-
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
         })();
 
         // Random animal selection

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kids Activities | Cumberland County Exhibition</title>
     <meta name="description" content="Fun activities for children at the Cumberland County Exhibition - petting zoo, games, face painting, and more!">
+    <meta name="keywords" content="CCEx kids activities, petting zoo, face painting, pony rides, midway, Oxford NS fair">
     <link href="css/style.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/art/Try Logo 1 white glow.png">
     <script src="js/search.js" defer></script>
@@ -126,6 +127,7 @@
                             <li><a href="vendors.html">Vendors</a></li>
                             <li><a href="forms.html">Forms</a></li>
                             <li><a href="forms.html#registration">Register Online</a></li>
+                            <li><a href="4h.html">4-H</a></li>
                         </ul>
                     </li>
                     <li><a href="merch.html">Merch</a></li>
@@ -152,6 +154,10 @@
         <div class="search-dropdown" id="searchDropdown"></div>
     </div>
 
+    <div class="site-notice">
+        <strong>Site Update in Progress:</strong> Some information including dates, prices, and schedules may reflect previous years. Updated details coming soon!
+    </div>
+
     <main>
         <section class="hero">
             <h1>Kids Activities</h1>
@@ -161,13 +167,13 @@
         <div class="container">
             <section class="panel animate-in section-decorated">
                 <div class="animal-head left">
-                    <img src="images/art/chicken facing right.png" alt="">
+                    <img src="images/art/chicken facing right.png" alt="Decorative farm animal">
                 </div>
                 <div class="animal-head right">
-                    <img src="images/art/horse facing left.png" alt="">
+                    <img src="images/art/horse facing left.png" alt="Decorative farm animal">
                 </div>
                 <div class="horseshoe">
-                    <img src="images/art/horse shoe.png" alt="">
+                    <img src="images/art/horse shoe.png" alt="Decorative horseshoe">
                 </div>
                 <h2>A Day of Adventure Awaits!</h2>
                 <p>The Cumberland County Exhibition is packed with activities designed to delight children of all ages. From meeting friendly farm animals to exciting games and creative activities, there's never a dull moment at the fair!</p>
@@ -175,8 +181,8 @@
 
             <!-- Petting Zoo Section -->
             <div class="petting-zoo-section">
-                <h2 style="text-align: center; font-family: 'Alfa Slab One', serif; color: var(--wood-dark); margin-bottom: 1rem;">Petting Zoo</h2>
-                <p style="text-align: center; font-size: 1.1rem; color: var(--wood-dark);">Get up close and personal with friendly farm animals! Our petting zoo is a favorite among young visitors.</p>
+                <h2 class="petting-zoo-heading">Petting Zoo</h2>
+                <p class="petting-zoo-desc">Get up close and personal with friendly farm animals! Our petting zoo is a favorite among young visitors.</p>
                 <div class="animals-list">
                     <span class="animal-tag">Baby Goats</span>
                     <span class="animal-tag">Lambs</span>
@@ -187,13 +193,13 @@
                     <span class="animal-tag">Piglets</span>
                     <span class="animal-tag">Ponies</span>
                 </div>
-                <p style="text-align: center; margin-top: 1rem; font-style: italic;">Open daily throughout the fair!</p>
+                <p class="text-center inline-note" style="font-style: italic;">Open daily throughout the fair!</p>
             </div>
 
             <div class="divider-rope"></div>
 
             <!-- Activities Grid -->
-            <h2 style="text-align: center; margin-bottom: 1rem;">Activities & Entertainment</h2>
+            <h2 class="text-center mb-2">Activities &amp; Entertainment</h2>
             <div class="activity-grid">
                 <div class="activity-card">
                     <div class="activity-icon">🎨</div>
@@ -258,7 +264,7 @@
             <section class="panel-wooden">
                 <h2>4-H Youth Programs</h2>
                 <p>The Cumberland County Exhibition is proud to host 4-H competitions and demonstrations throughout the fair. Watch young farmers showcase their animals and skills in:</p>
-                <div class="info-cards" style="margin-top: 1.5rem;">
+                <div class="info-cards mt-3">
                     <div class="info-card">
                         <h3>Beef Showmanship</h3>
                         <p>See 4-H members present their cattle with pride and skill.</p>
@@ -272,7 +278,7 @@
                         <p>Rabbits, poultry, and other small animals on display.</p>
                     </div>
                 </div>
-                <p style="margin-top: 1.5rem; text-align: center;"><strong>Interested in 4-H?</strong> Visit our information booth to learn how your child can get involved!</p>
+                <p class="mt-3 text-center"><strong>Interested in 4-H?</strong> Visit our information booth to learn how your child can get involved!</p>
             </section>
 
             <!-- Safety Note -->
@@ -282,13 +288,20 @@
             </div>
 
             <!-- CTA -->
-            <section class="panel text-center" style="margin-top: 2rem;">
+            <section class="panel text-center mt-3">
                 <h2>Plan Your Family Day</h2>
                 <p>Check our full schedule for specific event times and locations. We recommend arriving early to experience everything the fair has to offer!</p>
                 <div class="mt-3">
                     <a href="schedule-2025.html" class="btn">View Full Schedule</a>
                 </div>
             </section>
+
+        <!-- Become a Sponsor CTA -->
+        <div class="sponsor-cta">
+            <h3>Become a Sponsor!</h3>
+            <p>Support the Cumberland County Exhibition and put your business in front of thousands of visitors. Sponsorship packages available for every budget!</p>
+            <a href="sponsors.html" class="btn">View Sponsorship Opportunities</a>
+        </div>
         </div>
     </main>
 
@@ -329,7 +342,7 @@
                 </div>
             </div>
             <div class="footer-right">
-                <p><a href="https://www.facebook.com/cumberlandex/" target="_blank" style="color: var(--straw-light); text-decoration: none;">Follow us on Facebook</a></p>
+                <p><a href="https://www.facebook.com/cumberlandex/" target="_blank" class="footer-social-link">Follow us on Facebook</a></p>
                 <p>&copy; 2025 Cumberland County Exhibition</p>
                 <p class="footer-credit">Website by <a href="../html/index.html">Justin Greeno</a></p>
             </div>
@@ -367,34 +380,6 @@
                 hamburger.classList.remove('active');
             }
         });
-
-        // Countdown timer to Aug 22, 2026
-        (function() {
-            const targetDate = new Date('August 22, 2026 00:00:00').getTime();
-
-            function updateCountdown() {
-                const now = new Date().getTime();
-                const distance = targetDate - now;
-
-                if (distance < 0) {
-                    document.getElementById('countdown').innerHTML = '<span style="color: var(--straw-light);">CCEx 2026 is HERE!</span>';
-                    return;
-                }
-
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const secs = Math.floor((distance % (1000 * 60)) / 1000);
-
-                document.getElementById('days').textContent = days;
-                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-                document.getElementById('mins').textContent = mins.toString().padStart(2, '0');
-                document.getElementById('secs').textContent = secs.toString().padStart(2, '0');
-            }
-
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
-        })();
 
         // Random animal selection
         (function() {

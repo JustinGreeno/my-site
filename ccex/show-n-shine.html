@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kids Show 'N Shine Registration | Cumberland County Exhibition</title>
-    <meta name="description" content="Register for the CCEx Kids Show 'N Shine 2025 - for children 9 years and younger!">
+    <meta name="description" content="Register for the CCEx Kids Show 'N Shine 2026 - for children 9 years and younger!">
     <link href="css/style.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/art/Try Logo 1 white glow.png">
     <script src="js/search.js" defer></script>
@@ -189,6 +189,7 @@
                             <li><a href="exhibitors.html">Exhibitors</a></li>
                             <li><a href="vendors.html">Vendors</a></li>
                             <li><a href="forms.html">Forms</a></li>
+                            <li><a href="4h.html">4-H</a></li>
                         </ul>
                     </li>
                     <li><a href="merch.html">Merch</a></li>
@@ -206,9 +207,22 @@
         </div>
     </header>
 
+    <!-- Full width search bar -->
+    <div class="search-bar-container">
+        <div class="search-bar">
+            <input type="text" placeholder="Search pages, forms, events, FAQ..." id="siteSearch" autocomplete="off">
+            <button onclick="performSearch()">Search</button>
+        </div>
+        <div class="search-dropdown" id="searchDropdown"></div>
+    </div>
+
+    <div class="site-notice">
+        <strong>Site Update in Progress:</strong> Some information including dates, prices, and schedules may reflect previous years. Updated details coming soon!
+    </div>
+
     <main>
         <section class="hero">
-            <h1>Kids Show 'N Shine 2025</h1>
+            <h1>Kids Show 'N Shine 2026</h1>
             <p class="tagline">Registration Form</p>
         </section>
 
@@ -216,13 +230,13 @@
             <!-- Info Panel -->
             <section class="panel section-decorated">
                 <div class="animal-head left">
-                    <img src="images/art/cow facing right.png" alt="">
+                    <img src="images/art/cow facing right.png" alt="Decorative farm animal">
                 </div>
                 <div class="animal-head right">
-                    <img src="images/art/horse facing left.png" alt="">
+                    <img src="images/art/horse facing left.png" alt="Decorative farm animal">
                 </div>
                 <div class="horseshoe">
-                    <img src="images/art/horse shoe.png" alt="">
+                    <img src="images/art/horse shoe.png" alt="Decorative horseshoe">
                 </div>
                 <h2>Register Your Little Car Enthusiast!</h2>
                 <p>Welcome to the CCEx Kids Show 'N Shine! This is a fun event for children to show off their favorite toy vehicles, ride-on cars, decorated wagons, or bicycles.</p>
@@ -323,6 +337,13 @@
                 <h2>Questions?</h2>
                 <p>For more information about the Kids Show 'N Shine event, visit <a href="index.html" style="color: var(--barn-red); font-weight: 600;">cumberlandcountyex.com</a> or <a href="contact.html" style="color: var(--barn-red); font-weight: 600;">contact us</a>.</p>
             </section>
+
+        <!-- Become a Sponsor CTA -->
+        <div class="sponsor-cta">
+            <h3>Become a Sponsor!</h3>
+            <p>Support the Cumberland County Exhibition and put your business in front of thousands of visitors. Sponsorship packages available for every budget!</p>
+            <a href="sponsors.html" class="btn">View Sponsorship Opportunities</a>
+        </div>
         </div>
     </main>
 
@@ -363,7 +384,7 @@
                 </div>
             </div>
             <div class="footer-right">
-                <p><a href="https://www.facebook.com/cumberlandex/" target="_blank" style="color: var(--straw-light); text-decoration: none;">Follow us on Facebook</a></p>
+                <p><a href="https://www.facebook.com/cumberlandex/" target="_blank" class="footer-social-link">Follow us on Facebook</a></p>
                 <p>&copy; 2025 Cumberland County Exhibition</p>
                 <p class="footer-credit">Website by <a href="../html/index.html">Justin Greeno</a></p>
             </div>
@@ -434,7 +455,7 @@
             const subject = `SHOW AND SHINE REGISTRATION FOR ${participantName}`;
 
             // Build email body
-            let body = `CCEx Kids Show 'N Shine 2025 Registration\n`;
+            let body = `CCEx Kids Show 'N Shine 2026 Registration\n`;
             body += `========================================\n\n`;
             body += `PARTICIPANT INFORMATION\n`;
             body += `-----------------------\n`;

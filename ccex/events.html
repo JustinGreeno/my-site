@@ -6,7 +6,10 @@
     <title>Events | Cumberland County Exhibition</title>
     <meta name="description" content="Full event schedule for the Cumberland County Exhibition - livestock shows, demolition derby, 4-H competitions, and more!">
     <link href="css/style.css" rel="stylesheet">
-    <link rel="icon" type="image/png" href="../images/pixel_justin.gif">
+    <link rel="icon" type="image/png" href="images/art/Try Logo 1 white glow.png">
+    <script src="js/search.js" defer></script>
+    <script src="js/countdown.js" defer></script>
+    <script src="js/horseshoe.js" defer></script>
 </head>
 <body>
     <header>
@@ -31,6 +34,7 @@
                             <li><a href="exhibitors.html">Exhibitors</a></li>
                             <li><a href="vendors.html">Vendors</a></li>
                             <li><a href="forms.html">Forms</a></li>
+                            <li><a href="4h.html">4-H</a></li>
                         </ul>
                     </li>
                     <li><a href="merch.html">Merch</a></li>
@@ -47,6 +51,19 @@
             </nav>
         </div>
     </header>
+
+    <!-- Full width search bar -->
+    <div class="search-bar-container">
+        <div class="search-bar">
+            <input type="text" placeholder="Search pages, forms, events, FAQ..." id="siteSearch" autocomplete="off">
+            <button onclick="performSearch()">Search</button>
+        </div>
+        <div class="search-dropdown" id="searchDropdown"></div>
+    </div>
+
+    <div class="site-notice">
+        <strong>Site Update in Progress:</strong> Some information including dates, prices, and schedules may reflect previous years. Updated details coming soon!
+    </div>
 
     <main>
         <section class="hero">
@@ -224,6 +241,13 @@
                     <a href="contact.html" class="btn">Questions? Contact Us</a>
                 </div>
             </section>
+
+        <!-- Become a Sponsor CTA -->
+        <div class="sponsor-cta">
+            <h3>Become a Sponsor!</h3>
+            <p>Support the Cumberland County Exhibition and put your business in front of thousands of visitors. Sponsorship packages available for every budget!</p>
+            <a href="sponsors.html" class="btn">View Sponsorship Opportunities</a>
+        </div>
         </div>
     </main>
 

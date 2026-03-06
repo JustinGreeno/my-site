@@ -56,6 +56,7 @@
                             <li><a href="vendors.html">Vendors</a></li>
                             <li><a href="forms.html">Forms</a></li>
                             <li><a href="forms.html#registration">Register Online</a></li>
+                            <li><a href="4h.html">4-H</a></li>
                         </ul>
                     </li>
                     <li><a href="merch.html">Merch</a></li>
@@ -80,6 +81,10 @@
             <button onclick="performSearch()">Search</button>
         </div>
         <div class="search-dropdown" id="searchDropdown"></div>
+    </div>
+
+    <div class="site-notice">
+        <strong>Site Update in Progress:</strong> Some information including dates, prices, and schedules may reflect previous years. Updated details coming soon!
     </div>
 
     <main>
@@ -175,6 +180,13 @@
                     <a href="contact.html" class="btn">Submit Your Photos</a>
                 </div>
             </section>
+
+        <!-- Become a Sponsor CTA -->
+        <div class="sponsor-cta">
+            <h3>Become a Sponsor!</h3>
+            <p>Support the Cumberland County Exhibition and put your business in front of thousands of visitors. Sponsorship packages available for every budget!</p>
+            <a href="sponsors.html" class="btn">View Sponsorship Opportunities</a>
+        </div>
         </div>
     </main>
 
@@ -215,7 +227,7 @@
                 </div>
             </div>
             <div class="footer-right">
-                <p><a href="https://www.facebook.com/cumberlandex/" target="_blank" style="color: var(--straw-light); text-decoration: none;">Follow us on Facebook</a></p>
+                <p><a href="https://www.facebook.com/cumberlandex/" target="_blank" class="footer-social-link">Follow us on Facebook</a></p>
                 <p>&copy; 2025 Cumberland County Exhibition</p>
                 <p class="footer-credit">Website by <a href="../html/index.html">Justin Greeno</a></p>
             </div>
@@ -365,33 +377,6 @@
             if (e.key === 'Enter') performSearch();
         });
 
-        // Countdown timer to Aug 22, 2026
-        (function() {
-            const targetDate = new Date('August 22, 2026 00:00:00').getTime();
-
-            function updateCountdown() {
-                const now = new Date().getTime();
-                const distance = targetDate - now;
-
-                if (distance < 0) {
-                    document.getElementById('countdown').innerHTML = '<span style="color: var(--straw-light);">CCEx 2026 is HERE!</span>';
-                    return;
-                }
-
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const secs = Math.floor((distance % (1000 * 60)) / 1000);
-
-                document.getElementById('days').textContent = days;
-                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-                document.getElementById('mins').textContent = mins.toString().padStart(2, '0');
-                document.getElementById('secs').textContent = secs.toString().padStart(2, '0');
-            }
-
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
-        })();
     </script>
 </body>
 </html>

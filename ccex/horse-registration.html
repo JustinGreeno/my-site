@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Horse Show Exhibitor Registration | Cumberland County Exhibition</title>
-    <meta name="description" content="Register for the CCEx Light Horse Show 2025 - Classes for all ages and skill levels!">
+    <meta name="description" content="Register for the CCEx Light Horse Show 2026 - Classes for all ages and skill levels!">
     <link href="css/style.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/art/Try Logo 1 white glow.png">
     <script src="js/search.js" defer></script>
@@ -270,6 +270,7 @@
                             <li><a href="exhibitors.html">Exhibitors</a></li>
                             <li><a href="vendors.html">Vendors</a></li>
                             <li><a href="forms.html">Forms</a></li>
+                            <li><a href="4h.html">4-H</a></li>
                         </ul>
                     </li>
                     <li><a href="merch.html">Merch</a></li>
@@ -287,10 +288,23 @@
         </div>
     </header>
 
+    <!-- Full width search bar -->
+    <div class="search-bar-container">
+        <div class="search-bar">
+            <input type="text" placeholder="Search pages, forms, events, FAQ..." id="siteSearch" autocomplete="off">
+            <button onclick="performSearch()">Search</button>
+        </div>
+        <div class="search-dropdown" id="searchDropdown"></div>
+    </div>
+
+    <div class="site-notice">
+        <strong>Site Update in Progress:</strong> Some information including dates, prices, and schedules may reflect previous years. Updated details coming soon!
+    </div>
+
     <main>
         <section class="hero">
             <h1>Horse Show Registration</h1>
-            <p class="tagline">Light Horse Show 2025</p>
+            <p class="tagline">Light Horse Show 2026</p>
         </section>
 
         <div class="container">
@@ -300,7 +314,7 @@
                 <ul>
                     <li><strong>Entry Fee:</strong> $10 per class</li>
                     <li><strong>Stall Fee:</strong> $25 per stall (optional)</li>
-                    <li><strong>Registration Deadline:</strong> August 15, 2025</li>
+                    <li><strong>Registration Deadline:</strong> August 15, 2026</li>
                     <li>Download the complete <a href="images/forms and documents/CCex-Light Horse booklet 2025 .pdf" style="color: var(--barn-red); font-weight: 600;">Light Horse Show Booklet</a> for rules and class descriptions.</li>
                 </ul>
             </div>
@@ -567,6 +581,13 @@
                 <h2>Questions?</h2>
                 <p>For more information about the Light Horse Show, download the <a href="images/forms and documents/CCex-Light Horse booklet 2025 .pdf" style="color: var(--barn-red); font-weight: 600;">Show Booklet</a> or <a href="contact.html" style="color: var(--barn-red); font-weight: 600;">contact us</a>.</p>
             </section>
+
+        <!-- Become a Sponsor CTA -->
+        <div class="sponsor-cta">
+            <h3>Become a Sponsor!</h3>
+            <p>Support the Cumberland County Exhibition and put your business in front of thousands of visitors. Sponsorship packages available for every budget!</p>
+            <a href="sponsors.html" class="btn">View Sponsorship Opportunities</a>
+        </div>
         </div>
     </main>
 
@@ -607,7 +628,7 @@
                 </div>
             </div>
             <div class="footer-right">
-                <p><a href="https://www.facebook.com/cumberlandex/" target="_blank" style="color: var(--straw-light); text-decoration: none;">Follow us on Facebook</a></p>
+                <p><a href="https://www.facebook.com/cumberlandex/" target="_blank" class="footer-social-link">Follow us on Facebook</a></p>
                 <p>&copy; 2025 Cumberland County Exhibition</p>
                 <p class="footer-credit">Website by <a href="../html/index.html">Justin Greeno</a></p>
             </div>
@@ -788,7 +809,7 @@
             // Build email
             const subject = `HORSE SHOW REGISTRATION - ${exhibitorName}`;
 
-            let body = `CCEx Light Horse Show 2025 Registration\n`;
+            let body = `CCEx Light Horse Show 2026 Registration\n`;
             body += `========================================\n\n`;
             body += `EXHIBITOR INFORMATION\n`;
             body += `---------------------\n`;

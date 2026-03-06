@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vendor Application | Cumberland County Exhibition</title>
-    <meta name="description" content="Apply to become a vendor at the Cumberland County Exhibition 2025 - Food, crafts, merchandise, and more!">
+    <meta name="description" content="Apply to become a vendor at the Cumberland County Exhibition 2026 - Food, crafts, merchandise, and more!">
     <link href="css/style.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/art/Try Logo 1 white glow.png">
     <script src="js/search.js" defer></script>
@@ -307,6 +307,7 @@
                             <li><a href="exhibitors.html">Exhibitors</a></li>
                             <li><a href="vendors.html">Vendors</a></li>
                             <li><a href="forms.html">Forms</a></li>
+                            <li><a href="4h.html">4-H</a></li>
                         </ul>
                     </li>
                     <li><a href="merch.html">Merch</a></li>
@@ -324,16 +325,29 @@
         </div>
     </header>
 
+    <!-- Full width search bar -->
+    <div class="search-bar-container">
+        <div class="search-bar">
+            <input type="text" placeholder="Search pages, forms, events, FAQ..." id="siteSearch" autocomplete="off">
+            <button onclick="performSearch()">Search</button>
+        </div>
+        <div class="search-dropdown" id="searchDropdown"></div>
+    </div>
+
+    <div class="site-notice">
+        <strong>Site Update in Progress:</strong> Some information including dates, prices, and schedules may reflect previous years. Updated details coming soon!
+    </div>
+
     <main>
         <section class="hero">
             <h1>Vendor Application</h1>
-            <p class="tagline">Join Us at CCEx 2025!</p>
+            <p class="tagline">Join Us at CCEx 2026!</p>
         </section>
 
         <div class="container">
             <!-- Deadline Alert -->
             <div class="deadline-alert">
-                <h3>Application Deadline: August 1, 2025</h3>
+                <h3>Application Deadline: August 1, 2026</h3>
                 <p>Submit your application early to secure your spot!</p>
             </div>
 
@@ -465,15 +479,15 @@
                         <h3>Schedule & Space Requirements</h3>
 
                         <div class="form-group">
-                            <label>Which weekends will you attend? <span class="required">*</span></label>
+                            <label>Which days will you attend? <span class="required">*</span></label>
                             <div class="checkbox-group">
                                 <label class="checkbox-option">
-                                    <input type="checkbox" name="weekends" value="weekend1">
-                                    <span>Weekend 1 (Aug 22-25)</span>
+                                    <input type="checkbox" name="weekends" value="fullweek">
+                                    <span>Full Week (Aug 31 - Sept 6)</span>
                                 </label>
                                 <label class="checkbox-option">
-                                    <input type="checkbox" name="weekends" value="weekend2">
-                                    <span>Weekend 2 (Aug 30 - Sept 1)</span>
+                                    <input type="checkbox" name="weekends" value="partial">
+                                    <span>Partial Week (specify in comments)</span>
                                 </label>
                             </div>
                         </div>
@@ -677,6 +691,13 @@
                 <h2>Questions?</h2>
                 <p>For more information about vending at CCEx, visit our <a href="vendors.html" style="color: var(--barn-red); font-weight: 600;">Vendor Information</a> page or <a href="contact.html" style="color: var(--barn-red); font-weight: 600;">contact us</a>.</p>
             </section>
+
+        <!-- Become a Sponsor CTA -->
+        <div class="sponsor-cta">
+            <h3>Become a Sponsor!</h3>
+            <p>Support the Cumberland County Exhibition and put your business in front of thousands of visitors. Sponsorship packages available for every budget!</p>
+            <a href="sponsors.html" class="btn">View Sponsorship Opportunities</a>
+        </div>
         </div>
     </main>
 
@@ -717,7 +738,7 @@
                 </div>
             </div>
             <div class="footer-right">
-                <p><a href="https://www.facebook.com/cumberlandex/" target="_blank" style="color: var(--straw-light); text-decoration: none;">Follow us on Facebook</a></p>
+                <p><a href="https://www.facebook.com/cumberlandex/" target="_blank" class="footer-social-link">Follow us on Facebook</a></p>
                 <p>&copy; 2025 Cumberland County Exhibition</p>
                 <p class="footer-credit">Website by <a href="../html/index.html">Justin Greeno</a></p>
             </div>
@@ -785,14 +806,14 @@
             // Get selected weekends
             const selectedWeekends = [];
             weekends.forEach(w => {
-                if (w.value === 'weekend1') selectedWeekends.push('Weekend 1 (Aug 22-25)');
-                if (w.value === 'weekend2') selectedWeekends.push('Weekend 2 (Aug 30 - Sept 1)');
+                if (w.value === 'fullweek') selectedWeekends.push('Full Week (Aug 31 - Sept 6)');
+                if (w.value === 'partial') selectedWeekends.push('Partial Week (see comments)');
             });
 
             // Build email
             const subject = `VENDOR APPLICATION - ${businessName}`;
 
-            let body = `CCEx 2025 Vendor Application\n`;
+            let body = `CCEx 2026 Vendor Application\n`;
             body += `========================================\n\n`;
 
             body += `BUSINESS INFORMATION\n`;

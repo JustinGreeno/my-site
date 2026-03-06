@@ -2,7 +2,7 @@
 const searchIndex = [
     // Pages
     { type: 'page', icon: '🏠', title: 'Home', desc: 'Main page - Welcome to the Fair', url: 'index.html', keywords: 'home main welcome fair exhibition' },
-    { type: 'page', icon: '📅', title: 'Schedule', desc: 'Full event schedule for 2025', url: 'schedule-2025.html', keywords: 'schedule events times calendar when' },
+    { type: 'page', icon: '📅', title: 'Schedule', desc: 'Full event schedule for 2026', url: 'schedule-2025.html', keywords: 'schedule events times calendar when' },
     { type: 'page', icon: '🎠', title: 'Kids Activities', desc: 'Fun activities for children', url: 'activities.html', keywords: 'kids children activities petting zoo face painting games' },
     { type: 'page', icon: '🐄', title: 'Exhibitors', desc: 'Information for exhibitors', url: 'exhibitors.html', keywords: 'exhibitors livestock cattle horses sheep entry' },
     { type: 'page', icon: '🍔', title: 'Vendors', desc: 'Vendor information and pricing', url: 'vendors.html', keywords: 'vendors food booth craft merchandise sell' },
@@ -12,6 +12,7 @@ const searchIndex = [
     { type: 'page', icon: '🤝', title: 'Sponsors', desc: 'Our sponsors and partners', url: 'sponsors.html', keywords: 'sponsors partners support business' },
     { type: 'page', icon: '👥', title: 'Board Members', desc: 'Meet the exhibition board', url: 'members.html', keywords: 'board members directors committee team' },
     { type: 'page', icon: '✉️', title: 'Contact Us', desc: 'Get in touch with us', url: 'contact.html', keywords: 'contact email phone address location directions' },
+    { type: 'page', icon: '🌿', title: '4-H Programs', desc: 'Youth agricultural development', url: '4h.html', keywords: '4h 4-h youth agriculture clubs pledge head heart hands health' },
 
     // Forms
     { type: 'form', icon: '📄', title: 'Kids Show N Shine Registration', desc: 'Register for kids car show event', url: 'show-n-shine.html', keywords: 'show shine kids car vehicle registration children' },
@@ -48,7 +49,7 @@ const searchIndex = [
     { type: 'info', icon: '📍', title: 'Location & Directions', desc: 'Exhibition Grounds, Oxford, NS', url: 'contact.html', keywords: 'location directions address map oxford nova scotia' },
     { type: 'info', icon: '🅿️', title: 'Parking Information', desc: 'Free parking, accessible spots available', url: 'contact.html', keywords: 'parking free accessible handicap' },
     { type: 'info', icon: '🐕', title: 'Pet Policy', desc: 'Service animals only permitted', url: 'contact.html', keywords: 'pets dogs animals allowed policy' },
-    { type: 'info', icon: '📆', title: 'Fair Dates 2025', desc: 'Aug 22-25 & Aug 30 - Sept 1', url: 'index.html', keywords: 'dates when fair 2025 august september' },
+    { type: 'info', icon: '📆', title: 'Fair Dates 2026', desc: 'Aug 31 - Sept 6', url: 'index.html', keywords: 'dates when fair 2026 august september' },
     { type: 'info', icon: '⏰', title: 'Fair Hours', desc: 'Fri 5-10PM, Sat-Sun 10AM-10PM, Mon 10AM-4PM', url: 'vendors.html', keywords: 'hours times open close schedule' },
     { type: 'info', icon: '🌧️', title: 'Weather Policy', desc: 'Fair runs rain or shine', url: 'contact.html', keywords: 'weather rain policy refund' },
     { type: 'info', icon: '📧', title: 'Email Contact', desc: 'cumberlandexhibition@gmail.com', url: 'contact.html', keywords: 'email contact info address' },

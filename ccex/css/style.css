@@ -38,7 +38,7 @@
     /* Text */
     --text-dark: #2c1810;
     --text-medium: #4a3728;
-    --text-light: #6b5344;
+    --text-light: #5a4336;
 
     /* Shadows - EXTRA HARD (Dirty/Dusty) */
     --shadow-soft: rgba(0, 0, 0, 0.45);
@@ -58,8 +58,8 @@ html {
     scroll-behavior: smooth;
 }
 
-html {
-    scroll-behavior: smooth;
+html, body {
+    overflow-x: hidden;
 }
 
 body {
@@ -245,7 +245,8 @@ nav .dropdown {
     padding: 0.4rem 0;
 }
 
-nav li.has-dropdown:hover .dropdown {
+nav li.has-dropdown:hover .dropdown,
+nav li.has-dropdown:focus-within .dropdown {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
@@ -1902,8 +1903,15 @@ main {
         height: 60px;
     }
 
+    .logo {
+        flex-shrink: 1;
+        min-width: 0;
+    }
+
     .logo-tagline {
-        display: none;
+        font-size: 0.85rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     .hero-logo {
@@ -3100,5 +3108,84 @@ main {
 
     .flip-unit-label {
         font-size: 0.6rem;
+    }
+}
+
+/* ============================================
+   UTILITY CLASSES - Extracted inline styles
+   ============================================ */
+.category-subtitle {
+    margin-top: 1.5rem;
+    color: var(--wood-dark);
+}
+
+.inline-note {
+    margin-top: 1rem;
+}
+
+.map-wrapper {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 4px solid var(--rope-tan);
+}
+
+.footer-social-link {
+    color: var(--straw-light);
+    text-decoration: none;
+}
+
+.petting-zoo-heading {
+    text-align: center;
+    font-family: 'Alfa Slab One', serif;
+    color: var(--wood-dark);
+    margin-bottom: 1rem;
+}
+
+.petting-zoo-desc {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--wood-dark);
+}
+
+.clear-search-btn {
+    margin-left: 1rem;
+    padding: 0.3rem 0.8rem;
+    cursor: pointer;
+}
+
+.site-notice {
+    background: linear-gradient(135deg, var(--barn-red), #6b1a00);
+    color: var(--cream);
+    text-align: center;
+    padding: 0.75rem 1rem;
+    font-family: 'Roboto Slab', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-bottom: 3px solid var(--straw);
+}
+
+.site-notice strong {
+    color: var(--straw-light);
+}
+
+/* ============================================
+   REDUCED MOTION - Accessibility
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .hero::after {
+        animation: none;
+    }
+
+    .particles-container {
+        display: none;
     }
 }

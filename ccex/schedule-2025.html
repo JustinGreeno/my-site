@@ -3,54 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2025 Schedule | Cumberland County Exhibition</title>
-    <meta name="description" content="Full 2025 schedule for the Cumberland County Exhibition - Two weekends of 4-H shows, horse events, demolition derby, and family fun!">
+    <title>2026 Schedule | Cumberland County Exhibition</title>
+    <meta name="description" content="Sample schedule for the Cumberland County Exhibition based on previous years - 4-H shows, horse events, demolition derby, and family fun!">
+    <meta property="og:title" content="2026 Schedule | Cumberland County Exhibition">
+    <meta property="og:description" content="Sample schedule for CCEx 2026 based on previous years - official schedule coming soon!">
+    <meta property="og:type" content="website">
+    <meta name="keywords" content="CCEx schedule, fair schedule, 4-H shows, horse events, demolition derby, Oxford NS, 2026">
     <link href="css/style.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/art/Try Logo 1 white glow.png">
     <script src="js/search.js" defer></script>
     <script src="js/countdown.js" defer></script>
     <script src="js/horseshoe.js" defer></script>
     <style>
-        .weekend-tabs {
-            display: flex;
-            gap: 0;
-            margin-bottom: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            background: var(--wood-dark);
+        .sample-schedule-banner {
+            background: linear-gradient(135deg, var(--straw), var(--straw-light));
+            border: 4px solid var(--barn-red);
             border-radius: 12px;
-            padding: 6px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .weekend-tab {
-            flex: 1;
-            padding: 1rem 1.5rem;
-            font-family: 'Alfa Slab One', serif;
-            font-size: 1.1rem;
-            background: transparent;
-            color: var(--cream);
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
             text-align: center;
-            min-width: 140px;
         }
-        .weekend-tab:hover {
-            background: rgba(255,255,255,0.1);
+        .sample-schedule-banner h3 {
+            font-family: 'Alfa Slab One', serif;
+            color: var(--barn-red);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
         }
-        .weekend-tab.active {
-            background: var(--straw);
-            color: var(--wood-dark);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        }
-        .weekend-content {
-            display: none;
-        }
-        .weekend-content.active {
-            display: block;
+        .sample-schedule-banner p {
+            color: var(--text-dark);
+            font-size: 1.05rem;
+            margin: 0;
         }
         .day-section {
             margin-bottom: 2rem;
@@ -100,13 +82,32 @@
             border: 4px solid var(--rope-tan);
             border-radius: 8px;
             padding: 1.5rem;
-            margin-top: 2rem;
+            margin-bottom: 2rem;
         }
         .midway-section h3 {
             font-family: 'Alfa Slab One', serif;
             color: var(--wood-dark);
             margin-bottom: 1rem;
         }
+        @media print {
+            header, footer, .search-bar-container, .hero, .sample-schedule-banner, .panel-rope, .animal-head, .horseshoe, .btn, .btn-outline-light { display: none !important; }
+            body, body::before { background: white !important; color: black !important; }
+            .panel-wooden { display: block !important; background: none !important; border: none !important; padding: 0 !important; }
+            .panel-wooden h2 { color: black !important; font-size: 1.3rem; border-bottom: 2px solid #333; padding-bottom: 0.3rem; margin-bottom: 0.5rem; }
+            .panel-wooden p { color: #333 !important; }
+            .day-header { background: #333 !important; color: white !important; padding: 0.5rem 1rem !important; font-size: 1.1rem !important; }
+            .day-events { border-color: #ccc !important; }
+            .schedule-item { padding: 0.3rem 0 !important; }
+            .schedule-time { color: black !important; font-size: 0.9rem; }
+            .schedule-event { font-size: 0.9rem; }
+            .midway-section { background: #f5f5f5 !important; border-color: #999 !important; padding: 0.8rem !important; margin-bottom: 1rem !important; }
+            .container { max-width: 100% !important; padding: 0 !important; }
+            .section-decorated { margin: 0 !important; padding: 0.5rem 0 !important; }
+            .print-header { display: block !important; text-align: center; margin-bottom: 1rem; }
+            .print-header h1 { font-size: 1.5rem; margin: 0; }
+            .print-header p { margin: 0.2rem 0; font-size: 0.9rem; }
+        }
+        .print-header { display: none; }
     </style>
 </head>
 <body>
@@ -133,6 +134,7 @@
                             <li><a href="vendors.html">Vendors</a></li>
                             <li><a href="forms.html">Forms</a></li>
                             <li><a href="forms.html#registration">Register Online</a></li>
+                            <li><a href="4h.html">4-H</a></li>
                         </ul>
                     </li>
                     <li><a href="merch.html">Merch</a></li>
@@ -159,42 +161,55 @@
         <div class="search-dropdown" id="searchDropdown"></div>
     </div>
 
+    <div class="site-notice">
+        <strong>Site Update in Progress:</strong> Some information including dates, prices, and schedules may reflect previous years. Updated details coming soon!
+    </div>
+
     <main>
+        <div class="print-header">
+            <h1>Cumberland County Exhibition - 2026 Schedule</h1>
+            <p>August 31 - September 6, 2026 | Exhibition Grounds, Oxford, NS</p>
+        </div>
         <section class="hero">
-            <h1>2025 Schedule</h1>
-            <p class="tagline">Two Big Weekends of Country Fun!</p>
-            <div class="date-badge swing">August 22-25 & August 30 - Sept 1</div>
+            <h1>2026 Schedule</h1>
+            <p class="tagline">A Full Week of Country Fun</p>
+            <div class="date-badge swing">August 31 - September 6, 2026</div>
             <div style="margin-top: 1.5rem; position: relative; z-index: 2;">
                 <button onclick="printSchedule()" class="btn btn-outline-light" style="font-size: 0.95rem; padding: 0.6rem 1.5rem;">Print Schedule</button>
             </div>
         </section>
 
         <div class="container">
-            <!-- Weekend Tabs -->
-            <div class="weekend-tabs">
-                <button class="weekend-tab active" onclick="showWeekend(1)">Weekend 1<br><small>Aug 22-25</small></button>
-                <button class="weekend-tab" onclick="showWeekend(2)">Weekend 2<br><small>Aug 30 - Sept 1</small></button>
+            <!-- Sample Schedule Notice -->
+            <div class="sample-schedule-banner">
+                <h3>Sample Schedule</h3>
+                <p>This is an example schedule based on previous years. The official 2026 schedule will be posted once finalized - stay tuned!</p>
             </div>
-
-            <!-- WEEKEND 1 -->
-            <div class="weekend-content active" id="weekend1">
                 <section class="panel-wooden section-decorated">
                     <div class="animal-head left">
-                        <img src="images/art/cow facing right.png" alt="">
+                        <img src="images/art/cow facing right.png" alt="Decorative farm animal">
                     </div>
                     <div class="animal-head right">
-                        <img src="images/art/horse facing left.png" alt="">
+                        <img src="images/art/horse facing left.png" alt="Decorative farm animal">
                     </div>
                     <div class="horseshoe">
-                        <img src="images/art/horse shoe.png" alt="">
+                        <img src="images/art/horse shoe.png" alt="Decorative horseshoe">
                     </div>
-                    <h2>Weekend 1 - August 22-25, 2025</h2>
+                    <h2>Early Week - August 31 - September 3</h2>
                     <p>4-H competitions, light horse shows, barrel racing, and opening ceremonies!</p>
                 </section>
 
-                <!-- Thursday Aug 22 -->
+                <!-- Midway Info Weekend 1 -->
+                <div class="midway-section">
+                    <h3>Midway Attractions - Early Week</h3>
+                    <p><strong>Face Painting:</strong> Saturday 12:00-2:00 PM & 3:00-5:00 PM</p>
+                    <p><strong>Petting Zoo:</strong> Saturday 12:00-5:00 PM | Sunday 12:00-3:00 PM</p>
+                    <p><strong>Domino Man:</strong> Saturday Setup 9:00 AM - 5:15 PM | Knockdowns at 1:00 PM & 5:15 PM</p>
+                </div>
+
+                <!-- Monday Aug 31 -->
                 <div class="day-section">
-                    <div class="day-header">Thursday, August 22</div>
+                    <div class="day-header">Monday, August 31</div>
                     <div class="day-events">
                         <div class="schedule-item">
                             <span class="schedule-time">8:00 AM</span>
@@ -229,7 +244,7 @@
 
                 <!-- Friday Aug 23 -->
                 <div class="day-section">
-                    <div class="day-header">Friday, August 23</div>
+                    <div class="day-header">Tuesday, September 1</div>
                     <div class="day-events">
                         <div class="schedule-item">
                             <span class="schedule-time">8:30 AM</span>
@@ -316,7 +331,7 @@
 
                 <!-- Saturday Aug 24 -->
                 <div class="day-section">
-                    <div class="day-header">Saturday, August 24</div>
+                    <div class="day-header">Wednesday, September 2</div>
                     <div class="day-events">
                         <div class="schedule-item">
                             <span class="schedule-time">8:00 AM</span>
@@ -427,7 +442,7 @@
 
                 <!-- Sunday Aug 25 -->
                 <div class="day-section">
-                    <div class="day-header">Sunday, August 25</div>
+                    <div class="day-header">Thursday, September 3</div>
                     <div class="day-events">
                         <div class="schedule-item">
                             <span class="schedule-time">8:00 AM</span>
@@ -519,39 +534,37 @@
                         </div>
                         <div class="schedule-item">
                             <span class="schedule-time">6:30 PM</span>
-                            <span class="schedule-event"><strong>Final Awards - Weekend 1</strong></span>
+                            <span class="schedule-event"><strong>Early Week Final Awards</strong></span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Midway Info Weekend 1 -->
-                <div class="midway-section">
-                    <h3>Midway Attractions - Weekend 1</h3>
-                    <p><strong>Face Painting:</strong> Saturday 12:00-2:00 PM & 3:00-5:00 PM</p>
-                    <p><strong>Petting Zoo:</strong> Saturday 12:00-5:00 PM | Sunday 12:00-3:00 PM</p>
-                    <p><strong>Domino Man:</strong> Saturday Setup 9:00 AM - 5:15 PM | Knockdowns at 1:00 PM & 5:15 PM</p>
-                </div>
-            </div>
-
-            <!-- WEEKEND 2 -->
-            <div class="weekend-content" id="weekend2">
+            <!-- Late Week -->
                 <section class="panel-wooden section-decorated">
                     <div class="animal-head left">
-                        <img src="images/art/chicken facing right.png" alt="">
+                        <img src="images/art/chicken facing right.png" alt="Decorative farm animal">
                     </div>
                     <div class="animal-head right">
-                        <img src="images/art/horse facing left.png" alt="">
+                        <img src="images/art/horse facing left.png" alt="Decorative farm animal">
                     </div>
                     <div class="horseshoe">
-                        <img src="images/art/horse shoe.png" alt="">
+                        <img src="images/art/horse shoe.png" alt="Decorative horseshoe">
                     </div>
-                    <h2>Weekend 2 - August 30 - September 1, 2025</h2>
+                    <h2>Late Week - September 4-6</h2>
                     <p>Beef shows, horse pulls, cowboy mounted shooting, demolition derby, and more!</p>
                 </section>
 
-                <!-- Friday Aug 30 -->
+                <!-- Midway Info Weekend 2 -->
+                <div class="midway-section">
+                    <h3>Midway Attractions - Late Week</h3>
+                    <p><strong>Bouncy Castles:</strong> Friday 12:00-6:00 PM | Saturday 12:00-6:00 PM | Sunday 11:00 AM - 4:00 PM</p>
+                    <p><strong>Petting Zoo:</strong> Saturday 12:00-5:00 PM | Sunday 12:00-3:00 PM</p>
+                    <p><strong>Home Skills Competitions:</strong> Friday 1:00 PM through Sunday 3:00 PM <span class="schedule-location">(Exhibition Hall)</span></p>
+                </div>
+
+                <!-- Friday Sept 4 -->
                 <div class="day-section">
-                    <div class="day-header">Friday, August 30</div>
+                    <div class="day-header">Friday, September 4</div>
                     <div class="day-events">
                         <div class="schedule-item">
                             <span class="schedule-time">9:00 AM</span>
@@ -594,7 +607,7 @@
 
                 <!-- Saturday Aug 31 -->
                 <div class="day-section">
-                    <div class="day-header">Saturday, August 31</div>
+                    <div class="day-header">Saturday, September 5</div>
                     <div class="day-events">
                         <div class="schedule-item">
                             <span class="schedule-time">9:00 AM</span>
@@ -647,9 +660,9 @@
                     </div>
                 </div>
 
-                <!-- Sunday Sept 1 -->
+                <!-- Sunday Sept 6 -->
                 <div class="day-section">
-                    <div class="day-header">Sunday, September 1</div>
+                    <div class="day-header">Sunday, September 6</div>
                     <div class="day-events">
                         <div class="schedule-item">
                             <span class="schedule-time">9:00 AM</span>
@@ -682,23 +695,21 @@
                     </div>
                 </div>
 
-                <!-- Midway Info Weekend 2 -->
-                <div class="midway-section">
-                    <h3>Midway Attractions - Weekend 2</h3>
-                    <p><strong>Bouncy Castles:</strong> Friday 12:00-6:00 PM | Saturday 12:00-6:00 PM | Sunday 11:00 AM - 4:00 PM</p>
-                    <p><strong>Petting Zoo:</strong> Saturday 12:00-5:00 PM | Sunday 12:00-3:00 PM</p>
-                    <p><strong>Home Skills Competitions:</strong> Friday 1:00 PM through Sunday 3:00 PM <span class="schedule-location">(Exhibition Hall)</span></p>
-                </div>
-            </div>
-
             <!-- Note -->
             <section class="panel-rope text-center mt-3">
                 <h2>Important Information</h2>
-                <p>Schedule subject to change. Times are approximate. Some events may require separate admission. Visit during both weekends for the full CCEx experience!</p>
+                <p>This is a sample schedule based on previous years. The official 2026 schedule will be announced soon. Times and events are subject to change.</p>
                 <div class="mt-3">
                     <a href="contact.html" class="btn">Questions? Contact Us</a>
                 </div>
             </section>
+
+        <!-- Become a Sponsor CTA -->
+        <div class="sponsor-cta">
+            <h3>Become a Sponsor!</h3>
+            <p>Support the Cumberland County Exhibition and put your business in front of thousands of visitors. Sponsorship packages available for every budget!</p>
+            <a href="sponsors.html" class="btn">View Sponsorship Opportunities</a>
+        </div>
         </div>
     </main>
 
@@ -739,7 +750,7 @@
                 </div>
             </div>
             <div class="footer-right">
-                <p><a href="https://www.facebook.com/cumberlandex/" target="_blank" style="color: var(--straw-light); text-decoration: none;">Follow us on Facebook</a></p>
+                <p><a href="https://www.facebook.com/cumberlandex/" target="_blank" class="footer-social-link">Follow us on Facebook</a></p>
                 <p>&copy; 2025 Cumberland County Exhibition</p>
                 <p class="footer-credit">Website by <a href="../html/index.html">Justin Greeno</a></p>
             </div>
@@ -778,12 +789,9 @@
             }
         });
 
-        // Weekend tabs
-        function showWeekend(num) {
-            document.querySelectorAll('.weekend-content').forEach(c => c.classList.remove('active'));
-            document.querySelectorAll('.weekend-tab').forEach(t => t.classList.remove('active'));
-            document.getElementById('weekend' + num).classList.add('active');
-            document.querySelectorAll('.weekend-tab')[num - 1].classList.add('active');
+        // Print schedule
+        function printSchedule() {
+            window.print();
         }
 
         // Parallax background
@@ -800,34 +808,6 @@
 
             window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), { passive: true });
             updateParallax();
-        })();
-
-        // Countdown timer to Aug 22, 2026
-        (function() {
-            const targetDate = new Date('August 22, 2026 00:00:00').getTime();
-
-            function updateCountdown() {
-                const now = new Date().getTime();
-                const distance = targetDate - now;
-
-                if (distance < 0) {
-                    document.getElementById('countdown').innerHTML = '<span style="color: var(--straw-light);">CCEx 2026 is HERE!</span>';
-                    return;
-                }
-
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const secs = Math.floor((distance % (1000 * 60)) / 1000);
-
-                document.getElementById('days').textContent = days;
-                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-                document.getElementById('mins').textContent = mins.toString().padStart(2, '0');
-                document.getElementById('secs').textContent = secs.toString().padStart(2, '0');
-            }
-
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
         })();
 
         // Random animal selection

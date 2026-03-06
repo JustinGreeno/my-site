@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vendor Info | Cumberland County Exhibition</title>
     <meta name="description" content="Information for vendors at the Cumberland County Exhibition - food, crafts, merchandise, and more.">
+    <meta name="keywords" content="CCEx vendors, fair vendor, food booth, craft vendor, Oxford NS fair">
     <link href="css/style.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/art/Try Logo 1 white glow.png">
     <script src="js/search.js" defer></script>
@@ -218,6 +219,7 @@
                             <li><a href="vendors.html" class="active">Vendors</a></li>
                             <li><a href="forms.html">Forms</a></li>
                             <li><a href="forms.html#registration">Register Online</a></li>
+                            <li><a href="4h.html">4-H</a></li>
                         </ul>
                     </li>
                     <li><a href="merch.html">Merch</a></li>
@@ -244,6 +246,10 @@
         <div class="search-dropdown" id="searchDropdown"></div>
     </div>
 
+    <div class="site-notice">
+        <strong>Site Update in Progress:</strong> Some information including dates, prices, and schedules may reflect previous years. Updated details coming soon!
+    </div>
+
     <main>
         <section class="hero">
             <h1>Vendor Information</h1>
@@ -253,13 +259,13 @@
         <div class="container">
             <section class="panel animate-in section-decorated">
                 <div class="animal-head left">
-                    <img src="images/art/chicken facing right.png" alt="">
+                    <img src="images/art/chicken facing right.png" alt="Decorative farm animal">
                 </div>
                 <div class="animal-head right">
-                    <img src="images/art/horse facing left.png" alt="">
+                    <img src="images/art/horse facing left.png" alt="Decorative farm animal">
                 </div>
                 <div class="horseshoe">
-                    <img src="images/art/horse shoe.png" alt="">
+                    <img src="images/art/horse shoe.png" alt="Decorative horseshoe">
                 </div>
                 <h2>Become a Vendor</h2>
                 <p>The Cumberland County Exhibition attracts thousands of visitors each year, making it an excellent opportunity for vendors to showcase their products and services. We welcome food vendors, craft sellers, agricultural suppliers, and more!</p>
@@ -331,7 +337,7 @@
             <!-- Deadline Banner -->
             <div class="deadline-banner">
                 <h3>Application Deadline</h3>
-                <p style="font-size: 1.5rem; font-weight: bold;">August 1, 2025</p>
+                <p style="font-size: 1.5rem; font-weight: bold;">August 1, 2026</p>
                 <p>Space is limited! Apply early to secure your preferred location.</p>
             </div>
 
@@ -420,6 +426,13 @@
                     <a href="contact.html" class="btn">Contact Us to Apply</a>
                 </div>
             </section>
+
+        <!-- Become a Sponsor CTA -->
+        <div class="sponsor-cta">
+            <h3>Become a Sponsor!</h3>
+            <p>Support the Cumberland County Exhibition and put your business in front of thousands of visitors. Sponsorship packages available for every budget!</p>
+            <a href="sponsors.html" class="btn">View Sponsorship Opportunities</a>
+        </div>
         </div>
     </main>
 
@@ -460,7 +473,7 @@
                 </div>
             </div>
             <div class="footer-right">
-                <p><a href="https://www.facebook.com/cumberlandex/" target="_blank" style="color: var(--straw-light); text-decoration: none;">Follow us on Facebook</a></p>
+                <p><a href="https://www.facebook.com/cumberlandex/" target="_blank" class="footer-social-link">Follow us on Facebook</a></p>
                 <p>&copy; 2025 Cumberland County Exhibition</p>
                 <p class="footer-credit">Website by <a href="../html/index.html">Justin Greeno</a></p>
             </div>
@@ -519,22 +532,6 @@
                 hamburger.classList.remove('active');
             }
         });
-
-        // Countdown timer
-        (function() {
-            const targetDate = new Date('August 22, 2026 00:00:00').getTime();
-            function updateCountdown() {
-                const now = new Date().getTime();
-                const distance = targetDate - now;
-                if (distance < 0) { document.getElementById('countdown').innerHTML = '<span>CCEx 2026 is HERE!</span>'; return; }
-                document.getElementById('days').textContent = Math.floor(distance / (1000 * 60 * 60 * 24));
-                document.getElementById('hours').textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-                document.getElementById('mins').textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-                document.getElementById('secs').textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
-            }
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
-        })();
 
         // Random animals
         (function() {

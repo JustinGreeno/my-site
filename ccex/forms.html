@@ -118,6 +118,7 @@
                             <li><a href="vendors.html">Vendors</a></li>
                             <li><a href="forms.html" class="active">Forms</a></li>
                             <li><a href="forms.html#registration">Register Online</a></li>
+                            <li><a href="4h.html">4-H</a></li>
                         </ul>
                     </li>
                     <li><a href="merch.html">Merch</a></li>
@@ -135,6 +136,19 @@
         </div>
     </header>
 
+    <!-- Full width search bar -->
+    <div class="search-bar-container">
+        <div class="search-bar">
+            <input type="text" placeholder="Search pages, forms, events, FAQ..." id="siteSearch" autocomplete="off">
+            <button onclick="performSearch()">Search</button>
+        </div>
+        <div class="search-dropdown" id="searchDropdown"></div>
+    </div>
+
+    <div class="site-notice">
+        <strong>Site Update in Progress:</strong> Some information including dates, prices, and schedules may reflect previous years. Updated details coming soon!
+    </div>
+
     <main>
         <section class="hero">
             <h1>Forms & Documents</h1>
@@ -145,19 +159,19 @@
             <!-- Search Results Info -->
             <div class="search-results-info" id="searchInfo">
                 Showing results for: <strong id="searchTerm"></strong>
-                <button onclick="clearSearch()" style="margin-left: 1rem; padding: 0.3rem 0.8rem; cursor: pointer;">Clear</button>
+                <button onclick="clearSearch()" class="clear-search-btn">Clear</button>
             </div>
 
             <!-- Intro -->
             <section class="panel section-decorated">
                 <div class="animal-head left">
-                    <img src="images/art/cow facing right.png" alt="">
+                    <img src="images/art/cow facing right.png" alt="Decorative farm animal">
                 </div>
                 <div class="animal-head right">
-                    <img src="images/art/horse facing left.png" alt="">
+                    <img src="images/art/horse facing left.png" alt="Decorative farm animal">
                 </div>
                 <div class="horseshoe">
-                    <img src="images/art/horse shoe.png" alt="">
+                    <img src="images/art/horse shoe.png" alt="Decorative horseshoe">
                 </div>
                 <h2>Download Entry Forms</h2>
                 <p>Find all the forms and documents you need to participate in the Cumberland County Exhibition. Download, print, and fill out the appropriate forms for your entries.</p>
@@ -192,7 +206,7 @@
                 <h3>Livestock & Horse Forms</h3>
                 <div class="forms-grid">
                     <div class="form-card" data-keywords="horse light horse show rules classes booklet">
-                        <h3>Light Horse Show Booklet 2025</h3>
+                        <h3>Light Horse Show Booklet 2026</h3>
                         <p>Complete rules, classes, and schedule for the Light Horse Show.</p>
                         <a href="images/forms and documents/CCex-Light Horse booklet 2025 .pdf" class="btn-download" target="_blank">Download PDF</a>
                     </div>
@@ -263,6 +277,13 @@
                     <a href="contact.html" class="btn">Contact Us</a>
                 </div>
             </section>
+
+        <!-- Become a Sponsor CTA -->
+        <div class="sponsor-cta">
+            <h3>Become a Sponsor!</h3>
+            <p>Support the Cumberland County Exhibition and put your business in front of thousands of visitors. Sponsorship packages available for every budget!</p>
+            <a href="sponsors.html" class="btn">View Sponsorship Opportunities</a>
+        </div>
         </div>
     </main>
 
@@ -303,7 +324,7 @@
                 </div>
             </div>
             <div class="footer-right">
-                <p><a href="https://www.facebook.com/cumberlandex/" target="_blank" style="color: var(--straw-light); text-decoration: none;">Follow us on Facebook</a></p>
+                <p><a href="https://www.facebook.com/cumberlandex/" target="_blank" class="footer-social-link">Follow us on Facebook</a></p>
                 <p>&copy; 2025 Cumberland County Exhibition</p>
                 <p class="footer-credit">Website by <a href="../html/index.html">Justin Greeno</a></p>
             </div>
