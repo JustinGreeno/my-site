@@ -30,7 +30,7 @@
                 </div>
                 <ul id="navMenu">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="schedule-2025.html">Schedule</a></li>
+                    <li><a href="schedule-2026.html">Schedule</a></li>
                     <li class="has-dropdown">
                         <a href="#">Info</a>
                         <ul class="dropdown">
@@ -110,7 +110,23 @@
                 <h2>Send Us a Message</h2>
                 <p>Have questions about exhibiting, volunteering, sponsorship, or anything else? Fill out the form below and we'll get back to you as soon as possible.</p>
 
-                <form class="contact-form mt-2" action="mailto:cumberlandexhibition@gmail.com" method="POST" enctype="text/plain">
+                <!-- SUCCESS MESSAGE (shown after submit) -->
+                <div class="form-success-panel" id="contactSuccess" style="display:none;">
+                    <span class="success-check">✓</span>
+                    <h2>Message Sent!</h2>
+                    <p>Thanks for reaching out! We'll get back to you within 48 hours.</p>
+                    <a href="index.html" class="btn">Back to Home</a>
+                </div>
+
+                <!-- ERROR MESSAGE -->
+                <div class="form-error-banner" id="contactError" style="display:none;">
+                    <strong>Something went wrong.</strong> Please try again or email us directly at <a href="mailto:cumberlandexhibition@gmail.com">cumberlandexhibition@gmail.com</a>.
+                </div>
+
+                <!-- CONTACT FORM -->
+                <!-- To activate: replace YOUR_FORM_ID with your Formspree form ID from formspree.io -->
+                <form class="contact-form mt-2" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <input type="hidden" name="_subject" value="CCEx Website Contact Form Submission">
                     <div class="form-group">
                         <label for="name">Your Name *</label>
                         <input type="text" id="name" name="name" required placeholder="John Smith">
@@ -130,15 +146,15 @@
                         <label for="subject">Subject *</label>
                         <select id="subject" name="subject" required>
                             <option value="">Please select...</option>
-                            <option value="exhibitor">Exhibitor Information</option>
-                            <option value="livestock">Livestock Shows</option>
-                            <option value="4h">4-H Programs</option>
-                            <option value="volunteer">Volunteering</option>
-                            <option value="sponsor">Sponsorship</option>
-                            <option value="vendor">Vendor/Food Services</option>
-                            <option value="entertainment">Entertainment</option>
-                            <option value="general">General Inquiry</option>
-                            <option value="other">Other</option>
+                            <option value="Exhibitor Information">Exhibitor Information</option>
+                            <option value="Livestock Shows">Livestock Shows</option>
+                            <option value="4-H Programs">4-H Programs</option>
+                            <option value="Volunteering">Volunteering</option>
+                            <option value="Sponsorship">Sponsorship</option>
+                            <option value="Vendor / Food Services">Vendor/Food Services</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="General Inquiry">General Inquiry</option>
+                            <option value="Other">Other</option>
                         </select>
                     </div>
 
@@ -148,9 +164,38 @@
                     </div>
 
                     <div class="text-center">
-                        <button type="submit" class="btn">Send Message</button>
+                        <button type="submit" class="btn" id="contactSubmitBtn">Send Message</button>
                     </div>
                 </form>
+
+                <script>
+                document.getElementById('contactForm').addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    const btn = document.getElementById('contactSubmitBtn');
+                    btn.textContent = 'Sending...';
+                    btn.disabled = true;
+                    btn.classList.add('btn-submit-loading');
+                    document.getElementById('contactError').style.display = 'none';
+                    try {
+                        const res = await fetch(this.action, {
+                            method: 'POST',
+                            body: new FormData(this),
+                            headers: { 'Accept': 'application/json' }
+                        });
+                        if (res.ok) {
+                            this.style.display = 'none';
+                            document.getElementById('contactSuccess').style.display = 'block';
+                        } else {
+                            throw new Error('Server error');
+                        }
+                    } catch(err) {
+                        document.getElementById('contactError').style.display = 'block';
+                        btn.textContent = 'Send Message';
+                        btn.disabled = false;
+                        btn.classList.remove('btn-submit-loading');
+                    }
+                });
+                </script>
             </section>
 
             <div class="divider-rope"></div>
@@ -209,7 +254,7 @@
                     <div class="faq-item">
                         <button class="faq-question">When is the fair?</button>
                         <div class="faq-answer">
-                            <p>The Cumberland County Exhibition runs for one full week in late August and early September. For 2026, the dates are <strong>August 31 - September 6</strong>. The week features 4-H competitions, light horse shows, beef shows, horse pulls, the demolition derby, and much more. Check our <a href="schedule-2025.html">full schedule</a> for details.</p>
+                            <p>The Cumberland County Exhibition runs for one full week in late August and early September. For 2026, the dates are <strong>August 31 - September 6</strong>. The week features 4-H competitions, light horse shows, beef shows, horse pulls, the demolition derby, and much more. Check our <a href="schedule-2026.html">full schedule</a> for details.</p>
                         </div>
                     </div>
 

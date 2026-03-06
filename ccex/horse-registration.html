@@ -262,7 +262,7 @@
                 </div>
                 <ul id="navMenu">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="schedule-2025.html">Schedule</a></li>
+                    <li><a href="schedule-2026.html">Schedule</a></li>
                     <li class="has-dropdown">
                         <a href="#" class="active">Info</a>
                         <ul class="dropdown">
@@ -315,7 +315,7 @@
                     <li><strong>Entry Fee:</strong> $10 per class</li>
                     <li><strong>Stall Fee:</strong> $25 per stall (optional)</li>
                     <li><strong>Registration Deadline:</strong> August 15, 2026</li>
-                    <li>Download the complete <a href="images/forms and documents/CCex-Light Horse booklet 2025 .pdf" style="color: var(--barn-red); font-weight: 600;">Light Horse Show Booklet</a> for rules and class descriptions.</li>
+                    <li>Download the complete <a href="images/forms and documents/CCex-Light Horse booklet 2025 .pdf" style="color: var(--barn-red); font-weight: 600;">Light Horse Show Booklet *</a> for rules and class descriptions. <em>(* 2025 version — 2026 edition coming soon)</em></li>
                 </ul>
             </div>
 
@@ -323,7 +323,21 @@
             <section class="panel-wooden">
                 <h2>Exhibitor Registration Form</h2>
 
-                <form class="registration-form" id="horseRegistrationForm">
+                <!-- SUCCESS MESSAGE -->
+                <div class="form-success-panel" id="horseRegSuccess" style="display:none;">
+                    <span class="success-check">✓</span>
+                    <h2>Registration Submitted!</h2>
+                    <p>Thanks for registering for the CCEx Light Horse Show! We'll send a confirmation to the email you provided. See you at the ring!</p>
+                    <a href="index.html" class="btn">Back to Home</a>
+                </div>
+
+                <!-- ERROR MESSAGE -->
+                <div class="form-error-banner" id="horseRegError" style="display:none;">
+                    <strong>Something went wrong.</strong> Please try again or email us at <a href="mailto:cumberlandexhibition@gmail.com">cumberlandexhibition@gmail.com</a>.
+                </div>
+
+                <!-- To activate: replace YOUR_FORM_ID with your Formspree form ID from formspree.io -->
+                <form class="registration-form" id="horseRegistrationForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                     <!-- Exhibitor Information -->
                     <div class="form-section">
                         <h3>Exhibitor Information</h3>
@@ -564,22 +578,54 @@
                         </div>
                     </div>
 
+                    <input type="hidden" name="_subject" value="CCEx Light Horse Show Registration 2026">
+
                     <!-- Form Buttons -->
                     <div class="form-buttons">
-                        <button type="submit" class="btn-submit">Submit Registration</button>
+                        <button type="submit" class="btn-submit" id="horseRegSubmitBtn">Submit Registration</button>
                         <button type="reset" class="btn-clear" onclick="resetForm()">Clear Form</button>
                     </div>
 
                     <div class="form-note">
-                        A copy of your registration will be emailed to the address you provided.
+                        A confirmation will be emailed to the address you provided.
                     </div>
                 </form>
+
+                <script>
+                document.getElementById('horseRegistrationForm').addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    const btn = document.getElementById('horseRegSubmitBtn');
+                    btn.textContent = 'Submitting...';
+                    btn.disabled = true;
+                    btn.classList.add('btn-submit-loading');
+                    document.getElementById('horseRegError').style.display = 'none';
+                    try {
+                        const res = await fetch(this.action, {
+                            method: 'POST',
+                            body: new FormData(this),
+                            headers: { 'Accept': 'application/json' }
+                        });
+                        if (res.ok) {
+                            this.style.display = 'none';
+                            document.getElementById('horseRegSuccess').style.display = 'block';
+                            document.getElementById('horseRegSuccess').scrollIntoView({ behavior: 'smooth' });
+                        } else {
+                            throw new Error('Server error');
+                        }
+                    } catch(err) {
+                        document.getElementById('horseRegError').style.display = 'block';
+                        btn.textContent = 'Submit Registration';
+                        btn.disabled = false;
+                        btn.classList.remove('btn-submit-loading');
+                    }
+                });
+                </script>
             </section>
 
             <!-- Contact Info -->
             <section class="panel text-center">
                 <h2>Questions?</h2>
-                <p>For more information about the Light Horse Show, download the <a href="images/forms and documents/CCex-Light Horse booklet 2025 .pdf" style="color: var(--barn-red); font-weight: 600;">Show Booklet</a> or <a href="contact.html" style="color: var(--barn-red); font-weight: 600;">contact us</a>.</p>
+                <p>For more information about the Light Horse Show, download the <a href="images/forms and documents/CCex-Light Horse booklet 2025 .pdf" style="color: var(--barn-red); font-weight: 600;">Show Booklet *</a> <em>(2025 version — 2026 coming soon)</em> or <a href="contact.html" style="color: var(--barn-red); font-weight: 600;">contact us</a>.</p>
             </section>
 
         <!-- Become a Sponsor CTA -->

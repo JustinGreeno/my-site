@@ -181,7 +181,7 @@
                 </div>
                 <ul id="navMenu">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="schedule-2025.html">Schedule</a></li>
+                    <li><a href="schedule-2026.html">Schedule</a></li>
                     <li class="has-dropdown">
                         <a href="#">Info</a>
                         <ul class="dropdown">
@@ -255,7 +255,21 @@
             <section class="panel-wooden">
                 <h2>Registration Form</h2>
 
-                <form class="registration-form" id="showNShineForm">
+                <!-- SUCCESS MESSAGE -->
+                <div class="form-success-panel" id="showNShineSuccess" style="display:none;">
+                    <span class="success-check">✓</span>
+                    <h2>Registration Submitted!</h2>
+                    <p>Thanks for registering for the Kids Show 'N Shine! We'll send a confirmation to the email you provided.</p>
+                    <a href="index.html" class="btn">Back to Home</a>
+                </div>
+
+                <!-- ERROR MESSAGE -->
+                <div class="form-error-banner" id="showNShineError" style="display:none;">
+                    <strong>Something went wrong.</strong> Please try again or email us at <a href="mailto:cumberlandexhibition@gmail.com">cumberlandexhibition@gmail.com</a>.
+                </div>
+
+                <!-- To activate: replace YOUR_FORM_ID with your Formspree form ID from formspree.io -->
+                <form class="registration-form" id="showNShineForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                     <!-- Email -->
                     <div class="form-group">
                         <label for="email">Email <span class="required">*</span></label>
@@ -320,16 +334,48 @@
                         <textarea id="comments" name="comments" placeholder="Any additional information, special requests, or questions..."></textarea>
                     </div>
 
+                    <input type="hidden" name="_subject" value="CCEx Kids Show 'N Shine Registration">
+
                     <!-- Form Buttons -->
                     <div class="form-buttons">
-                        <button type="submit" class="btn-submit">Submit Registration</button>
+                        <button type="submit" class="btn-submit" id="showNShineSubmitBtn">Submit Registration</button>
                         <button type="reset" class="btn-clear" onclick="resetForm()">Clear Form</button>
                     </div>
 
                     <div class="form-note">
-                        A copy of your registration will be emailed to the address you provided.
+                        A confirmation will be emailed to the address you provided.
                     </div>
                 </form>
+
+                <script>
+                document.getElementById('showNShineForm').addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    const btn = document.getElementById('showNShineSubmitBtn');
+                    btn.textContent = 'Submitting...';
+                    btn.disabled = true;
+                    btn.classList.add('btn-submit-loading');
+                    document.getElementById('showNShineError').style.display = 'none';
+                    try {
+                        const res = await fetch(this.action, {
+                            method: 'POST',
+                            body: new FormData(this),
+                            headers: { 'Accept': 'application/json' }
+                        });
+                        if (res.ok) {
+                            this.style.display = 'none';
+                            document.getElementById('showNShineSuccess').style.display = 'block';
+                            document.getElementById('showNShineSuccess').scrollIntoView({ behavior: 'smooth' });
+                        } else {
+                            throw new Error('Server error');
+                        }
+                    } catch(err) {
+                        document.getElementById('showNShineError').style.display = 'block';
+                        btn.textContent = 'Submit Registration';
+                        btn.disabled = false;
+                        btn.classList.remove('btn-submit-loading');
+                    }
+                });
+                </script>
             </section>
 
             <!-- Contact Info -->

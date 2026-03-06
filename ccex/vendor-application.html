@@ -299,7 +299,7 @@
                 </div>
                 <ul id="navMenu">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="schedule-2025.html">Schedule</a></li>
+                    <li><a href="schedule-2026.html">Schedule</a></li>
                     <li class="has-dropdown">
                         <a href="#" class="active">Info</a>
                         <ul class="dropdown">
@@ -357,38 +357,47 @@
                 <table class="fee-table">
                     <tr>
                         <th>Vendor Type</th>
-                        <th>Full Fair (Both Weekends)</th>
-                        <th>Single Weekend</th>
+                        <th>Full Fair (Aug 31–Sep 6) *</th>
                     </tr>
                     <tr>
                         <td>Food Vendor (with power)</td>
                         <td>$400</td>
-                        <td>$250</td>
                     </tr>
                     <tr>
                         <td>Food Vendor (no power)</td>
                         <td>$300</td>
-                        <td>$175</td>
                     </tr>
                     <tr>
                         <td>Merchandise/Crafts (10x10)</td>
                         <td>$200</td>
-                        <td>$125</td>
                     </tr>
                     <tr>
                         <td>Non-Profit/Community</td>
                         <td>$100</td>
-                        <td>$60</td>
                     </tr>
                 </table>
-                <p style="margin-top: 1rem; font-style: italic;">Fees are due upon approval. Space assignments are made at the committee's discretion.</p>
+                <p style="margin-top: 1rem; font-style: italic;">Fees are due upon approval. Space assignments are made at the committee's discretion. <em>* 2026 pricing subject to confirmation by the board.</em></p>
             </div>
 
             <!-- Application Form -->
             <section class="panel-wooden">
                 <h2>Vendor Application Form</h2>
 
-                <form class="application-form" id="vendorApplicationForm">
+                <!-- SUCCESS MESSAGE -->
+                <div class="form-success-panel" id="vendorSuccess" style="display:none;">
+                    <span class="success-check">✓</span>
+                    <h2>Application Submitted!</h2>
+                    <p>Thanks for applying to vend at CCEx 2026! Our Vendor Committee will review your application and get back to you within 2 weeks.</p>
+                    <a href="index.html" class="btn">Back to Home</a>
+                </div>
+
+                <!-- ERROR MESSAGE -->
+                <div class="form-error-banner" id="vendorError" style="display:none;">
+                    <strong>Something went wrong.</strong> Please try again or email us at <a href="mailto:cumberlandexhibition@gmail.com">cumberlandexhibition@gmail.com</a>.
+                </div>
+
+                <!-- To activate: replace YOUR_FORM_ID with your Formspree form ID from formspree.io -->
+                <form class="application-form" id="vendorApplicationForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                     <!-- Business Information -->
                     <div class="form-section">
                         <h3>Business Information</h3>
@@ -674,9 +683,11 @@
                         </div>
                     </div>
 
+                    <input type="hidden" name="_subject" value="CCEx Vendor Application 2026">
+
                     <!-- Form Buttons -->
                     <div class="form-buttons">
-                        <button type="submit" class="btn-submit" id="submitBtn" disabled>Submit Application</button>
+                        <button type="submit" class="btn-submit" id="vendorSubmitBtn" disabled>Submit Application</button>
                         <button type="reset" class="btn-clear">Clear Form</button>
                     </div>
 
@@ -684,6 +695,36 @@
                         Your application will be reviewed by our Vendor Committee. We will contact you within 2 weeks regarding your application status.
                     </div>
                 </form>
+
+                <script>
+                document.getElementById('vendorApplicationForm').addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    const btn = document.getElementById('vendorSubmitBtn');
+                    btn.textContent = 'Submitting...';
+                    btn.disabled = true;
+                    btn.classList.add('btn-submit-loading');
+                    document.getElementById('vendorError').style.display = 'none';
+                    try {
+                        const res = await fetch(this.action, {
+                            method: 'POST',
+                            body: new FormData(this),
+                            headers: { 'Accept': 'application/json' }
+                        });
+                        if (res.ok) {
+                            this.style.display = 'none';
+                            document.getElementById('vendorSuccess').style.display = 'block';
+                            document.getElementById('vendorSuccess').scrollIntoView({ behavior: 'smooth' });
+                        } else {
+                            throw new Error('Server error');
+                        }
+                    } catch(err) {
+                        document.getElementById('vendorError').style.display = 'block';
+                        btn.textContent = 'Submit Application';
+                        btn.disabled = false;
+                        btn.classList.remove('btn-submit-loading');
+                    }
+                });
+                </script>
             </section>
 
             <!-- Contact Info -->
