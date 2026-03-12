@@ -815,10 +815,10 @@
         document.getElementById('vendorApplicationForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // Validate at least one weekend selected
+            // Validate attendance selection
             const weekends = document.querySelectorAll('input[name="weekends"]:checked');
             if (weekends.length === 0) {
-                alert('Please select at least one weekend to attend.');
+                alert('Please select your attendance period.');
                 return;
             }
 
@@ -876,7 +876,7 @@
 
             body += `\nSCHEDULE & SPACE\n`;
             body += `----------------\n`;
-            body += `Weekends: ${selectedWeekends.join(', ')}\n`;
+            body += `Attendance: ${selectedWeekends.join(', ')}\n`;
             body += `Power Required: ${power}\n`;
             if (spaceSize) body += `Space Size: ${spaceSize}\n`;
             if (vehicleType) body += `Vehicle/Trailer: ${vehicleType}\n`;
