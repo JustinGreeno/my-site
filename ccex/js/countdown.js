@@ -2,41 +2,57 @@
 (function() {
     var countdownInterval = null;
 
-    var targetDate = new Date('August 31, 2026 00:00:00').getTime();
-    if (isNaN(targetDate)) return;
+    var fairStart  = new Date('August 31, 2026 00:00:00').getTime();
+    var fairEnd    = new Date('September 7, 2026 00:00:00').getTime(); // day after Sept 6
+    var nextYear   = new Date('August 31, 2027 00:00:00').getTime();
 
     function updateCountdown() {
         var now = new Date().getTime();
-        var distance = targetDate - now;
 
-        var daysEl = document.getElementById('days');
-        var hoursEl = document.getElementById('hours');
-        var minsEl = document.getElementById('mins');
-        var secsEl = document.getElementById('secs');
+        var daysEl      = document.getElementById('days');
+        var hoursEl     = document.getElementById('hours');
+        var minsEl      = document.getElementById('mins');
+        var secsEl      = document.getElementById('secs');
         var countdownEl = document.getElementById('countdown');
+        var labelEl     = document.querySelector('.countdown-label');
 
-        if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
+        if (!countdownEl) return;
 
-        if (distance < 0) {
-            if (countdownEl) {
-                countdownEl.innerHTML = '<span style="color: var(--straw-light);">CCEx 2026 is HERE!</span>';
-            }
-            if (countdownInterval) {
+        // Phase 3: after the exhibition — "See us next year"
+        if (now >= fairEnd) {
+            if (labelEl) labelEl.textContent = 'See us next year \u2014 CCEx 2027';
+            var distance = nextYear - now;
+            if (distance <= 0) {
+                countdownEl.innerHTML = '<span style="color:var(--straw-light);">Happening Now!</span>';
                 clearInterval(countdownInterval);
-                countdownInterval = null;
+                return;
+            }
+            if (daysEl && hoursEl && minsEl && secsEl) {
+                daysEl.textContent  = Math.floor(distance / (1000 * 60 * 60 * 24));
+                hoursEl.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                minsEl.textContent  = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                secsEl.textContent  = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
             }
             return;
         }
 
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var secs = Math.floor((distance % (1000 * 60)) / 1000);
+        // Phase 2: during the exhibition — "Happening Now"
+        if (now >= fairStart) {
+            if (labelEl) labelEl.textContent = 'CCEx 2026';
+            countdownEl.innerHTML = '<span style="color:var(--straw-light);font-family:\'Alfa Slab One\',serif;font-size:1.6rem;letter-spacing:0.05em;">Happening Now!</span>';
+            clearInterval(countdownInterval);
+            countdownInterval = null;
+            return;
+        }
 
-        daysEl.textContent = days;
-        hoursEl.textContent = hours.toString().padStart(2, '0');
-        minsEl.textContent = mins.toString().padStart(2, '0');
-        secsEl.textContent = secs.toString().padStart(2, '0');
+        // Phase 1: before the exhibition — countdown to Aug 31
+        var distance = fairStart - now;
+        if (daysEl && hoursEl && minsEl && secsEl) {
+            daysEl.textContent  = Math.floor(distance / (1000 * 60 * 60 * 24));
+            hoursEl.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+            minsEl.textContent  = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+            secsEl.textContent  = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+        }
     }
 
     function startCountdown() {
