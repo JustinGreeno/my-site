@@ -96,9 +96,9 @@
                 <div class="members-grid">
 
                     <!-- Holly Martin -->
-                    <div class="member-card" data-member="holly" data-photo="images/profile images/Holly Martin.jpg">
+                    <div class="member-card" data-member="holly" data-photo="images/profile images/Holly Martin.jpg" data-photo-position="center 15%">
                         <div class="member-photo">
-                            <img src="images/profile images/Holly Martin.jpg" alt="Holly Martin" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+                            <img src="images/profile images/Holly Martin.jpg" alt="Holly Martin" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;">
                         </div>
                         <div class="member-info">
                             <div class="member-name">Holly Martin</div>
@@ -116,9 +116,9 @@
                     </div>
 
                     <!-- Josh Greeno -->
-                    <div class="member-card" data-member="josh" data-photo="images/profile images/Josh Greeno.jpg">
+                    <div class="member-card" data-member="josh" data-photo="images/profile images/Josh Greeno.jpg" data-photo-position="center 20%">
                         <div class="member-photo">
-                            <img src="images/profile images/Josh Greeno.jpg" alt="Josh Greeno" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+                            <img src="images/profile images/Josh Greeno.jpg" alt="Josh Greeno" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;">
                         </div>
                         <div class="member-info">
                             <div class="member-name">Josh Greeno</div>
@@ -134,9 +134,9 @@
                     </div>
 
                     <!-- Kylynne Sheffield -->
-                    <div class="member-card" data-member="kylynne" data-photo="images/profile images/Kylynne Sheffield.jpg">
+                    <div class="member-card" data-member="kylynne" data-photo="images/profile images/Kylynne Sheffield.jpg" data-photo-position="center 5%">
                         <div class="member-photo">
-                            <img src="images/profile images/Kylynne Sheffield.jpg" alt="Kylynne Sheffield" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+                            <img src="images/profile images/Kylynne Sheffield.jpg" alt="Kylynne Sheffield" style="width:100%;height:100%;object-fit:cover;object-position:center 5%;">
                         </div>
                         <div class="member-info">
                             <div class="member-name">Kylynne Sheffield</div>
@@ -177,7 +177,7 @@
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal()">&times;</button>
             <div class="modal-photo">
-                <img id="modalPhoto" src="" alt="" style="width:150px;height:150px;object-fit:cover;border-radius:50%;display:none;">
+                <img id="modalPhoto" src="" alt="" style="width:150px;height:150px;object-fit:cover;border-radius:8px;display:none;">
                 <div class="member-photo-placeholder" id="modalPhotoPlaceholder" style="width: 150px; height: 150px; font-size: 4rem;">&#129489;</div>
             </div>
             <div class="modal-body">
@@ -298,6 +298,7 @@
                 if (photo) {
                     modalPhoto.src = photo;
                     modalPhoto.alt = name;
+                    modalPhoto.style.objectPosition = this.dataset.photoPosition || 'center center';
                     modalPhoto.style.display = 'block';
                     modalPlaceholder.style.display = 'none';
                 } else {
