@@ -7,80 +7,12 @@
     <meta name="description" content="Weekly specials at Nelly's Grill & Dairy Bar - Check out our daily deals in West Pugwash, NS.">
 
     <!-- CSS -->
-    <link href="css/pub-style.css" rel="stylesheet">
+    <link href="css/nellys.css" rel="stylesheet">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/gif" href="../images/pixel_justin.gif">
+    <link rel="icon" type="image/png" href="images/logos/Nelly Logo This One.png">
     <meta name="theme-color" content="#2a1810">
 
-    <style>
-        .specials-grid {
-            display: grid;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .special-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 16px;
-            padding: 1.5rem 2rem;
-            border-left: 6px solid var(--teal);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .special-card:nth-child(2) {
-            border-left-color: var(--coral);
-        }
-
-        .special-card:nth-child(3) {
-            border-left-color: var(--sunset-orange);
-        }
-
-        .special-card:nth-child(4) {
-            border-left-color: var(--seafoam);
-        }
-
-        .special-day {
-            font-family: 'Fredoka One', cursive;
-            font-size: 1.6rem;
-            color: var(--teal-dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .special-title {
-            font-family: 'Nunito', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 0.5rem;
-        }
-
-        .special-desc {
-            font-size: 1.1rem;
-            color: #444;
-            line-height: 1.6;
-        }
-
-        .special-note {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: var(--cream);
-            border-radius: 12px;
-            text-align: center;
-            border: 3px solid var(--teal);
-        }
-
-        .special-note p {
-            font-size: 1.1rem;
-            color: #333;
-            margin: 0;
-        }
-
-        .special-note a {
-            color: var(--teal-dark);
-            font-weight: 700;
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -98,6 +30,10 @@
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
+            <form class="site-search" role="search" action="menu.html" method="get">
+                <input type="search" name="q" placeholder="Search menu…" aria-label="Search menu">
+                <button type="submit" aria-label="Search">🔍</button>
+            </form>
         </div>
     </header>
 
@@ -106,6 +42,15 @@
             <h1>Weekly Specials</h1>
             <p class="tagline">Great Deals Every Day We're Open!</p>
         </section>
+
+        <div class="search-banner">
+            <div class="search-banner-inner">
+                <form style="display:contents;" action="menu.html" method="get">
+                    <input type="search" name="q" placeholder="Search our menu — haddock, pizza, poutine, lobster roll..." aria-label="Search menu">
+                    <button type="submit">Search Menu</button>
+                </form>
+            </div>
+        </div>
 
         <div class="container">
             <section class="panel">
@@ -184,14 +129,10 @@
                 <div class="social-links">
                     <a href="https://www.facebook.com/nellysgrillanddairybar" target="_blank" class="social-link">FB</a>
                 </div>
-                <span class="footer-credit">
-                    <a href="../html/index.html">Website by Justin Greeno</a>
-                </span>
+                <span class="footer-credit">Website by Justin Greeno</span>
             </div>
         </div>
-        <div class="footer-secret">
-            <a href="../html/index.html" title="JustinGreeno.dev">J</a>
-        </div>
+        <div class="footer-secret">J</div>
     </footer>
 
     <script>
@@ -250,21 +191,6 @@
         }
         updateFooterHours();
 
-        // Parallax background
-        (function() {
-            const style = document.createElement('style');
-            style.id = 'parallax-style';
-            document.head.appendChild(style);
-
-            function updateParallax() {
-                const scrollY = window.pageYOffset;
-                const translateY = scrollY * 0.2;
-                style.textContent = `body::before { transform: translateY(-${translateY}px); }`;
-            }
-
-            window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), { passive: true });
-            updateParallax();
-        })();
     </script>
 </body>
 </html>

@@ -7,10 +7,10 @@
     <meta name="description" content="Contact Nelly's Grill & Dairy Bar in West Pugwash, NS. Call for orders or inquiries.">
 
     <!-- CSS -->
-    <link href="css/pub-style.css" rel="stylesheet">
+    <link href="css/nellys.css" rel="stylesheet">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/gif" href="../images/pixel_justin.gif">
+    <link rel="icon" type="image/png" href="images/logos/Nelly Logo This One.png">
     <meta name="theme-color" content="#2a1810">
 </head>
 <body>
@@ -29,6 +29,10 @@
                     <li><a href="contact.html" class="active">Contact</a></li>
                 </ul>
             </nav>
+            <form class="site-search" role="search" action="menu.html" method="get">
+                <input type="search" name="q" placeholder="Search menu…" aria-label="Search menu">
+                <button type="submit" aria-label="Search">🔍</button>
+            </form>
         </div>
     </header>
 
@@ -37,6 +41,15 @@
             <h1>Contact Us</h1>
             <p class="tagline">We'd Love to Hear From You</p>
         </section>
+
+        <div class="search-banner">
+            <div class="search-banner-inner">
+                <form style="display:contents;" action="menu.html" method="get">
+                    <input type="search" name="q" placeholder="Search our menu — haddock, pizza, poutine, lobster roll..." aria-label="Search menu">
+                    <button type="submit">Search Menu</button>
+                </form>
+            </div>
+        </div>
 
         <div class="container">
             <!-- Contact Banner -->
@@ -50,7 +63,7 @@
                     </div>
                     <div class="contact-item">
                         <h3>Find Us</h3>
-                        <p>8890 RT-6<br>West Pugwash, NS B0M 1X0</p>
+                        <p>8890 RT-6<br>West Pugwash, NS B0K 1K0</p>
                         <a href="https://www.google.com/maps/search/?api=1&query=8890+RT-6+West+Pugwash+NS+B0K+1K0" target="_blank" class="map-link">
                             📍 Open in Google Maps
                         </a>
@@ -79,37 +92,12 @@
 
             <!-- Contact Form -->
             <section class="panel">
-                <h2>Send Us a Message</h2>
-                <p>Have a question or feedback? Fill out the form below and we'll get back to you!</p>
-
-                <form class="contact-form mt-3" action="#" method="POST">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone">Phone (optional)</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
+                <h2>Get in Touch</h2>
+                <p>The best way to reach us is by phone or Facebook!</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem;">
+                    <a href="tel:9022432129" class="btn" style="font-size: 1.2rem;">📞 Call (902) 243-2129</a>
+                    <a href="https://www.facebook.com/nellysgrillanddairybar" target="_blank" class="btn">📘 Message on Facebook</a>
+                </div>
             </section>
 
             <!-- Map Section -->
@@ -161,14 +149,10 @@
                 <div class="social-links">
                                         <a href="https://www.facebook.com/nellysgrillanddairybar" target="_blank" class="social-link">FB</a>
                 </div>
-                <span class="footer-credit">
-                    <a href="../html/index.html">Website by Justin Greeno</a>
-                </span>
+                <span class="footer-credit">Website by Justin Greeno</span>
             </div>
         </div>
-        <div class="footer-secret">
-            <a href="../html/index.html" title="JustinGreeno.dev">J</a>
-        </div>
+        <div class="footer-secret">J</div>
     </footer>
 
     <script>
@@ -227,21 +211,6 @@
         }
         updateFooterHours();
 
-        // Parallax background
-        (function() {
-            const style = document.createElement('style');
-            style.id = 'parallax-style';
-            document.head.appendChild(style);
-
-            function updateParallax() {
-                const scrollY = window.pageYOffset;
-                const translateY = scrollY * 0.2;
-                style.textContent = `body::before { transform: translateY(-${translateY}px); }`;
-            }
-
-            window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), { passive: true });
-            updateParallax();
-        })();
     </script>
 </body>
 </html>
