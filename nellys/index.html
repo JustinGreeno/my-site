@@ -10,7 +10,7 @@
     <link href="css/nellys.css" rel="stylesheet">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="images/logos/Nelly Logo This One.png">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍦</text></svg>">
     <meta name="theme-color" content="#2a1810">
 </head>
 <body>
@@ -29,10 +29,6 @@
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
-            <form class="site-search" role="search" action="menu.html" method="get">
-                <input type="search" name="q" id="site-search-input" placeholder="Search menu…" aria-label="Search menu">
-                <button type="submit" aria-label="Search">🔍</button>
-            </form>
         </div>
     </header>
 
@@ -63,7 +59,7 @@
         <div class="search-banner">
             <div class="search-banner-inner">
                 <form style="display:contents;" action="menu.html" method="get" id="home-search-form">
-                    <input type="search" name="q" id="home-search-input" placeholder="Search our menu — fish &amp; chips, pizza, chicken, ice cream..." aria-label="Search menu">
+                    <input type="search" name="q" id="home-search-input" placeholder="Search our menu: fish and chips, pizza, chicken, ice cream..." aria-label="Search menu">
                     <button type="submit">Search Menu</button>
                 </form>
             </div>
@@ -166,7 +162,7 @@
                 <div class="info-grid">
                     <div class="info-card">
                         <h3>🐟 Fresh Seafood</h3>
-                        <p>Atlantic haddock, lobster rolls, scallops, clams & more — straight from Nova Scotia waters</p>
+                        <p>Atlantic haddock, lobster rolls, scallops, clams and more. Straight from Nova Scotia waters.</p>
                     </div>
                     <div class="info-card">
                         <h3>🍗 Fried Chicken</h3>
@@ -174,11 +170,11 @@
                     </div>
                     <div class="info-card">
                         <h3>🍦 Dairy Bar</h3>
-                        <p>Ice cream, milkshakes & desserts — the perfect Nova Scotia summer treat</p>
+                        <p>Ice cream, milkshakes and desserts. The perfect Nova Scotia summer treat.</p>
                     </div>
                     <div class="info-card">
                         <h3>🥡 Takeout Available</h3>
-                        <p>Call ahead for pickup — same great food, ready to go!</p>
+                        <p>Call ahead for pickup. Same great food, ready to go!</p>
                     </div>
                 </div>
             </section>
@@ -343,13 +339,13 @@
 
         // ── Today's Special ──────────────────────────────
         const dailySpecials = {
-            0: { title: 'Sunday Dinner', desc: 'Pan-fried haddock dinner or Southern fried chicken with all the fixings — $16–$19' },
+            0: { title: 'Sunday Dinner', desc: 'Pan-fried haddock dinner or Southern fried chicken with all the fixings. $16 to $19.' },
             1: null, // Closed
             2: null, // Closed
             3: null, // Closed
-            4: { title: 'Fish & Chips Thursday', desc: 'Golden battered Atlantic haddock with hand-cut fries — a Nova Scotia classic! $13–$14' },
-            5: { title: 'Seafood Friday', desc: 'Lobster Roll & Coleslaw or Seafood Platter — fresh from the Atlantic! $19–$26' },
-            6: { title: 'Family Bucket Saturday', desc: 'Nelly\'s Fried Chicken Bucket — 9 pieces, large fries, coleslaw & gravy! $30–$39' }
+            4: { title: 'Fish & Chips Thursday', desc: 'Golden battered Atlantic haddock with hand-cut fries. A Nova Scotia classic! $13 to $14.' },
+            5: { title: 'Seafood Friday', desc: 'Lobster Roll & Coleslaw or Seafood Platter, fresh from the Atlantic! $19 to $26.' },
+            6: { title: 'Family Bucket Saturday', desc: 'Nelly\'s Fried Chicken Bucket: 9 pieces, large fries, coleslaw & gravy! $30 to $39.' }
         };
 
         function showTodaysSpecial() {

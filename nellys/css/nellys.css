@@ -1,4 +1,4 @@
-/* Nelly's Grill & Dairy Bar — Summer Light Style */
+/* Nelly's Grill & Dairy Bar - Summer Light Style */
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&family=Pacifico&display=swap');
 
 /* ─── Variables ─────────────────────────────────────── */
@@ -13,10 +13,10 @@
     --navy:          #1a3545;
     --text:          #1e2d3a;
     --text-muted:    #5a6e7f;
-    --bg:            #eef7f6;
+    --bg:            #cde9e7;
     --white:         #ffffff;
     --card-bg:       #ffffff;
-    --card-border:   #b8e2e0;
+    --card-border:   #96d4d0;
     --shadow-soft:   rgba(32, 178, 170, 0.15);
     --shadow-med:    rgba(0, 0, 0, 0.13);
     --shadow-dark:   rgba(0, 0, 0, 0.28);
@@ -35,10 +35,10 @@ html { scroll-behavior: smooth; }
 
 body {
     font-family: 'Nunito', sans-serif;
-    background-color: var(--bg);
+    background-color: #d4eeec;
     background-image:
-        radial-gradient(circle at 20% 30%, rgba(32,178,170,0.07) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(240,180,41,0.06) 0%, transparent 50%);
+        linear-gradient(160deg, #c2e8e5 0%, #d8f0ee 35%, #e8f4e8 65%, #d4e8f4 100%);
+    background-attachment: fixed;
     color: var(--text);
     line-height: 1.65;
     overflow-x: hidden;
@@ -58,13 +58,13 @@ a { color: var(--teal-dark); }
 
 /* ─── Header ────────────────────────────────────────── */
 header {
-    background: var(--white);
-    border-bottom: 3px solid var(--teal);
+    background: linear-gradient(135deg, #0e7a75 0%, #20b2aa 45%, #2ec9c0 75%, #1a9e96 100%);
+    border-bottom: 4px solid var(--gold);
     padding: 0.4rem 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 12px var(--shadow-soft);
+    box-shadow: 0 3px 16px rgba(14, 122, 117, 0.4);
 }
 
 .header-content {
@@ -97,7 +97,8 @@ header {
 .logo-text {
     font-family: 'Pacifico', cursive;
     font-size: 1.7rem;
-    color: var(--teal-dark);
+    color: var(--white);
+    text-shadow: 1px 2px 6px rgba(0,0,0,0.25);
     white-space: nowrap;
 }
 
@@ -111,7 +112,7 @@ nav ul {
 }
 
 nav a {
-    color: var(--text);
+    color: rgba(255,255,255,0.92);
     text-decoration: none;
     padding: 0.45rem 1rem;
     border-radius: var(--radius-sm);
@@ -123,63 +124,40 @@ nav a {
 
 nav a:hover,
 nav a.active {
-    background: var(--teal);
+    background: rgba(255,255,255,0.18);
     color: var(--white);
-    border-color: var(--teal-dark);
+    border-color: rgba(255,255,255,0.4);
 }
 
-/* ─── Nav Search Bar (header) ───────────────────────── */
-.site-search {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--teal-light);
-    border: 2px solid var(--teal);
-    border-radius: 24px;
-    padding: 0.35rem 0.75rem;
-    transition: box-shadow 0.2s;
+nav a.active {
+    background: var(--gold);
+    color: var(--navy);
+    border-color: transparent;
 }
-.site-search:focus-within {
-    box-shadow: 0 0 0 3px rgba(32, 178, 170, 0.25);
-}
-.site-search input {
-    border: none;
-    background: transparent;
-    font-family: 'Nunito', sans-serif;
-    font-size: 0.9rem;
-    color: var(--text);
-    width: 140px;
-    outline: none;
-}
-.site-search input::placeholder { color: var(--text-muted); }
-.site-search button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--teal-dark);
-    font-size: 1rem;
-    padding: 0;
-    line-height: 1;
-}
+
+/* ─── Nav Search Bar (header) - kept for reference, hidden on all pages ── */
+.site-search { display: none; }
 
 /* ─── Full-Width Search Banner ──────────────────────── */
 .search-banner {
     background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 60%, #2ec4bb 100%);
-    padding: 1.1rem 1.25rem;
+    padding: 1rem 1.25rem;
     box-shadow: 0 3px 12px rgba(32,178,170,0.3);
+    width: 100%;
 }
 
 .search-banner-inner {
-    max-width: 1140px;
-    margin: 0 auto;
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    width: 100%;
 }
 
 .search-banner input[type="search"] {
     flex: 1;
-    padding: 0.8rem 1.4rem;
+    width: 100%;
+    min-width: 0;
+    padding: 0.85rem 1.4rem;
     border: none;
     border-radius: 32px;
     font-family: 'Nunito', sans-serif;
@@ -194,15 +172,13 @@ nav a.active {
 .search-banner input[type="search"]:focus {
     box-shadow: inset 0 2px 6px rgba(0,0,0,0.07), 0 0 0 3px rgba(255,255,255,0.4);
 }
-.search-banner input[type="search"]::placeholder {
-    color: #9bb;
-}
+.search-banner input[type="search"]::placeholder { color: #7cc; }
 
 .search-banner button {
     background: var(--gold);
     border: none;
     border-radius: 32px;
-    padding: 0.8rem 1.6rem;
+    padding: 0.85rem 1.8rem;
     color: var(--navy);
     font-family: 'Nunito', sans-serif;
     font-size: 1rem;
@@ -213,7 +189,7 @@ nav a.active {
     flex-shrink: 0;
 }
 .search-banner button:hover {
-    background: #e0a510;
+    background: #d9a010;
     transform: translateY(-1px);
 }
 
@@ -837,7 +813,7 @@ nav a.active {
     align-items: flex-start;
     padding: 1rem 0.75rem;
     margin: 0.4rem 0;
-    background: var(--bg);
+    background: rgba(255,255,255,0.6);
     border-radius: var(--radius-sm);
     border-left: 4px solid var(--teal);
     transition: background 0.2s, border-color 0.2s;

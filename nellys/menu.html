@@ -10,7 +10,7 @@
     <link href="css/nellys.css" rel="stylesheet">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="images/logos/Nelly Logo This One.png">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍦</text></svg>">
     <meta name="theme-color" content="#2a1810">
 </head>
 <body>
@@ -29,10 +29,6 @@
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
-            <form class="site-search" role="search" id="nav-search-form">
-                <input type="search" id="nav-search-input" placeholder="Search menu…" aria-label="Search menu">
-                <button type="submit" aria-label="Search">🔍</button>
-            </form>
         </div>
     </header>
 
@@ -45,7 +41,7 @@
         <!-- Full-Width Search Banner -->
         <div class="search-banner">
             <div class="search-banner-inner">
-                <input type="search" id="search-banner-input" placeholder="Search our menu — haddock, pizza, poutine, lobster roll..." aria-label="Search menu">
+                <input type="search" id="search-banner-input" placeholder="Search our menu: haddock, pizza, poutine, lobster roll..." aria-label="Search menu">
                 <button type="button" id="search-banner-btn">Search</button>
             </div>
         </div>
@@ -112,7 +108,7 @@
 
                 <!-- Menu Search -->
                 <div class="menu-search-wrapper">
-                    <input type="search" id="menu-search" placeholder="Search the menu — e.g. haddock, pizza, chicken…" aria-label="Search menu items">
+                    <input type="search" id="menu-search" placeholder="Search the menu: haddock, pizza, chicken, lobster roll..." aria-label="Search menu items">
                 </div>
                 <div id="menu-no-results" class="menu-no-results" style="display:none;">No items found. Try a different search.</div>
 
@@ -189,12 +185,12 @@
                     <div class="menu-item">
                         <div>
                             <div class="menu-item-name">Seafood Platter</div>
-                            <div class="menu-item-desc">Clams, scallops, haddock & fries — the works!</div>
+                            <div class="menu-item-desc">Clams, scallops, haddock and fries. The works!</div>
                         </div>
                         <div class="menu-item-price">$20–$26</div>
                     </div>
 
-                    <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 1rem;">Add Fries to any item — $5</p>
+                    <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 1rem;">Add Fries to any item: $5</p>
                 </div>
 
                 <!-- Chicken -->
@@ -242,13 +238,13 @@
                         <div class="menu-item-price">$30–$39</div>
                     </div>
 
-                    <p style="font-size: 1rem; color: #333; margin-top: 1rem;">Upgrade side to Salad, Onion Rings, or Poutine — $2.50–$3.00</p>
+                    <p style="font-size: 1rem; color: #333; margin-top: 1rem;">Upgrade side to Salad, Onion Rings, or Poutine: $2.50 to $3.00</p>
                 </div>
 
                 <!-- Burgers & Sandwiches -->
                 <div class="menu-section" id="burgers">
                     <h3>🍔 Burgers</h3>
-                    <p style="font-size: 1rem; color: #333; margin-bottom: 1rem;">Homemade, fresh local beef & charbroiled · Make any burger a platter — $5.00 extra</p>
+                    <p style="font-size: 1rem; color: #333; margin-bottom: 1rem;">Homemade, fresh local beef, charbroiled. Make any burger a platter for $5.00 extra.</p>
 
                     <div class="menu-item">
                         <div>
@@ -383,7 +379,7 @@
                     <div class="menu-item">
                         <div>
                             <div class="menu-item-name">Donair Pizza</div>
-                            <div class="menu-item-desc">East coast classic — donair meat with sweet sauce</div>
+                            <div class="menu-item-desc">East coast classic. Donair meat with sweet sauce.</div>
                         </div>
                         <div class="menu-item-price">$13 / $21 / $26</div>
                     </div>
@@ -467,7 +463,7 @@
                         <div class="menu-item-price">$7–$8</div>
                     </div>
 
-                    <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 1rem;">Add Ground Beef, Chicken, or Beef to Poutine — $3</p>
+                    <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 1rem;">Add Ground Beef, Chicken, or Beef to Poutine: $3</p>
                 </div>
 
                 <!-- More -->
@@ -534,7 +530,7 @@
                         <div class="menu-item-price">$5.50</div>
                     </div>
 
-                    <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">Add a scoop of Ice Cream — $1.00</p>
+                    <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">Add a scoop of Ice Cream: $1.00</p>
 
                     <h3 style="margin-top: 2rem;">🥤 Beverages</h3>
 
@@ -709,20 +705,6 @@
             noResults.style.display = totalVisible === 0 ? 'block' : 'none';
         });
 
-        // Handle nav search form on this page
-        const navSearchForm = document.getElementById('nav-search-form');
-        const navSearchInput = document.getElementById('nav-search-input');
-        if (navSearchForm) {
-            navSearchForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const q = navSearchInput.value.trim();
-                if (q) {
-                    menuSearchInput.value = q;
-                    menuSearchInput.dispatchEvent(new Event('input'));
-                    menuSearchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            });
-        }
 
         // Wire search banner to the menu search input
         const searchBannerInput = document.getElementById('search-banner-input');
