@@ -6,12 +6,19 @@
     <title>Contact | Nelly's Grill & Dairy Bar</title>
     <meta name="description" content="Contact Nelly's Grill & Dairy Bar in West Pugwash, NS. Call for orders or inquiries.">
 
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Contact | Nelly's Grill & Dairy Bar">
+    <meta property="og:description" content="Contact Nelly's Grill & Dairy Bar in West Pugwash, NS. Call (902) 243-2129 or find us at 8890 RT-6.">
+    <meta property="og:image" content="images/logos/Nelly Logo This One.png">
+    <meta name="twitter:card" content="summary_large_image">
+
     <!-- CSS -->
     <link href="css/nellys.css" rel="stylesheet">
 
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍦</text></svg>">
-    <meta name="theme-color" content="#2a1810">
+    <meta name="theme-color" content="#20b2aa">
 </head>
 <body>
     <header>
@@ -21,7 +28,10 @@
                 <span class="logo-text">Nelly's Grill & Dairy Bar</span>
             </a>
             <nav>
-                <ul>
+                <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul id="nav-menu">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="menu.html">Menu</a></li>
                     <li><a href="specials.html">Specials</a></li>
@@ -33,16 +43,20 @@
     </header>
 
     <main>
-        <section class="hero">
-            <h1>Contact Us</h1>
-            <p class="tagline">We'd Love to Hear From You</p>
+        <section class="hero-banner hero-banner--inner">
+            <img src="images/exit.png" alt="Nelly's Grill & Dairy Bar exterior" class="hero-banner-img">
+            <div class="hero-banner-overlay"></div>
+            <div class="hero-banner-content">
+                <h1>Contact Us</h1>
+                <p class="hero-tagline">We'd Love to Hear From You</p>
+            </div>
         </section>
 
         <div class="search-banner">
             <div class="search-banner-inner">
                 <form style="display:contents;" action="menu.html" method="get">
-                    <input type="search" name="q" placeholder="Search our menu: haddock, pizza, poutine, lobster roll..." aria-label="Search menu">
-                    <button type="submit">Search Menu</button>
+                    <input type="search" name="q" placeholder="Search Nelly's — menu, photos, contact, specials..." aria-label="Search site">
+                    <button type="submit">Search</button>
                 </form>
             </div>
         </div>
@@ -53,19 +67,19 @@
                 <h2>Get in Touch</h2>
                 <div class="contact-info-large">
                     <div class="contact-item">
-                        <h3>Call Us</h3>
+                        <h3>📞 Call Us</h3>
                         <p class="phone-number"><a href="tel:9022432129">(902) 243-2129</a></p>
-                        <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">Reservations & Takeout</p>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Reservations &amp; Takeout</p>
                     </div>
                     <div class="contact-item">
-                        <h3>Find Us</h3>
+                        <h3>📍 Find Us</h3>
                         <p>8890 RT-6<br>West Pugwash, NS B0K 1K0</p>
                         <a href="https://www.google.com/maps/search/?api=1&query=8890+RT-6+West+Pugwash+NS+B0K+1K0" target="_blank" class="map-link">
-                            📍 Open in Google Maps
+                            Open in Google Maps
                         </a>
                     </div>
                     <div class="contact-item">
-                        <h3>Follow Us</h3>
+                        <h3>📘 Follow Us</h3>
                         <p>@nellysgrillanddairybar</p>
                         <div class="mt-2">
                             <a href="https://www.facebook.com/nellysgrillanddairybar" target="_blank" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Facebook</a>
@@ -88,7 +102,7 @@
 
             <!-- Contact Form -->
             <section class="panel">
-                <h2>Get in Touch</h2>
+                <h2>Reach Out</h2>
                 <p>The best way to reach us is by phone or Facebook!</p>
                 <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem;">
                     <a href="tel:9022432129" class="btn" style="font-size: 1.2rem;">📞 Call (902) 243-2129</a>
@@ -100,7 +114,8 @@
             <section class="panel">
                 <h2>Find Us</h2>
                 <p>Located on Route 6 in West Pugwash, Nova Scotia!</p>
-                <div style="margin-top: 1rem; border-radius: 10px; overflow: hidden; border: 3px solid var(--brass);">
+                <div style="margin-top: 1rem; border-radius: 10px; overflow: hidden; border: 1.5px solid rgba(32,178,170,0.45); box-shadow: 0 4px 18px rgba(32,178,170,0.15);">
+
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2845.5!2d-63.7!3d45.85!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s8890+RT-6+West+Pugwash+NS!5e0!3m2!1sen!2sca!4v1"
                         width="100%"
@@ -148,9 +163,10 @@
                 <span class="footer-credit">Website by Justin Greeno</span>
             </div>
         </div>
-        <div class="footer-secret">J</div>
+        <a href="secret.html" class="footer-secret" tabindex="-1">J</a>
     </footer>
 
+    <script src="js/nellys-search.js"></script>
     <script>
         // Nelly's Hours - Thu-Sun 11AM-7PM, Closed Mon-Wed
         const hours = {

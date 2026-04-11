@@ -21,7 +21,10 @@
                 <span class="logo-text">Nelly's Grill & Dairy Bar</span>
             </a>
             <nav>
-                <ul>
+                <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul id="nav-menu">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="menu.html">Menu</a></li>
                     <li><a href="specials.html">Specials</a></li>
@@ -33,16 +36,20 @@
     </header>
 
     <main>
-        <section class="hero">
-            <h1>Photos</h1>
-            <p class="tagline">Good Times at Nelly's</p>
+        <section class="hero-banner hero-banner--inner">
+            <img src="images/exit.png" alt="Nelly's Grill & Dairy Bar" class="hero-banner-img">
+            <div class="hero-banner-overlay"></div>
+            <div class="hero-banner-content">
+                <h1>Photos</h1>
+                <p class="hero-tagline">Good Times at Nelly's</p>
+            </div>
         </section>
 
         <div class="search-banner">
             <div class="search-banner-inner">
                 <form style="display:contents;" action="menu.html" method="get">
-                    <input type="search" name="q" placeholder="Search our menu: haddock, pizza, poutine, lobster roll..." aria-label="Search menu">
-                    <button type="submit">Search Menu</button>
+                    <input type="search" name="q" placeholder="Search Nelly's — menu, photos, contact, specials..." aria-label="Search site">
+                    <button type="submit">Search</button>
                 </form>
             </div>
         </div>
@@ -69,26 +76,26 @@
                         <div class="carousel-item"><img src="images/food/fish-and-chips-with-fried-pickle.png" alt="Fish & Chips"></div>
                         <div class="carousel-item"><img src="images/food/chicken-tenders-and-loaded-fries-baskets.png" alt="Chicken Tenders"></div>
                         <div class="carousel-item"><img src="images/food/hawaiian-pizza-pineapple-ham.png" alt="Hawaiian Pizza"></div>
-                        <div class="carousel-item"><img src="images/food/Nelly's Grill and Dairy Bar - Google Maps - Google Chrome 2026-01-20 10_35_45 AM.png" alt="Food at Nelly's"></div>
-                        <div class="carousel-item"><img src="images/food/Nelly's Grill and Dairy Bar - Google Maps - Google Chrome 2026-01-20 10_35_31 AM.png" alt="Great eats"></div>
-                        <div class="carousel-item"><img src="images/food/Facebook - Google Chrome 2026-01-20 2_15_32 AM.png" alt="Fresh from the kitchen"></div>
-                        <div class="carousel-item"><img src="images/food/Facebook - Google Chrome 2026-01-20 2_15_23 AM.png" alt="Home cooking"></div>
+                        <div class="carousel-item"><img src="images/food/nellys-menu-food-4.png" alt="Food at Nelly's"></div>
+                        <div class="carousel-item"><img src="images/food/nellys-menu-food-3.png" alt="Great eats"></div>
+                        <div class="carousel-item"><img src="images/food/nellys-daily-food-2.png" alt="Fresh from the kitchen"></div>
+                        <div class="carousel-item"><img src="images/food/nellys-daily-food-1.png" alt="Home cooking"></div>
                         <!-- DUPLICATE for seamless loop -->
                         <div class="carousel-item"><img src="images/exit.png" alt="Nelly's Grill & Dairy Bar"></div>
                         <div class="carousel-item"><img src="images/food/fish-and-chips-with-fried-pickle.png" alt="Fish & Chips"></div>
                         <div class="carousel-item"><img src="images/food/chicken-tenders-and-loaded-fries-baskets.png" alt="Chicken Tenders"></div>
                         <div class="carousel-item"><img src="images/food/hawaiian-pizza-pineapple-ham.png" alt="Hawaiian Pizza"></div>
-                        <div class="carousel-item"><img src="images/food/Nelly's Grill and Dairy Bar - Google Maps - Google Chrome 2026-01-20 10_35_45 AM.png" alt="Food at Nelly's"></div>
-                        <div class="carousel-item"><img src="images/food/Nelly's Grill and Dairy Bar - Google Maps - Google Chrome 2026-01-20 10_35_31 AM.png" alt="Great eats"></div>
-                        <div class="carousel-item"><img src="images/food/Facebook - Google Chrome 2026-01-20 2_15_32 AM.png" alt="Fresh from the kitchen"></div>
-                        <div class="carousel-item"><img src="images/food/Facebook - Google Chrome 2026-01-20 2_15_23 AM.png" alt="Home cooking"></div>
+                        <div class="carousel-item"><img src="images/food/nellys-menu-food-4.png" alt="Food at Nelly's"></div>
+                        <div class="carousel-item"><img src="images/food/nellys-menu-food-3.png" alt="Great eats"></div>
+                        <div class="carousel-item"><img src="images/food/nellys-daily-food-2.png" alt="Fresh from the kitchen"></div>
+                        <div class="carousel-item"><img src="images/food/nellys-daily-food-1.png" alt="Home cooking"></div>
                     </div>
                 </div>
             </section>
 
             <section class="panel">
                 <h2>Food Gallery</h2>
-                <p style="font-size: 1.1rem; color: #333;">Fresh seafood, homemade burgers, crispy fried chicken, and more!</p>
+                <p style="font-size: 1.1rem; color: var(--text-muted);">Fresh seafood, homemade burgers, crispy fried chicken, and more!</p>
 
                 <div class="photo-gallery">
                     <div class="photo-item">
@@ -104,23 +111,23 @@
                         <img src="images/food/hawaiian-pizza-pineapple-ham.png" alt="Hawaiian pizza">
                     </div>
                     <div class="photo-item">
-                        <img src="images/food/Nelly's Grill and Dairy Bar - Google Maps - Google Chrome 2026-01-20 10_35_45 AM.png" alt="Food at Nelly's">
+                        <img src="images/food/nellys-menu-food-4.png" alt="Food at Nelly's">
                     </div>
                     <div class="photo-item">
-                        <img src="images/food/Nelly's Grill and Dairy Bar - Google Maps - Google Chrome 2026-01-20 10_35_31 AM.png" alt="Great eats at Nelly's">
+                        <img src="images/food/nellys-menu-food-3.png" alt="Great eats at Nelly's">
                     </div>
                     <div class="photo-item">
-                        <img src="images/food/Facebook - Google Chrome 2026-01-20 2_15_32 AM.png" alt="Fresh from the kitchen">
+                        <img src="images/food/nellys-daily-food-2.png" alt="Fresh from the kitchen">
                     </div>
                     <div class="photo-item">
-                        <img src="images/food/Facebook - Google Chrome 2026-01-20 2_15_23 AM.png" alt="Home cooking at Nelly's">
+                        <img src="images/food/nellys-daily-food-1.png" alt="Home cooking at Nelly's">
                     </div>
                 </div>
             </section>
 
             <section class="panel text-center">
                 <h2>Follow Us for More</h2>
-                <p style="font-size: 1.1rem; color: #333;">See the latest photos and specials on Facebook!</p>
+                <p style="font-size: 1.1rem; color: var(--text-muted);">See the latest photos and specials on Facebook!</p>
                 <div class="mt-2">
                     <a href="https://www.facebook.com/nellysgrillanddairybar" target="_blank" class="btn">Follow Us on Facebook</a>
                 </div>
@@ -152,9 +159,10 @@
                 <span class="footer-credit">Website by Justin Greeno</span>
             </div>
         </div>
-        <div class="footer-secret">J</div>
+        <a href="secret.html" class="footer-secret" tabindex="-1">J</a>
     </footer>
 
+    <script src="js/nellys-search.js"></script>
     <script>
         // Nelly's Hours - Thu-Sun 11AM-7PM, Closed Mon-Wed
         const hours = {
