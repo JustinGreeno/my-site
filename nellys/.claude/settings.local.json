@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mv 'Facebook - Google Chrome 2026-01-20 2_15_23 AM.png' 'nellys-daily-food-1.png')",
+      "Bash(mv 'Facebook - Google Chrome 2026-01-20 2_15_32 AM.png' 'nellys-daily-food-2.png')",
+      "Bash(mv \"Nelly's Grill and Dairy Bar - Google Maps - Google Chrome 2026-01-20 10_35_31 AM.png\" 'nellys-menu-food-3.png')",
+      "Bash(mv \"Nelly's Grill and Dairy Bar - Google Maps - Google Chrome 2026-01-20 10_35_45 AM.png\" 'nellys-menu-food-4.png')",
+      "Bash(python3 -c ':*)",
+      "Bash(node -e ':*)",
+      "Bash(perl -pi -e ':*)",
+      "Bash(perl -i -0pe ':*)",
+      "Bash(perl -pi -e 's/placeholder=\"Search our menu: haddock, pizza, poutine, lobster roll\\\\.\\\\.\\\\.\" aria-label=\"Search menu\"/placeholder=\"Search Nelly\\\\x27s \\\\x{2014} menu, photos, contact, specials...\" aria-label=\"Search site\"/g' contact.html photos.html specials.html)",
+      "Bash(perl -pi -e 's/placeholder=\"Search our menu: fish and chips, pizza, chicken, ice cream\\\\.\\\\.\\\\.\" aria-label=\"Search menu\"/placeholder=\"Search Nelly\\\\x27s \\\\x{2014} menu, photos, contact, specials...\" aria-label=\"Search site\"/g' index.html)",
+      "Bash(perl -pi -e 's/placeholder=\"Search our menu: haddock, pizza, poutine, lobster roll\\\\.\\\\.\\\\.\" aria-label=\"Search menu\"/placeholder=\"Search Nelly\\\\x27s \\\\x{2014} menu, photos, contact, specials...\" aria-label=\"Search site\"/g' menu.html)",
+      "Bash(ls:*)",
+      "Bash(mv \"PXL_20260412_092756505.MP.jpg\" \"nellys-exterior-1.jpg\")",
+      "Bash(mv \"PXL_20260412_092804966.jpg\" \"nellys-exterior-2.jpg\")",
+      "Bash(mv \"PXL_20260412_092813351.jpg\" \"nellys-exterior-3.jpg\")",
+      "Bash(mv \"PXL_20260412_092817409.jpg\" \"nellys-exterior-4.jpg\")",
+      "Bash(mv \"PXL_20260412_092822499.jpg\" \"nellys-exterior-5.jpg\")",
+      "Bash(grep -n \"to \\\\$\\\\|to\\\\$\" /c/Users/cifacilitator/Desktop/justins/websites/my-site/nellys/menu.html)",
+      "Bash(magick --version)",
+      "Bash(convert --version)",
+      "Bash(cwebp --version)",
+      "Bash(ffmpeg -version)",
+      "Bash(npm --version)",
+      "Bash(where magick:*)",
+      "Bash(where convert:*)",
+      "Bash(where cwebp:*)",
+      "Bash(where ffmpeg:*)",
+      "Bash(where node:*)",
+      "Bash(python3 -c \"import PIL; print\\(PIL.__version__\\)\")",
+      "Bash(python3 -c \"from PIL import Image; print\\('Pillow OK'\\)\")",
+      "Bash(pip install:*)",
+      "Bash(python3 -m pip install Pillow --quiet)",
+      "Bash(powershell:*)"
+    ]
+  }
+}
