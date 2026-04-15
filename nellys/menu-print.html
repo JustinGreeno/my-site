@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nelly's Grill & Dairy Bar — Full Menu</title>
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Oswald:wght@400;500;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* ── Reset ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        /* ── Print & Screen Base ── */
+        @page { size: letter; margin: 0; }
+
+        html { font-size: 14px; }
+
+        body {
+            font-family: 'Oswald', sans-serif;
+            background: #e8e8e8;
+            color: #1a1a1a;
+        }
+
+        /* ── Screen: back-link ── */
+        .screen-only {
+            display: block;
+            text-align: center;
+            padding: 0.75rem;
+            background: #333;
+            color: #fff;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+        .screen-only a { color: #f0b429; text-decoration: none; }
+        .screen-only a:hover { text-decoration: underline; }
+        @media print { .screen-only { display: none; } }
+
+        /* ── Print button ── */
+        .print-btn {
+            display: inline-block;
+            margin: 1rem auto;
+            padding: 0.5rem 1.5rem;
+            background: #cc0000;
+            color: #fff;
+            border: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+        .print-btn:hover { background: #a80000; }
+        .print-bar {
+            text-align: center;
+            padding: 0.5rem 0;
+            background: #e8e8e8;
+        }
+        @media print { .print-bar { display: none; } }
+
+        /* ── Outer wrapper: checkerboard ── */
+        .checkerboard-wrap {
+            background:
+                repeating-conic-gradient(#cc0000 0% 25%, #ffffff 0% 50%)
+                0 0 / 28px 28px;
+            padding: 28px;
+            min-height: 100vh;
+        }
+
+        /* ── Inner white menu area ── */
+        .menu-page {
+            background: #fffef8;
+            border: 3px solid #cc0000;
+            padding: 36px 44px;
+            max-width: 820px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* ── Corner ornaments ── */
+        .corner {
+            position: absolute;
+            font-size: 1.4rem;
+            color: #cc0000;
+            line-height: 1;
+        }
+        .corner--tl { top: 8px; left: 10px; }
+        .corner--tr { top: 8px; right: 10px; }
+        .corner--bl { bottom: 8px; left: 10px; }
+        .corner--br { bottom: 8px; right: 10px; }
+
+        /* ── Header ── */
+        .menu-header {
+            text-align: center;
+            border-bottom: 3px double #cc0000;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+        }
+        .menu-header .diner-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #cc0000;
+            line-height: 1.1;
+            letter-spacing: 0.02em;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.08);
+        }
+        .menu-header .diner-sub {
+            font-family: 'Special Elite', cursive;
+            font-size: 1rem;
+            color: #555;
+            margin-top: 4px;
+            letter-spacing: 0.1em;
+        }
+        .menu-header .diner-address {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.78rem;
+            color: #888;
+            margin-top: 6px;
+            letter-spacing: 0.06em;
+        }
+
+        /* ── Section headings ── */
+        .section-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0 10px;
+            page-break-after: avoid;
+        }
+        .section-head h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: #cc0000;
+            white-space: nowrap;
+        }
+        .section-head .rule {
+            flex: 1;
+            height: 2px;
+            background: repeating-linear-gradient(
+                90deg,
+                #cc0000 0px, #cc0000 6px,
+                transparent 6px, transparent 10px
+            );
+        }
+
+        /* ── Subsection ── */
+        .sub-head {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.05rem;
+            color: #333;
+            margin: 14px 0 6px;
+            padding-left: 4px;
+            border-left: 3px solid #cc0000;
+        }
+
+        /* ── Menu items ── */
+        .item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 4px 2px;
+            border-bottom: 1px dotted #ccc;
+            gap: 8px;
+        }
+        .item-row:last-child { border-bottom: none; }
+        .item-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #1a1a1a;
+        }
+        .item-desc {
+            font-family: 'Special Elite', cursive;
+            font-size: 0.72rem;
+            color: #666;
+            margin-top: 1px;
+        }
+        .item-price {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #cc0000;
+            white-space: nowrap;
+            min-width: 50px;
+            text-align: right;
+        }
+        .item-left { flex: 1; }
+
+        /* ── Two-column layout for shorter lists ── */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 24px;
+        }
+
+        /* ── Pizza grid ── */
+        .pizza-grid {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 8px 0 12px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.88rem;
+        }
+        .pizza-grid th {
+            background: #cc0000;
+            color: #fff;
+            padding: 5px 10px;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+        .pizza-grid th:first-child { text-align: left; }
+        .pizza-grid td {
+            padding: 4px 10px;
+            border-bottom: 1px dotted #ccc;
+            color: #1a1a1a;
+        }
+        .pizza-grid td:not(:first-child) {
+            text-align: center;
+            font-weight: 700;
+            color: #cc0000;
+        }
+        .pizza-grid tr:nth-child(even) td { background: #fdf5f5; }
+
+        /* ── Ice cream grid ── */
+        .ic-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px 16px;
+            margin: 8px 0;
+        }
+        .ic-item {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dotted #ccc;
+            padding: 2px 0;
+        }
+        .ic-item .ic-name { color: #1a1a1a; }
+        .ic-item .ic-price { color: #cc0000; font-weight: 700; }
+
+        /* ── Note box ── */
+        .note-box {
+            background: #fff8e8;
+            border: 1px solid #e8c840;
+            border-radius: 4px;
+            padding: 6px 12px;
+            margin: 10px 0 4px;
+            font-family: 'Special Elite', cursive;
+            font-size: 0.8rem;
+            color: #5a4a00;
+            text-align: center;
+        }
+
+        /* ── Footer ── */
+        .menu-footer {
+            text-align: center;
+            margin-top: 22px;
+            padding-top: 12px;
+            border-top: 3px double #cc0000;
+        }
+        .menu-footer p {
+            font-family: 'Special Elite', cursive;
+            font-size: 0.8rem;
+            color: #666;
+            line-height: 1.7;
+        }
+        .menu-footer .phone {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #cc0000;
+        }
+
+        /* ── Page break helpers ── */
+        .page-break { page-break-before: always; }
+
+        @media print {
+            body { background: #fff; }
+            .checkerboard-wrap {
+                background:
+                    repeating-conic-gradient(#cc0000 0% 25%, #ffffff 0% 50%)
+                    0 0 / 28px 28px;
+                padding: 20px;
+            }
+            .menu-page {
+                border: 3px solid #cc0000;
+                padding: 24px 32px;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="screen-only">
+    <a href="index.html">&larr; Back to Nelly's Website</a>
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    This is the printable restaurant menu — not linked from the main site.
+</div>
+
+<div class="print-bar">
+    <button class="print-btn" onclick="window.print()">&#x1F5A8; Print This Menu</button>
+</div>
+
+<div class="checkerboard-wrap">
+<div class="menu-page">
+
+    <span class="corner corner--tl">&#10022;</span>
+    <span class="corner corner--tr">&#10022;</span>
+    <span class="corner corner--bl">&#10022;</span>
+    <span class="corner corner--br">&#10022;</span>
+
+    <!-- Header -->
+    <div class="menu-header">
+        <div class="diner-name">Nelly's Grill &amp; Dairy Bar</div>
+        <div class="diner-sub">West Pugwash, Nova Scotia</div>
+        <div class="diner-address">8890 RT-6, West Pugwash, NS &nbsp;|&nbsp; (902) 243-2129 &nbsp;|&nbsp; Tue–Sun 11AM–7PM</div>
+    </div>
+
+    <!-- SEAFOOD -->
+    <div class="section-head"><h2>&#128031; From the Sea</h2><div class="rule"></div></div>
+
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Haddock &amp; Fries (1 pc)</div><div class="item-desc">Golden battered Atlantic haddock with hand-cut fries</div></div>
+        <div class="item-price">$17.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Haddock &amp; Fries (2 pc)</div><div class="item-desc">Double the haddock, double the delicious</div></div>
+        <div class="item-price">$22.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Pan Fried Haddock Dinner</div><div class="item-desc">With fries or mash &amp; veg</div></div>
+        <div class="item-price">$23.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Haddock Burger &amp; Fries</div><div class="item-desc">Fresh haddock on a toasted bun</div></div>
+        <div class="item-price">$17.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Scallops &amp; Fries</div><div class="item-desc">Fresh Nova Scotia scallops with fries</div></div>
+        <div class="item-price">$29.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Lobster Roll &amp; Coleslaw</div><div class="item-desc">Fresh Nova Scotia lobster on a toasted buttered roll</div></div>
+        <div class="item-price">$26.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Clam Platter</div><div class="item-desc">Five Islands clams &amp; fries</div></div>
+        <div class="item-price">$29.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Seafood Platter</div><div class="item-desc">Clams, scallops, haddock and fries — the works!</div></div>
+        <div class="item-price">$32.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Seafood Chowder</div><div class="item-desc">Lobster, scallops, shrimp &amp; haddock in creamy chowder</div></div>
+        <div class="item-price">$7 cup / $12 bowl</div>
+    </div>
+    <div class="note-box">Add Fries to any item: $5.00 &nbsp;|&nbsp; HST not included</div>
+
+    <!-- CHICKEN -->
+    <div class="section-head"><h2>&#127831; Southern Fried Chicken</h2><div class="rule"></div></div>
+    <div class="item-desc" style="margin-bottom:6px; color:#555;">Served with fries or mash, potato &amp; coleslaw</div>
+
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">2 pc Fried Chicken</div><div class="item-desc">With fries or mash &amp; coleslaw</div></div>
+        <div class="item-price">$12.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">3 pc Fried Chicken</div><div class="item-desc">With fries or mash &amp; coleslaw</div></div>
+        <div class="item-price">$14.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Chicken Tenders &amp; Fries</div><div class="item-desc">Crispy golden tenders</div></div>
+        <div class="item-price">$14.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Crispy Chicken Burger &amp; Fries</div><div class="item-desc">Crispy chicken breast on a bun</div></div>
+        <div class="item-price">$17.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Bucket of Nelly's Fried Chicken</div><div class="item-desc">9 crispy pieces, large fries, coleslaw &amp; gravy</div></div>
+        <div class="item-price">$47.00</div>
+    </div>
+
+    <!-- BURGERS & SANDWICHES -->
+    <div class="section-head"><h2>&#127828; Burgers &amp; Sandwiches</h2><div class="rule"></div></div>
+    <div class="item-desc" style="margin-bottom:6px; color:#555;">Homemade fresh local beef, charbroiled. Make any burger a platter +$5.00</div>
+
+    <div class="sub-head">Burgers</div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Classic Burger</div><div class="item-desc">Fresh local beef, charbroiled to perfection</div></div>
+        <div class="item-price">$9.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Double Classic Burger</div><div class="item-desc">Two patties for the hungry</div></div>
+        <div class="item-price">$13.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Mozza &amp; Mushroom Burger</div><div class="item-desc">Melted mozzarella and sauteed mushrooms</div></div>
+        <div class="item-price">$10.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Inferno Burger</div><div class="item-desc">Banana peppers, sriracha mayo, lettuce, tomato &amp; cheddar</div></div>
+        <div class="item-price">$10.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Jumbo Hotdog</div><div class="item-desc">Classic jumbo dog with your choice of toppings</div></div>
+        <div class="item-price">$10.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Nelly's Mess</div><div class="item-desc">Ground beef &amp; onions on mash or fries, topped with gravy &amp; peas</div></div>
+        <div class="item-price">$17.00</div>
+    </div>
+
+    <div class="sub-head">Sandwiches</div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Club &amp; Fries</div><div class="item-desc">Classic triple-decker club sandwich</div></div>
+        <div class="item-price">$21.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Toasted BLT &amp; Fries</div><div class="item-desc">Bacon, lettuce, tomato on toasted bread</div></div>
+        <div class="item-price">$17.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Toasted Western &amp; Fries</div><div class="item-desc">Western sandwich on toasted bread</div></div>
+        <div class="item-price">$17.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Hot Hamburger or Chicken &amp; Fries</div><div class="item-desc">Open-faced with gravy</div></div>
+        <div class="item-price">$20.00</div>
+    </div>
+
+    <!-- PIZZA -->
+    <div class="section-head"><h2>&#127829; Fresh Pizza</h2><div class="rule"></div></div>
+
+    <table class="pizza-grid">
+        <thead>
+            <tr>
+                <th>Pizza</th>
+                <th>9"</th>
+                <th>12"</th>
+                <th>16"</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Plain (Sauce &amp; Cheese)</td>
+                <td>$12</td><td>$18</td><td>$22</td>
+            </tr>
+            <tr>
+                <td>Meatlovers<br><span style="font-size:0.75rem; color:#666; font-style:italic;">Pepperoni, bacon, salami, ground beef</span></td>
+                <td>$14</td><td>$21</td><td>$26</td>
+            </tr>
+            <tr>
+                <td>Deluxe<br><span style="font-size:0.75rem; color:#666; font-style:italic;">Pepperoni, bacon, green pepper, mushroom, onion</span></td>
+                <td>$14</td><td>$19</td><td>$25</td>
+            </tr>
+            <tr>
+                <td>Hawaiian<br><span style="font-size:0.75rem; color:#666; font-style:italic;">Ham, pineapple, green pepper</span></td>
+                <td>$14</td><td>$21</td><td>$26</td>
+            </tr>
+            <tr>
+                <td>Vegetarian<br><span style="font-size:0.75rem; color:#666; font-style:italic;">Tomato, onion, green pepper, mushroom, olive</span></td>
+                <td>$13</td><td>$21</td><td>$26</td>
+            </tr>
+            <tr>
+                <td>Donair<br><span style="font-size:0.75rem; color:#666; font-style:italic;">East coast classic with sweet sauce</span></td>
+                <td>$15</td><td>$22</td><td>$28</td>
+            </tr>
+            <tr>
+                <td>Garlic Fingers<br><span style="font-size:0.75rem; color:#666; font-style:italic;">Cheesy garlic goodness</span></td>
+                <td>$9</td><td>$14</td><td>$18</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="note-box">Extra toppings: +$2 / $2.50 / $3 &nbsp;|&nbsp; Extra cheese: +$2 / $4 / $5 &nbsp;|&nbsp; Bacon: +$2 / $2.50 / $3.50</div>
+
+    <!-- APPETIZERS / SNACKS -->
+    <div class="section-head"><h2>&#127839; Appetizers &amp; Snacks</h2><div class="rule"></div></div>
+
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">1 lb Naked Chicken Wings</div><div class="item-desc">Crispy wings, naked or tossed in your choice of sauce</div></div>
+        <div class="item-price">$19.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">2 lb Bucket of Naked Wings</div><div class="item-desc">Two pounds of wings with 2 sauces</div></div>
+        <div class="item-price">$39.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Hand Cut Fries</div><div class="item-desc">Fresh cut and golden fried</div></div>
+        <div class="item-price">$9.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Poutine</div><div class="item-desc">Fries, cheese curds &amp; gravy</div></div>
+        <div class="item-price">$12.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Onion Rings</div><div class="item-desc">Golden battered and crispy</div></div>
+        <div class="item-price">$10.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Cheesy Mozza Sticks</div><div class="item-desc">Breaded mozzarella sticks, golden fried</div></div>
+        <div class="item-price">$10.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Deep Fried Dill Pickles</div><div class="item-desc">Crispy fried pickle spears</div></div>
+        <div class="item-price">$10.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Pub Style Deep Fried Pepperoni</div><div class="item-desc">A Nova Scotia classic!</div></div>
+        <div class="item-price">$10.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Nachos</div><div class="item-desc">Tortilla chips, salsa, sour cream &amp; cheddar</div></div>
+        <div class="item-price">$14.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Loaded Nachos</div><div class="item-desc">Add chicken or ground beef, jalapeños &amp; guacamole</div></div>
+        <div class="item-price">$18.00</div>
+    </div>
+
+    <!-- SOUPS & SALADS -->
+    <div class="section-head"><h2>&#127843; Soups &amp; Salads</h2><div class="rule"></div></div>
+
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Seafood Chowder</div><div class="item-desc">Lobster, scallops, shrimp &amp; haddock in creamy chowder</div></div>
+        <div class="item-price">$7 cup / $12 bowl</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Soup of the Day</div><div class="item-desc">Ask your server for today's selection</div></div>
+        <div class="item-price">$6 cup / $10 bowl</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Tossed or Caesar Salad</div><div class="item-desc">Fresh garden salad or classic Caesar</div></div>
+        <div class="item-price">$14.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Chicken Caesar Wrap / Salad</div><div class="item-desc">Grilled chicken with Caesar, wrapped or on greens</div></div>
+        <div class="item-price">$18.00</div>
+    </div>
+
+    <!-- KIDS MEALS -->
+    <div class="section-head"><h2>&#128118; Kids Meals</h2><div class="rule"></div></div>
+
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Grilled Cheese &amp; Fries</div><div class="item-desc">Classic grilled cheese with fries</div></div>
+        <div class="item-price">$12.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Hot Dog &amp; Fries</div><div class="item-desc">Kid-sized hot dog with fries</div></div>
+        <div class="item-price">$12.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Chicken Tenders &amp; Fries</div><div class="item-desc">Kid-sized chicken tenders</div></div>
+        <div class="item-price">$12.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Mini Burger &amp; Fries</div><div class="item-desc">Small charbroiled burger with fries</div></div>
+        <div class="item-price">$11.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Mac &amp; Cheese</div><div class="item-desc">Creamy homestyle mac &amp; cheese</div></div>
+        <div class="item-price">$10.00</div>
+    </div>
+
+    <!-- ICE CREAM & DESSERTS -->
+    <div class="section-head"><h2>&#127846; Ice Cream &amp; Dairy Bar</h2><div class="rule"></div></div>
+
+    <div class="sub-head">Scoops &amp; Cones</div>
+    <div class="ic-grid">
+        <div class="ic-item"><span class="ic-name">Single Scoop</span><span class="ic-price">$4.50</span></div>
+        <div class="ic-item"><span class="ic-name">Double Scoop</span><span class="ic-price">$6.50</span></div>
+        <div class="ic-item"><span class="ic-name">Triple Scoop</span><span class="ic-price">$8.50</span></div>
+        <div class="ic-item"><span class="ic-name">Soft Serve Cone</span><span class="ic-price">$4.00</span></div>
+        <div class="ic-item"><span class="ic-name">Dipped Cone</span><span class="ic-price">$5.00</span></div>
+        <div class="ic-item"><span class="ic-name">Waffle Cone Upgrade</span><span class="ic-price">+$1.00</span></div>
+    </div>
+
+    <div class="sub-head">Specialty Treats</div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Sundae</div><div class="item-desc">Ice cream with your choice of toppings &amp; sauce</div></div>
+        <div class="item-price">$7.50</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Flurry</div><div class="item-desc">Soft serve blended with mix-ins</div></div>
+        <div class="item-price">$6.50</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Banana Split</div><div class="item-desc">Three scoops, banana, toppings &amp; whipped cream</div></div>
+        <div class="item-price">$11.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Milkshake</div><div class="item-desc">Vanilla, chocolate, strawberry, or ask about today's flavour</div></div>
+        <div class="item-price">$8.00</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Float</div><div class="item-desc">Pop with a scoop of soft serve</div></div>
+        <div class="item-price">$6.00</div>
+    </div>
+
+    <div class="section-head"><h2>&#127856; Desserts</h2><div class="rule"></div></div>
+
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Cake or Pie</div><div class="item-desc">Ask your server for today's selection</div></div>
+        <div class="item-price">$5.50</div>
+    </div>
+    <div class="item-row">
+        <div class="item-left"><div class="item-name">Add a Scoop of Ice Cream</div><div class="item-desc">On any dessert</div></div>
+        <div class="item-price">$1.00</div>
+    </div>
+    <div class="note-box">&#10024; Ask us about our desserts — selection changes daily!</div>
+
+    <!-- DRINKS -->
+    <div class="section-head"><h2>&#127861; Beverages</h2><div class="rule"></div></div>
+
+    <div class="two-col">
+        <div>
+            <div class="item-row">
+                <div class="item-left"><div class="item-name">Coffee / Tea</div></div>
+                <div class="item-price">$1.05</div>
+            </div>
+            <div class="item-row">
+                <div class="item-left"><div class="item-name">Hot Chocolate</div></div>
+                <div class="item-price">$2.75</div>
+            </div>
+            <div class="item-row">
+                <div class="item-left"><div class="item-name">Canned Pop / Water</div></div>
+                <div class="item-price">$1.75</div>
+            </div>
+            <div class="item-row">
+                <div class="item-left"><div class="item-name">Bottled Pop</div></div>
+                <div class="item-price">$4.50</div>
+            </div>
+        </div>
+        <div>
+            <div class="item-row">
+                <div class="item-left"><div class="item-name">Milk (500ml)</div></div>
+                <div class="item-price">$2.00</div>
+            </div>
+            <div class="item-row">
+                <div class="item-left"><div class="item-name">Juice</div></div>
+                <div class="item-price">$2.50</div>
+            </div>
+            <div class="item-row">
+                <div class="item-left"><div class="item-name">Domestic Beer / Draught</div></div>
+                <div class="item-price">$6.00</div>
+            </div>
+            <div class="item-row">
+                <div class="item-left"><div class="item-name">House Wine</div></div>
+                <div class="item-price">$7.00</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="menu-footer">
+        <p class="phone">(902) 243-2129</p>
+        <p>
+            Tuesday to Sunday &nbsp;|&nbsp; 11:00 AM to 7:00 PM<br>
+            8890 RT-6, West Pugwash, Nova Scotia<br>
+            HST not included &nbsp;|&nbsp; Prices subject to change<br>
+            For reservations or events, please call us
+        </p>
+    </div>
+
+</div><!-- .menu-page -->
+</div><!-- .checkerboard-wrap -->
+
+</body>
+</html>

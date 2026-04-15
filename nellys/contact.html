@@ -93,11 +93,8 @@
             <section class="panel">
                 <h2>Hours of Operation</h2>
                 <table class="hours-table">
-                    <tr><td>Thursday</td><td>11:00 AM - 7:00 PM</td></tr>
-                    <tr><td>Friday</td><td>11:00 AM - 7:00 PM</td></tr>
-                    <tr><td>Saturday</td><td>11:00 AM - 7:00 PM</td></tr>
-                    <tr><td>Sunday</td><td>11:00 AM - 7:00 PM</td></tr>
-                    <tr><td>Monday - Wednesday</td><td>Closed</td></tr>
+                    <tr><td>Tuesday - Sunday</td><td>11:00 AM - 7:00 PM</td></tr>
+                    <tr><td>Monday</td><td>Closed</td></tr>
                 </table>
             </section>
 
@@ -165,16 +162,18 @@
             </div>
         </div>
         <a href="secret.html" class="footer-secret" tabindex="-1">J</a>
+        <a href="menu-print.html" class="footer-secret footer-secret--r2" tabindex="-1">P</a>
+        <a href="menu-tv.html" class="footer-secret footer-secret--r1" tabindex="-1">T</a>
     </footer>
 
     <script src="js/nellys-search.js"></script>
     <script>
-        // Nelly's Hours - Thu-Sun 11AM-7PM, Closed Mon-Wed
+        // Nelly's Hours - Tue-Sun 11AM-7PM, Closed Mon
         const hours = {
             0: { open: 11, close: 19, name: 'Sunday' },      // Sunday 11AM-7PM
-            1: { open: 0, close: 0, name: 'Monday' },        // Closed
-            2: { open: 0, close: 0, name: 'Tuesday' },       // Closed
-            3: { open: 0, close: 0, name: 'Wednesday' },     // Closed
+            1: { open: 0,  close: 0,  name: 'Monday' },      // Closed
+            2: { open: 11, close: 19, name: 'Tuesday' },     // Tuesday 11AM-7PM
+            3: { open: 11, close: 19, name: 'Wednesday' },   // Wednesday 11AM-7PM
             4: { open: 11, close: 19, name: 'Thursday' },    // Thursday 11AM-7PM
             5: { open: 11, close: 19, name: 'Friday' },      // Friday 11AM-7PM
             6: { open: 11, close: 19, name: 'Saturday' }     // Saturday 11AM-7PM

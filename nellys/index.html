@@ -9,7 +9,7 @@
     <!-- Open Graph / Social Sharing -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Nelly's Grill & Dairy Bar | West Pugwash, NS">
-    <meta property="og:description" content="Family-friendly restaurant in West Pugwash, Nova Scotia. Fresh seafood, fried chicken, burgers, and ice cream. Open Thu-Sun 11AM-7PM.">
+    <meta property="og:description" content="Family-friendly restaurant in West Pugwash, Nova Scotia. Fresh seafood, fried chicken, burgers, and ice cream. Open Tue-Sun 11AM-7PM.">
     <meta property="og:image" content="images/logos/Nelly Logo This One.png">
     <meta property="og:url" content="index.html">
     <meta name="twitter:card" content="summary_large_image">
@@ -58,7 +58,7 @@
             </div>
         </section>
 
-        <!-- Today's Special - full width, right under hero -->
+        <!-- Today's Special - TEMPORARILY COMMENTED OUT (new menu coming next week)
         <div class="todays-special" id="todays-special" style="display:none; border-radius:0; margin:0; border-left-width:0; border-right-width:0; border-top-width:0;">
             <div class="special-badge" id="special-day-badge">Today's Special</div>
             <div class="special-info">
@@ -67,6 +67,7 @@
                 <a href="specials.html" class="special-cta">See all specials &rarr;</a>
             </div>
         </div>
+        -->
 
         <!-- Full-Width Search Banner -->
         <div class="search-banner">
@@ -116,11 +117,8 @@
             <section class="panel panel-gold">
                 <h2>Hours of Operation</h2>
                 <table class="hours-table">
-                    <tr><td>Thursday</td><td>11:00 AM - 7:00 PM</td></tr>
-                    <tr><td>Friday</td><td>11:00 AM - 7:00 PM</td></tr>
-                    <tr><td>Saturday</td><td>11:00 AM - 7:00 PM</td></tr>
-                    <tr><td>Sunday</td><td>11:00 AM - 7:00 PM</td></tr>
-                    <tr><td>Monday - Wednesday</td><td>Closed</td></tr>
+                    <tr><td>Tuesday - Sunday</td><td>11:00 AM - 7:00 PM</td></tr>
+                    <tr><td>Monday</td><td>Closed</td></tr>
                 </table>
             </section>
 
@@ -143,6 +141,10 @@
                     <div class="info-card">
                         <h3>🥡 Takeout Available</h3>
                         <p>Call ahead for pickup. Same great food, ready to go!</p>
+                    </div>
+                    <div class="info-card info-card--dog">
+                        <h3>🐾 Dog Friendly</h3>
+                        <p>Well-behaved dogs are welcome at our outdoor patio. Bring the whole family!</p>
                     </div>
                 </div>
             </section>
@@ -200,6 +202,8 @@
             </div>
         </div>
         <a href="secret.html" class="footer-secret" tabindex="-1">J</a>
+        <a href="menu-print.html" class="footer-secret footer-secret--r2" tabindex="-1">P</a>
+        <a href="menu-tv.html" class="footer-secret footer-secret--r1" tabindex="-1">T</a>
     </footer>
 
     <!-- JSON-LD Structured Data (SEO / Google) -->
@@ -220,7 +224,7 @@
         "addressCountry": "CA"
       },
       "openingHoursSpecification": [
-        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Thursday","Friday","Saturday","Sunday"], "opens": "11:00", "closes": "19:00" }
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "11:00", "closes": "19:00" }
       ],
       "servesCuisine": ["Seafood","Canadian","American","Ice Cream"],
       "priceRange": "$",
@@ -245,12 +249,12 @@
 
     <script src="js/nellys-search.js"></script>
     <script>
-        // Nelly's Hours - Thu-Sun 11AM-7PM, Closed Mon-Wed
+        // Nelly's Hours - Tue-Sun 11AM-7PM, Closed Mon
         const hours = {
             0: { open: 11, close: 19, name: 'Sunday' },      // Sunday 11AM-7PM
-            1: { open: 0, close: 0, name: 'Monday' },        // Closed
-            2: { open: 0, close: 0, name: 'Tuesday' },       // Closed
-            3: { open: 0, close: 0, name: 'Wednesday' },     // Closed
+            1: { open: 0,  close: 0,  name: 'Monday' },      // Closed
+            2: { open: 11, close: 19, name: 'Tuesday' },     // Tuesday 11AM-7PM
+            3: { open: 11, close: 19, name: 'Wednesday' },   // Wednesday 11AM-7PM
             4: { open: 11, close: 19, name: 'Thursday' },    // Thursday 11AM-7PM
             5: { open: 11, close: 19, name: 'Friday' },      // Friday 11AM-7PM
             6: { open: 11, close: 19, name: 'Saturday' }     // Saturday 11AM-7PM
@@ -347,8 +351,8 @@
         // Update every minute
         setInterval(updateStatus, 60000);
 
-        // ── Today's Special ──────────────────────────────
-        const dailySpecials = {
+        // ── Today's Special - TEMPORARILY COMMENTED OUT (new menu coming next week) ──
+        /* const dailySpecials = {
             0: { title: 'Sunday Dinner', desc: 'Pan-fried haddock dinner or Southern fried chicken with all the fixings. $23.' },
             1: null, // Closed
             2: null, // Closed
@@ -370,7 +374,7 @@
             }
         }
 
-        showTodaysSpecial();
+        showTodaysSpecial(); */
 
         // ── Dynamic Carousel ─────────────────────────────────────────────────
         //
@@ -391,7 +395,7 @@
 
         const NAMED_FOOD = [
             { src: 'images/food/lobster-roll.jpg',                             caption: 'Lobster Roll',               tags: ['seafood','lobster'] },
-            { src: 'images/food/fish-and-chips-with-fried-pickle.png',         caption: 'Fish and Chips',             tags: ['fish','seafood','chips'] },
+            { src: 'images/food/nellys-fish-and-chips.png',                     caption: 'Fish and Chips',             tags: ['fish','seafood','chips'] },
             { src: 'images/food/chicken-tenders.png',                          caption: 'Chicken Tenders',            tags: ['chicken'] },
             { src: 'images/food/hawaiian-pizza-pineapple-ham.png',             caption: 'Hawaiian Pizza',             tags: ['pizza'] },
             { src: 'images/food/nellys-pizza-golden.png',                      caption: 'Golden Pizza',               tags: ['pizza'] },

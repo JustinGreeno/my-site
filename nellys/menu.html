@@ -16,6 +16,23 @@
     <!-- CSS -->
     <link href="css/nellys.css" rel="stylesheet">
 
+    <!-- PRICES TEMPORARILY HIDDEN — remove this block when new menu is ready -->
+    <style>
+        .menu-item-price { display: none !important; }
+        .menu-price-notice {
+            display: block;
+            text-align: center;
+            background: var(--gold-light);
+            border: 2px dashed var(--gold);
+            border-radius: var(--radius-sm);
+            padding: 0.6rem 1.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            color: #7a5c00;
+            font-size: 0.95rem;
+        }
+    </style>
+
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍦</text></svg>">
     <meta name="theme-color" content="#20b2aa">
@@ -45,7 +62,7 @@
 
     <main>
         <section class="hero-banner hero-banner--inner">
-            <img src="images/food/fish-and-chips-with-fried-pickle.png" alt="Nelly's fish and chips" class="hero-banner-img">
+            <img src="images/food/nellys-fish-and-chips.png" alt="Nelly's fish and chips" class="hero-banner-img">
             <div class="hero-banner-overlay"></div>
             <div class="hero-banner-content">
                 <h1>Our Menu</h1>
@@ -75,6 +92,7 @@
             </section>
 
             <section class="panel">
+                <span class="menu-price-notice">Our new menu is coming soon — check back next week for updated prices!</span>
                 <p class="text-center" style="font-style: italic; margin-bottom: 1.5rem;">
                     HST not included · Prices subject to change
                 </p>
@@ -604,6 +622,8 @@
             </div>
         </div>
         <a href="secret.html" class="footer-secret" tabindex="-1">J</a>
+        <a href="menu-print.html" class="footer-secret footer-secret--r2" tabindex="-1">P</a>
+        <a href="menu-tv.html" class="footer-secret footer-secret--r1" tabindex="-1">T</a>
     </footer>
 
     <script src="js/nellys-search.js"></script>
@@ -709,12 +729,12 @@
             setTimeout(() => menuSearchInput.scrollIntoView({ behavior: 'smooth', block: 'center' }), 300);
         }
 
-        // Nelly's Hours - Thu-Sun 11AM-7PM, Closed Mon-Wed
+        // Nelly's Hours - Tue-Sun 11AM-7PM, Closed Mon
         const hours = {
             0: { open: 11, close: 19, name: 'Sunday' },      // Sunday 11AM-7PM
-            1: { open: 0, close: 0, name: 'Monday' },        // Closed
-            2: { open: 0, close: 0, name: 'Tuesday' },       // Closed
-            3: { open: 0, close: 0, name: 'Wednesday' },     // Closed
+            1: { open: 0,  close: 0,  name: 'Monday' },      // Closed
+            2: { open: 11, close: 19, name: 'Tuesday' },     // Tuesday 11AM-7PM
+            3: { open: 11, close: 19, name: 'Wednesday' },   // Wednesday 11AM-7PM
             4: { open: 11, close: 19, name: 'Thursday' },    // Thursday 11AM-7PM
             5: { open: 11, close: 19, name: 'Friday' },      // Friday 11AM-7PM
             6: { open: 11, close: 19, name: 'Saturday' }     // Saturday 11AM-7PM
@@ -774,7 +794,7 @@
         const PHOTO_MAX = 10;
         const NAMED_FOOD = [
             { src: 'images/food/lobster-roll.jpg',                     caption: 'Lobster Roll' },
-            { src: 'images/food/fish-and-chips-with-fried-pickle.png', caption: 'Fish and Chips' },
+            { src: 'images/food/nellys-fish-and-chips.png', caption: 'Fish and Chips' },
             { src: 'images/food/chicken-tenders.png',                  caption: 'Chicken Tenders' },
             { src: 'images/food/hawaiian-pizza-pineapple-ham.png',     caption: 'Hawaiian Pizza' },
             { src: 'images/food/nellys-pizza-golden.png',              caption: 'Golden Pizza' },

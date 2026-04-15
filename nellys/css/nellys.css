@@ -1179,6 +1179,22 @@ footer {
 }
 .footer-secret:hover { opacity: 0.35; }
 
+/* Hidden page links — bottom left, next to J */
+.footer-secret--r1 {
+    left: 22px;
+    bottom: 8px;
+}
+.footer-secret--r2 {
+    left: 36px;
+    bottom: 8px;
+}
+
+/* Dog-friendly info card highlight */
+.info-card--dog {
+    background: linear-gradient(135deg, #fff8e8 0%, #fff3d4 100%);
+    border: 2px solid var(--gold);
+}
+
 /* Main padding for fixed footer */
 main { padding-bottom: 110px; }
 
