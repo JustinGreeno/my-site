@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Darkness Blooms Devlogs | Justin Greeno</title>
+  <meta name="description" content="Development logs for Darkness Blooms: a story-driven retro RPG solo-developed by Justin Greeno.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/ghost.css">
+</head>
+<body>
+
+<div id="cursor-glow"></div>
+
+<nav class="gn">
+  <div class="c">
+    <a href="index.html" class="gn-logo">JG</a>
+    <ul class="gn-links">
+      <li><a href="work.html">Work</a></li>
+      <li><a href="pixel-art.html">Pixel Art</a></li>
+      <li><a href="devlogs.html" class="active">Devlogs</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+      
+    </button>
+  </div>
+</nav>
+
+<main style="flex:1">
+
+  <!-- HEADER -->
+  <section class="page-head fade-in">
+    <div class="c">
+      <div class="page-num">Solo Development, 2018 to Present</div>
+      <h1 class="page-title">Darkness<br>Blooms</h1>
+    </div>
+  </section>
+
+  <!-- ABOUT + CTA -->
+  <section class="sec">
+    <div class="c">
+      <div class="two-col">
+        <div>
+          <div class="sec-label" style="margin-bottom:1rem">About the Game</div>
+          <p style="font-size:1rem;line-height:1.8;color:var(--fg-mid);margin-bottom:1.5rem">
+            A deeply story-driven narrative team-based RPG. Six unlikely young adults are drawn together
+            and given the opportunity to be heroes, whether they asked for it or not.
+          </p>
+          <p style="font-size:1rem;line-height:1.8;color:var(--fg-mid);margin-bottom:1.5rem">
+            Inspired by Final Fantasy, Zelda, and Stardew Valley. Built entirely solo, all artwork,
+            programming, narrative, and music direction. Every pixel hand-drawn in Aseprite.
+          </p>
+          <blockquote>
+            <p>"In the darkest of times, even the smallest light can bloom into something extraordinary."</p>
+            <cite>Ellie, Darkness Blooms</cite>
+          </blockquote>
+        </div>
+        <div>
+          <div class="sec-label" style="margin-bottom:1rem">Follow the Development</div>
+          <div class="social-row" style="margin-top:0">
+            <a class="social-item" href="https://www.youtube.com/justingreeno" target="_blank" rel="noopener noreferrer">YouTube</a>
+            <a class="social-item" href="https://www.twitch.tv/darknessblooms" target="_blank" rel="noopener noreferrer">Twitch</a>
+            <a class="social-item" href="https://discord.gg/FTskDEdAtj" target="_blank" rel="noopener noreferrer">Discord</a>
+            <a class="social-item" href="https://www.patreon.com/u55408845" target="_blank" rel="noopener noreferrer">Patreon</a>
+          </div>
+          <div style="margin-top:2rem">
+            <div class="sec-label" style="margin-bottom:1rem">Technology</div>
+            <div class="skills-wrap">
+              <span class="skill">Unity</span>
+              <span class="skill">C#</span>
+              <span class="skill">Aseprite</span>
+              <span class="skill">Pixel Art</span>
+              <span class="skill">2D Animation</span>
+              <span class="skill">Game Design</span>
+              <span class="skill">Narrative Design</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHARACTERS -->
+  <section class="sec reveal">
+    <div class="c">
+      <div class="sec-head">
+        <div>
+          <div class="sec-label">The Party</div>
+          <h2 class="sec-title">Characters</h2>
+        </div>
+        <a href="https://www.youtube.com/justingreeno" target="_blank" rel="noopener noreferrer" class="btn">Watch on YouTube ↗</a>
+      </div>
+      <p style="font-size:0.95rem;line-height:1.8;color:var(--fg-mid);max-width:600px;margin-bottom:2rem">
+        Six original characters, each with their own story, abilities, and backgrounds.
+        None of them asked to be heroes.
+      </p>
+      <div class="char-grid">
+        <div class="char-item"><div class="char-name">Ellie</div><div class="char-role">Herbalist</div></div>
+        <div class="char-item"><div class="char-name">Nixxy</div><div class="char-role">Thief</div></div>
+        <div class="char-item"><div class="char-name">Billy</div><div class="char-role">Scholar</div></div>
+        <div class="char-item"><div class="char-name">Asher</div><div class="char-role">Dog</div></div>
+        <div class="char-item"><div class="char-name">Player1</div><div class="char-role">You</div></div>
+        <div class="char-item"><div class="char-name">KK</div><div class="char-role">Martial Artist</div></div>
+      </div>
+
+      <div class="video-wrap" style="margin-top:2.5rem">
+        <div class="yt-facade" data-ytid="GsCAqKWsDmA"><img src="https://i.ytimg.com/vi/GsCAqKWsDmA/hqdefault.jpg" alt="Darkness Blooms: Characters" loading="lazy"><button class="yt-play-btn" aria-label="Play video"><svg width="68" height="48" viewBox="0 0 68 48"><rect width="68" height="48" rx="6" fill="rgba(0,0,0,0.75)"/><path d="M27 14l24 10-24 10V14z" fill="white"/></svg></button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE STORY -->
+  <section class="sec reveal">
+    <div class="c">
+      <div class="sec-head">
+        <div>
+          <div class="sec-label">Narrative</div>
+          <h2 class="sec-title">The Story</h2>
+        </div>
+      </div>
+      <p style="font-size:1rem;line-height:1.8;color:var(--fg-mid);max-width:680px;margin-bottom:2rem">
+        The main story follows overarching themes that challenge what you think about heroes and villains.
+        Expect a journey built on consequence, identity, and the gray spaces between good and evil.
+      </p>
+      <blockquote>
+        <p>"It's like everyone tells a story about themselves inside their own head. Always. All the time.
+        That story makes you what you are. We build ourselves out of that story."</p>
+        <cite>Patrick Rothfuss</cite>
+      </blockquote>
+
+      <div class="video-wrap" style="margin-top:2.5rem">
+        <div class="yt-facade" data-ytid="47WdJTkzF9Q"><img src="https://i.ytimg.com/vi/47WdJTkzF9Q/hqdefault.jpg" alt="Darkness Blooms: The Story" loading="lazy"><button class="yt-play-btn" aria-label="Play video"><svg width="68" height="48" viewBox="0 0 68 48"><rect width="68" height="48" rx="6" fill="rgba(0,0,0,0.75)"/><path d="M27 14l24 10-24 10V14z" fill="white"/></svg></button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEVLOGS -->
+  <section class="sec reveal">
+    <div class="c">
+      <div class="sec-head">
+        <div>
+          <div class="sec-label">Development Videos</div>
+          <h2 class="sec-title">Devlogs</h2>
+        </div>
+        <a href="https://www.youtube.com/justingreeno" target="_blank" rel="noopener noreferrer" class="btn inv">All Videos on YouTube ↗</a>
+      </div>
+
+      <div class="devlog-entry">
+        <div class="devlog-meta">Devlog, Game Introduction</div>
+        <h3 class="devlog-title">What is Darkness Blooms?</h3>
+        <p class="devlog-desc">An overview of the game, what it is, where it came from, and where it's going.</p>
+        <div class="video-wrap" style="margin-top:1.5rem">
+          <div class="yt-facade" data-ytid="3laN-9JQICs"><img src="https://i.ytimg.com/vi/3laN-9JQICs/hqdefault.jpg" alt="Darkness Blooms: Introduction" loading="lazy"><button class="yt-play-btn" aria-label="Play video"><svg width="68" height="48" viewBox="0 0 68 48"><rect width="68" height="48" rx="6" fill="rgba(0,0,0,0.75)"/><path d="M27 14l24 10-24 10V14z" fill="white"/></svg></button></div>
+        </div>
+        <div style="margin-top:1rem">
+          <a href="https://www.youtube.com/watch?v=3laN-9JQICs" target="_blank" rel="noopener noreferrer" class="art-watch">
+            Watch on YouTube &nearr;
+          </a>
+        </div>
+      </div>
+
+      <div class="devlog-entry">
+        <div class="devlog-meta">Devlog, Development Progress</div>
+        <h3 class="devlog-title">How I Build and Track Progress</h3>
+        <p class="devlog-desc">A look at how I implement new features, manage scope, and keep the project moving forward solo.</p>
+        <div class="video-wrap" style="margin-top:1.5rem">
+          <div class="yt-facade" data-ytid="SR5daE8LU0k"><img src="https://i.ytimg.com/vi/SR5daE8LU0k/hqdefault.jpg" alt="Darkness Blooms: Development Progress" loading="lazy"><button class="yt-play-btn" aria-label="Play video"><svg width="68" height="48" viewBox="0 0 68 48"><rect width="68" height="48" rx="6" fill="rgba(0,0,0,0.75)"/><path d="M27 14l24 10-24 10V14z" fill="white"/></svg></button></div>
+        </div>
+        <div style="margin-top:1rem">
+          <a href="https://www.youtube.com/watch?v=SR5daE8LU0k" target="_blank" rel="noopener noreferrer" class="art-watch">
+            Watch on YouTube &nearr;
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COMMUNITY -->
+  <section class="sec reveal" style="border-bottom:none">
+    <div class="c">
+      <div class="sec-head">
+        <div>
+          <div class="sec-label">Community</div>
+          <h2 class="sec-title">Join the Build</h2>
+        </div>
+      </div>
+      <p style="font-size:1rem;line-height:1.8;color:var(--fg-mid);max-width:580px;margin-bottom:2rem">
+        Join the Discord community, shared conversations around art and game dev,
+        community showcases, and art contests themed around the game world.
+      </p>
+      <div class="btn-row">
+        <a href="https://www.youtube.com/justingreeno" target="_blank" rel="noopener noreferrer" class="btn inv">Subscribe on YouTube ↗</a>
+        <a href="https://discord.gg/FTskDEdAtj" target="_blank" rel="noopener noreferrer" class="btn">Join Discord ↗</a>
+        <a href="https://www.twitch.tv/darknessblooms" target="_blank" rel="noopener noreferrer" class="btn">Watch Live ↗</a>
+        <a href="https://www.patreon.com/u55408845" target="_blank" rel="noopener noreferrer" class="btn">Support on Patreon ↗</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="gf">
+  <div class="c">
+    <span class="gf-copy">&copy; 2026 Justin Greeno</span>
+    <div class="gf-links">
+      <a href="../html/index.html">&larr; justingreeno.dev</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/ghost.js"></script>
+
+</body>
+</html>

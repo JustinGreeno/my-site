@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixel Art | Justin Greeno</title>
+  <meta name="description" content="Pixel art gallery by Justin Greeno: animations, sprites, and environments for Darkness Blooms.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/ghost.css">
+</head>
+<body>
+
+<div id="cursor-glow"></div>
+
+<nav class="gn">
+  <div class="c">
+    <a href="index.html" class="gn-logo">JG</a>
+    <ul class="gn-links">
+      <li><a href="work.html">Work</a></li>
+      <li><a href="pixel-art.html" class="active">Pixel Art</a></li>
+      <li><a href="devlogs.html">Devlogs</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+      
+    </button>
+  </div>
+</nav>
+
+<main style="flex:1">
+
+  <!-- HEADER -->
+  <section class="page-head fade-in">
+    <div class="c">
+      <div class="page-num">Gallery</div>
+      <h1 class="page-title">Pixel<br>Art</h1>
+    </div>
+  </section>
+
+  <!-- INTRO + YOUTUBE CTA -->
+  <section class="sec" style="padding-top:2.5rem;padding-bottom:2.5rem">
+    <div class="c" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem">
+      <p style="font-size:1rem;line-height:1.8;color:var(--fg-mid);max-width:580px">
+        Pixel art created for <em>Darkness Blooms</em>, a retro RPG I'm solo-developing.
+        All pieces made in Aseprite. Each image links to a time-lapse creation video on YouTube.
+      </p>
+      <div class="btn-row">
+        <a href="https://www.youtube.com/justingreeno" target="_blank" rel="noopener noreferrer" class="btn inv">Subscribe on YouTube ↗</a>
+        <a href="devlogs.html" class="btn">View Devlogs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ART ENTRIES -->
+  <section style="border-top:var(--rule)">
+    <div class="c" id="art-container"></div>
+  </section>
+
+  <!-- BOTTOM CTA -->
+  <section class="sec reveal" style="border-top:var(--rule)">
+    <div class="c" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem">
+      <div>
+        <div class="sec-label" style="margin-bottom:0.5rem">See More</div>
+        <h2 style="font-size:clamp(1.5rem,3vw,2.5rem);letter-spacing:-0.03em">More content on YouTube</h2>
+      </div>
+      <div class="btn-row">
+        <a href="https://www.youtube.com/justingreeno" target="_blank" rel="noopener noreferrer" class="btn inv">Watch Time-lapses ↗</a>
+        <a href="https://www.twitch.tv/darknessblooms" target="_blank" rel="noopener noreferrer" class="btn">Watch Live ↗</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="gf">
+  <div class="c">
+    <span class="gf-copy">&copy; 2026 Justin Greeno</span>
+    <div class="gf-links">
+      <a href="../html/index.html">&larr; justingreeno.dev</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/ghost.js"></script>
+<script>
+  const ART = [
+    {
+      num: '01',
+      title: "Billy's House",
+      img: '../images/house_art.gif',
+      alt: "Billy's House",
+      desc: "Billy's parents are archaeologists turned researchers turned professors, and they live within the main castle. A detailed pixel art environment built for the game world.",
+      ytId: 'LlvsxoYQCjI',
+      flip: false
+    },
+    {
+      num: '02',
+      title: 'Stardew Valley Title Screen Remake',
+      img: '../images/title.gif',
+      alt: 'Stardew Valley Title Screen',
+      desc: 'A tribute to one of the games that most inspired the art direction of Darkness Blooms. A full recreation built in Aseprite as an exercise in environmental storytelling.',
+      ytId: 'lLe3m-RQPg4',
+      flip: true
+    },
+    {
+      num: '03',
+      title: 'Mushroom Towers',
+      img: '../images/mushTower.gif',
+      alt: 'Mushroom Towers',
+      desc: 'In Darkness Blooms, technology and nature often mix. In one small community, the people live inside large mushrooms, these animated towers bring that world to life.',
+      ytId: 'R5VRNv7qFoY',
+      flip: false
+    },
+    {
+      num: '04',
+      title: 'Tree Stumps',
+      img: '../images/stump.gif',
+      alt: 'Tree Stumps',
+      desc: "Ever since the incident it's hard to trust anything not to attack you. Nature has gone wild. These animated stumps capture that unease.",
+      ytId: 'DCXRBEiLUUc',
+      flip: true
+    },
+    {
+      num: '05',
+      title: 'Veggies',
+      img: '../images/veg.gif',
+      alt: 'Veggies',
+      desc: 'Animated vegetable sprites for farming and gardening mechanics. Each vegetable has its own growth cycle and animation, a core part of the game world.',
+      ytId: 'ET4TbnetgNA',
+      flip: false
+    },
+    {
+      num: '06',
+      title: 'Treasure Chests',
+      img: '../images/Pick a chest gif 2.0.gif',
+      alt: 'Treasure Chests',
+      desc: 'A variety of animated treasure chests for players to discover throughout the game world. Each style hints at what might be inside.',
+      ytId: 'aC137GxEQZI',
+      flip: true
+    },
+    {
+      num: '07',
+      title: 'Windmills',
+      img: '../images/Windmills 3.0 Gif .gif',
+      alt: 'Windmills',
+      desc: 'Animated windmill structures that bring life to the countryside areas of the game. The rotation cycle was carefully tuned to feel natural and organic.',
+      ytId: 'wjNMZPSz7Jo',
+      flip: false
+    },
+    {
+      num: '08',
+      title: 'Convoy',
+      img: '../images/gif REAL SCUESS THIS ONE.gif',
+      alt: 'Convoy',
+      desc: 'A traveling convoy scene that hints at the scale and scope of the wider world of Darkness Blooms. Movement, depth, and atmosphere in a single looping image.',
+      ytId: '7Sz5tXZ1o5I',
+      flip: true
+    }
+  ];
+
+  const container = document.getElementById('art-container');
+
+  container.innerHTML = ART.map(a => `
+    <div class="art-entry reveal">
+      <div class="art-split ${a.flip ? 'flipped' : ''}">
+        <div>
+          <a href="https://www.youtube.com/watch?v=${a.ytId}" target="_blank" rel="noopener noreferrer" title="Watch time-lapse on YouTube">
+            <img src="${a.img}" alt="${a.alt}" class="art-img">
+          </a>
+        </div>
+        <div>
+          <div class="art-num">${a.num}</div>
+          <h2 class="art-title">${a.title}</h2>
+          <p class="art-desc">${a.desc}</p>
+          <a class="art-watch" href="https://www.youtube.com/watch?v=${a.ytId}" target="_blank" rel="noopener noreferrer">
+            Watch Time-lapse on YouTube &nearr;
+          </a>
+        </div>
+      </div>
+      <div class="video-wrap" style="margin-top:2.5rem">
+        <div class="yt-facade" data-ytid="${a.ytId}"><img src="https://i.ytimg.com/vi/${a.ytId}/hqdefault.jpg" alt="${a.title} Time-lapse" loading="lazy"><button class="yt-play-btn" aria-label="Play video"><svg width="68" height="48" viewBox="0 0 68 48"><rect width="68" height="48" rx="6" fill="rgba(0,0,0,0.75)"/><path d="M27 14l24 10-24 10V14z" fill="white"/></svg></button></div>
+      </div>
+    </div>
+  `).join('');
+</script>
+
+</body>
+</html>

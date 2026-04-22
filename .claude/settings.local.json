@@ -10,7 +10,18 @@
       "Bash(git push:*)",
       "Bash(grep:*)",
       "Bash(done)",
-      "Bash(sed:*)"
+      "Bash(sed:*)",
+      "Bash(rm -rf ccex nellys bloom mycode.rar)",
+      "Bash(rm -f cd claude)",
+      "Bash(npm create *)",
+      "PowerShell(npm create *)",
+      "PowerShell(Get-Command *)",
+      "Bash(mv \"Screenshot_20251208-030143~2.jpg\"                                    \"justin-07.jpg\")",
+      "Bash(mv \"Screenshot_20250315-183326~3.png\"                                    \"justin-09.jpg\")",
+      "Bash(mv \"Screenshot_20250315-183402~3.png\"                                    \"justin-10.jpg\")",
+      "Bash(python3 *)",
+      "Bash(python -c \"print\\('hello'\\)\")",
+      "Bash(node -e \"console.log\\('node ok'\\)\")"
     ]
   }
 }

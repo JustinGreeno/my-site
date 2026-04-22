@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Justin Greeno</title>
+  <meta name="description" content="Get in touch with Justin Greeno: web developer and designer based in Nova Scotia, Canada.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/ghost.css">
+</head>
+<body>
+
+<div id="cursor-glow"></div>
+
+<nav class="gn">
+  <div class="c">
+    <a href="index.html" class="gn-logo">JG</a>
+    <ul class="gn-links">
+      <li><a href="work.html">Work</a></li>
+      <li><a href="pixel-art.html">Pixel Art</a></li>
+      <li><a href="devlogs.html">Devlogs</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+      
+    </button>
+  </div>
+</nav>
+
+<main style="flex:1">
+
+  <!-- HEADER -->
+  <section class="page-head fade-in">
+    <div class="c">
+      <div class="page-num">Contact</div>
+      <h1 class="page-title">Let's<br>Talk</h1>
+    </div>
+  </section>
+
+  <!-- CONTACT SPLIT -->
+  <section class="sec reveal" style="padding:0;border-bottom:none">
+    <div class="c">
+      <div class="contact-wrap">
+
+        <div class="contact-l">
+          <h2 class="contact-big">Get in touch.</h2>
+          <ul class="contact-list">
+            <li><span>Email</span><a href="mailto:justin.a.greeno@gmail.com">justin.a.greeno@gmail.com</a></li>
+            <li><span>Location</span><span>Nova Scotia, Canada</span></li>
+            <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/justin-greeno-9b4696119" target="_blank" rel="noopener noreferrer">linkedin.com/in/justin-greeno</a></li>
+            <li><span>YouTube</span><a href="https://www.youtube.com/justingreeno" target="_blank" rel="noopener noreferrer">youtube.com/justingreeno</a></li>
+            <li><span>Twitch</span><a href="https://www.twitch.tv/darknessblooms" target="_blank" rel="noopener noreferrer">twitch.tv/darknessblooms</a></li>
+            <li><span>Instagram</span><a href="https://www.instagram.com/justingreeno" target="_blank" rel="noopener noreferrer">@justingreeno</a></li>
+            <li><span>Discord</span><a href="https://discord.gg/FTskDEdAtj" target="_blank" rel="noopener noreferrer">Darkness Blooms Server</a></li>
+            <li><span>Patreon</span><a href="https://www.patreon.com/u55408845" target="_blank" rel="noopener noreferrer">Support the Project</a></li>
+          </ul>
+        </div>
+
+        <div class="contact-r">
+          <form id="contact-form" novalidate>
+            <div class="form-group">
+              <label class="form-label" for="name">Name</label>
+              <input class="form-input" type="text" id="name" name="name" placeholder="Your name" autocomplete="name">
+              <div class="form-err" id="name-err"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email</label>
+              <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" autocomplete="email">
+              <div class="form-err" id="email-err"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="subject">Subject</label>
+              <input class="form-input" type="text" id="subject" name="subject" placeholder="What's this about?">
+              <div class="form-err" id="subject-err"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="message">Message</label>
+              <textarea class="form-area" id="message" name="message" placeholder="Tell me about your project..."></textarea>
+              <div class="form-err" id="message-err"></div>
+            </div>
+            <div class="form-submit btn-row">
+              <button type="submit" class="btn inv" id="submit-btn">Send Message</button>
+              <button type="reset" class="btn">Clear</button>
+            </div>
+            <div class="success-msg" id="success-msg">Message sent, I'll be in touch shortly.</div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="gf">
+  <div class="c">
+    <span class="gf-copy">&copy; 2026 Justin Greeno</span>
+    <div class="gf-links">
+      <a href="../html/index.html">&larr; justingreeno.dev</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/ghost.js"></script>
+<script>
+  const fields = {
+    name:    { el: document.getElementById('name'),    err: document.getElementById('name-err'),    rule: v => v.trim().length >= 2 ? '' : 'Name is required.' },
+    email:   { el: document.getElementById('email'),   err: document.getElementById('email-err'),   rule: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? '' : 'A valid email is required.' },
+    subject: { el: document.getElementById('subject'), err: document.getElementById('subject-err'), rule: v => v.trim().length >= 2 ? '' : 'Subject is required.' },
+    message: { el: document.getElementById('message'), err: document.getElementById('message-err'), rule: v => v.trim().length >= 10 ? '' : 'Message must be at least 10 characters.' }
+  };
+
+  function validate(key) {
+    const f = fields[key];
+    const msg = f.rule(f.el.value);
+    f.err.textContent = msg;
+    return msg === '';
+  }
+
+  Object.keys(fields).forEach(key => {
+    fields[key].el.addEventListener('blur', () => validate(key));
+    fields[key].el.addEventListener('input', () => { if (fields[key].err.textContent) validate(key); });
+  });
+
+  document.getElementById('contact-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    if (!Object.keys(fields).map(validate).every(Boolean)) return;
+    const btn = document.getElementById('submit-btn');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    const form = e.target;
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/justin.a.greeno@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          name:    document.getElementById('name').value,
+          email:   document.getElementById('email').value,
+          subject: document.getElementById('subject').value,
+          message: document.getElementById('message').value,
+          _subject: 'New message from justingreeno.dev'
+        })
+      });
+      const json = await res.json();
+      if (json.success === 'true' || json.success === true) {
+        document.getElementById('success-msg').classList.add('show');
+        form.reset();
+        Object.keys(fields).forEach(k => { fields[k].err.textContent = ''; });
+      } else {
+        btn.textContent = 'Something went wrong. Email directly.';
+        setTimeout(() => { btn.textContent = 'Send Message'; btn.disabled = false; }, 3500);
+        return;
+      }
+    } catch {
+      btn.textContent = 'Network error. Email directly.';
+      setTimeout(() => { btn.textContent = 'Send Message'; btn.disabled = false; }, 3500);
+      return;
+    }
+    btn.textContent = 'Send Message';
+    btn.disabled = false;
+  });
+</script>
+
+</body>
+</html>

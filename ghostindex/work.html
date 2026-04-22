@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work | Justin Greeno</title>
+  <meta name="description" content="Selected work by Justin Greeno: web developer and designer.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/ghost.css">
+</head>
+<body>
+
+<div id="cursor-glow"></div>
+
+<nav class="gn">
+  <div class="c">
+    <a href="index.html" class="gn-logo">JG</a>
+    <ul class="gn-links">
+      <li><a href="work.html" class="active">Work</a></li>
+      <li><a href="pixel-art.html">Pixel Art</a></li>
+      <li><a href="devlogs.html">Devlogs</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+      
+    </button>
+  </div>
+</nav>
+
+<main style="flex:1">
+
+  <!-- HEADER -->
+  <section class="page-head fade-in">
+    <div class="c">
+      <div class="page-num">Portfolio</div>
+      <h1 class="page-title">Selected<br>Work</h1>
+    </div>
+  </section>
+
+  <!-- WEB PROJECTS -->
+  <section class="sec">
+    <div class="c">
+      <div class="filters" id="filter-bar">
+        <button class="filt on" data-filter="all">All</button>
+        <button class="filt" data-filter="client">Client Work</button>
+        <button class="filt" data-filter="concept">Concepts</button>
+        <button class="filt" data-filter="dev">Dev Projects</button>
+      </div>
+      <div class="grid-2" id="project-grid"></div>
+    </div>
+  </section>
+
+  <!-- DARKNESS BLOOMS -->
+  <section class="sec reveal">
+    <div class="c">
+      <div class="sec-head">
+        <div>
+          <div class="sec-label">Solo Development, 2018 to Present</div>
+          <h2 class="sec-title">Darkness Blooms</h2>
+        </div>
+        <a href="devlogs.html" class="btn">All Devlogs &rarr;</a>
+      </div>
+      <p style="font-size:1rem;line-height:1.8;color:var(--fg-mid);max-width:680px;margin-bottom:2.5rem">
+        A story-driven narrative team-based RPG. Six unlikely young adults drawn together and given the chance
+        to be heroes, whether they asked for it or not. Built solo: all pixel art, programming, music direction,
+        and narrative design. Inspired by Final Fantasy, Zelda, and Stardew Valley.
+      </p>
+
+      <div style="margin-bottom:2.5rem">
+        <div class="video-wrap">
+          <div class="yt-facade" data-ytid="3laN-9JQICs"><img src="https://i.ytimg.com/vi/3laN-9JQICs/hqdefault.jpg" alt="Darkness Blooms: Game Introduction" loading="lazy"><button class="yt-play-btn" aria-label="Play video"><svg width="68" height="48" viewBox="0 0 68 48"><rect width="68" height="48" rx="6" fill="rgba(0,0,0,0.75)"/><path d="M27 14l24 10-24 10V14z" fill="white"/></svg></button></div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-bottom:2.5rem">
+        <div class="card" style="cursor:default">
+          <div class="card-type">Characters</div>
+          <div class="card-title">Ellie, Nixxy, Billy, Asher, Player1, KK</div>
+          <p class="card-desc">Six original characters: a herbalist, a thief, a scholar, a dog, you, and a martial artist. Each hand-crafted in Aseprite.</p>
+        </div>
+        <div class="card" style="cursor:default">
+          <div class="card-type">Technology</div>
+          <div class="card-title">Unity + C# + Aseprite</div>
+          <p class="card-desc">Built in Unity with custom C# systems. All art created in Aseprite, original sprites, animations, and tile sets.</p>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <a href="https://www.youtube.com/justingreeno" target="_blank" rel="noopener noreferrer" class="btn inv">Watch on YouTube ↗</a>
+        <a href="https://www.twitch.tv/darknessblooms" target="_blank" rel="noopener noreferrer" class="btn">Live on Twitch ↗</a>
+        <a href="https://discord.gg/FTskDEdAtj" target="_blank" rel="noopener noreferrer" class="btn">Join Discord ↗</a>
+        <a href="devlogs.html" class="btn">View Devlogs</a>
+        <a href="pixel-art.html" class="btn">View Pixel Art</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="sec reveal" style="border-bottom:none">
+    <div class="c" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem">
+      <div>
+        <div class="sec-label" style="margin-bottom:0.5rem">Start a Project</div>
+        <h2 style="font-size:clamp(1.5rem,3vw,2.5rem);letter-spacing:-0.03em">Have something in mind?</h2>
+      </div>
+      <a href="contact.html" class="btn inv">Get In Touch</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="gf">
+  <div class="c">
+    <span class="gf-copy">&copy; 2026 Justin Greeno</span>
+    <div class="gf-links">
+      <a href="../html/index.html">&larr; justingreeno.dev</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/ghost.js"></script>
+<script>
+  const PROJECTS = [
+    {
+      idx:'01', filter:'client', type:'Client Work',
+      title:'Cumberland County Exhibition',
+      desc:'Full event website for the annual Cumberland County Exhibition. Multi-page with schedules, exhibitor listings, horse registration, vendor applications, sponsor pages, and live countdown timer.',
+      tags:['HTML','CSS','JavaScript','Responsive','Forms'],
+      year:'2025', href:'#', external:true, note:'(URL coming soon)'
+    },
+    {
+      idx:'02', filter:'client', type:'Client Work',
+      title:"Nelly's Pugwash",
+      desc:'Restaurant site with dynamic daily specials, rotating menus, Ken Burns hero animation, mobile-first layout, and performance-tuned images.',
+      tags:['HTML','CSS','JavaScript','Animations','Mobile-First'],
+      year:'2025', href:'https://nellyspugwash.com', external:true
+    },
+    {
+      idx:'03', filter:'concept', type:'Design Concept',
+      title:'Sociables Pub',
+      desc:'Pub concept website with menus, events, and a community-focused local design.',
+      tags:['HTML','CSS','JavaScript'],
+      year:'2024', href:'../sociables/index.html', external:false
+    },
+    {
+      idx:'04', filter:'concept', type:'Design Concept',
+      title:"Sheryl's Bakery",
+      desc:'Warm, inviting bakery concept site. Menu display, gallery, and contact, personal and handcrafted in feel.',
+      tags:['HTML','CSS','JavaScript'],
+      year:'2024', href:'../sheryls/index.html', external:false
+    },
+    {
+      idx:'05', filter:'concept', type:'Design Concept',
+      title:"What's For Dinner",
+      desc:'Meal planning web app concept. Clean, minimal interface for weekly meal decisions.',
+      tags:['HTML','CSS','JavaScript'],
+      year:'2024', href:'../whatsfordinner/index.html', external:false
+    },
+    {
+      idx:'06', filter:'dev', type:'Personal Project',
+      title:'justingreeno.dev',
+      desc:'Full portfolio site built from scratch, React showcase, JS showcase, pixel art gallery, devlogs, web games, and custom CSS design systems.',
+      tags:['HTML','CSS','JavaScript','React'],
+      year:'2021–', href:'../html/index.html', external:false
+    }
+  ];
+
+  function buildCard(p) {
+    return `<a class="card" href="${p.href}" data-filter="${p.filter}"
+        ${p.external ? 'target="_blank" rel="noopener noreferrer"' : ''}>
+      <span class="card-idx">${p.idx}</span>
+      <div class="card-type">${p.type}${p.note ? ' <span style="opacity:.5;font-size:.65rem"> '+p.note+'</span>' : ''}</div>
+      <div class="card-title">${p.title}</div>
+      <p class="card-desc">${p.desc}</p>
+      <div class="card-foot">
+        <div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+        <span class="card-year">${p.year}</span>
+      </div>
+    </a>`;
+  }
+
+  const grid = document.getElementById('project-grid');
+
+  function render(filter) {
+    const list = filter === 'all' ? PROJECTS : PROJECTS.filter(p => p.filter === filter);
+    grid.innerHTML = list.map(buildCard).join('');
+  }
+
+  render('all');
+
+  document.getElementById('filter-bar').addEventListener('click', e => {
+    const btn = e.target.closest('.filt');
+    if (!btn) return;
+    document.querySelectorAll('.filt').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    render(btn.dataset.filter);
+  });
+</script>
+
+</body>
+</html>
