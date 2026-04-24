@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Justin Greeno | Web Developer & Designer</title>
+  <title>Justin Greeno | Web Developer &amp; Designer</title>
   <meta name="description" content="Portfolio of Justin Greeno: web developer, designer, and game developer based in Nova Scotia, Canada.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,13 +21,12 @@
       <li><a href="work.html">Work</a></li>
       <li><a href="pixel-art.html">Pixel Art</a></li>
       <li><a href="devlogs.html">Devlogs</a></li>
+      <li><a href="games.html">Games</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="resume.html">Resume</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-      
-    </button>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
   </div>
 </nav>
 
@@ -36,7 +35,10 @@
   <!-- HERO -->
   <section class="hero fade-in">
     <div class="c">
-      <h1 class="hero-name">Justin<br>Greeno</h1>
+      <h1 class="hero-name" aria-label="Justin Greeno">
+        <span class="hero-word"><span class="hl" style="--i:0">J</span><span class="hl" style="--i:1">u</span><span class="hl" style="--i:2">s</span><span class="hl" style="--i:3">t</span><span class="hl" style="--i:4">i</span><span class="hl" style="--i:5">n</span></span><br>
+        <span class="hero-word"><span class="hl" style="--i:7">G</span><span class="hl" style="--i:8">r</span><span class="hl" style="--i:9">e</span><span class="hl" style="--i:10">e</span><span class="hl" style="--i:11">n</span><span class="hl" style="--i:12">o</span></span>
+      </h1>
       <div class="hero-roles">
         <span class="hero-role">Web Developer</span>
         <span class="hero-sep">/</span>
@@ -49,7 +51,37 @@
       <div class="btn-row">
         <a href="work.html" class="btn inv">View Work</a>
         <a href="contact.html" class="btn">Get In Touch</a>
-        <a href="https://www.youtube.com/justingreeno" target="_blank" rel="noopener noreferrer" class="btn">YouTube ↗</a>
+        <a href="https://www.youtube.com/justingreeno" target="_blank" rel="noopener noreferrer" class="btn">YouTube &#8599;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE TICKER -->
+  <div class="marquee-wrap">
+    <div class="marquee-track" aria-hidden="true">
+      <span class="marquee-set">Available for Freelance<span class="mq-sep">/</span>Web Developer<span class="mq-sep">/</span>Nova Scotia, CA<span class="mq-sep">/</span>Darkness Blooms in Development<span class="mq-sep">/</span>Open to Collaboration<span class="mq-sep">/</span>Full Stack<span class="mq-sep">/</span>React, Node, PHP, Unity<span class="mq-sep">/</span>Let's Build Something&nbsp;&nbsp;&nbsp;</span>
+      <span class="marquee-set">Available for Freelance<span class="mq-sep">/</span>Web Developer<span class="mq-sep">/</span>Nova Scotia, CA<span class="mq-sep">/</span>Darkness Blooms in Development<span class="mq-sep">/</span>Open to Collaboration<span class="mq-sep">/</span>Full Stack<span class="mq-sep">/</span>React, Node, PHP, Unity<span class="mq-sep">/</span>Let's Build Something&nbsp;&nbsp;&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- STATS BAR -->
+  <section class="stats-bar reveal">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-num">6</div>
+        <div class="stat-label">Degrees</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">7+</div>
+        <div class="stat-label">Years Frontline</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Client Sites</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">1</div>
+        <div class="stat-label">Solo RPG</div>
       </div>
     </div>
   </section>
@@ -83,12 +115,15 @@
         Inspired by Final Fantasy and Stardew Valley. Follow the development on YouTube.
       </p>
       <div class="video-wrap">
-        <div class="yt-facade" data-ytid="3laN-9JQICs"><img src="https://i.ytimg.com/vi/3laN-9JQICs/hqdefault.jpg" alt="Darkness Blooms Introduction" loading="lazy"><button class="yt-play-btn" aria-label="Play video"><svg width="68" height="48" viewBox="0 0 68 48"><rect width="68" height="48" rx="6" fill="rgba(0,0,0,0.75)"/><path d="M27 14l24 10-24 10V14z" fill="white"/></svg></button></div>
+        <div class="yt-facade" data-ytid="3laN-9JQICs">
+          <img src="https://i.ytimg.com/vi/3laN-9JQICs/hqdefault.jpg" alt="Darkness Blooms Introduction" loading="lazy">
+          <button class="yt-play-btn" aria-label="Play video"><svg width="68" height="48" viewBox="0 0 68 48"><rect width="68" height="48" rx="6" fill="rgba(0,0,0,0.75)"/><path d="M27 14l24 10-24 10V14z" fill="white"/></svg></button>
+        </div>
       </div>
       <div class="btn-row" style="margin-top:1.5rem">
-        <a href="https://www.youtube.com/justingreeno" target="_blank" rel="noopener noreferrer" class="btn inv">Watch on YouTube ↗</a>
+        <a href="https://www.youtube.com/justingreeno" target="_blank" rel="noopener noreferrer" class="btn inv">Watch on YouTube &#8599;</a>
         <a href="devlogs.html" class="btn">View All Devlogs</a>
-        <a href="https://www.twitch.tv/darknessblooms" target="_blank" rel="noopener noreferrer" class="btn">Watch Live on Twitch ↗</a>
+        <a href="https://www.twitch.tv/darknessblooms" target="_blank" rel="noopener noreferrer" class="btn">Watch Live on Twitch &#8599;</a>
       </div>
     </div>
   </section>
@@ -139,7 +174,8 @@
   <div class="c">
     <span class="gf-copy">&copy; 2026 Justin Greeno, Nova Scotia, Canada</span>
     <div class="gf-links">
-      <a href="../html/index.html">&larr; justingreeno.dev</a>
+      <a href="games.html">Play Games</a>
+      <a href="contact.html">Hire Me</a>
     </div>
   </div>
 </footer>
@@ -151,22 +187,22 @@
       idx: '01', type: 'Client Work',
       title: 'Cumberland County Exhibition',
       desc: 'Full event website for the Cumberland County Exhibition. Schedules, exhibitors, horse registration, vendor applications, and live countdown.',
-      tags: ['HTML', 'CSS', 'JavaScript'],
+      tags: ['HTML', 'CSS', 'JavaScript', 'Forms', 'Responsive'],
       year: '2025', href: '#', external: true
     },
     {
       idx: '02', type: 'Client Work',
       title: "Nelly's Pugwash",
       desc: 'Restaurant site with live menus, rotating daily specials, Ken Burns hero animations, and full mobile optimization.',
-      tags: ['HTML', 'CSS', 'JavaScript', 'Animations'],
+      tags: ['HTML', 'CSS', 'JavaScript', 'Animations', 'Mobile-First'],
       year: '2025', href: 'https://nellyspugwash.com', external: true
     },
     {
       idx: '03', type: 'Solo Dev',
       title: 'Darkness Blooms',
       desc: 'Story-driven retro RPG, solo developed including all pixel art, animation, programming, and narrative design.',
-      tags: ['Unity', 'C#', 'Pixel Art'],
-      year: '2018–', href: 'devlogs.html', external: false
+      tags: ['Unity', 'C#', 'Pixel Art', 'Game Design'],
+      year: '2018+', href: 'devlogs.html', external: false
     }
   ];
 

@@ -1,18 +1,33 @@
-/* ghost.js — theme, cursor glow, scroll reveal, lightbox, search */
-
+/* ghost.js — ghost design system core */
 (function () {
+  'use strict';
 
   const html = document.documentElement;
 
+  /* ── AUTO ACTIVE NAV ─────────────────────────────── */
+  const page = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.gn-links a').forEach(a => {
+    const href = a.getAttribute('href');
+    if (href === page || (page === '' && href === 'index.html')) {
+      a.classList.add('active');
+    }
+  });
+
+  /* ── SCROLL PROGRESS ─────────────────────────────── */
+  const progressBar = document.createElement('div');
+  progressBar.id = 'scroll-progress';
+  document.body.prepend(progressBar);
+
+  function updateProgress() {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    if (max > 0) {
+      progressBar.style.transform = 'scaleX(' + (window.scrollY / max) + ')';
+    }
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+
   /* ── THEME BULB ──────────────────────────────────── */
-  const BULB = `<svg class="bulb-icon" width="16" height="20" viewBox="0 0 16 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <path d="M5.5 14.5c0-2.5-2.5-4.2-2.5-7a5 5 0 0 1 10 0c0 2.8-2.5 4.5-2.5 7h-5z"/>
-    <line x1="5.5" y1="17" x2="10.5" y2="17"/>
-    <line x1="6.5" y1="19" x2="9.5" y2="19"/>
-    <line class="bulb-ray bulb-ray-t"  x1="8" y1="0.5" x2="8" y2="2"/>
-    <line class="bulb-ray bulb-ray-tr" x1="11.5" y1="1.5" x2="10.5" y2="2.8"/>
-    <line class="bulb-ray bulb-ray-tl" x1="4.5" y1="1.5" x2="5.5" y2="2.8"/>
-  </svg>`;
+  const BULB = '<svg class="bulb-icon" width="16" height="20" viewBox="0 0 16 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 14.5c0-2.5-2.5-4.2-2.5-7a5 5 0 0 1 10 0c0 2.8-2.5 4.5-2.5 7h-5z"/><line x1="5.5" y1="17" x2="10.5" y2="17"/><line x1="6.5" y1="19" x2="9.5" y2="19"/><line class="bulb-ray bulb-ray-t" x1="8" y1="0.5" x2="8" y2="2"/><line class="bulb-ray bulb-ray-tr" x1="11.5" y1="1.5" x2="10.5" y2="2.8"/><line class="bulb-ray bulb-ray-tl" x1="4.5" y1="1.5" x2="5.5" y2="2.8"/></svg>';
 
   function applyTheme(t) {
     html.setAttribute('data-theme', t);
@@ -27,34 +42,78 @@
   applyTheme(localStorage.getItem('ghost-theme') || 'dark');
 
   document.addEventListener('click', e => {
-    if (e.target.closest('#theme-toggle')) {
+    if (e.target.closest('#theme-toggle, .theme-toggle')) {
       applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
     }
   });
 
-  /* ── CURSOR GLOW ─────────────────────────────────── */
-  const glow = document.getElementById('cursor-glow');
-  if (glow) {
+  /* ── CUSTOM CURSOR ───────────────────────────────── */
+  const isTouch = window.matchMedia('(pointer: coarse)').matches;
+
+  if (!isTouch) {
+    html.setAttribute('data-cursor', 'custom');
+
+    const dot  = document.createElement('div');
+    const ring = document.createElement('div');
+    dot.id  = 'cursor-dot';
+    ring.id = 'cursor-ring';
+    document.body.append(dot, ring);
+
+    const glowEl = document.getElementById('cursor-glow');
+    if (glowEl) glowEl.hidden = true;
+
+    let mx = -200, my = -200;
+    let rx = -200, ry = -200;
+
     document.addEventListener('mousemove', e => {
-      const c = getComputedStyle(html).getPropertyValue('--glow').trim() || 'transparent';
-      glow.style.background =
-        `radial-gradient(circle 100px at ${e.clientX}px ${e.clientY}px, ${c} 0%, transparent 100%)`;
+      mx = e.clientX;
+      my = e.clientY;
+      dot.style.transform = 'translate(' + mx + 'px,' + my + 'px)';
     });
-    document.addEventListener('mouseleave', () => { glow.style.background = 'none'; });
+
+    document.addEventListener('mouseleave', () => {
+      dot.style.opacity = '0';
+      ring.style.opacity = '0';
+    });
+    document.addEventListener('mouseenter', () => {
+      dot.style.opacity = '1';
+      ring.style.opacity = '1';
+    });
+
+    document.addEventListener('mouseover', e => {
+      if (e.target.closest('a, button, [role="button"], input, textarea, select, .filt, .card, .social-item, .skill, .char-item')) {
+        ring.classList.add('ring-hover');
+      }
+    });
+    document.addEventListener('mouseout', e => {
+      if (e.target.closest('a, button, [role="button"], input, textarea, select, .filt, .card, .social-item, .skill, .char-item')) {
+        ring.classList.remove('ring-hover');
+      }
+    });
+
+    (function animateRing() {
+      rx += (mx - rx) * 0.15;
+      ry += (my - ry) * 0.15;
+      ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
+      requestAnimationFrame(animateRing);
+    })();
   }
 
   /* ── SCROLL REVEAL ───────────────────────────────── */
-  const revealObserver = new IntersectionObserver(entries => {
+  const revealObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObs.unobserve(e.target);
+      }
     });
   }, { threshold: 0.08 });
 
   function initReveal() {
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
   }
 
-  /* ── LIGHTBOX / SLIDESHOW ────────────────────────── */
+  /* ── LIGHTBOX ────────────────────────────────────── */
   function openLightbox(images, startIdx) {
     let cur = startIdx;
     const total = images.length;
@@ -147,6 +206,7 @@
     { title: 'About Justin',                 page: 'about.html',     section: 'About',        kw: 'about biography nova scotia counselor developer gardening education bcit ubc saint marys' },
     { title: 'Resume',                       page: 'resume.html',    section: 'Resume',       kw: 'resume experience education skills certifications download pdf print' },
     { title: 'Contact',                      page: 'contact.html',   section: 'Contact',      kw: 'contact email hire freelance linkedin instagram discord patreon' },
+    { title: 'Games',                        page: 'games.html',     section: 'Play',         kw: 'games snake pacman browser web games play interactive fun' },
     { title: 'JavaScript / TypeScript',      page: 'resume.html',    section: 'Skills',       kw: 'javascript typescript es6 frontend programming' },
     { title: 'React / Vite / Node.js',       page: 'resume.html',    section: 'Skills',       kw: 'react vite nodejs express backend api component' },
     { title: 'HTML / CSS',                   page: 'resume.html',    section: 'Skills',       kw: 'html css responsive design accessibility web standards' },
@@ -159,7 +219,7 @@
     if (s.length < 2) return [];
     return INDEX.filter(item =>
       (item.title + ' ' + item.section + ' ' + item.kw).toLowerCase().includes(s)
-    ).slice(0, 7);
+    ).slice(0, 8);
   }
 
   function injectSearch() {
@@ -170,23 +230,22 @@
     btn.id = 'search-btn';
     btn.className = 'search-btn';
     btn.setAttribute('aria-label', 'Search');
-    btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="5.5" cy="5.5" r="4"/><line x1="8.5" y1="8.5" x2="13" y2="13"/></svg>`;
-    nav.appendChild(btn);
+    btn.innerHTML = '<svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="6" cy="6" r="4.5"/><line x1="9.5" y1="9.5" x2="14" y2="14"/></svg>';
+
+    const toggle = nav.querySelector('#theme-toggle, .theme-toggle');
+    if (toggle) {
+      nav.insertBefore(btn, toggle);
+    } else {
+      nav.appendChild(btn);
+    }
 
     const overlay = document.createElement('div');
     overlay.id = 'search-overlay';
     overlay.className = 'search-overlay';
-    overlay.innerHTML = `<div class="search-box">
-      <div class="search-input-wrap">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="5.5" cy="5.5" r="4"/><line x1="8.5" y1="8.5" x2="13" y2="13"/></svg>
-        <input type="text" id="search-input" placeholder="Search pages, skills, projects..." autocomplete="off" spellcheck="false">
-        <kbd class="search-hint">ESC</kbd>
-      </div>
-      <ul id="search-results" class="search-results"></ul>
-    </div>`;
+    overlay.innerHTML = '<div class="search-box"><div class="search-input-wrap"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="5.5" cy="5.5" r="4"/><line x1="8.5" y1="8.5" x2="13" y2="13"/></svg><input type="text" id="search-input" placeholder="Search pages, skills, projects..." autocomplete="off" spellcheck="false"><kbd class="search-hint">ESC</kbd></div><ul id="search-results" class="search-results"></ul></div>';
     document.body.appendChild(overlay);
 
-    const input  = document.getElementById('search-input');
+    const input   = document.getElementById('search-input');
     const results = document.getElementById('search-results');
 
     function openSearch()  { overlay.classList.add('open'); setTimeout(() => input.focus(), 40); }
@@ -196,7 +255,7 @@
       const items = searchIndex(input.value);
       if (input.value.trim().length < 2) { results.innerHTML = ''; return; }
       results.innerHTML = items.length
-        ? items.map(item => `<li><a href="${item.page}" class="sr-link"><span class="sr-section">${item.section}</span><span class="sr-title">${item.title}</span></a></li>`).join('')
+        ? items.map(item => '<li><a href="' + item.page + '" class="sr-link"><span class="sr-section">' + item.section + '</span><span class="sr-title">' + item.title + '</span></a></li>').join('')
         : '<li class="sr-empty">No results.</li>';
     });
 
@@ -208,21 +267,96 @@
     });
   }
 
+  /* ── MOBILE NAV ──────────────────────────────────── */
+  function injectMobileNav() {
+    const nav   = document.querySelector('.gn .c');
+    const links = document.querySelector('.gn-links');
+    if (!nav || !links || document.getElementById('nav-burger')) return;
+
+    const burger = document.createElement('button');
+    burger.id = 'nav-burger';
+    burger.className = 'nav-burger';
+    burger.setAttribute('aria-label', 'Open navigation');
+    burger.innerHTML = '<span></span><span></span><span></span>';
+    nav.appendChild(burger);
+
+    const overlay = document.createElement('div');
+    overlay.id = 'nav-overlay';
+    overlay.className = 'nav-overlay';
+
+    const linksClone = links.cloneNode(true);
+    linksClone.classList.add('nav-overlay-links');
+    linksClone.removeAttribute('id');
+
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'nav-overlay-close';
+    closeBtn.setAttribute('aria-label', 'Close navigation');
+    closeBtn.innerHTML = '&times;';
+
+    overlay.append(closeBtn, linksClone);
+    document.body.appendChild(overlay);
+
+    function openNav()  {
+      overlay.classList.add('open');
+      burger.classList.add('active');
+      burger.setAttribute('aria-label', 'Close navigation');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeNav() {
+      overlay.classList.remove('open');
+      burger.classList.remove('active');
+      burger.setAttribute('aria-label', 'Open navigation');
+      document.body.style.overflow = '';
+    }
+
+    burger.addEventListener('click', () => overlay.classList.contains('open') ? closeNav() : openNav());
+    closeBtn.addEventListener('click', closeNav);
+    overlay.addEventListener('click', e => { if (e.target.tagName === 'A') closeNav(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
+  }
+
   /* ── YOUTUBE FACADES ─────────────────────────────── */
   document.addEventListener('click', e => {
     const facade = e.target.closest('.yt-facade');
     if (!facade) return;
     const id = facade.dataset.ytid;
+    if (!id) return;
+
     const iframe = document.createElement('iframe');
-    iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
-    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-    iframe.allowFullscreen = true;
+    iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen';
+    iframe.setAttribute('allowfullscreen', '');
+    iframe.title = 'YouTube video player';
     iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0';
+
     const wrap = document.createElement('div');
     wrap.style.cssText = 'position:absolute;inset:0';
     wrap.appendChild(iframe);
-    facade.parentNode.appendChild(wrap);
+
+    facade.parentNode.insertBefore(wrap, facade);
     facade.remove();
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.yt-facade img').forEach(img => {
+      img.addEventListener('error', function () {
+        const facade = this.closest('.yt-facade');
+        if (!facade) return;
+        const id = facade.dataset.ytid;
+        const fallbacks = ['maxresdefault', 'hqdefault', 'mqdefault', 'default'];
+        const current = (this.src.match(/\/(maxresdefault|hqdefault|mqdefault|default)\.jpg/) || [])[1] || 'maxresdefault';
+        const idx = fallbacks.indexOf(current);
+        if (idx < fallbacks.length - 1) {
+          this.src = 'https://i.ytimg.com/vi/' + id + '/' + fallbacks[idx + 1] + '.jpg';
+        }
+      });
+      const id = img.closest('.yt-facade')?.dataset.ytid;
+      if (id && !img.src.includes('maxresdefault')) {
+        const fallback = img.src;
+        img.src = 'https://i.ytimg.com/vi/' + id + '/maxresdefault.jpg';
+        img.setAttribute('data-fallback', fallback);
+      }
+    });
   });
 
   /* ── VIDEO TOGGLES ───────────────────────────────── */
@@ -238,9 +372,17 @@
 
   /* ── INIT ────────────────────────────────────────── */
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => { initReveal(); initLightboxes(); injectSearch(); });
+    document.addEventListener('DOMContentLoaded', () => {
+      initReveal();
+      initLightboxes();
+      injectSearch();
+      injectMobileNav();
+    });
   } else {
-    initReveal(); initLightboxes(); injectSearch();
+    initReveal();
+    initLightboxes();
+    injectSearch();
+    injectMobileNav();
   }
 
 })();

@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Games | Justin Greeno</title>
+  <meta name="description" content="Browser-based games by Justin Greeno. Play Snake, Pac-Man Survival, and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/ghost.css">
+</head>
+<body>
+
+<div id="cursor-glow"></div>
+
+<nav class="gn">
+  <div class="c">
+    <a href="index.html" class="gn-logo">JG</a>
+    <ul class="gn-links">
+      <li><a href="work.html">Work</a></li>
+      <li><a href="pixel-art.html">Pixel Art</a></li>
+      <li><a href="devlogs.html">Devlogs</a></li>
+      <li><a href="games.html" class="active">Games</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</nav>
+
+<main style="flex:1">
+
+  <!-- HEADER -->
+  <section class="page-head fade-in">
+    <div class="c">
+      <div class="page-num">Browser Games</div>
+      <h1 class="page-title">Play</h1>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="sec" style="padding-top:2.5rem;padding-bottom:2.5rem">
+    <div class="c" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem">
+      <p style="font-size:1rem;line-height:1.8;color:var(--fg-mid);max-width:580px">
+        Fully playable browser games built with vanilla JavaScript and Canvas.
+        High scores saved locally. Arrow keys or WASD to play.
+        More games in development.
+      </p>
+      <div class="btn-row">
+        <a href="devlogs.html" class="btn">View Game Devlogs</a>
+        <a href="pixel-art.html" class="btn inv">See Pixel Art</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SNAKE -->
+  <section class="game-section reveal">
+    <div class="c">
+      <div class="sec-head">
+        <div>
+          <div class="sec-label">Game 01</div>
+          <h2 class="sec-title">Snake</h2>
+        </div>
+        <div class="tags">
+          <span class="tag">Canvas</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">High Scores</span>
+        </div>
+      </div>
+      <p style="font-size:0.95rem;line-height:1.75;color:var(--fg-mid);margin-bottom:1.5rem">
+        Classic Snake. Eat to grow. Hit a wall or yourself and it's over.
+        Top 3 scores saved to your browser.
+      </p>
+
+      <div class="game-scores-row">
+        <div class="game-score-cell">
+          <div class="game-score-label">Score</div>
+          <div class="game-score-val" id="snake-score">0</div>
+        </div>
+        <div class="game-score-cell">
+          <div class="game-score-label">High Scores</div>
+          <div class="game-hs-list" id="snake-hs">
+            <div>1. --- : 0</div>
+            <div>2. --- : 0</div>
+            <div>3. --- : 0</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-canvas-wrap">
+        <canvas id="snake-canvas" width="400" height="400"></canvas>
+        <div class="game-over-overlay" id="snake-over">
+          <div class="game-over-title">Game Over</div>
+          <div class="game-score-display">Score: <span id="snake-final">0</span></div>
+          <div class="game-initials-wrap" id="snake-initials-wrap">
+            <div class="game-initials-label">New High Score. Enter Initials:</div>
+            <input type="text" class="game-initials-input" id="snake-initials" maxlength="3" placeholder="AAA">
+            <button class="btn inv" id="snake-submit" style="font-size:0.72rem;padding:0.5rem 1rem">Submit</button>
+          </div>
+          <button class="btn inv" id="snake-restart" style="margin-top:0.5rem">Play Again</button>
+        </div>
+      </div>
+
+      <div class="btn-row" style="margin-top:0">
+        <button class="btn inv" id="snake-start">Start Game</button>
+      </div>
+
+      <div class="key-hint-row" style="margin-top:1rem">
+        <span class="key-hint">Arrow Keys</span>
+        <span class="key-hint-label">or</span>
+        <span class="key-hint">WASD</span>
+        <span class="key-hint-sep">|</span>
+        <span class="key-hint">Space</span>
+        <span class="key-hint-label">to pause</span>
+      </div>
+
+      <div class="mobile-dpad" id="snake-dpad">
+        <button class="dpad-btn up"    id="s-up">&#9650;</button>
+        <button class="dpad-btn left"  id="s-left">&#9664;</button>
+        <button class="dpad-btn mid"   id="s-pause">&#10074;&#10074;</button>
+        <button class="dpad-btn right" id="s-right">&#9654;</button>
+        <button class="dpad-btn down"  id="s-down">&#9660;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAC-MAN SURVIVAL -->
+  <section class="game-section reveal">
+    <div class="c">
+      <div class="sec-head">
+        <div>
+          <div class="sec-label">Game 02</div>
+          <h2 class="sec-title">Pac-Man Survival</h2>
+        </div>
+        <div class="tags">
+          <span class="tag">Canvas</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Ghost AI</span>
+          <span class="tag">High Scores</span>
+        </div>
+      </div>
+      <p style="font-size:0.95rem;line-height:1.75;color:var(--fg-mid);margin-bottom:1.5rem">
+        Survive as long as you can. Only 6 dots on screen at once.
+        Ghosts spawn at 3, 10, 20, and 30 points. Can you outlast them all?
+      </p>
+
+      <div class="game-scores-row">
+        <div class="game-score-cell">
+          <div class="game-score-label">Score</div>
+          <div class="game-score-val" id="pac-score">0</div>
+        </div>
+        <div class="game-score-cell">
+          <div class="game-score-label">High Scores</div>
+          <div class="game-hs-list" id="pac-hs">
+            <div>1. --- : 0</div>
+            <div>2. --- : 0</div>
+            <div>3. --- : 0</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-canvas-wrap">
+        <canvas id="pac-canvas" width="400" height="400"></canvas>
+        <div class="game-over-overlay" id="pac-over">
+          <div class="game-over-title">Game Over</div>
+          <div class="game-score-display">Score: <span id="pac-final">0</span></div>
+          <div class="game-initials-wrap" id="pac-initials-wrap">
+            <div class="game-initials-label">New High Score. Enter Initials:</div>
+            <input type="text" class="game-initials-input" id="pac-initials" maxlength="3" placeholder="AAA">
+            <button class="btn inv" id="pac-submit" style="font-size:0.72rem;padding:0.5rem 1rem">Submit</button>
+          </div>
+          <button class="btn inv" id="pac-restart" style="margin-top:0.5rem">Play Again</button>
+        </div>
+      </div>
+
+      <div class="btn-row" style="margin-top:0">
+        <button class="btn inv" id="pac-start">Start Game</button>
+      </div>
+
+      <div class="key-hint-row" style="margin-top:1rem">
+        <span class="key-hint">Arrow Keys</span>
+        <span class="key-hint-label">or</span>
+        <span class="key-hint">WASD</span>
+      </div>
+
+      <div class="mobile-dpad" id="pac-dpad">
+        <button class="dpad-btn up"    id="p-up">&#9650;</button>
+        <button class="dpad-btn left"  id="p-left">&#9664;</button>
+        <button class="dpad-btn mid"   id="p-stop">&#9632;</button>
+        <button class="dpad-btn right" id="p-right">&#9654;</button>
+        <button class="dpad-btn down"  id="p-down">&#9660;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMING SOON GAMES -->
+  <section class="sec reveal" style="border-bottom:none">
+    <div class="c">
+      <div class="sec-head">
+        <div>
+          <div class="sec-label">In Development</div>
+          <h2 class="sec-title">Coming Soon</h2>
+        </div>
+      </div>
+      <p style="font-size:0.95rem;line-height:1.75;color:var(--fg-mid);max-width:580px;margin-bottom:2.5rem">
+        Four new games are planned, each designed to show off different aspects of
+        interactive development and the Darkness Blooms world.
+      </p>
+      <div class="coming-grid">
+        <div class="coming-item">
+          <div class="coming-title">Pixel Memory</div>
+          <p class="coming-desc">Flip tiles to find matching pairs of original Darkness Blooms pixel art. Each match reveals a piece of the game world. Memory meets lore.</p>
+          <div class="tags" style="margin-top:0.5rem"><span class="tag">Canvas</span><span class="tag">Pixel Art</span><span class="tag">Memory Game</span></div>
+        </div>
+        <div class="coming-item">
+          <div class="coming-title">Dev Typer</div>
+          <p class="coming-desc">Type code snippets from real projects to test your WPM and accuracy. HTML, CSS, JavaScript, C#. A typing challenge built for developers.</p>
+          <div class="tags" style="margin-top:0.5rem"><span class="tag">Typing</span><span class="tag">Leaderboard</span><span class="tag">Dev Skills</span></div>
+        </div>
+        <div class="coming-item">
+          <div class="coming-title">Retro Platformer</div>
+          <p class="coming-desc">A tiny side-scrolling platformer starring a Darkness Blooms character sprite. Hand-animated, procedurally generated levels, collectibles to unlock art gallery entries.</p>
+          <div class="tags" style="margin-top:0.5rem"><span class="tag">Platformer</span><span class="tag">Pixel Art</span><span class="tag">Procedural</span></div>
+        </div>
+        <div class="coming-item">
+          <div class="coming-title">Color Code</div>
+          <p class="coming-desc">See a color swatch, guess the hex code from four options. Harder than it sounds. Great for designers and devs who want to sharpen their color eye.</p>
+          <div class="tags" style="margin-top:0.5rem"><span class="tag">Design</span><span class="tag">Color Theory</span><span class="tag">Quiz</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="gf">
+  <div class="c">
+    <span class="gf-copy">&copy; 2026 Justin Greeno</span>
+    <div class="gf-links">
+      <a href="index.html">Home</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/ghost.js"></script>
+
+<!-- SNAKE GAME -->
+<script>
+(function () {
+  const canvas   = document.getElementById('snake-canvas');
+  if (!canvas) return;
+  const ctx      = canvas.getContext('2d');
+  const scoreEl  = document.getElementById('snake-score');
+  const finalEl  = document.getElementById('snake-final');
+  const overEl   = document.getElementById('snake-over');
+  const startBtn = document.getElementById('snake-start');
+  const restBtn  = document.getElementById('snake-restart');
+  const hsEl     = document.getElementById('snake-hs');
+  const initWrap = document.getElementById('snake-initials-wrap');
+  const initInp  = document.getElementById('snake-initials');
+  const submitBtn= document.getElementById('snake-submit');
+
+  const G = 20;
+  const TC = canvas.width / G;
+  const SPEED = 95;
+
+  const ACCENT = '#5a9b6e';
+  const FG     = '#ededed';
+  const DIM    = 'rgba(237,237,237,0.12)';
+
+  let snake, food, dir, nextDir, score, running, paused, interval;
+  let highScores = loadHS('snakeHS');
+  let pendingScore = 0, pendingPos = -1;
+
+  function loadHS(k) {
+    try { const d = localStorage.getItem(k); if (d) return JSON.parse(d); } catch (e) {}
+    return [{ n: '---', s: 0 }, { n: '---', s: 0 }, { n: '---', s: 0 }];
+  }
+  function saveHS(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+
+  function renderHS() {
+    hsEl.innerHTML = highScores.map((h, i) =>
+      '<div>' + (i + 1) + '. ' + h.n.toUpperCase().padEnd(3, '-') + ' : ' + h.s + '</div>'
+    ).join('');
+  }
+
+  function checkHS(s) {
+    for (let i = 0; i < highScores.length; i++) {
+      if (s > highScores[i].s) return i;
+    }
+    return -1;
+  }
+
+  function addHS(name, s, pos) {
+    highScores.splice(pos, 0, { n: (name || '???').toUpperCase().slice(0, 3), s });
+    highScores = highScores.slice(0, 3);
+    saveHS('snakeHS', highScores);
+    renderHS();
+  }
+
+  function placeFood() {
+    food = { x: Math.floor(Math.random() * TC), y: Math.floor(Math.random() * TC) };
+    for (const seg of snake) {
+      if (seg.x === food.x && seg.y === food.y) { placeFood(); return; }
+    }
+  }
+
+  function init() {
+    snake = [{ x: Math.floor(TC / 2), y: Math.floor(TC / 2) }];
+    dir = { x: 0, y: 0 };
+    nextDir = { x: 0, y: 0 };
+    score = 0;
+    scoreEl.textContent = 0;
+    overEl.classList.remove('show');
+    initWrap.classList.remove('show');
+    placeFood();
+    draw();
+  }
+
+  function draw() {
+    ctx.fillStyle = '#080808';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.strokeStyle = DIM;
+    ctx.lineWidth = 0.5;
+    for (let i = 0; i <= TC; i++) {
+      ctx.beginPath(); ctx.moveTo(i * G, 0); ctx.lineTo(i * G, canvas.height); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(0, i * G); ctx.lineTo(canvas.width, i * G); ctx.stroke();
+    }
+
+    ctx.fillStyle = '#c0392b';
+    ctx.beginPath();
+    ctx.arc(food.x * G + G / 2, food.y * G + G / 2, G / 2 - 2, 0, Math.PI * 2);
+    ctx.fill();
+
+    snake.forEach((seg, idx) => {
+      ctx.fillStyle = idx === 0 ? ACCENT : 'rgba(90,155,110,0.55)';
+      ctx.fillRect(seg.x * G + 1, seg.y * G + 1, G - 2, G - 2);
+    });
+
+    if (paused) {
+      ctx.fillStyle = 'rgba(0,0,0,0.6)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = FG;
+      ctx.font = '600 20px "DM Mono", monospace';
+      ctx.textAlign = 'center';
+      ctx.letterSpacing = '0.15em';
+      ctx.fillText('PAUSED', canvas.width / 2, canvas.height / 2);
+      ctx.letterSpacing = '0';
+    }
+  }
+
+  function update() {
+    if (!running || paused) return;
+    dir = { ...nextDir };
+    const head = { x: snake[0].x + dir.x, y: snake[0].y + dir.y };
+    if (head.x < 0 || head.x >= TC || head.y < 0 || head.y >= TC) { gameOver(); return; }
+    for (const seg of snake) {
+      if (seg.x === head.x && seg.y === head.y) { gameOver(); return; }
+    }
+    snake.unshift(head);
+    if (head.x === food.x && head.y === food.y) {
+      score += 10;
+      scoreEl.textContent = score;
+      placeFood();
+    } else {
+      snake.pop();
+    }
+    draw();
+  }
+
+  function gameOver() {
+    running = false;
+    clearInterval(interval);
+    finalEl.textContent = score;
+    overEl.classList.add('show');
+    startBtn.textContent = 'Start Game';
+    pendingPos = checkHS(score);
+    if (pendingPos !== -1 && score > 0) {
+      pendingScore = score;
+      initWrap.classList.add('show');
+      initInp.value = '';
+      initInp.focus();
+    }
+  }
+
+  function submitScore() {
+    if (pendingPos !== -1 && pendingScore > 0) {
+      addHS(initInp.value, pendingScore, pendingPos);
+      initWrap.classList.remove('show');
+      pendingPos = -1; pendingScore = 0;
+    }
+  }
+
+  function startGame() {
+    if (running) {
+      paused = !paused;
+      startBtn.textContent = paused ? 'Resume' : 'Pause';
+      draw();
+      return;
+    }
+    init();
+    running = true; paused = false;
+    startBtn.textContent = 'Pause';
+    nextDir = { x: 1, y: 0 };
+    interval = setInterval(update, SPEED);
+    draw();
+  }
+
+  startBtn.addEventListener('click', startGame);
+  restBtn.addEventListener('click', startGame);
+  submitBtn.addEventListener('click', submitScore);
+  initInp.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); submitScore(); } });
+
+  document.addEventListener('keydown', e => {
+    const keys = ['arrowup','arrowdown','arrowleft','arrowright','w','a','s','d',' '];
+    if (keys.includes(e.key.toLowerCase()) && document.activeElement !== initInp) e.preventDefault();
+    if (!running || document.activeElement === initInp) return;
+    switch (e.key.toLowerCase()) {
+      case 'arrowup':    case 'w': if (dir.y !== 1)  { nextDir = { x:  0, y: -1 }; } break;
+      case 'arrowdown':  case 's': if (dir.y !== -1) { nextDir = { x:  0, y:  1 }; } break;
+      case 'arrowleft':  case 'a': if (dir.x !== 1)  { nextDir = { x: -1, y:  0 }; } break;
+      case 'arrowright': case 'd': if (dir.x !== -1) { nextDir = { x:  1, y:  0 }; } break;
+      case ' ': paused = !paused; startBtn.textContent = paused ? 'Resume' : 'Pause'; draw(); break;
+    }
+  });
+
+  document.getElementById('s-up').addEventListener('click',    () => { if (!running) startGame(); else if (dir.y !== 1)  nextDir = { x: 0, y: -1 }; });
+  document.getElementById('s-down').addEventListener('click',  () => { if (!running) startGame(); else if (dir.y !== -1) nextDir = { x: 0, y:  1 }; });
+  document.getElementById('s-left').addEventListener('click',  () => { if (!running) startGame(); else if (dir.x !== 1)  nextDir = { x: -1, y: 0 }; });
+  document.getElementById('s-right').addEventListener('click', () => { if (!running) startGame(); else if (dir.x !== -1) nextDir = { x:  1, y: 0 }; });
+  document.getElementById('s-pause').addEventListener('click', () => { if (running) { paused = !paused; startBtn.textContent = paused ? 'Resume' : 'Pause'; draw(); } });
+
+  renderHS();
+  init();
+})();
+</script>
+
+<!-- PAC-MAN SURVIVAL GAME -->
+<script>
+(function () {
+  const canvas   = document.getElementById('pac-canvas');
+  if (!canvas) return;
+  const ctx      = canvas.getContext('2d');
+  const scoreEl  = document.getElementById('pac-score');
+  const finalEl  = document.getElementById('pac-final');
+  const overEl   = document.getElementById('pac-over');
+  const startBtn = document.getElementById('pac-start');
+  const restBtn  = document.getElementById('pac-restart');
+  const hsEl     = document.getElementById('pac-hs');
+  const initWrap = document.getElementById('pac-initials-wrap');
+  const initInp  = document.getElementById('pac-initials');
+  const submitBtn= document.getElementById('pac-submit');
+
+  const G = 20;
+  const TC = canvas.width / G;
+  const SPEED = 105;
+  const MAX_DOTS = 6;
+  const ACCENT = '#5a9b6e';
+  const DIM = 'rgba(237,237,237,0.08)';
+  const GHOST_COLORS = ['#e74c3c', '#16a085', '#d35400', '#8e44ad'];
+  const SPAWN_AT = [3, 10, 20, 30];
+
+  let pac, dir, nextDir, score, dots, ghosts, running, interval;
+  let spawnedGhosts;
+  let highScores = loadHS('pacHS');
+  let pendingScore = 0, pendingPos = -1;
+
+  function loadHS(k) {
+    try { const d = localStorage.getItem(k); if (d) return JSON.parse(d); } catch (e) {}
+    return [{ n: '---', s: 0 }, { n: '---', s: 0 }, { n: '---', s: 0 }];
+  }
+  function saveHS(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+
+  function renderHS() {
+    hsEl.innerHTML = highScores.map((h, i) =>
+      '<div>' + (i + 1) + '. ' + h.n.toUpperCase().padEnd(3, '-') + ' : ' + h.s + '</div>'
+    ).join('');
+  }
+
+  function checkHS(s) {
+    for (let i = 0; i < highScores.length; i++) {
+      if (s > highScores[i].s) return i;
+    }
+    return -1;
+  }
+
+  function addHS(name, s, pos) {
+    highScores.splice(pos, 0, { n: (name || '???').toUpperCase().slice(0, 3), s });
+    highScores = highScores.slice(0, 3);
+    saveHS('pacHS', highScores);
+    renderHS();
+  }
+
+  function placeDot() {
+    let attempts = 0;
+    while (attempts < 100) {
+      const x = Math.floor(Math.random() * TC);
+      const y = Math.floor(Math.random() * TC);
+      if (x === pac.x && y === pac.y) { attempts++; continue; }
+      if (dots.some(d => d.x === x && d.y === y)) { attempts++; continue; }
+      dots.push({ x, y });
+      return;
+    }
+  }
+
+  function spawnGhost() {
+    if (spawnedGhosts >= 4) return;
+    let gx, gy;
+    do {
+      gx = Math.floor(Math.random() * TC);
+      gy = Math.floor(Math.random() * TC);
+    } while (Math.abs(gx - pac.x) < 5 && Math.abs(gy - pac.y) < 5);
+    ghosts.push({
+      x: gx, y: gy,
+      color: GHOST_COLORS[spawnedGhosts],
+      dx: Math.random() < 0.5 ? 1 : -1,
+      dy: Math.random() < 0.5 ? 1 : -1
+    });
+    spawnedGhosts++;
+  }
+
+  function init() {
+    pac = { x: Math.floor(TC / 2), y: Math.floor(TC / 2) };
+    dir = { x: 0, y: 0 };
+    nextDir = { x: 0, y: 0 };
+    score = 0; spawnedGhosts = 0;
+    scoreEl.textContent = 0;
+    overEl.classList.remove('show');
+    initWrap.classList.remove('show');
+    dots = [];
+    for (let i = 0; i < MAX_DOTS; i++) placeDot();
+    ghosts = [];
+    draw();
+  }
+
+  function draw() {
+    ctx.fillStyle = '#080808';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.strokeStyle = DIM;
+    ctx.lineWidth = 0.5;
+    for (let i = 0; i <= TC; i++) {
+      ctx.beginPath(); ctx.moveTo(i * G, 0); ctx.lineTo(i * G, canvas.height); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(0, i * G); ctx.lineTo(canvas.width, i * G); ctx.stroke();
+    }
+
+    ctx.fillStyle = ACCENT;
+    dots.forEach(d => {
+      ctx.beginPath();
+      ctx.arc(d.x * G + G / 2, d.y * G + G / 2, 3.5, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    ghosts.forEach(g => {
+      ctx.fillStyle = g.color;
+      const cx = g.x * G + G / 2, cy = g.y * G + G / 2 - 1;
+      const r = G / 2 - 2;
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, Math.PI, 0, false);
+      ctx.lineTo(cx + r, g.y * G + G - 2);
+      ctx.lineTo(cx + r - 4, g.y * G + G - 6);
+      ctx.lineTo(cx, g.y * G + G - 2);
+      ctx.lineTo(cx - r + 4, g.y * G + G - 6);
+      ctx.lineTo(cx - r, g.y * G + G - 2);
+      ctx.closePath();
+      ctx.fill();
+      ctx.fillStyle = '#fff';
+      ctx.beginPath();
+      ctx.arc(cx - 4, cy - 1, 2.5, 0, Math.PI * 2);
+      ctx.arc(cx + 4, cy - 1, 2.5, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    const ma = 0.22 * Math.PI;
+    let sa = ma, ea = 2 * Math.PI - ma;
+    if (dir.x === -1) { sa = Math.PI + ma; ea = Math.PI - ma; }
+    else if (dir.y === -1) { sa = 1.5 * Math.PI + ma; ea = 1.5 * Math.PI - ma; }
+    else if (dir.y === 1)  { sa = 0.5 * Math.PI + ma; ea = 0.5 * Math.PI - ma; }
+
+    ctx.fillStyle = '#edca3a';
+    ctx.beginPath();
+    ctx.moveTo(pac.x * G + G / 2, pac.y * G + G / 2);
+    ctx.arc(pac.x * G + G / 2, pac.y * G + G / 2, G / 2 - 2, sa, ea);
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  function update() {
+    if (!running) return;
+    dir = { ...nextDir };
+    const oldX = pac.x, oldY = pac.y;
+    let nx = pac.x + dir.x, ny = pac.y + dir.y;
+    if (nx < 0) nx = TC - 1; if (nx >= TC) nx = 0;
+    if (ny < 0) ny = TC - 1; if (ny >= TC) ny = 0;
+    pac.x = nx; pac.y = ny;
+
+    for (let i = dots.length - 1; i >= 0; i--) {
+      if (dots[i].x === pac.x && dots[i].y === pac.y) {
+        dots.splice(i, 1);
+        score++;
+        scoreEl.textContent = score;
+        placeDot();
+        if (SPAWN_AT.includes(score) && spawnedGhosts < 4) spawnGhost();
+      }
+    }
+
+    for (const g of ghosts) {
+      if (g.x === pac.x && g.y === pac.y) { gameOver(); return; }
+      const ogx = g.x, ogy = g.y;
+      if (Math.random() < 0.4) {
+        if (pac.x > g.x) g.dx = 1; else if (pac.x < g.x) g.dx = -1;
+        if (pac.y > g.y) g.dy = 1; else if (pac.y < g.y) g.dy = -1;
+      }
+      if (Math.random() < 0.7) {
+        if (Math.random() < 0.5) g.x += g.dx; else g.y += g.dy;
+      }
+      if (g.x < 0) g.x = TC - 1; if (g.x >= TC) g.x = 0;
+      if (g.y < 0) g.y = TC - 1; if (g.y >= TC) g.y = 0;
+      if (g.x === pac.x && g.y === pac.y) { gameOver(); return; }
+      if (g.x === oldX && g.y === oldY && ogx === pac.x && ogy === pac.y) { gameOver(); return; }
+    }
+
+    draw();
+  }
+
+  function gameOver() {
+    running = false;
+    clearInterval(interval);
+    finalEl.textContent = score;
+    overEl.classList.add('show');
+    startBtn.textContent = 'Start Game';
+    pendingPos = checkHS(score);
+    if (pendingPos !== -1 && score > 0) {
+      pendingScore = score;
+      initWrap.classList.add('show');
+      initInp.value = '';
+      initInp.focus();
+    }
+  }
+
+  function submitScore() {
+    if (pendingPos !== -1 && pendingScore > 0) {
+      addHS(initInp.value, pendingScore, pendingPos);
+      initWrap.classList.remove('show');
+      pendingPos = -1; pendingScore = 0;
+    }
+  }
+
+  function startGame() {
+    init();
+    running = true;
+    startBtn.textContent = 'Restart';
+    nextDir = { x: 1, y: 0 };
+    interval = setInterval(update, SPEED);
+    draw();
+  }
+
+  startBtn.addEventListener('click', startGame);
+  restBtn.addEventListener('click', startGame);
+  submitBtn.addEventListener('click', submitScore);
+  initInp.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); submitScore(); } });
+
+  document.addEventListener('keydown', e => {
+    if (!running || document.activeElement === initInp) return;
+    switch (e.key.toLowerCase()) {
+      case 'arrowup':    case 'w': e.preventDefault(); nextDir = { x:  0, y: -1 }; break;
+      case 'arrowdown':  case 's': e.preventDefault(); nextDir = { x:  0, y:  1 }; break;
+      case 'arrowleft':  case 'a': e.preventDefault(); nextDir = { x: -1, y:  0 }; break;
+      case 'arrowright': case 'd': e.preventDefault(); nextDir = { x:  1, y:  0 }; break;
+    }
+  });
+
+  document.getElementById('p-up').addEventListener('click',    () => { if (!running) startGame(); else nextDir = { x: 0, y: -1 }; });
+  document.getElementById('p-down').addEventListener('click',  () => { if (!running) startGame(); else nextDir = { x: 0, y:  1 }; });
+  document.getElementById('p-left').addEventListener('click',  () => { if (!running) startGame(); else nextDir = { x: -1, y: 0 }; });
+  document.getElementById('p-right').addEventListener('click', () => { if (!running) startGame(); else nextDir = { x:  1, y: 0 }; });
+  document.getElementById('p-stop').addEventListener('click',  startGame);
+
+  renderHS();
+  init();
+})();
+</script>
+
+</body>
+</html>
