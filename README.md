@@ -6,31 +6,25 @@ Personal portfolio and web development showcase. Hosted on GitHub Pages at [just
 
 ```
 /
-├── index.html              → Redirects to /html/index.html
+├── index.html              → Redirects to /ghostindex/index.html
 ├── CNAME                   → justingreeno.dev
 │
-├── html/                   → Main site (justingreeno.dev)
-│   ├── index.html
-│   ├── about.html
-│   ├── resume.html
-│   ├── pixel-art.html
-│   ├── devlogs.html
-│   ├── life.html
-│   ├── webgames.html
-│   ├── webdesign.html
-│   ├── react-showcase.html
-│   └── javascript-showcase.html
-│
-├── ghostindex/             → Ghost redesign (justingreeno.dev/ghostindex)
+├── ghostindex/             → Main site (justingreeno.dev)
 │   ├── index.html          → Landing
 │   ├── about.html
-│   ├── work.html           → Portfolio with filter (Client / Concept)
-│   ├── resume.html         → Printable resume
-│   ├── contact.html        → Contact form with validation
-│   └── css/ghost.css       → Ghost design system (B&W, no shadows)
+│   ├── work.html           → Portfolio with filter (Client / Concept / Dev)
+│   ├── pixel-art.html
+│   ├── devlogs.html
+│   ├── games.html          → Browser games
+│   ├── resume.html
+│   ├── contact.html        → Contact form (formsubmit.co)
+│   ├── css/ghost.css
+│   └── js/ghost.js
 │
-├── css/                    → Main site styles
-├── javascript/             → Main site scripts
+├── grove/                  → Legacy site, preserved as demo
+│   ├── index.html
+│   └── ...
+│
 ├── images/                 → Shared assets
 ├── fonts/                  → Local font files
 ├── pdf/                    → Resume PDFs
