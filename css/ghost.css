@@ -1492,6 +1492,71 @@ body::before {
   touch-action: none;
 }
 
+/* Colour Code: swatch + hex options */
+.colour-swatch-wrap {
+  position: relative;
+  border: var(--rule);
+  margin: 2rem 0 1.25rem;
+  background: #000;
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 1;
+}
+
+.colour-swatch {
+  position: absolute;
+  inset: 0;
+  background: #1a1a1a;
+  transition: background 0.4s ease;
+}
+
+.colour-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: var(--rule);
+  border-left: var(--rule);
+  width: 100%;
+  max-width: 480px;
+  margin-bottom: 1.5rem;
+}
+
+.colour-opt {
+  padding: 1.25rem 1rem;
+  background: var(--bg);
+  border: none;
+  border-right: var(--rule);
+  border-bottom: var(--rule);
+  font-family: var(--mono);
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  color: var(--fg);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--t);
+  min-height: 56px;
+  white-space: nowrap;
+}
+
+.colour-opt:not(:disabled):hover {
+  background: var(--hover-bg);
+  color: var(--hover-fg);
+}
+
+.colour-opt:disabled { cursor: default; }
+
+.colour-opt.correct {
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-color: var(--accent);
+}
+
+.colour-opt.wrong {
+  background: #c0392b;
+  color: #fff;
+  border-color: #c0392b;
+}
+
 .game-over-overlay {
   position: absolute;
   inset: 0;

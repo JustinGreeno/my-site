@@ -205,6 +205,75 @@
     </div>
   </section>
 
+  <!-- COLOUR CODE -->
+  <section class="game-section reveal">
+    <div class="c">
+      <div class="sec-head">
+        <div>
+          <div class="sec-label">Game 03</div>
+          <h2 class="sec-title">Colour Code</h2>
+        </div>
+        <div class="tags">
+          <span class="tag">Design</span>
+          <span class="tag">Colour Theory</span>
+          <span class="tag">Quiz</span>
+        </div>
+        <span class="game-toggle">+</span>
+      </div>
+      <div class="game-body-wrap"><div class="game-body"><div class="game-body-inner">
+      <p style="font-size:0.95rem;line-height:1.75;color:var(--fg-mid);margin-bottom:1.5rem">
+        See a colour, pick its hex code from four options. Harder than it sounds.
+        One wrong answer ends the run. Top 3 streaks saved to your browser.
+      </p>
+
+      <div class="game-scores-row">
+        <div class="game-score-cell">
+          <div class="game-score-label">Streak</div>
+          <div class="game-score-val" id="colour-score">0</div>
+        </div>
+        <div class="game-score-cell">
+          <div class="game-score-label">High Scores</div>
+          <div class="game-hs-list" id="colour-hs">
+            <div>1. --- : 0</div>
+            <div>2. --- : 0</div>
+            <div>3. --- : 0</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="colour-swatch-wrap">
+        <div class="colour-swatch" id="colour-swatch"></div>
+        <div class="game-over-overlay" id="colour-over">
+          <div class="game-over-title">Game Over</div>
+          <div class="game-score-display">Streak: <span id="colour-final">0</span></div>
+          <div class="game-initials-wrap" id="colour-initials-wrap">
+            <div class="game-initials-label">New High Score. Enter Initials:</div>
+            <input type="text" class="game-initials-input" id="colour-initials" maxlength="3" placeholder="AAA">
+            <button class="btn inv" id="colour-submit" style="font-size:0.72rem;padding:0.5rem 1rem">Submit</button>
+          </div>
+          <button class="btn inv" id="colour-restart" style="margin-top:0.5rem">Play Again</button>
+        </div>
+      </div>
+
+      <div class="colour-options" id="colour-options">
+        <button class="colour-opt" type="button"></button>
+        <button class="colour-opt" type="button"></button>
+        <button class="colour-opt" type="button"></button>
+        <button class="colour-opt" type="button"></button>
+      </div>
+
+      <div class="btn-row" style="margin-top:0">
+        <button class="btn inv" id="colour-start">Start Game</button>
+      </div>
+
+      <div class="key-hint-row" style="margin-top:1rem">
+        <span class="key-hint">1 - 4</span>
+        <span class="key-hint-label">to pick</span>
+      </div>
+      </div></div></div>
+    </div>
+  </section>
+
   <!-- COMING SOON GAMES -->
   <section class="sec reveal" style="border-bottom:none">
     <div class="c">
@@ -215,7 +284,7 @@
         </div>
       </div>
       <p style="font-size:0.95rem;line-height:1.75;color:var(--fg-mid);max-width:580px;margin-bottom:2.5rem">
-        Four new games are planned, each designed to show off different aspects of
+        Three new games are planned, each designed to show off different aspects of
         interactive development and the Darkness Blooms world.
       </p>
       <div class="coming-grid">
@@ -233,11 +302,6 @@
           <div class="coming-title">Retro Platformer</div>
           <p class="coming-desc">A tiny side-scrolling platformer starring a Darkness Blooms character sprite. Hand-animated, procedurally generated levels, collectibles to unlock art gallery entries.</p>
           <div class="tags" style="margin-top:0.5rem"><span class="tag">Platformer</span><span class="tag">Pixel Art</span><span class="tag">Procedural</span></div>
-        </div>
-        <div class="coming-item">
-          <div class="coming-title">Colour Code</div>
-          <p class="coming-desc">See a colour swatch, guess the hex code from four options. Harder than it sounds. Great for designers and devs who want to sharpen their colour eye.</p>
-          <div class="tags" style="margin-top:0.5rem"><span class="tag">Design</span><span class="tag">Colour Theory</span><span class="tag">Quiz</span></div>
         </div>
       </div>
     </div>
@@ -737,6 +801,165 @@
       if (!running) startGame();
     }
   }, { passive: true });
+
+  renderHS();
+  init();
+})();
+</script>
+
+<!-- COLOUR CODE GAME -->
+<script>
+(function () {
+  const swatchEl = document.getElementById('colour-swatch');
+  if (!swatchEl) return;
+  const optsEl   = document.getElementById('colour-options');
+  const scoreEl  = document.getElementById('colour-score');
+  const finalEl  = document.getElementById('colour-final');
+  const overEl   = document.getElementById('colour-over');
+  const startBtn = document.getElementById('colour-start');
+  const restBtn  = document.getElementById('colour-restart');
+  const hsEl     = document.getElementById('colour-hs');
+  const initWrap = document.getElementById('colour-initials-wrap');
+  const initInp  = document.getElementById('colour-initials');
+  const submitBtn= document.getElementById('colour-submit');
+  const optBtns  = Array.from(optsEl.querySelectorAll('.colour-opt'));
+
+  let score = 0, running = false, currentHex = '', options = [];
+  let highScores = loadHS('colourHS');
+  let pendingScore = 0, pendingPos = -1;
+
+  function loadHS(k) {
+    try { const d = localStorage.getItem(k); if (d) return JSON.parse(d); } catch (e) {}
+    return [{ n: '---', s: 0 }, { n: '---', s: 0 }, { n: '---', s: 0 }];
+  }
+  function saveHS(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+
+  function renderHS() {
+    hsEl.innerHTML = highScores.map((h, i) =>
+      '<div>' + (i + 1) + '. ' + h.n.toUpperCase().padEnd(3, '-') + ' : ' + h.s + '</div>'
+    ).join('');
+  }
+
+  function checkHS(s) {
+    for (let i = 0; i < highScores.length; i++) {
+      if (s > highScores[i].s) return i;
+    }
+    return -1;
+  }
+
+  function addHS(name, s, pos) {
+    highScores.splice(pos, 0, { n: (name || '???').toUpperCase().slice(0, 3), s });
+    highScores = highScores.slice(0, 3);
+    saveHS('colourHS', highScores);
+    renderHS();
+  }
+
+  function rand(a, b) { return Math.floor(Math.random() * (b - a + 1)) + a; }
+  function clamp(x)   { return Math.max(0, Math.min(255, x)); }
+  function rgbToHex(r, g, b) {
+    return '#' + [r, g, b].map(x => {
+      const h = clamp(x).toString(16);
+      return h.length === 1 ? '0' + h : h;
+    }).join('').toUpperCase();
+  }
+
+  function makeRound() {
+    const r = rand(40, 220), g = rand(40, 220), b = rand(40, 220);
+    const hex = rgbToHex(r, g, b);
+    const opts = [hex];
+    let attempts = 0;
+    while (opts.length < 4 && attempts < 50) {
+      attempts++;
+      const dr = rand(-65, 65), dg = rand(-65, 65), db = rand(-65, 65);
+      if (Math.abs(dr) + Math.abs(dg) + Math.abs(db) < 35) continue;
+      const cand = rgbToHex(r + dr, g + dg, b + db);
+      if (opts.indexOf(cand) === -1) opts.push(cand);
+    }
+    while (opts.length < 4) opts.push(rgbToHex(rand(0, 255), rand(0, 255), rand(0, 255)));
+    for (let i = opts.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [opts[i], opts[j]] = [opts[j], opts[i]];
+    }
+    currentHex = hex;
+    options = opts;
+    swatchEl.style.background = hex;
+    optBtns.forEach((btn, i) => {
+      btn.textContent = opts[i];
+      btn.classList.remove('correct', 'wrong');
+      btn.disabled = false;
+    });
+  }
+
+  function init() {
+    score = 0;
+    scoreEl.textContent = 0;
+    overEl.classList.remove('show');
+    initWrap.classList.remove('show');
+    swatchEl.style.background = '#1a1a1a';
+    optBtns.forEach(btn => {
+      btn.textContent = '';
+      btn.classList.remove('correct', 'wrong');
+      btn.disabled = true;
+    });
+  }
+
+  function gameOver() {
+    running = false;
+    finalEl.textContent = score;
+    overEl.classList.add('show');
+    startBtn.textContent = 'Start Game';
+    pendingPos = checkHS(score);
+    if (pendingPos !== -1 && score > 0) {
+      pendingScore = score;
+      initWrap.classList.add('show');
+      initInp.value = '';
+      initInp.focus();
+    }
+  }
+
+  function submitScore() {
+    if (pendingPos !== -1 && pendingScore > 0) {
+      addHS(initInp.value, pendingScore, pendingPos);
+      initWrap.classList.remove('show');
+      pendingPos = -1; pendingScore = 0;
+    }
+  }
+
+  function startGame() {
+    init();
+    running = true;
+    startBtn.textContent = 'Restart';
+    makeRound();
+  }
+
+  function pick(i) {
+    if (!running) return;
+    optBtns.forEach(b => b.disabled = true);
+    if (options[i] === currentHex) {
+      optBtns[i].classList.add('correct');
+      score++;
+      scoreEl.textContent = score;
+      setTimeout(() => { if (running) makeRound(); }, 450);
+    } else {
+      optBtns[i].classList.add('wrong');
+      optBtns.forEach((b, k) => { if (options[k] === currentHex) b.classList.add('correct'); });
+      setTimeout(gameOver, 1200);
+    }
+  }
+
+  startBtn.addEventListener('click', startGame);
+  restBtn.addEventListener('click', startGame);
+  submitBtn.addEventListener('click', submitScore);
+  initInp.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); submitScore(); } });
+  optBtns.forEach((btn, i) => btn.addEventListener('click', () => pick(i)));
+
+  document.addEventListener('keydown', e => {
+    if (!running || document.activeElement.tagName === 'INPUT') return;
+    if (e.key >= '1' && e.key <= '4') {
+      e.preventDefault();
+      pick(parseInt(e.key, 10) - 1);
+    }
+  });
 
   renderHS();
   init();
