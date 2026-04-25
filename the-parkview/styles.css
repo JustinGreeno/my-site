@@ -870,18 +870,20 @@ mark.match {
     border-bottom-color: var(--glow);
 }
 
-/* ---------------- Print stylesheet ---------------- */
+/* ---------------- Print stylesheet (compact 2-column) ---------------- */
 @media print {
-    @page { margin: 0.6in; }
+    @page { margin: 0.4in; size: letter; }
 
     html, body {
         background: #fff !important;
         color: #000 !important;
-        font-size: 11pt;
+        font-family: 'Inter', system-ui, sans-serif;
+        font-size: 8pt;
+        line-height: 1.22;
     }
     body::before, body::after { display: none !important; }
 
-    /* Hide chrome */
+    /* Hide everything that isn't the menu */
     .site-header,
     .nav-toggle,
     .nav,
@@ -891,46 +893,132 @@ mark.match {
     .motel-photos,
     .map-wrap,
     .menu-search,
+    .menu-toolbar,
     .menu-tabs,
     .sticky-call,
     .site-footer,
+    .footer-credit,
     .hero-actions,
     .result-section-tag,
     .search-summary,
+    .menu-page-header,
+    .menu-toc,
+    .about-stats,
+    .rate-card,
+    .amenities,
     iframe { display: none !important; }
 
-    /* Print everything in the menu, not just the active tab */
-    .menu-section { display: block !important; page-break-inside: auto; }
+    /* React menu: show whatever section is active (only used if printing index.html directly) */
+    .menu-section { display: block !important; }
 
-    .container { max-width: none; padding: 0; }
-    section.block { padding: 0.5rem 0 !important; background: #fff !important; }
+    /* Compact layout */
+    main { display: block; }
+    .container { max-width: none !important; padding: 0 !important; margin: 0 !important; }
+    section.block, section.menu-block { padding: 0 !important; background: #fff !important; }
 
-    h1, h2, h3, h4 { color: #000 !important; page-break-after: avoid; }
-    h2 { font-size: 18pt; margin-top: 1rem; }
-    h3 { font-size: 13pt; }
-
-    p, li, td, .menu-item .name, .menu-item .desc, .menu-item .price {
+    /* Print header strip */
+    body::before {
+        content: "THE PARKVIEW FAMILY RESTAURANT & INN  ·  4670 Main Street, Oxford NS B0M 1P0  ·  (902) 447-2258  ·  the-parkview.com";
+        display: block !important;
+        font-size: 7.5pt;
+        font-weight: 700;
+        letter-spacing: 0.04em;
         color: #000 !important;
+        text-align: center;
+        border-bottom: 1.5px solid #000;
+        padding-bottom: 0.25rem;
+        margin: 0 0 0.45rem;
+        column-span: all;
     }
+
+    /* Two-column flow over the whole menu */
+    .container, main {
+        column-count: 2;
+        column-gap: 0.55in;
+        column-rule: 1px solid #d0d0d0;
+    }
+
+    /* Menu blocks - allow them to flow but keep individual items intact */
+    .menu-block {
+        break-inside: auto;
+        page-break-inside: auto;
+        padding: 0 !important;
+        margin: 0 0 0.35rem !important;
+        border: 0 !important;
+    }
+    .menu-block h2 {
+        font-family: 'Fraunces', Georgia, serif;
+        font-size: 11pt !important;
+        font-weight: 700 !important;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #000 !important;
+        margin: 0.5rem 0 0.2rem !important;
+        padding-bottom: 0.15rem;
+        border-bottom: 1px solid #000;
+        break-after: avoid;
+        page-break-after: avoid;
+    }
+    .menu-block:first-of-type h2 { margin-top: 0 !important; }
+
+    h1, h3, h4 { color: #000 !important; }
+    h3 { font-size: 9pt; }
+
+    p, li, td { color: #000 !important; }
     a { color: #000 !important; text-decoration: none !important; }
 
-    .menu-note { color: #444 !important; border-color: #888 !important; }
-    .menu-item { border-color: #ccc !important; page-break-inside: avoid; }
-    .menu-item .price { color: #000 !important; font-weight: 700; }
-
-    .section-eyebrow { color: #555 !important; }
-    .section-lead { color: #222 !important; }
-
-    .about-stats, .rate-card, .amenities { display: none !important; }
-
-    /* Print URL hint at top */
-    body::before {
-        content: "The Parkview Family Restaurant & Inn  ·  4670 Main Street, Oxford, NS B0M 1P0  ·  (902) 447-2258";
-        display: block !important;
-        font-size: 9pt;
+    .menu-note {
+        font-size: 6.8pt !important;
+        font-style: italic;
         color: #444 !important;
-        border-bottom: 1px solid #999;
-        padding-bottom: 0.4rem;
-        margin-bottom: 0.8rem;
+        border: 0 !important;
+        padding: 0 !important;
+        margin: 0 0 0.2rem !important;
+        line-height: 1.18;
     }
+
+    .menu-dual-header {
+        font-size: 6.5pt !important;
+        padding: 0 0 0.1rem !important;
+        margin: 0 0 0.1rem !important;
+        border-bottom: 0.5px solid #999 !important;
+        gap: 0.5rem !important;
+    }
+    .menu-dual-header .col { font-size: 6.2pt !important; color: #555 !important; }
+
+    .menu-list { gap: 0 !important; }
+    .menu-item {
+        padding: 0.1rem 0 !important;
+        border-bottom: 0.5px dotted #bbb !important;
+        gap: 0.35rem !important;
+        align-items: baseline !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+    .menu-item:last-child { border-bottom: 0 !important; }
+    .menu-item .name {
+        font-size: 7.8pt !important;
+        font-weight: 600 !important;
+        color: #000 !important;
+        line-height: 1.2;
+    }
+    .menu-item .desc {
+        font-size: 6.6pt !important;
+        color: #555 !important;
+        line-height: 1.18;
+        margin-top: 0 !important;
+    }
+    .menu-item .price {
+        font-size: 7.8pt !important;
+        color: #000 !important;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+    .menu-item.dual { gap: 0.4rem !important; }
+    .menu-item.dual .price { width: auto !important; min-width: 36px; text-align: right; }
+
+    .section-eyebrow,
+    .section-title,
+    .section-lead { display: none !important; }
 }
