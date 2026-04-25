@@ -6,20 +6,21 @@ Personal portfolio and web development showcase. Hosted on GitHub Pages at [just
 
 ```
 /
-├── index.html              → Redirects to /ghostindex/index.html
+├── index.html              → Main site landing (justingreeno.dev)
+├── about.html
+├── work.html               → Portfolio with filter (Client / Concept / Dev)
+├── pixel-art.html
+├── devlogs.html
+├── games.html              → Browser games
+├── resume.html
+├── contact.html            → Contact form (formsubmit.co)
 ├── CNAME                   → justingreeno.dev
 │
-├── ghostindex/             → Main site (justingreeno.dev)
-│   ├── index.html          → Landing
-│   ├── about.html
-│   ├── work.html           → Portfolio with filter (Client / Concept / Dev)
-│   ├── pixel-art.html
-│   ├── devlogs.html
-│   ├── games.html          → Browser games
-│   ├── resume.html
-│   ├── contact.html        → Contact form (formsubmit.co)
-│   ├── css/ghost.css
-│   └── js/ghost.js
+├── css/
+│   ├── ghost.css           → Ghost design system (current site)
+│   └── my_style.css        → Legacy styles (used by grove/)
+├── js/ghost.js             → Ghost site scripts
+├── javascript/             → Legacy scripts (used by grove/)
 │
 ├── grove/                  → Legacy site, preserved as demo
 │   ├── index.html
@@ -35,28 +36,20 @@ Personal portfolio and web development showcase. Hosted on GitHub Pages at [just
     └── whatsfordinner/     → What's For Dinner
 ```
 
-## Ghost Index Design System
+## Ghost Design System
 
-`/ghostindex` is a complete redesign of the portfolio — same content, entirely different visual language.
+The current site is a complete redesign of the portfolio. The earlier site is preserved at `/grove/`.
 
 **Principles:**
-- Pure black `#000` and white `#fff` only
+- Pure black and white only
 - No shadows, no border-radius, no material design
 - 1px solid rules as all dividers
 - Inverted hover states (black bg flips white, white text flips black)
 - Typographic hierarchy over decorative elements
-- CSS Grid throughout — no flex hacks
+- CSS Grid throughout
 - Scroll reveal via IntersectionObserver (no libraries)
 
 **Fonts:** Space Grotesk (headings/body) + DM Mono (labels/tags/nav)
-
-**To upgrade to a proper React build:**
-Install Node.js, then:
-```bash
-cd ghostindex
-npm create vite@latest . -- --template react
-```
-The current vanilla JS is structured to map 1:1 to React components.
 
 ## Development
 
