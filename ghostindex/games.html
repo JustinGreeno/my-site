@@ -68,7 +68,9 @@
           <span class="tag">JavaScript</span>
           <span class="tag">High Scores</span>
         </div>
+        <span class="game-toggle">+</span>
       </div>
+      <div class="game-body-wrap"><div class="game-body"><div class="game-body-inner">
       <p style="font-size:0.95rem;line-height:1.75;color:var(--fg-mid);margin-bottom:1.5rem">
         Classic Snake. Eat to grow. Hit a wall or yourself and it's over.
         Top 3 scores saved to your browser.
@@ -123,6 +125,7 @@
         <button class="dpad-btn right" id="s-right">&#9654;</button>
         <button class="dpad-btn down"  id="s-down">&#9660;</button>
       </div>
+      </div></div></div>
     </div>
   </section>
 
@@ -140,7 +143,9 @@
           <span class="tag">Ghost AI</span>
           <span class="tag">High Scores</span>
         </div>
+        <span class="game-toggle">+</span>
       </div>
+      <div class="game-body-wrap"><div class="game-body"><div class="game-body-inner">
       <p style="font-size:0.95rem;line-height:1.75;color:var(--fg-mid);margin-bottom:1.5rem">
         Survive as long as you can. Only 6 dots on screen at once.
         Ghosts spawn at 3, 10, 20, and 30 points. Can you outlast them all?
@@ -192,6 +197,7 @@
         <button class="dpad-btn right" id="p-right">&#9654;</button>
         <button class="dpad-btn down"  id="p-down">&#9660;</button>
       </div>
+      </div></div></div>
     </div>
   </section>
 
@@ -685,5 +691,12 @@
 })();
 </script>
 
+<script>
+document.querySelectorAll('.game-section .sec-head').forEach(function(head) {
+  head.addEventListener('click', function() {
+    head.closest('.game-section').classList.toggle('expanded');
+  });
+});
+</script>
 </body>
 </html>
