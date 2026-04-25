@@ -57,7 +57,7 @@
             <li><span>Twitch</span><a href="https://www.twitch.tv/darknessblooms" target="_blank" rel="noopener noreferrer">twitch.tv/darknessblooms</a></li>
             <li><span>Instagram</span><a href="https://www.instagram.com/justingreeno" target="_blank" rel="noopener noreferrer">@justingreeno</a></li>
             <li><span>Discord</span><a href="https://discord.gg/FTskDEdAtj" target="_blank" rel="noopener noreferrer">Darkness Blooms Server</a></li>
-            <li><span>Patreon</span><a href="https://www.patreon.com/u55408845" target="_blank" rel="noopener noreferrer">Support the Project</a></li>
+            <li><span>Patreon</span><a href="https://www.patreon.com/c/u55408845?vanity=user" target="_blank" rel="noopener noreferrer">Support the Project</a></li>
           </ul>
         </div>
 
@@ -128,18 +128,11 @@
     fields[key].el.addEventListener('input', () => { if (fields[key].err.textContent) validate(key); });
   });
 
-  function openMailto(n, eAddr, s, m) {
-    const body = encodeURIComponent('Name: ' + n + '\nEmail: ' + eAddr + '\n\n' + m);
-    window.open('mailto:justin.a.greeno@gmail.com?subject=' + encodeURIComponent(s) + '&body=' + body);
-    const msg = document.getElementById('success-msg');
-    msg.textContent = 'Your email client should open. If not, email justin.a.greeno@gmail.com directly.';
-    msg.classList.add('show');
-  }
-
   document.getElementById('contact-form').addEventListener('submit', async e => {
     e.preventDefault();
     if (!Object.keys(fields).map(validate).every(Boolean)) return;
     const btn = document.getElementById('submit-btn');
+    const msg = document.getElementById('success-msg');
     btn.textContent = 'Sending...';
     btn.disabled = true;
     const form = e.target;
@@ -160,15 +153,17 @@
       });
       const json = await res.json();
       if (json.success === 'true' || json.success === true) {
-        document.getElementById('success-msg').textContent = 'Message sent. I\'ll be in touch shortly.';
-        document.getElementById('success-msg').classList.add('show');
+        msg.textContent = 'Message sent. I\'ll be in touch shortly.';
+        msg.classList.add('show');
         form.reset();
         Object.keys(fields).forEach(k => { fields[k].err.textContent = ''; });
       } else {
-        openMailto(name, email, subject, message);
+        msg.textContent = 'Something went wrong. Please email justin.a.greeno@gmail.com directly.';
+        msg.classList.add('show');
       }
     } catch {
-      openMailto(name, email, subject, message);
+      msg.textContent = 'Something went wrong. Please email justin.a.greeno@gmail.com directly.';
+      msg.classList.add('show');
     }
     btn.textContent = 'Send Message';
     btn.disabled = false;

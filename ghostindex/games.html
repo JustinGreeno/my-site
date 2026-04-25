@@ -417,8 +417,8 @@
 
   document.addEventListener('keydown', e => {
     const keys = ['arrowup','arrowdown','arrowleft','arrowright','w','a','s','d',' '];
-    if (keys.includes(e.key.toLowerCase()) && document.activeElement !== initInp) e.preventDefault();
-    if (!running || document.activeElement === initInp) return;
+    if (keys.includes(e.key.toLowerCase()) && document.activeElement.tagName !== 'INPUT') e.preventDefault();
+    if (!running || document.activeElement.tagName === 'INPUT') return;
     switch (e.key.toLowerCase()) {
       case 'arrowup':    case 'w': if (dir.y !== 1)  { nextDir = { x:  0, y: -1 }; } break;
       case 'arrowdown':  case 's': if (dir.y !== -1) { nextDir = { x:  0, y:  1 }; } break;
@@ -665,7 +665,7 @@
   initInp.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); submitScore(); } });
 
   document.addEventListener('keydown', e => {
-    if (!running || document.activeElement === initInp) return;
+    if (!running || document.activeElement.tagName === 'INPUT') return;
     switch (e.key.toLowerCase()) {
       case 'arrowup':    case 'w': e.preventDefault(); nextDir = { x:  0, y: -1 }; break;
       case 'arrowdown':  case 's': e.preventDefault(); nextDir = { x:  0, y:  1 }; break;
