@@ -317,11 +317,11 @@
     if (!id) return;
 
     const iframe = document.createElement('iframe');
-    iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1';
-    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
     iframe.setAttribute('allowfullscreen', '');
     iframe.title = 'YouTube video player';
     iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0';
+    iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
 
     const wrap = document.createElement('div');
     wrap.style.cssText = 'position:absolute;inset:0;background:#000';
