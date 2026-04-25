@@ -53,50 +53,19 @@
   if (!isTouch) {
     html.setAttribute('data-cursor', 'custom');
 
-    const dot  = document.createElement('div');
-    const ring = document.createElement('div');
-    dot.id  = 'cursor-dot';
-    ring.id = 'cursor-ring';
-    document.body.append(dot, ring);
+    const dot = document.createElement('div');
+    dot.id = 'cursor-dot';
+    document.body.appendChild(dot);
 
     const glowEl = document.getElementById('cursor-glow');
     if (glowEl) glowEl.hidden = true;
 
-    let mx = -200, my = -200;
-    let rx = -200, ry = -200;
-
     document.addEventListener('mousemove', e => {
-      mx = e.clientX;
-      my = e.clientY;
-      dot.style.transform = 'translate(' + mx + 'px,' + my + 'px)';
+      dot.style.transform = 'translate(' + e.clientX + 'px,' + e.clientY + 'px)';
     });
 
-    document.addEventListener('mouseleave', () => {
-      dot.style.opacity = '0';
-      ring.style.opacity = '0';
-    });
-    document.addEventListener('mouseenter', () => {
-      dot.style.opacity = '1';
-      ring.style.opacity = '1';
-    });
-
-    document.addEventListener('mouseover', e => {
-      if (e.target.closest('a, button, [role="button"], input, textarea, select, .filt, .card, .social-item, .skill, .char-item')) {
-        ring.classList.add('ring-hover');
-      }
-    });
-    document.addEventListener('mouseout', e => {
-      if (e.target.closest('a, button, [role="button"], input, textarea, select, .filt, .card, .social-item, .skill, .char-item')) {
-        ring.classList.remove('ring-hover');
-      }
-    });
-
-    (function animateRing() {
-      rx += (mx - rx) * 0.15;
-      ry += (my - ry) * 0.15;
-      ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
-      requestAnimationFrame(animateRing);
-    })();
+    document.addEventListener('mouseleave', () => { dot.style.opacity = '0'; });
+    document.addEventListener('mouseenter', () => { dot.style.opacity = '1'; });
   }
 
   /* ── SCROLL REVEAL ───────────────────────────────── */
@@ -316,6 +285,31 @@
   }
 
   /* ── YOUTUBE FACADES ─────────────────────────────── */
+  function ytFallback() {
+    const fallbacks = ['hqdefault', 'mqdefault', 'sddefault', 'default'];
+    function attach(img) {
+      if (img.dataset.ytFallback) return;
+      img.dataset.ytFallback = '1';
+      img.addEventListener('error', function () {
+        const id = (this.closest('.yt-facade') || {}).dataset?.ytid;
+        if (!id) return;
+        const cur = (this.src.match(/\/(hqdefault|mqdefault|sddefault|default)\.jpg/) || [])[1] || 'hqdefault';
+        const idx = fallbacks.indexOf(cur);
+        if (idx < fallbacks.length - 1) {
+          this.src = 'https://i.ytimg.com/vi/' + id + '/' + fallbacks[idx + 1] + '.jpg';
+        }
+      });
+      if (img.complete && img.naturalWidth === 0 && img.src) img.dispatchEvent(new Event('error'));
+    }
+    document.querySelectorAll('.yt-facade img').forEach(attach);
+    new MutationObserver(muts => {
+      muts.forEach(m => m.addedNodes.forEach(n => {
+        if (n.nodeType !== 1) return;
+        (n.querySelectorAll ? n.querySelectorAll('.yt-facade img') : []).forEach(attach);
+      }));
+    }).observe(document.body, { childList: true, subtree: true });
+  }
+
   document.addEventListener('click', e => {
     const facade = e.target.closest('.yt-facade');
     if (!facade) return;
@@ -323,40 +317,18 @@
     if (!id) return;
 
     const iframe = document.createElement('iframe');
-    iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1';
+    iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1';
     iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen';
     iframe.setAttribute('allowfullscreen', '');
     iframe.title = 'YouTube video player';
     iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0';
 
     const wrap = document.createElement('div');
-    wrap.style.cssText = 'position:absolute;inset:0';
+    wrap.style.cssText = 'position:absolute;inset:0;background:#000';
     wrap.appendChild(iframe);
 
     facade.parentNode.insertBefore(wrap, facade);
     facade.remove();
-  });
-
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.yt-facade img').forEach(img => {
-      img.addEventListener('error', function () {
-        const facade = this.closest('.yt-facade');
-        if (!facade) return;
-        const id = facade.dataset.ytid;
-        const fallbacks = ['maxresdefault', 'hqdefault', 'mqdefault', 'default'];
-        const current = (this.src.match(/\/(maxresdefault|hqdefault|mqdefault|default)\.jpg/) || [])[1] || 'maxresdefault';
-        const idx = fallbacks.indexOf(current);
-        if (idx < fallbacks.length - 1) {
-          this.src = 'https://i.ytimg.com/vi/' + id + '/' + fallbacks[idx + 1] + '.jpg';
-        }
-      });
-      const id = img.closest('.yt-facade')?.dataset.ytid;
-      if (id && !img.src.includes('maxresdefault')) {
-        const fallback = img.src;
-        img.src = 'https://i.ytimg.com/vi/' + id + '/maxresdefault.jpg';
-        img.setAttribute('data-fallback', fallback);
-      }
-    });
   });
 
   /* ── VIDEO TOGGLES ───────────────────────────────── */
@@ -377,12 +349,14 @@
       initLightboxes();
       injectSearch();
       injectMobileNav();
+      ytFallback();
     });
   } else {
     initReveal();
     initLightboxes();
     injectSearch();
     injectMobileNav();
+    ytFallback();
   }
 
 })();
