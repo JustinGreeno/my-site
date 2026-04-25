@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - The Parkview Family Restaurant & Inn, Oxford NS</title>
+    <meta name="description" content="The full menu at The Parkview Family Restaurant in Oxford, Nova Scotia. Hot turkey, fish & chips, burgers, poutine, kids menu, and more. Maritime comfort food right off Exit 6 of the 104.">
+    <meta name="theme-color" content="#050B1F">
+    <link rel="canonical" href="https://the-parkview.com/menu.html">
+    <link rel="icon" type="image/png" href="images/blueberry.png">
+
+    <meta property="og:title" content="Menu - The Parkview Family Restaurant">
+    <meta property="og:description" content="Full menu - hot turkey, fish & chips, burgers, poutine, and home cooked Maritime comfort food in Oxford, NS.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://the-parkview.com/menu.html">
+    <meta property="og:image" content="https://the-parkview.com/images/parkview%20homecooked%20meal.png">
+    <meta property="og:locale" content="en_CA">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .menu-page-header {
+            padding: 7rem 0 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--hairline);
+            background: linear-gradient(180deg, rgba(15, 30, 71, 0.5), rgba(5, 11, 31, 0.0));
+        }
+        .menu-page-header h1 { margin-bottom: 0.4rem; }
+        .menu-page-header p { color: var(--mist); margin-bottom: 1.4rem; }
+        .menu-page-header .actions { display: inline-flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center; }
+        .menu-toc {
+            position: sticky;
+            top: 96px;
+            z-index: 10;
+            background: rgba(5, 11, 31, 0.92);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--hairline);
+            padding: 0.7rem 0;
+            margin-bottom: 2.5rem;
+        }
+        .menu-toc-inner {
+            display: flex;
+            gap: 0.4rem;
+            overflow-x: auto;
+            padding: 0 1.5rem;
+            max-width: var(--max-w);
+            margin: 0 auto;
+            scrollbar-width: none;
+        }
+        .menu-toc-inner::-webkit-scrollbar { display: none; }
+        .menu-toc a {
+            flex: 0 0 auto;
+            color: var(--cloud);
+            font-size: 0.88rem;
+            font-weight: 500;
+            padding: 0.45rem 0.9rem;
+            border-radius: 999px;
+            border: 1px solid var(--hairline);
+            white-space: nowrap;
+            transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+        }
+        .menu-toc a:hover { background: var(--royal); color: var(--ice); border-color: var(--bright); }
+
+        .menu-block {
+            scroll-margin-top: 8rem;
+            padding-bottom: 3rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--hairline);
+        }
+        .menu-block:last-child { border-bottom: 0; }
+        .menu-block h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.6rem;
+            color: var(--ice);
+        }
+        @media print {
+            .menu-page-header, .menu-toc, .site-header, .site-footer, .nav, .nav-toggle { display: none !important; }
+            .menu-block { page-break-inside: avoid; border-bottom: 1px solid #ccc !important; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a href="index.html" class="brand">
+            <img class="brand-mark" src="images/blueberry.png" alt="Parkview blueberry mascot" />
+            <span>The Parkview</span>
+        </a>
+        <nav class="nav">
+            <a href="index.html#menu">Menu</a>
+            <a href="index.html#motel">Motel</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#contact">Contact</a>
+            <a class="nav-cta" href="tel:+19024472258">Call (902) 447-2258</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="menu-page-header">
+        <div class="container">
+            <div class="section-eyebrow">The Full Menu</div>
+            <h1>Maritime comfort food, made fresh</h1>
+            <p>Homemade soups, hand-pressed burgers, real gravy, fresh fish.<br/>Sub potato for salad or poutine on any platter for $3.</p>
+            <div class="actions">
+                <a class="btn btn-primary" href="index.html">Back to Site</a>
+                <button class="btn btn-ghost" onclick="window.print()">Print Menu</button>
+                <a class="btn btn-ghost" href="tel:+19024472258">Call (902) 447-2258</a>
+            </div>
+        </div>
+    </section>
+
+    <nav class="menu-toc" aria-label="Menu sections">
+        <div class="menu-toc-inner">
+            <a href="#lighter">The Lighter Side</a>
+            <a href="#sandwiches">Sandwiches</a>
+            <a href="#hot">Hot Sandwiches</a>
+            <a href="#home">A Taste of Home</a>
+            <a href="#sea">From the Sea</a>
+            <a href="#grill">From the Grill</a>
+            <a href="#sides">On the Side</a>
+            <a href="#drinks">Beverages & Bar</a>
+            <a href="#kids">Kids Menu</a>
+            <a href="#desserts">Desserts</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <section id="lighter" class="menu-block">
+            <h2>The Lighter Side</h2>
+            <div class="menu-list">
+                <div class="menu-item"><div><div class="name">Soup of the Day</div><div class="desc">with roll & crackers</div></div><div class="price">$6.75</div></div>
+                <div class="menu-item"><div><div class="name">Soup of the Day - Cup</div></div><div class="price">$5.00</div></div>
+                <div class="menu-item"><div><div class="name">Garden Salad</div></div><div class="price">$8.75</div></div>
+                <div class="menu-item"><div><div class="name">Caesar Salad</div></div><div class="price">$9.50</div></div>
+                <div class="menu-item"><div><div class="name">Chicken Caesar or Garden Salad</div><div class="desc">with garlic bread</div></div><div class="price">$17.50</div></div>
+                <div class="menu-item"><div><div class="name">Soup & Sandwich Combo</div><div class="desc">excludes club sandwich</div></div><div class="price">$11.75</div></div>
+            </div>
+        </section>
+
+        <section id="sandwiches" class="menu-block">
+            <h2>Sandwiches</h2>
+            <div class="menu-note">Platters include your choice of fries, onion rings, or mashed potatoes & coleslaw. Substitute potato for salad or poutine - additional $3.00. All sandwiches made with mayo.</div>
+            <div class="menu-dual-header">
+                <div></div><div class="col">Sandwich</div><div class="col">Platter</div>
+            </div>
+            <div class="menu-list">
+                <div class="menu-item dual"><div><div class="name">BLT</div></div><div class="price">$6.50</div><div class="price">$11.50</div></div>
+                <div class="menu-item dual"><div><div class="name">Club</div></div><div class="price">$11.25</div><div class="price">$16.25</div></div>
+                <div class="menu-item dual"><div><div class="name">Egg Salad</div></div><div class="price">$6.00</div><div class="price">$11.00</div></div>
+                <div class="menu-item dual"><div><div class="name">Grilled Cheese</div></div><div class="price">$5.00</div><div class="price">$10.00</div></div>
+                <div class="menu-item dual"><div><div class="name">Roast Beef</div></div><div class="price">$7.50</div><div class="price">$12.50</div></div>
+                <div class="menu-item dual"><div><div class="name">Turkey</div></div><div class="price">$7.50</div><div class="price">$12.50</div></div>
+                <div class="menu-item dual"><div><div class="name">Western</div></div><div class="price">$7.00</div><div class="price">$12.00</div></div>
+            </div>
+        </section>
+
+        <section id="hot" class="menu-block">
+            <h2>Hot Sandwiches</h2>
+            <div class="menu-note">Served with mashed potatoes, fries, or onion rings, vegetables & coleslaw. Substitute potato for salad or poutine - additional $3.00.</div>
+            <div class="menu-list">
+                <div class="menu-item"><div><div class="name">Hot Turkey (Dark Meat)</div></div><div class="price">$17.50</div></div>
+                <div class="menu-item"><div><div class="name">Hot Turkey (White Meat)</div></div><div class="price">$20.00</div></div>
+                <div class="menu-item"><div><div class="name">Hot Beef</div></div><div class="price">$17.50</div></div>
+                <div class="menu-item"><div><div class="name">Hot Hamburger</div></div><div class="price">$17.50</div></div>
+            </div>
+        </section>
+
+        <section id="home" class="menu-block">
+            <h2>A Taste of Home</h2>
+            <div class="menu-note">Served with mashed potatoes, fries, or onion rings, vegetables, roll & coleslaw. Substitute potato for salad or poutine - additional $3.00.</div>
+            <div class="menu-list">
+                <div class="menu-item"><div><div class="name">Turkey Dinner</div><div class="desc">mashed potatoes, dressing, vegetables, roll & coleslaw</div></div><div class="price">$17.50</div></div>
+                <div class="menu-item"><div><div class="name">Roast Beef</div><div class="desc">mashed potatoes, vegetables, roll & coleslaw</div></div><div class="price">$17.50</div></div>
+                <div class="menu-item"><div><div class="name">Liver & Onions</div><div class="desc">mashed potatoes, vegetables, roll & coleslaw</div></div><div class="price">$17.50</div></div>
+                <div class="menu-item"><div><div class="name">Chicken Fingers</div></div><div class="price">$14.25</div></div>
+                <div class="menu-item"><div><div class="name">Chicken Fingers - Fingers Only</div></div><div class="price">$9.25</div></div>
+                <div class="menu-item"><div><div class="name">Chicken Nuggets</div></div><div class="price">$12.00</div></div>
+                <div class="menu-item"><div><div class="name">Chicken Nuggets - Nuggets Only</div></div><div class="price">$7.00</div></div>
+                <div class="menu-item"><div><div class="name">Mozza Chicken</div><div class="desc">fried chicken breast smothered in tomato sauce & mozza cheese</div></div><div class="price">$16.25</div></div>
+            </div>
+        </section>
+
+        <section id="sea" class="menu-block">
+            <h2>From the Sea</h2>
+            <div class="menu-note">Platters include your choice of fries, onion rings, or mashed potatoes, roll & coleslaw. Substitute potato for salad or poutine - additional $3.00.</div>
+            <div class="menu-dual-header">
+                <div></div><div class="col">Sandwich</div><div class="col">Platter</div>
+            </div>
+            <div class="menu-list">
+                <div class="menu-item dual"><div><div class="name">Five Island Whole Clams</div><div class="desc">lightly battered</div></div><div class="price">$21.00</div><div class="price">$26.00</div></div>
+                <div class="menu-item dual"><div><div class="name">Digby Scallops</div><div class="desc">lightly battered</div></div><div class="price">$21.00</div><div class="price">$26.00</div></div>
+                <div class="menu-item dual"><div><div class="name">Fish Burger</div><div class="desc">cheese, lettuce & tartar sauce</div></div><div class="price">$12.00</div><div class="price">$17.00</div></div>
+            </div>
+            <div class="menu-list" style="margin-top: 1.5rem;">
+                <div class="menu-item"><div><div class="name">Clam Strip Platter</div></div><div class="price">$13.75</div></div>
+                <div class="menu-item"><div><div class="name">Clam Strips Only</div></div><div class="price">$8.75</div></div>
+                <div class="menu-item"><div><div class="name">Fish & Chip Platter - 1 Piece</div></div><div class="price">$16.00</div></div>
+                <div class="menu-item"><div><div class="name">Fish & Chip Platter - 2 Piece</div></div><div class="price">$21.00</div></div>
+                <div class="menu-item"><div><div class="name">Fish & Chip Platter - 3 Piece</div></div><div class="price">$26.00</div></div>
+                <div class="menu-item"><div><div class="name">Fishermen's Delight Platter</div><div class="desc">1 piece battered haddock & Five Island clams</div></div><div class="price">$26.50</div></div>
+                <div class="menu-item"><div><div class="name">Fishermen's Combo Platter</div><div class="desc">2 pieces battered haddock, Five Island clams & Digby scallops</div></div><div class="price">$42.00</div></div>
+            </div>
+        </section>
+
+        <section id="grill" class="menu-block">
+            <h2>From the Grill</h2>
+            <div class="menu-note">Platters include your choice of fries, onion rings, or mashed potatoes & coleslaw. Substitute potato for salad or poutine - additional $3.00.</div>
+            <div class="menu-dual-header">
+                <div></div><div class="col">Burger</div><div class="col">Platter</div>
+            </div>
+            <div class="menu-list">
+                <div class="menu-item dual"><div><div class="name">Hamburger</div></div><div class="price">$6.50</div><div class="price">$11.50</div></div>
+                <div class="menu-item dual"><div><div class="name">Double Hamburger</div></div><div class="price">$9.00</div><div class="price">$14.00</div></div>
+                <div class="menu-item dual"><div><div class="name">Cheese Burger</div></div><div class="price">$7.50</div><div class="price">$12.50</div></div>
+                <div class="menu-item dual"><div><div class="name">Double Cheese Burger</div></div><div class="price">$11.25</div><div class="price">$16.25</div></div>
+                <div class="menu-item dual"><div><div class="name">Bacon Cheese Burger</div></div><div class="price">$9.00</div><div class="price">$14.00</div></div>
+                <div class="menu-item dual"><div><div class="name">Double Bacon Cheese Burger</div></div><div class="price">$12.75</div><div class="price">$17.75</div></div>
+                <div class="menu-item dual"><div><div class="name">Super Burger</div><div class="desc">triple bun, double patty, lettuce, onion, cheese & secret sauce</div></div><div class="price">$11.75</div><div class="price">$16.75</div></div>
+                <div class="menu-item dual"><div><div class="name">Pizza Burger</div><div class="desc">topped with pizza sauce & melted mozza</div></div><div class="price">$7.50</div><div class="price">$12.50</div></div>
+                <div class="menu-item dual"><div><div class="name">Chicken Burger</div><div class="desc">smothered in gravy</div></div><div class="price">$10.00</div><div class="price">$15.00</div></div>
+                <div class="menu-item dual"><div><div class="name">Skinless Bunwich</div><div class="desc">grilled chicken breast on a bun with mayo & lettuce</div></div><div class="price">$10.50</div><div class="price">$15.50</div></div>
+                <div class="menu-item dual"><div><div class="name">Chicken Bunwich</div><div class="desc">deep fried chicken breast on a bun with mayo & lettuce</div></div><div class="price">$10.50</div><div class="price">$15.50</div></div>
+                <div class="menu-item dual"><div><div class="name">Hotdog</div></div><div class="price">$5.00</div><div class="price">$10.00</div></div>
+                <div class="menu-item dual"><div><div class="name">Hotdog with Cheese & Bacon</div></div><div class="price">$8.00</div><div class="price">$13.00</div></div>
+            </div>
+            <div class="menu-list" style="margin-top: 1.5rem;">
+                <div class="menu-item"><div><div class="name">Hamburger Poutine - Small</div><div class="desc">golden fries topped with hamburger, cheese and gravy</div></div><div class="price">$11.25</div></div>
+                <div class="menu-item"><div><div class="name">Hamburger Poutine - Large</div></div><div class="price">$16.75</div></div>
+                <div class="menu-item"><div><div class="name">Chicken Poutine - Small</div><div class="desc">golden fries topped with chicken, cheese and gravy</div></div><div class="price">$11.25</div></div>
+                <div class="menu-item"><div><div class="name">Chicken Poutine - Large</div></div><div class="price">$16.75</div></div>
+            </div>
+        </section>
+
+        <section id="sides" class="menu-block">
+            <h2>On the Side</h2>
+            <div class="menu-list">
+                <div class="menu-item"><div><div class="name">Gravy</div></div><div class="price">$2.00</div></div>
+                <div class="menu-item"><div><div class="name">Coleslaw</div></div><div class="price">$2.00</div></div>
+                <div class="menu-item"><div><div class="name">Small Fries</div></div><div class="price">$5.00</div></div>
+                <div class="menu-item"><div><div class="name">Large Fries</div></div><div class="price">$8.00</div></div>
+                <div class="menu-item"><div><div class="name">Small Poutine</div></div><div class="price">$7.50</div></div>
+                <div class="menu-item"><div><div class="name">Large Poutine</div></div><div class="price">$12.50</div></div>
+                <div class="menu-item"><div><div class="name">Small Onion Rings</div></div><div class="price">$5.00</div></div>
+                <div class="menu-item"><div><div class="name">Large Onion Rings</div></div><div class="price">$10.00</div></div>
+            </div>
+        </section>
+
+        <section id="drinks" class="menu-block">
+            <h2>Beverages & Bar</h2>
+            <div class="menu-list">
+                <div class="menu-item"><div><div class="name">Milk - Small</div></div><div class="price">$1.75</div></div>
+                <div class="menu-item"><div><div class="name">Milk - Large</div></div><div class="price">$3.00</div></div>
+                <div class="menu-item"><div><div class="name">Chocolate Milk - Small</div></div><div class="price">$2.25</div></div>
+                <div class="menu-item"><div><div class="name">Chocolate Milk - Large</div></div><div class="price">$3.25</div></div>
+                <div class="menu-item"><div><div class="name">Milkshake</div><div class="desc">chocolate, strawberry or vanilla</div></div><div class="price">$7.00</div></div>
+                <div class="menu-item"><div><div class="name">Pop</div></div><div class="price">$2.00</div></div>
+                <div class="menu-item"><div><div class="name">Coffee or Tea</div></div><div class="price">$1.75</div></div>
+                <div class="menu-item"><div><div class="name">Specialty Teas</div></div><div class="price">$2.00</div></div>
+                <div class="menu-item"><div><div class="name">Apple / Orange Juice - Small</div></div><div class="price">$1.75</div></div>
+                <div class="menu-item"><div><div class="name">Apple / Orange Juice - Large</div></div><div class="price">$3.00</div></div>
+                <div class="menu-item"><div><div class="name">Hot Chocolate</div></div><div class="price">$2.00</div></div>
+                <div class="menu-item"><div><div class="name">Bottle of Beer</div><div class="desc">Coors Light, Keith's, Bud, Bud Light</div></div><div class="price">$7.00</div></div>
+                <div class="menu-item"><div><div class="name">Glass of Wine</div><div class="desc">white or red, 6.5oz</div></div><div class="price">$8.25</div></div>
+            </div>
+        </section>
+
+        <section id="kids" class="menu-block">
+            <h2>Kids Menu</h2>
+            <div class="menu-note">Kids 10 & under - $11.50 includes a meal, a small drink, and dessert. Kids eat free Saturday with each meal purchased from our regular menu.</div>
+            <div class="menu-list">
+                <div class="menu-item"><div><div class="name">Hot Dog & Fries</div></div></div>
+                <div class="menu-item"><div><div class="name">Nuggets & Fries</div></div></div>
+                <div class="menu-item"><div><div class="name">Chicken Fingers & Fries</div></div></div>
+                <div class="menu-item"><div><div class="name">Grilled Cheese & Fries</div></div></div>
+                <div class="menu-item"><div><div class="name">Turkey Dinner</div></div></div>
+                <div class="menu-item"><div><div class="name">Caesar Salad & Garlic Toast</div></div></div>
+                <div class="menu-item"><div><div class="name">Drink</div><div class="desc">milk (white or chocolate), juice (apple or orange), or pop</div></div></div>
+                <div class="menu-item"><div><div class="name">Dessert</div><div class="desc">ice cream sundae (chocolate or caramel), apple sauce, or pudding (chocolate or butterscotch)</div></div></div>
+            </div>
+        </section>
+
+        <section id="desserts" class="menu-block">
+            <h2>Desserts</h2>
+            <div class="menu-list">
+                <div class="menu-item"><div><div class="name">Fresh Homemade Desserts</div><div class="desc">a limited selection is available daily - please ask your server for today's choices</div></div></div>
+            </div>
+        </section>
+
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-inner">
+        <div>The Parkview Family Restaurant & Inn Ltd. · 4670 Main Street, Oxford, NS B0M 1P0</div>
+        <div>
+            <a href="tel:+19024472258">(902) 447-2258</a>
+            ·
+            <a href="mailto:info@the-parkview.com">info@the-parkview.com</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
