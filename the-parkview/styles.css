@@ -117,12 +117,12 @@ p  { margin: 0 0 1em; color: var(--cloud); }
     gap: 0.7rem;
     font-family: 'Fraunces', serif;
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1.43rem;
     letter-spacing: 0.01em;
     color: var(--ice);
 }
 .brand-mark {
-    width: 80px; height: 80px;
+    width: 88px; height: 88px;
     object-fit: contain;
     filter: drop-shadow(0 6px 16px rgba(59, 130, 246, 0.6));
     transition: transform 200ms ease, filter 200ms ease;
@@ -811,6 +811,27 @@ mark.match {
     gap: 1rem;
 }
 .footer-inner a { color: var(--cloud); }
+
+.footer-credit {
+    margin-top: 1.4rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--hairline);
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--slate);
+    letter-spacing: 0.02em;
+}
+.footer-credit a {
+    color: var(--mist);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px dotted var(--slate);
+    transition: color 160ms ease, border-color 160ms ease;
+}
+.footer-credit a:hover {
+    color: var(--glow);
+    border-bottom-color: var(--glow);
+}
 
 /* ---------------- Print stylesheet ---------------- */
 @media print {
