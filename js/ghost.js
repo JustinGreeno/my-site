@@ -255,6 +255,7 @@
     overlay.className = 'nav-overlay';
 
     const linksClone = links.cloneNode(true);
+    linksClone.classList.remove('gn-links');
     linksClone.classList.add('nav-overlay-links');
     linksClone.removeAttribute('id');
 
