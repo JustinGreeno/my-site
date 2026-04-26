@@ -72,6 +72,21 @@
     } catch (e) {}
   }
 
+  // Local-mode pub/sub so submit() can refresh open lists in fallback mode.
+  const localSubs = {};
+  function notifyLocal(game) {
+    const arr = localSubs[game];
+    if (!arr) return;
+    arr.slice().forEach(function (entry) {
+      try { entry.cb(topLocal(game, entry.limit)); } catch (e) {}
+    });
+  }
+  // Cross-tab refresh: another tab submitted a score, this tab repaints.
+  window.addEventListener('storage', function (e) {
+    if (!e.key || e.key.indexOf('lb_') !== 0) return;
+    notifyLocal(e.key.slice(3));
+  });
+
   async function submit(game, name, score) {
     const g = cleanGame(game);
     const n = cleanName(name);
@@ -81,6 +96,7 @@
     const ctx = await getCtx();
     if (!ctx) {
       submitLocal(g, n, s);
+      notifyLocal(g);
       return true;
     }
     try {
@@ -93,6 +109,7 @@
     } catch (err) {
       console.warn('Leaderboard: submit failed, saving locally', err);
       submitLocal(g, n, s);
+      notifyLocal(g);
       return false;
     }
   }
@@ -133,6 +150,15 @@
       const ctx = await getCtx();
       if (cancelled) return;
       if (!ctx) {
+        const entry = { cb: onUpdate, limit: limit };
+        if (!localSubs[g]) localSubs[g] = [];
+        localSubs[g].push(entry);
+        unsub = function () {
+          const arr = localSubs[g];
+          if (!arr) return;
+          const i = arr.indexOf(entry);
+          if (i >= 0) arr.splice(i, 1);
+        };
         try { onUpdate(topLocal(g, limit)); } catch (e) {}
         return;
       }
