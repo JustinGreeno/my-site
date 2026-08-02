@@ -2028,3 +2028,126 @@ body::before {
 .colour-opt {
   transition: background-color 0.32s ease, color 0.18s ease, border-color 0.32s ease;
 }
+
+/* ── BOOKS ──────────────────────────────────────── */
+
+.book {
+  display: grid;
+  grid-template-columns: minmax(220px, 300px) 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+  padding: clamp(2.5rem, 6vw, 4.5rem) 0;
+  border-bottom: var(--rule);
+}
+
+.book:last-child { border-bottom: none; }
+
+.book-cover-wrap {
+  position: relative;
+  display: block;
+  border: var(--rule);
+  background: var(--bg);
+  overflow: hidden;
+  transition: var(--t), transform 0.3s ease;
+}
+
+a.book-cover-wrap:hover { transform: translateY(-4px); border-color: var(--accent); }
+
+.book-cover-wrap img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5 / 8;
+  object-fit: cover;
+}
+
+.book-cover-ph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 5 / 8;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  text-align: center;
+  padding: 1.5rem;
+  background: var(--glow);
+}
+
+.book-idx {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--fg-dim);
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.book-status {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.book-status.out { background: var(--accent); color: var(--accent-fg); }
+
+.book-title {
+  font-size: clamp(1.6rem, 4vw, 2.75rem);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.book-sub {
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  color: var(--fg-mid);
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+
+.book-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.5rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: var(--rule-soft);
+}
+
+.book-desc {
+  font-size: 0.98rem;
+  line-height: 1.8;
+  color: var(--fg-mid);
+  max-width: 60ch;
+  margin-bottom: 1.75rem;
+}
+
+.book-desc p + p { margin-top: 1rem; }
+
+.book-links-label {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.85rem;
+}
+
+@media (max-width: 720px) {
+  .book { grid-template-columns: 1fr; }
+  .book-cover-wrap { max-width: 240px; }
+  .book .btn { flex: 1 1 auto; justify-content: center; }
+}

@@ -170,6 +170,8 @@
     { title: "Sheryl's Bakery",              page: 'work.html',      section: 'Concept',      kw: 'sheryls bakery menu gallery' },
     { title: "What's For Dinner",            page: 'work.html',      section: 'Concept',      kw: 'whats for dinner meal planning app' },
     { title: 'Darkness Blooms',              page: 'devlogs.html',   section: 'Solo Dev',     kw: 'darkness blooms unity c# retro rpg pixel art game development devlogs youtube twitch discord' },
+    { title: 'Books',                        page: 'books.html',     section: 'Published',    kw: 'books published author writing amazon kindle paperback goodreads ebook' },
+    { title: 'Untranslatable',               page: 'books.html',     section: 'Published',    kw: 'untranslatable words for the feelings we all know book language emotions amazon kindle goodreads 2026' },
     { title: 'Pixel Art Gallery',            page: 'pixel-art.html', section: 'Gallery',      kw: 'pixel art gallery aseprite animation sprites environments' },
     { title: 'Devlogs',                      page: 'devlogs.html',   section: 'Development',  kw: 'devlogs development progress game youtube characters story' },
     { title: 'About Justin',                 page: 'about.html',     section: 'About',        kw: 'about biography nova scotia counselor developer gardening education bcit ubc saint marys' },
