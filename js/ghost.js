@@ -122,7 +122,8 @@
 
     function show(i) {
       cur = ((i % total) + total) % total;
-      img.src = images[cur].src;
+      // grid images are small thumbnails; data-full points at the full-size copy
+      img.src = images[cur].dataset.full || images[cur].src;
       img.alt = images[cur].alt || '';
       if (total > 1) counter.textContent = (cur + 1) + ' / ' + total;
     }
