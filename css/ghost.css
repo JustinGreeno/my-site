@@ -1,5 +1,5 @@
 /*
-  Ghost Design System — justingreeno.dev
+  Ghost Design System - justingreeno.dev
   Black & white. No shadows. No material design.
   Default: dark mode. Light/dark toggle supported.
 */
@@ -1559,7 +1559,7 @@ body::before {
 }
 
 .colour-opt:not(:disabled):hover {
-  background: var(--hover-bg);
+  background: var(--bg);
   color: var(--hover-fg);
 }
 
@@ -2171,3 +2171,34 @@ a.book-cover-wrap:hover { transform: translateY(-4px); border-color: var(--accen
   .book-cover-wrap { max-width: 240px; }
   .book .btn { flex: 1 1 auto; justify-content: center; }
 }
+
+/* ── WORD POSTER GRID ────────────────────────────── */
+
+.word-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 2vw, 1.75rem);
+}
+
+/* Reuses .photo-item so the ghost.js lightbox binds, but these are
+   full-colour 2:3 portraits, not the square greyscale photo tiles. */
+.word-grid .photo-item {
+  aspect-ratio: 2 / 3;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  border: var(--rule);
+  filter: none;
+  background: var(--bg);
+  transition: transform 0.35s ease, border-color 0.35s ease;
+}
+
+.word-grid .photo-item:hover {
+  filter: none;
+  transform: translateY(-5px);
+  border-color: var(--accent);
+}
+
+@media (max-width: 900px) { .word-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 560px) { .word-grid { grid-template-columns: repeat(2, 1fr); } }

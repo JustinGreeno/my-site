@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Posters | Justin Greeno</title>
+  <meta name="description" content="Twenty-seven illustrated word posters by Justin Greeno, one for every untranslatable word in the book Untranslatable: Words for the feelings we all know.">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/ghost.css">
+</head>
+<body>
+
+<div id="cursor-glow"></div>
+
+<nav class="gn">
+  <div class="c">
+    <a href="index.html" class="gn-logo">JG</a>
+    <ul class="gn-links">
+      <li><a href="work.html">Work</a></li>
+      <li><a href="books.html" class="active">Books</a></li>
+      <li><a href="pixel-art.html">Pixel Art</a></li>
+      <li><a href="devlogs.html">Devlogs</a></li>
+      <li><a href="games.html">Games</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</nav>
+
+<main style="flex:1">
+
+  <!-- HEADER -->
+  <section class="page-head fade-in">
+    <div class="c">
+      <div class="page-num">Untranslatable</div>
+      <h1 class="page-title">Word Posters</h1>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="sec" style="padding-top:2.5rem;padding-bottom:2.5rem">
+    <div class="c" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem">
+      <p style="font-size:1rem;line-height:1.8;color:var(--fg-mid);max-width:580px">
+        Twenty-seven words from around the world that English never got around to naming,
+        one poster each. Every language holds feelings the next one missed. Click any poster
+        to see it full size.
+      </p>
+      <div class="btn-row">
+        <a href="books.html" class="btn inv">The Book</a>
+        <a href="contact.html" class="btn">Get In Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- POSTER GRID -->
+  <section class="sec" style="border-top:var(--rule);padding-top:3rem">
+    <div class="c">
+      <div class="word-grid" id="word-grid"></div>
+    </div>
+  </section>
+
+  <!-- BOTTOM CTA -->
+  <section class="sec reveal" style="border-top:var(--rule)">
+    <div class="c" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem">
+      <div>
+        <div class="sec-label" style="margin-bottom:0.5rem">More</div>
+        <h2 style="font-size:clamp(1.5rem,3vw,2.5rem);letter-spacing:-0.03em">All of these live in the book</h2>
+      </div>
+      <div class="btn-row">
+        <a href="books.html" class="btn inv">View Books</a>
+        <a href="pixel-art.html" class="btn">Pixel Art</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="gf">
+  <div class="c">
+    <span class="gf-copy">&copy; 2026 Justin Greeno, Nova Scotia, Canada</span>
+    <div class="gf-links">
+      <a href="books.html">Books</a>
+      <a href="games.html">Play Games</a>
+      <a href="contact.html">Hire Me</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/ghost.js"></script>
+<script>
+  /* ─────────────────────────────────────────────────────────────
+     TO ADD A POSTER: drop the artwork in as
+       images/words/<slug>.jpg        (grid thumbnail, 700px wide)
+       images/words/full/<slug>.jpg   (lightbox copy, 1024px wide)
+     then add a line below. The grid and the lightbox are generated
+     from this array, and the lightbox comes from js/ghost.js.
+     ───────────────────────────────────────────────────────────── */
+  const WORDS = [
+    { slug: "anemoia",       word: "Anemoia",       lang: "coined English",       meaning: "Nostalgia for a time you never lived in." },
+    { slug: "cafune",        word: "Cafuné",        lang: "Brazilian Portuguese", meaning: "The tender act of running your fingers gently through someone's hair." },
+    { slug: "dadirri",       word: "Dadirri",       lang: "Aboriginal Australian",meaning: "A deep, quiet listening to the world and to yourself, inner stillness and contemplative presence." },
+    { slug: "depaysement",   word: "Dépaysement",   lang: "French",               meaning: "The beautiful disorientation of being somewhere completely unfamiliar." },
+    { slug: "fernweh",       word: "Fernweh",       lang: "German",               meaning: "Longing for faraway places, the opposite of homesickness." },
+    { slug: "forelsket",     word: "Forelsket",     lang: "Norwegian",            meaning: "The overwhelming euphoria you feel when you are falling in love." },
+    { slug: "hiraeth",       word: "Hiraeth",       lang: "Welsh",                meaning: "Homesickness for a home you can't return to, or that never existed." },
+    { slug: "hygge",         word: "Hygge",         lang: "Danish",               meaning: "The warm feeling of coziness, contentment and togetherness, being safe and present with people you love." },
+    { slug: "iktsuarpok",    word: "Iktsuarpok",    lang: "Inuit",                meaning: "The restless anticipation of going to check if someone you are expecting has arrived yet." },
+    { slug: "jayus",         word: "Jayus",         lang: "Indonesian",           meaning: "A joke so unfunny that you cannot help but laugh anyway." },
+    { slug: "kalsarikannit", word: "Kalsarikännit", lang: "Finnish",              meaning: "Drinking alone at home, with no intention of going out." },
+    { slug: "komorebi",      word: "Komorebi",      lang: "Japanese",             meaning: "Sunlight filtering through leaves." },
+    { slug: "lagom",         word: "Lagom",         lang: "Swedish",              meaning: "Not too much, not too little, just right." },
+    { slug: "meraki",        word: "Meraki",        lang: "Greek",                meaning: "Doing something with soul, creativity, and love." },
+    { slug: "mono-no-aware", word: "Mono no aware", lang: "Japanese",             meaning: "The gentle sadness of things passing, and the beauty in that." },
+    { slug: "mudita",        word: "Mudita",        lang: "Sanskrit",             meaning: "Taking joy in the happiness of others." },
+    { slug: "nakama",        word: "Nakama",        lang: "Japanese",             meaning: "A chosen family bound by shared purpose and struggle." },
+    { slug: "razbliuto",     word: "Razbliuto",     lang: "Russian",              meaning: "The quiet, hollow feeling for someone you once loved, but no longer do." },
+    { slug: "sehnsucht",     word: "Sehnsucht",     lang: "German",               meaning: "A deep, aching yearning for something you can't name or reach." },
+    { slug: "sillage",       word: "Sillage",       lang: "French",               meaning: "The invisible trail a person leaves behind, a scent, a presence, a memory." },
+    { slug: "sobremesa",     word: "Sobremesa",     lang: "Spanish",              meaning: "The time spent lingering at the table after a meal, talking, not wanting the moment to end." },
+    { slug: "sonder",        word: "Sonder",        lang: "coined English",       meaning: "The realization that every stranger has a life as vivid as your own." },
+    { slug: "tarab",         word: "Tarab",         lang: "Arabic",               meaning: "A state of musical ecstasy, being completely transported and transformed by music." },
+    { slug: "ubuntu",        word: "Ubuntu",        lang: "Nguni Bantu",          meaning: "I am because we are." },
+    { slug: "vellichor",     word: "Vellichor",     lang: "coined English",       meaning: "The strange wistfulness of old bookstores." },
+    { slug: "wabi-sabi",     word: "Wabi-sabi",     lang: "Japanese",             meaning: "Finding beauty in imperfection and impermanence." },
+    { slug: "yugen",         word: "Yūgen",         lang: "Japanese",             meaning: "A profound, wordless awareness of the universe's beauty that stirs something deep within." }
+  ];
+
+  const esc = s => String(s).replace(/[<>"&]/g, c => ({ '<': '&lt;', '>': '&gt;', '"': '&quot;', '&': '&amp;' }[c]));
+
+  document.getElementById('word-grid').innerHTML = WORDS.map(w => `
+    <img class="photo-item"
+         src="images/words/${w.slug}.jpg"
+         data-full="images/words/full/${w.slug}.jpg"
+         alt="${esc(w.word)} (${esc(w.lang)}): ${esc(w.meaning)} Word poster by Justin Greeno."
+         width="700" height="1050"
+         loading="lazy" decoding="async">`).join('');
+</script>
+
+</body>
+</html>

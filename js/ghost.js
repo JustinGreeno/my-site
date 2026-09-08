@@ -1,4 +1,4 @@
-/* ghost.js — ghost design system core */
+/* ghost.js - ghost design system core */
 (function () {
   'use strict';
 
@@ -171,9 +171,10 @@
     { title: "Sheryl's Bakery",              page: 'work.html',      section: 'Concept',      kw: 'sheryls bakery menu gallery' },
     { title: "What's For Dinner",            page: 'work.html',      section: 'Concept',      kw: 'whats for dinner meal planning app' },
     { title: 'Darkness Blooms',              page: 'devlogs.html',   section: 'Solo Dev',     kw: 'darkness blooms unity c# retro rpg pixel art game development devlogs youtube twitch discord' },
-    { title: 'Books',                        page: 'books.html',     section: 'Published',    kw: 'books published author writing amazon kindle paperback goodreads ebook' },
-    { title: 'Untranslatable',               page: 'books.html',     section: 'Published',    kw: 'untranslatable words for the feelings we all know book language emotions amazon kindle goodreads 2026' },
-    { title: 'Wild Plants',                  page: 'books.html',     section: 'Published',    kw: 'wild plants beautiful weeds of nova scotia book field guide foraging forager wildflowers botany gardening hiking mikmaq folklore amazon paperback hardcover 2026 dandelion purple loosestrife common daisy cattail buttercup lupine queen annes lace goldenrod purple clover chicory wild mustard ostrich fern bunchberry mayflower wild strawberry trillium yarrow tansy thistle fireweed wild rose wild raspberry serviceberry evening primrose' },
+    { title: 'Books',                        page: 'books.html',     section: 'Published',    kw: 'books published author writing amazon goodreads reading' },
+    { title: 'Untranslatable',               page: 'books.html',     section: 'Published',    kw: 'untranslatable words for the feelings we all know book language emotions amazon goodreads 2026' },
+    { title: 'Word Posters',                 page: 'words.html',     section: 'Gallery',      kw: 'word posters untranslatable gallery art prints anemoia cafune dadirri depaysement fernweh forelsket hiraeth hygge iktsuarpok jayus kalsarikannit komorebi lagom meraki mono no aware mudita nakama razbliuto sehnsucht sillage sobremesa sonder tarab ubuntu vellichor wabi-sabi yugen' },
+    { title: 'Wild Plants',                  page: 'books.html',     section: 'Published',    kw: 'wild plants beautiful weeds of nova scotia book field guide foraging forager wildflowers botany gardening hiking mikmaq folklore amazon goodreads 2026 dandelion purple loosestrife common daisy cattail buttercup lupine queen annes lace goldenrod purple clover chicory wild mustard ostrich fern bunchberry mayflower wild strawberry trillium yarrow tansy thistle fireweed wild rose wild raspberry serviceberry evening primrose' },
     { title: 'Pixel Art Gallery',            page: 'pixel-art.html', section: 'Gallery',      kw: 'pixel art gallery aseprite animation sprites environments' },
     { title: 'Devlogs',                      page: 'devlogs.html',   section: 'Development',  kw: 'devlogs development progress game youtube characters story' },
     { title: 'About Justin',                 page: 'about.html',     section: 'About',        kw: 'about biography nova scotia counsellor developer gardening education bcit ubc saint marys' },

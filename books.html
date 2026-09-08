@@ -49,8 +49,8 @@
   <section class="sec" style="padding-top:2.5rem;padding-bottom:2.5rem">
     <div class="c" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem">
       <p style="font-size:1rem;line-height:1.8;color:var(--fg-mid);max-width:580px">
-        Books I have written and published. Available in paperback, hardcover, and ebook through Amazon,
-        with reviews and reading lists over on Goodreads.
+        Books I have written and published. Available through Amazon, with reviews
+        and reading lists over on Goodreads.
       </p>
       <div class="btn-row">
         <a href="#books" class="btn inv">Browse Titles</a>
@@ -111,7 +111,6 @@
       title: 'Untranslatable',
       subtitle: 'Words for the feelings we all know',
       year: '2026',
-      format: 'Paperback &amp; Kindle',
       asin: 'B0H1Y1YVTD',
       cover: 'images/untranslatable-cover.jpg',
       desc: [
@@ -124,7 +123,8 @@
         { label: 'Amazon.ca',   url: 'https://www.amazon.ca/dp/B0H1Y1YVTD' },
         { label: 'Amazon.com',  url: 'https://www.amazon.com/dp/B0H1Y1YVTD' },
         { label: 'Goodreads',   url: 'https://www.goodreads.com/book/show/252270584-untranslatable' }
-      ]
+      ],
+      gallery: { label: 'View the Word Posters', url: 'words.html' }
     },
     {
       idx: '02',
@@ -133,7 +133,6 @@
       title: 'Wild Plants',
       subtitle: '(beautiful weeds) of Nova Scotia',
       year: '2026',
-      format: 'Paperback &amp; Hardcover',
       asin: 'B0HH9N7PBQ',
       cover: 'images/wild-plants-cover.jpg',
       desc: [
@@ -157,7 +156,7 @@
          </a>`
       : `<div class="book-cover-wrap"><div class="book-cover-ph">Cover<br>Coming Soon</div></div>`;
 
-    const facts = [b.year, b.format, b.asin ? 'ASIN ' + b.asin : null]
+    const facts = [b.year, b.asin ? 'ASIN ' + b.asin : null]
       .filter(Boolean).map(f => `<span>${f}</span>`).join('');
 
     const links = b.links.length
@@ -165,6 +164,10 @@
          <div class="btn-row">
            ${b.links.map((l, i) => `<a class="btn${i === 0 ? ' inv' : ''}" href="${l.url}" target="_blank" rel="noopener noreferrer">${esc(l.label)} &#8599;</a>`).join('')}
          </div>`
+      : '';
+
+    const gallery = b.gallery
+      ? `<div class="btn-row" style="margin-top:1rem"><a class="btn" href="${b.gallery.url}">${esc(b.gallery.label)} &rarr;</a></div>`
       : '';
 
     return `
@@ -178,6 +181,7 @@
           <div class="book-facts">${facts}</div>
           <div class="book-desc">${b.desc.map(p => `<p>${esc(p)}</p>`).join('')}</div>
           ${links}
+          ${gallery}
         </div>
       </article>`;
   }).join('');
