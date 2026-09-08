@@ -14,7 +14,7 @@ const siteIndex = [
     {
         title: 'About Me',
         url: 'about.html',
-        keywords: ['about', 'bio', 'biography', 'skills', 'contact', 'email', 'javascript', 'typescript', 'react', 'node', 'unity', 'c#', 'html', 'css', 'sql', 'git', 'github', 'figma', 'photoshop', 'counselor', 'farm', 'nova scotia'],
+        keywords: ['about', 'bio', 'biography', 'skills', 'contact', 'email', 'javascript', 'typescript', 'react', 'node', 'unity', 'c#', 'html', 'css', 'sql', 'git', 'github', 'figma', 'photoshop', 'counsellor', 'farm', 'nova scotia'],
         description: 'Learn about Justin Greeno - skills, background, and contact information'
     },
     {

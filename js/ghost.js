@@ -176,7 +176,7 @@
     { title: 'Wild Plants',                  page: 'books.html',     section: 'Published',    kw: 'wild plants beautiful weeds of nova scotia book field guide foraging forager wildflowers botany gardening hiking mikmaq folklore amazon paperback hardcover 2026 dandelion purple loosestrife common daisy cattail buttercup lupine queen annes lace goldenrod purple clover chicory wild mustard ostrich fern bunchberry mayflower wild strawberry trillium yarrow tansy thistle fireweed wild rose wild raspberry serviceberry evening primrose' },
     { title: 'Pixel Art Gallery',            page: 'pixel-art.html', section: 'Gallery',      kw: 'pixel art gallery aseprite animation sprites environments' },
     { title: 'Devlogs',                      page: 'devlogs.html',   section: 'Development',  kw: 'devlogs development progress game youtube characters story' },
-    { title: 'About Justin',                 page: 'about.html',     section: 'About',        kw: 'about biography nova scotia counselor developer gardening education bcit ubc saint marys' },
+    { title: 'About Justin',                 page: 'about.html',     section: 'About',        kw: 'about biography nova scotia counsellor developer gardening education bcit ubc saint marys' },
     { title: 'Resume',                       page: 'resume.html',    section: 'Resume',       kw: 'resume experience education skills certifications download pdf print' },
     { title: 'Contact',                      page: 'contact.html',   section: 'Contact',      kw: 'contact email hire freelance linkedin instagram discord patreon' },
     { title: 'Games',                        page: 'games.html',     section: 'Play',         kw: 'games snake pacman colour code browser web games play interactive fun' },
@@ -185,7 +185,7 @@
     { title: 'React / Vite / Node.js',       page: 'resume.html',    section: 'Skills',       kw: 'react vite nodejs express backend api component' },
     { title: 'HTML / CSS',                   page: 'resume.html',    section: 'Skills',       kw: 'html css responsive design accessibility web standards' },
     { title: 'Unity / C# / Pixel Art',       page: 'resume.html',    section: 'Skills',       kw: 'unity csharp game engine aseprite pixel art animation' },
-    { title: 'Counseling / Harm Reduction',  page: 'resume.html',    section: 'Experience',   kw: 'counseling harm reduction addiction crisis intervention transitional housing intellectual disabilities' },
+    { title: 'Counselling / Harm Reduction',  page: 'resume.html',    section: 'Experience',   kw: 'counselling harm reduction addiction crisis intervention transitional housing intellectual disabilities' },
   ];
 
   function searchIndex(q) {
