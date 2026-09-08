@@ -82,6 +82,93 @@
     document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
   }
 
+  /* ── MARQUEE SCRUB ───────────────────────────────── */
+  /* Pointer position across the ticker acts as an invisible slider:
+     a dead zone in the middle holds it still, and the further out
+     toward either edge you go the faster it runs that way, left
+     speeding it up and right rewinding it. Falls back to the plain
+     CSS animation where there is no hover or motion is reduced. */
+  function initMarquee() {
+    const wrap  = document.querySelector('.marquee-wrap');
+    const track = wrap && wrap.querySelector('.marquee-track');
+    const set   = track && track.querySelector('.marquee-set');
+    if (!set) return;
+
+    const canHover = window.matchMedia('(hover: hover)').matches;
+    const noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!canHover || noMotion) return;   // leave the CSS animation alone
+
+    const DEAD  = 0.25;   // half-width of the centre pause zone, 0 to 0.5
+    const BOOST = 3;      // speed at the very edge, as a multiple of base
+    const CYCLE = 32;     // seconds for one set to pass, matches the CSS
+
+    let setW = set.offsetWidth;
+    let base = setW / CYCLE;              // px per second, the resting drift
+    let pos = 0;                          // px scrolled, wraps at setW
+    let speed = base;                     // current px/s, positive runs left
+    let target = base;
+    let hovering = false;
+    let running = false;
+    let raf = 0;
+    let last = 0;
+
+    track.style.animation = 'none';       // JS owns the transform now
+
+    /* Web fonts land after init and change the set width, so re-measure
+       and reseed the resting speed whenever that happens. */
+    new ResizeObserver(() => {
+      const w = set.offsetWidth;
+      if (!w) return;
+      setW = w;
+      base = setW / CYCLE;
+      if (!hovering) target = base;
+    }).observe(set);
+
+    wrap.addEventListener('mousemove', e => {
+      const r = wrap.getBoundingClientRect();
+      if (!r.width) return;
+      hovering = true;
+      const t = (e.clientX - r.left) / r.width - 0.5;   // -0.5 .. 0.5
+      if (Math.abs(t) <= DEAD) { target = 0; return; }  // centre: hold still
+      const past = (Math.abs(t) - DEAD) / (0.5 - DEAD); // 0 at zone edge, 1 at rim
+      target = base * BOOST * past * (t < 0 ? 1 : -1);
+    });
+
+    wrap.addEventListener('mouseleave', () => { hovering = false; target = base; });
+
+    function frame(now) {
+      const dt = Math.min((now - last) / 1000, 0.05);
+      last = now;
+      speed += (target - speed) * (1 - Math.exp(-dt * 7));   // ease toward target
+      pos = (pos + speed * dt) % setW;
+      if (pos < 0) pos += setW;
+      track.style.transform = 'translateX(' + (-pos) + 'px)';
+      raf = requestAnimationFrame(frame);
+    }
+
+    function start() {
+      if (running) return;
+      running = true;
+      last = performance.now();
+      raf = requestAnimationFrame(frame);
+    }
+
+    function stop() {
+      running = false;
+      cancelAnimationFrame(raf);
+    }
+
+    /* Only burn frames while the ticker is actually on screen. */
+    new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) start(); else stop();
+    }, { threshold: 0 }).observe(wrap);
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stop();
+      else if (wrap.getBoundingClientRect().bottom > 0) start();
+    });
+  }
+
   /* ── LIGHTBOX ────────────────────────────────────── */
   function openLightbox(images, startIdx) {
     let cur = startIdx;
@@ -354,6 +441,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       initReveal();
       initLightboxes();
+      initMarquee();
       injectSearch();
       injectMobileNav();
       ytFallback();
@@ -361,6 +449,7 @@
   } else {
     initReveal();
     initLightboxes();
+    initMarquee();
     injectSearch();
     injectMobileNav();
     ytFallback();
