@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Books | Justin Greeno</title>
-  <meta name="description" content="Books written and published by Justin Greeno, including Untranslatable: Words for the feelings we all know.">
+  <meta name="description" content="Books written and published by Justin Greeno, including Untranslatable: Words for the feelings we all know, and Wild Plants: the beautiful weeds of Nova Scotia.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
@@ -45,7 +45,7 @@
   <section class="sec" style="padding-top:2.5rem;padding-bottom:2.5rem">
     <div class="c" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem">
       <p style="font-size:1rem;line-height:1.8;color:var(--fg-mid);max-width:580px">
-        Books I have written and published. Available in paperback and ebook through Amazon,
+        Books I have written and published. Available in paperback, hardcover, and ebook through Amazon,
         with reviews and reading lists over on Goodreads.
       </p>
       <div class="btn-row">
@@ -124,18 +124,24 @@
     },
     {
       idx: '02',
-      status: 'soon',
-      statusText: 'Publishing Now',
-      title: 'Book Two',
-      subtitle: 'Title coming shortly',
+      status: 'out',
+      statusText: 'Available Now',
+      title: 'Wild Plants',
+      subtitle: '(beautiful weeds) of Nova Scotia',
       year: '2026',
-      format: 'Paperback &amp; Kindle',
-      asin: '',
-      cover: null,
+      format: 'Paperback &amp; Hardcover',
+      asin: 'B0HH9N7PBQ',
+      cover: 'images/wild-plants-cover.jpg',
       desc: [
-        'My second book is being published right now. Title, cover, and store links will land here the moment it goes live.'
+        /* Second paragraph is placeholder blurb copy, swap it for your real
+           Amazon description. */
+        'A field guide to the wild plants most of us walk past without looking twice.',
+        'Nova Scotia is covered in plants nobody planted. Lupins along the highway, daisies in the ditch, clover taking back a lawn. We call them weeds because they showed up uninvited, but they feed the pollinators, hold the soil, and put on the best show of the year for free. This book is a look at the ones growing right outside your door, what they are, and why they are worth knowing by name.'
       ],
-      links: []
+      links: [
+        { label: 'Amazon.ca',   url: 'https://www.amazon.ca/dp/B0HH9N7PBQ' },
+        { label: 'Amazon.com',  url: 'https://www.amazon.com/dp/B0HH9N7PBQ' }
+      ]
     }
   ];
 
