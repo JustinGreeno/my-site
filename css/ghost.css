@@ -197,13 +197,13 @@ nav.gn .c {
 a.hero-role {
   color: var(--fg-mid);
   text-decoration: none;
-  border-bottom: 1px solid var(--fg-dim);
-  padding-bottom: 2px;
-  transition: color 0.25s ease, border-color 0.25s ease;
+  transition: color 0.25s ease;
 }
 
 a.hero-role:hover,
-a.hero-role:focus-visible { color: var(--accent); border-bottom-color: var(--accent); }
+a.hero-role:focus-visible { color: var(--accent); }
+
+.hero-loc { color: var(--fg-dim); }
 
 .hero-sep { font-family: var(--mono); font-size: 0.8rem; color: var(--fg-dim); }
 
@@ -1287,6 +1287,15 @@ footer.gf .c {
   padding: 0 2rem;
   flex-shrink: 0;
 }
+
+
+.marquee-set a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.marquee-set a:hover { color: var(--accent); }
 
 .mq-sep {
   color: var(--accent);
