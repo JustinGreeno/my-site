@@ -5,10 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pixel Art | Justin Greeno</title>
   <meta name="description" content="Pixel art gallery by Justin Greeno: animations, sprites, and environments for Darkness Blooms.">
+  <link rel="canonical" href="https://justingreeno.dev/pixel-art.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Justin Greeno">
+  <meta property="og:locale" content="en_CA">
+  <meta property="og:url" content="https://justingreeno.dev/pixel-art.html">
+  <meta property="og:title" content="Pixel Art | Justin Greeno">
+  <meta property="og:description" content="Pixel art gallery by Justin Greeno: animations, sprites, and environments for Darkness Blooms.">
+  <meta property="og:image" content="https://justingreeno.dev/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Justin Greeno, web developer, author and designer in Nova Scotia">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pixel Art | Justin Greeno">
+  <meta name="twitter:description" content="Pixel art gallery by Justin Greeno: animations, sprites, and environments for Darkness Blooms.">
+  <meta name="twitter:image" content="https://justingreeno.dev/images/og-default.jpg">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#080808">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
@@ -97,7 +114,8 @@
     {
       num: '01',
       title: "Billy's House",
-      img: '../images/house_art.gif',
+      img: 'images/house_art.gif',
+      w: 822,  h: 640,
       alt: "Billy's House",
       desc: "Billy's parents are archaeologists turned researchers turned professors, and they live within the main castle. A detailed pixel art environment built for the game world.",
       ytId: 'LlvsxoYQCjI',
@@ -107,7 +125,8 @@
     {
       num: '02',
       title: 'Stardew Valley Title Screen Remake',
-      img: '../images/title.gif',
+      img: 'images/title.gif',
+      w: 1244, h: 670,
       alt: 'Stardew Valley Title Screen',
       desc: 'A tribute to one of the games that most inspired the art direction of Darkness Blooms. A full recreation built in Aseprite as an exercise in environmental storytelling.',
       ytId: 'lLe3m-RQPg4',
@@ -117,7 +136,8 @@
     {
       num: '03',
       title: 'Mushroom Towers',
-      img: '../images/mushTower.gif',
+      img: 'images/mushTower.gif',
+      w: 901,  h: 1020,
       alt: 'Mushroom Towers',
       desc: 'In Darkness Blooms, technology and nature often mix. In one small community, the people live inside large mushrooms, these animated towers bring that world to life.',
       ytId: 'R5VRNv7qFoY',
@@ -127,7 +147,8 @@
     {
       num: '04',
       title: 'Tree Stumps',
-      img: '../images/stump.gif',
+      img: 'images/stump.gif',
+      w: 1070, h: 493,
       alt: 'Tree Stumps',
       desc: "Ever since the incident it's hard to trust anything not to attack you. Nature has gone wild. These animated stumps capture that unease.",
       ytId: 'DCXRBEiLUUc',
@@ -137,7 +158,8 @@
     {
       num: '05',
       title: 'Veggies',
-      img: '../images/veg.gif',
+      img: 'images/veg.gif',
+      w: 4998, h: 1664,
       alt: 'Veggies',
       desc: 'Animated vegetable sprites for farming and gardening mechanics. Each vegetable has its own growth cycle and animation, a core part of the game world.',
       ytId: 'ET4TbnetgNA',
@@ -147,7 +169,8 @@
     {
       num: '06',
       title: 'Treasure Chests',
-      img: '../images/Pick a chest gif 2.0.gif',
+      img: 'images/Pick a chest gif 2.0.gif',
+      w: 1483, h: 552,
       alt: 'Treasure Chests',
       desc: 'A variety of animated treasure chests for players to discover throughout the game world. Each style hints at what might be inside.',
       ytId: 'aC137GxEQZI',
@@ -157,7 +180,8 @@
     {
       num: '07',
       title: 'Windmills',
-      img: '../images/Windmills 3.0 Gif .gif',
+      img: 'images/Windmills 3.0 Gif .gif',
+      w: 6059, h: 2668,
       alt: 'Windmills',
       desc: 'Animated windmill structures that bring life to the countryside areas of the game. The rotation cycle was carefully tuned to feel natural and organic.',
       ytId: 'wjNMZPSz7Jo',
@@ -167,7 +191,8 @@
     {
       num: '08',
       title: 'Convoy',
-      img: '../images/gif REAL SCUESS THIS ONE.gif',
+      img: 'images/gif REAL SCUESS THIS ONE.gif',
+      w: 9981, h: 4446,
       alt: 'Convoy',
       desc: 'A traveling convoy scene that hints at the scale and scope of the wider world of Darkness Blooms. Movement, depth, and atmosphere in a single looping image.',
       ytId: '7Sz5tXZ1o5I',
@@ -183,7 +208,7 @@
       <div class="art-split ${a.flip ? 'flipped' : ''}">
         <div>
           <a href="https://www.youtube.com/watch?v=${a.ytId}" target="_blank" rel="noopener noreferrer" title="Watch time-lapse on YouTube">
-            <img src="${a.img}" alt="${a.alt}" class="art-img" loading="lazy" decoding="async">
+            <img src="${a.img}" alt="${a.alt}" class="art-img" width="${a.w}" height="${a.h}" loading="lazy" decoding="async">
           </a>
         </div>
         <div>

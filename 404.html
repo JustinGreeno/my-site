@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | Justin Greeno</title>
+  <meta name="description" content="That page does not exist, but Alaska is here to walk you back to justingreeno.dev.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#080808">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/ghost.css">
+</head>
+<body>
+
+<div id="cursor-glow"></div>
+
+<nav class="gn">
+  <div class="c">
+    <a href="/index.html" class="gn-logo">JG</a>
+    <ul class="gn-links">
+      <li><a href="/work.html">Work</a></li>
+      <li><a href="/books.html">Books</a></li>
+      <li><a href="/pixel-art.html">Pixel Art</a></li>
+      <li><a href="/devlogs.html">Devlogs</a></li>
+      <li><a href="/games.html">Games</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/resume.html">Resume</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</nav>
+
+<main style="flex:1;display:flex;align-items:center">
+  <section class="sec" style="width:100%">
+    <div class="c">
+      <div class="nf-grid">
+
+        <div class="nf-text">
+          <div class="nf-code" aria-label="404">404</div>
+          <h1 class="nf-msg" id="nf-msg">Looks like you are lost. But you found a puppy.</h1>
+          <p class="nf-sub">
+            The page you were after is not here. Alaska is, though, and she knows the way back.
+          </p>
+          <div class="btn-row" style="margin-top:2rem">
+            <a href="/index.html" class="btn inv">Take Me Home</a>
+            <a href="/work.html" class="btn">View Work</a>
+            <a href="/books.html" class="btn">Books</a>
+          </div>
+        </div>
+
+        <figure class="nf-figure">
+          <div class="nf-photo-wrap">
+            <img id="nf-photo" class="nf-photo" src="/images/alaska/alaska-snow-paws.jpg"
+                 alt="Alaska, a husky, somewhere in Nova Scotia" width="828" height="1100"
+                 decoding="async">
+          </div>
+          <figcaption class="nf-cap">
+            <span class="nf-cap-name">Alaska</span>
+            <span class="nf-cap-hint">hover to bring her back to colour</span>
+          </figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="gf">
+  <div class="c">
+    <span class="gf-copy">&copy; 2026 Justin Greeno, Nova Scotia, Canada</span>
+    <div class="gf-links">
+      <a href="/books.html">Books</a>
+      <a href="/games.html">Play Games</a>
+      <a href="/contact.html">Hire Me</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/ghost.js"></script>
+<script>
+  /* Pick a photo and a line at random. Paths are root-absolute because
+     GitHub Pages serves this file for any missing URL, at any depth. */
+  const PHOTOS = [
+    { src: 'alaska-snow-paws.jpg',  w: 828,  h: 1100, alt: 'Alaska the husky lying in deep snow with her paws out and her tongue lolling' },
+    { src: 'alaska-trail.jpg',      w: 920,  h: 1100, alt: 'Alaska trotting down a snow covered forest trail' },
+    { src: 'alaska-logpile.jpg',    w: 828,  h: 1100, alt: 'Alaska resting in the snow beside a stack of cut logs' },
+    { src: 'alaska-grass.jpg',      w: 1100, h: 1100, alt: 'A soaking wet Alaska lying in the grass beside a tennis ball' },
+    { src: 'alaska-sunset.jpg',     w: 1079, h: 789,  alt: 'Alaska sitting in a field of tall grass under a pink and violet sunset' },
+    { src: 'alaska-blocks.jpg',     w: 1100, h: 1100, alt: 'Alaska perched on a wall of brightly painted concrete blocks' },
+    { src: 'alaska-and-friend.jpg', w: 828,  h: 1100, alt: 'Alaska curled up on a quilt next to a black and white border collie' }
+  ];
+
+  const LINES = [
+    'Looks like you are lost. But you found a puppy.',
+    'Oops. Nothing to see here but a cute puppy.',
+    'Wow, a puppy. No web page though.',
+    '404 puppies found. Zero pages found.',
+    'This page wandered off. Alaska stayed right here.',
+    'You took a wrong turn somewhere. She does not mind.',
+    'Page not found. Dog very much found.',
+    'Nothing lives at this address except her.',
+    'The page is gone. The good girl remains.',
+    'Sorry, you may be lost. Here is a random photo of my dog.'
+  ];
+
+  const pick = a => a[Math.floor(Math.random() * a.length)];
+
+  const p = pick(PHOTOS);
+  const img = document.getElementById('nf-photo');
+  img.src = '/images/alaska/' + p.src;
+  img.alt = p.alt;
+  img.width = p.w;
+  img.height = p.h;
+
+  document.getElementById('nf-msg').textContent = pick(LINES);
+</script>
+
+</body>
+</html>
