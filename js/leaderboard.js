@@ -228,7 +228,7 @@
     return Number(s || 0).toLocaleString('en-US');
   }
 
-  function paintList(el, rows, statusEl) {
+  function paintList(el, rows, statusEl, fmt) {
     if (!el) return;
     if (!rows || !rows.length) {
       el.innerHTML = '<li class="lb-empty">No scores yet. Be the first.</li>';
@@ -237,7 +237,7 @@
         return '<li>' +
           '<span class="lb-rank">' + String(i + 1).padStart(2, '0') + '</span>' +
           '<span class="lb-name">' + escapeHtml(r.name || '???') + '</span>' +
-          '<span class="lb-score">' + formatScore(r.score) + '</span>' +
+          '<span class="lb-score">' + escapeHtml(fmt ? fmt(r.score) : formatScore(r.score)) + '</span>' +
           '</li>';
       }).join('');
     }
@@ -246,12 +246,15 @@
 
   // Convenience: bind a leaderboard to a list element + game id.
   // Returns { isPB(score), submit(name, score), top(), unsubscribe() }.
-  function bind(game, listEl, lim, statusEl) {
+  function bind(game, listEl, lim, statusEl, opts) {
     const limit = Math.max(1, Math.min(50, Math.floor(lim || 10)));
+    /* Optional display formatter. A time-based board stores an inverted
+       score so that bigger still means better, and hands back a clock here. */
+    const fmt = opts && typeof opts.format === 'function' ? opts.format : null;
     let current = [];
     const unsub = subscribe(game, function (rows) {
       current = rows || [];
-      paintList(listEl, current, statusEl);
+      paintList(listEl, current, statusEl, fmt);
     }, limit);
 
     if (statusEl) statusEl.textContent = isLive ? 'Live' : 'Local';

@@ -2350,3 +2350,121 @@ select:focus-visible,
 
 [data-lb-mode="live"] .lb-only-live  { display: inline; }
 [data-lb-mode="live"] .lb-only-local { display: none; }
+
+/* ── MINESWEEPER ─────────────────────────────────── */
+
+.mines-diffs {
+  display: flex;
+  gap: 0;
+  border-top: var(--rule);
+  border-left: var(--rule);
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.mines-diff {
+  flex: 1 1 120px;
+  padding: 0.85rem 1rem;
+  border: none;
+  border-right: var(--rule);
+  border-bottom: var(--rule);
+  background: transparent;
+  color: var(--fg-mid);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--t);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  align-items: center;
+}
+
+.mines-diff span {
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: var(--fg-dim);
+  text-transform: none;
+}
+
+.mines-diff:hover { background: var(--hover-bg); color: var(--hover-fg); }
+.mines-diff:hover span { color: var(--hover-fg); opacity: 0.7; }
+.mines-diff.active { background: var(--accent); color: var(--accent-fg); }
+.mines-diff.active span { color: var(--accent-fg); opacity: 0.75; }
+
+/* The board sits in the shared game frame, but unlike the canvas games it
+   is a DOM grid, so it scrolls sideways on Expert rather than shrinking
+   the cells past readability. */
+.mines-wrap { background: var(--bg); padding: 0; }
+
+.mines-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: clamp(0.6rem, 2vw, 1.25rem);
+}
+
+.mines-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--mines-cols, 9), minmax(26px, 1fr));
+  gap: 1px;
+  background: var(--rule-c, rgba(237,237,237,0.12));
+  border: 1px solid var(--rule-c, rgba(237,237,237,0.12));
+  width: 100%;
+  margin: 0 auto;
+}
+
+.mines-grid.dense { min-width: 640px; }
+
+.mine-cell {
+  aspect-ratio: 1;
+  min-width: 26px;
+  border: none;
+  background: var(--mine-hidden, rgba(237,237,237,0.07));
+  color: var(--fg);
+  font-family: var(--mono);
+  font-size: clamp(0.62rem, 1.5vw, 0.85rem);
+  font-weight: 500;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.12s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mine-cell:hover { background: var(--mine-hover, rgba(237,237,237,0.16)); }
+.mine-cell:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+.mine-cell.open {
+  background: transparent;
+  cursor: default;
+}
+.mine-cell.open:hover { background: rgba(237,237,237,0.04); }
+
+.mine-cell.flag { color: var(--accent); background: var(--mine-hidden, rgba(237,237,237,0.07)); }
+.mine-cell.mine { color: #c05a5a; }
+.mine-cell.boom { background: #c05a5a; color: #fff; }
+
+/* Mid-tone digits, chosen to stay legible on both the black and the white
+   ground rather than swapping a palette per theme. */
+.mine-cell.n1 { color: #4f9d69; }
+.mine-cell.n2 { color: #3d8fb0; }
+.mine-cell.n3 { color: #c07a3e; }
+.mine-cell.n4 { color: #8c6bd0; }
+.mine-cell.n5 { color: #c05a5a; }
+.mine-cell.n6 { color: #3f9e9e; }
+.mine-cell.n7 { color: #9a9a9a; }
+.mine-cell.n8 { color: #6f6f6f; }
+
+:root { --mine-hidden: rgba(0,0,0,0.07); --mine-hover: rgba(0,0,0,0.15); --rule-c: rgba(0,0,0,0.12); }
+[data-theme="dark"] { --mine-hidden: rgba(237,237,237,0.07); --mine-hover: rgba(237,237,237,0.16); --rule-c: rgba(237,237,237,0.12); }
+
+@media (max-width: 560px) {
+  .mine-cell { min-width: 22px; }
+  .mines-grid { grid-template-columns: repeat(var(--mines-cols, 9), minmax(22px, 1fr)); }
+}

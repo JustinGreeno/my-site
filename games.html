@@ -4,21 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Games | Justin Greeno</title>
-  <meta name="description" content="Browser-based games by Justin Greeno. Play Snake, Pac-Man Survival, and more.">
+  <meta name="description" content="Browser-based games by Justin Greeno. Play Snake, Pac-Man Survival, Colour Code, Tetris, and Minesweeper, with global leaderboards.">
   <link rel="canonical" href="https://justingreeno.dev/games.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Justin Greeno">
   <meta property="og:locale" content="en_CA">
   <meta property="og:url" content="https://justingreeno.dev/games.html">
   <meta property="og:title" content="Games | Justin Greeno">
-  <meta property="og:description" content="Browser-based games by Justin Greeno. Play Snake, Pac-Man Survival, and more.">
+  <meta property="og:description" content="Browser-based games by Justin Greeno. Play Snake, Pac-Man Survival, Colour Code, Tetris, and Minesweeper, with global leaderboards.">
   <meta property="og:image" content="https://justingreeno.dev/images/og-default.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Justin Greeno, web developer, author and designer in Nova Scotia">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Games | Justin Greeno">
-  <meta name="twitter:description" content="Browser-based games by Justin Greeno. Play Snake, Pac-Man Survival, and more.">
+  <meta name="twitter:description" content="Browser-based games by Justin Greeno. Play Snake, Pac-Man Survival, Colour Code, Tetris, and Minesweeper, with global leaderboards.">
   <meta name="twitter:image" content="https://justingreeno.dev/images/og-default.jpg">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32.png">
@@ -394,6 +394,106 @@
     </div>
   </section>
 
+  <!-- MINESWEEPER -->
+  <section class="game-section reveal">
+    <div class="c">
+      <div class="sec-head">
+        <div>
+          <div class="sec-label">Game 05</div>
+          <h2 class="sec-title">Minesweeper</h2>
+        </div>
+        <div class="tags">
+          <span class="tag">Logic</span>
+          <span class="tag">Grid</span>
+          <span class="tag">Best Time</span>
+        </div>
+        <span class="game-toggle">+</span>
+      </div>
+      <div class="game-body-wrap"><div class="game-body"><div class="game-body-inner">
+      <p style="font-size:0.95rem;line-height:1.75;color:var(--fg-mid);margin-bottom:1.5rem">
+        Classic logic puzzle. Clear every safe square without setting off a mine.
+        Your first click is always safe and always opens a clearing, so no game is
+        lost on the opening move. Fastest times win, and each difficulty keeps its
+        own board.
+      </p>
+
+      <div class="mines-diffs" id="mines-diffs">
+        <button class="mines-diff active" data-diff="easy">Beginner<span>9 &times; 9 &middot; 10</span></button>
+        <button class="mines-diff" data-diff="med">Intermediate<span>16 &times; 16 &middot; 40</span></button>
+        <button class="mines-diff" data-diff="hard">Expert<span>30 &times; 16 &middot; 99</span></button>
+      </div>
+
+      <div class="game-scores-row">
+        <div class="game-score-cell">
+          <div class="game-score-label">Mines Left</div>
+          <div class="game-score-val" id="mines-left">10</div>
+        </div>
+        <div class="game-score-cell">
+          <div class="game-score-label">Time</div>
+          <div class="game-score-val" id="mines-time">0:00</div>
+        </div>
+        <div class="game-score-cell">
+          <div class="game-score-label">Best</div>
+          <div class="game-score-val" id="mines-best">&ndash;&ndash;</div>
+        </div>
+      </div>
+
+      <div class="game-canvas-wrap mines-wrap">
+        <div class="mines-scroll">
+          <div class="mines-grid" id="mines-grid" role="grid" aria-label="Minesweeper board"></div>
+        </div>
+        <div class="game-over-overlay" id="mines-over">
+          <div class="game-over-title" id="mines-over-title">Boom</div>
+          <div class="game-score-display" id="mines-over-sub">You hit a mine.</div>
+          <div class="game-initials-wrap" id="mines-initials-wrap">
+            <div class="game-initials-label">New Best Time. Enter Initials:</div>
+            <input type="text" class="game-initials-input" id="mines-initials" maxlength="3" placeholder="AAA">
+            <button class="btn inv" id="mines-submit" style="font-size:0.72rem;padding:0.5rem 1rem">Submit</button>
+          </div>
+          <button class="btn inv" id="mines-restart" style="margin-top:0.5rem">Play Again</button>
+        </div>
+      </div>
+
+      <div class="lb-block">
+        <div class="lb-head">
+          <div class="game-score-label">Top 10<span class="lb-only-live"> Global</span> <span id="mines-lb-diff">Beginner</span></div>
+          <span class="lb-status" id="mines-lb-status">&hellip;</span>
+        </div>
+        <ol class="lb-list" id="mines-lb"><li class="lb-empty">Loading&hellip;</li></ol>
+      </div>
+
+      <div class="btn-row" style="margin-top:0">
+        <button class="btn inv" id="mines-new">New Game</button>
+        <button class="btn" id="mines-flagmode" aria-pressed="false">Flag Mode: Off</button>
+      </div>
+
+      <div class="key-hint-row" style="margin-top:1rem">
+        <span class="key-hint">Click</span>
+        <span class="key-hint-label">reveal</span>
+        <span class="key-hint-sep">|</span>
+        <span class="key-hint">Right Click</span>
+        <span class="key-hint-label">flag</span>
+        <span class="key-hint-sep">|</span>
+        <span class="key-hint">Click a number</span>
+        <span class="key-hint-label">to clear around it</span>
+      </div>
+
+      <div class="key-hint-row" style="margin-top:0.5rem">
+        <span class="key-hint">Arrows</span>
+        <span class="key-hint-label">move</span>
+        <span class="key-hint-sep">|</span>
+        <span class="key-hint">Enter</span>
+        <span class="key-hint-label">reveal</span>
+        <span class="key-hint-sep">|</span>
+        <span class="key-hint">F</span>
+        <span class="key-hint-label">flag</span>
+      </div>
+
+      <div class="swipe-hint">Tap to reveal &middot; Long press to flag &middot; Or use Flag Mode</div>
+      </div></div></div>
+    </div>
+  </section>
+
   <!-- COMING SOON GAMES -->
   <section class="sec reveal" style="border-bottom:none">
     <div class="c">
@@ -404,18 +504,13 @@
         </div>
       </div>
       <p style="font-size:0.95rem;line-height:1.75;color:var(--fg-mid);max-width:580px;margin-bottom:2.5rem">
-        Three more games are queued up.
+        Two more games are queued up.
         <span class="lb-only-live">Every game on this page shares one global leaderboard,
         so high scores compete across every visitor.</span>
         <span class="lb-only-local">Every game on this page keeps its own top ten,
         saved on your device.</span>
       </p>
       <div class="coming-grid">
-        <div class="coming-item">
-          <div class="coming-title">Minesweeper</div>
-          <p class="coming-desc">Classic logic puzzle, monospaced and dark. Three difficulties, best-time leaderboards, no first-click death.</p>
-          <div class="tags" style="margin-top:0.5rem"><span class="tag">Logic</span><span class="tag">Grid</span><span class="tag">Best Time</span></div>
-        </div>
         <div class="coming-item">
           <div class="coming-title">Pixel Pusher</div>
           <p class="coming-desc">A Sokoban-style puzzler. Push boxes onto targets across hand-designed levels, themed with Darkness Blooms pixel art.</p>
@@ -1503,6 +1598,386 @@
   init();
 })();
 </script>
+<!-- MINESWEEPER GAME -->
+<script>
+(function () {
+  const DIFFS = {
+    easy: { cols: 9,  rows: 9,  mines: 10, label: 'Beginner'     },
+    med:  { cols: 16, rows: 16, mines: 40, label: 'Intermediate' },
+    hard: { cols: 30, rows: 16, mines: 99, label: 'Expert'       }
+  };
+
+  /* The shared leaderboard sorts by score descending, and a faster time is a
+     lower number, so a raw time would rank backwards. Times are stored as
+     TIME_BASE minus centiseconds: still "bigger is better" for the query and
+     the existing composite index, and turned back into a clock for display.
+     CAP keeps a stored value inside the range firestore.rules allows. */
+  const TIME_BASE = 1000000;
+  const CAP_CS    = 99900;               // 999 seconds
+  const toScore   = cs => TIME_BASE - Math.min(cs, CAP_CS);
+  const toCs      = score => TIME_BASE - score;
+
+  function clock(cs) {
+    const t = Math.max(0, cs);
+    const m = Math.floor(t / 6000);
+    const s = Math.floor((t % 6000) / 100);
+    const h = t % 100;
+    return m + ':' + String(s).padStart(2, '0') + '.' + String(h).padStart(2, '0');
+  }
+
+  const gridEl    = document.getElementById('mines-grid');
+  const leftEl    = document.getElementById('mines-left');
+  const timeEl    = document.getElementById('mines-time');
+  const bestEl    = document.getElementById('mines-best');
+  const overEl    = document.getElementById('mines-over');
+  const overTitle = document.getElementById('mines-over-title');
+  const overSub   = document.getElementById('mines-over-sub');
+  const lbEl      = document.getElementById('mines-lb');
+  const lbStatus  = document.getElementById('mines-lb-status');
+  const lbDiffEl  = document.getElementById('mines-lb-diff');
+  const initWrap  = document.getElementById('mines-initials-wrap');
+  const initInp   = document.getElementById('mines-initials');
+  const submitBtn = document.getElementById('mines-submit');
+  const newBtn    = document.getElementById('mines-new');
+  const flagBtn   = document.getElementById('mines-flagmode');
+  const restBtn   = document.getElementById('mines-restart');
+  const diffWrap  = document.getElementById('mines-diffs');
+
+  let diff = 'easy';
+  let cols, rows, mineCount;
+  let mine, adj, state;          // state: 0 hidden, 1 revealed, 2 flagged
+  let cells = [];
+  let started, dead, won, placed;
+  let flags, revealed, startTime, timer;
+  let cursor = 0, flagMode = false;
+  let pendingCs = 0, isPB = false;
+  let board = null;
+
+  function bestKey() { return 'mines_best_' + diff; }
+
+  function bindBoard() {
+    if (board) board.unsubscribe();
+    lbEl.innerHTML = '<li class="lb-empty">Loading&hellip;</li>';
+    board = window.LB.bind('mines-' + diff, lbEl, 10, lbStatus, {
+      format: score => clock(toCs(score))
+    });
+    lbDiffEl.textContent = DIFFS[diff].label;
+    const b = localStorage.getItem(bestKey());
+    bestEl.textContent = b ? clock(Number(b)) : '––';
+  }
+
+  const idx = (c, r) => r * cols + c;
+
+  function forEachNeighbour(c, r, fn) {
+    for (let dr = -1; dr <= 1; dr++) {
+      for (let dc = -1; dc <= 1; dc++) {
+        if (!dc && !dr) continue;
+        const nc = c + dc, nr = r + dr;
+        if (nc < 0 || nr < 0 || nc >= cols || nr >= rows) continue;
+        fn(nc, nr, idx(nc, nr));
+      }
+    }
+  }
+
+  /* Mines are laid only after the first click, and never on that cell or any
+     of its neighbours. That guarantees the opening move is a zero and floods
+     a clearing, so no game can be lost or stalled on move one. */
+  function placeMines(safeC, safeR) {
+    const banned = new Set([idx(safeC, safeR)]);
+    forEachNeighbour(safeC, safeR, (c, r, i) => banned.add(i));
+
+    const pool = [];
+    for (let i = 0; i < cols * rows; i++) if (!banned.has(i)) pool.push(i);
+    // Fisher-Yates, taking only what we need.
+    for (let i = 0; i < mineCount && i < pool.length; i++) {
+      const j = i + Math.floor(Math.random() * (pool.length - i));
+      const t = pool[i]; pool[i] = pool[j]; pool[j] = t;
+      mine[pool[i]] = 1;
+    }
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        let n = 0;
+        forEachNeighbour(c, r, (nc, nr, i) => { if (mine[i]) n++; });
+        adj[idx(c, r)] = n;
+      }
+    }
+    placed = true;
+  }
+
+  function build() {
+    const d = DIFFS[diff];
+    cols = d.cols; rows = d.rows; mineCount = d.mines;
+    const n = cols * rows;
+    mine = new Uint8Array(n);
+    adj = new Uint8Array(n);
+    state = new Uint8Array(n);
+    started = dead = won = placed = false;
+    flags = 0; revealed = 0; cursor = 0;
+    clearInterval(timer); timer = null;
+    timeEl.textContent = '0:00';
+    leftEl.textContent = mineCount;
+    overEl.classList.remove('show');
+    initWrap.classList.remove('show');
+
+    gridEl.style.setProperty('--mines-cols', cols);
+    gridEl.classList.toggle('dense', cols > 20);
+    gridEl.innerHTML = '';
+    cells = [];
+    const frag = document.createDocumentFragment();
+    for (let i = 0; i < n; i++) {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'mine-cell';
+      b.dataset.i = i;
+      b.setAttribute('aria-label', 'hidden square');
+      b.tabIndex = i === 0 ? 0 : -1;
+      cells.push(b);
+      frag.appendChild(b);
+    }
+    gridEl.appendChild(frag);
+  }
+
+  function tick() {
+    const cs = Math.floor((Date.now() - startTime) / 10);
+    timeEl.textContent = clock(Math.min(cs, CAP_CS)).replace(/\.\d\d$/, '');
+  }
+
+  function startTimer() {
+    startTime = Date.now();
+    timer = setInterval(tick, 200);
+  }
+
+  function paint(i) {
+    const b = cells[i];
+    const s = state[i];
+    b.className = 'mine-cell';
+    if (s === 2) {
+      b.classList.add('flag');
+      b.textContent = '◆';
+      b.setAttribute('aria-label', 'flagged square');
+    } else if (s === 1) {
+      b.classList.add('open');
+      if (mine[i]) {
+        b.classList.add('mine');
+        b.textContent = '✹';
+        b.setAttribute('aria-label', 'mine');
+      } else {
+        const n = adj[i];
+        b.textContent = n ? n : '';
+        if (n) b.classList.add('n' + n);
+        b.setAttribute('aria-label', n ? n + ' adjacent mines' : 'empty square');
+      }
+    } else {
+      b.textContent = '';
+      b.setAttribute('aria-label', 'hidden square');
+    }
+  }
+
+  function paintAll() { for (let i = 0; i < cells.length; i++) paint(i); }
+
+  /* Iterative flood fill. Recursion would blow the stack on Expert. */
+  function reveal(startI) {
+    if (state[startI] !== 0) return;
+    const stack = [startI];
+    while (stack.length) {
+      const i = stack.pop();
+      if (state[i] !== 0) continue;
+      state[i] = 1;
+      revealed++;
+      if (adj[i] === 0 && !mine[i]) {
+        const c = i % cols, r = (i / cols) | 0;
+        forEachNeighbour(c, r, (nc, nr, ni) => { if (state[ni] === 0) stack.push(ni); });
+      }
+    }
+  }
+
+  function openCell(i) {
+    if (dead || won || state[i] !== 0) return;
+    if (!placed) {
+      placeMines(i % cols, (i / cols) | 0);
+      started = true;
+      startTimer();
+    }
+    if (mine[i]) { state[i] = 1; return lose(i); }
+    reveal(i);
+    paintAll();
+    checkWin();
+  }
+
+  /* Clicking a satisfied number opens everything around it. */
+  function chord(i) {
+    if (state[i] !== 1 || !adj[i]) return;
+    const c = i % cols, r = (i / cols) | 0;
+    let f = 0;
+    forEachNeighbour(c, r, (nc, nr, ni) => { if (state[ni] === 2) f++; });
+    if (f !== adj[i]) return;
+    let boom = -1;
+    forEachNeighbour(c, r, (nc, nr, ni) => {
+      if (state[ni] !== 0) return;
+      if (mine[ni]) { state[ni] = 1; boom = ni; } else reveal(ni);
+    });
+    if (boom >= 0) return lose(boom);
+    paintAll();
+    checkWin();
+  }
+
+  function toggleFlag(i) {
+    if (dead || won || state[i] === 1) return;
+    if (state[i] === 2) { state[i] = 0; flags--; }
+    else { if (flags >= mineCount) return; state[i] = 2; flags++; }
+    leftEl.textContent = mineCount - flags;
+    paint(i);
+  }
+
+  function lose(hitI) {
+    dead = true;
+    clearInterval(timer);
+    for (let i = 0; i < mine.length; i++) {
+      if (mine[i] && state[i] !== 2) state[i] = 1;
+      if (!mine[i] && state[i] === 2) state[i] = 1;   // wrong flags show up
+    }
+    paintAll();
+    if (hitI >= 0) cells[hitI].classList.add('boom');
+    overTitle.textContent = 'Boom';
+    overSub.textContent = 'You hit a mine.';
+    initWrap.classList.remove('show');
+    isPB = false; pendingCs = 0;
+    overEl.classList.add('show');
+  }
+
+  function checkWin() {
+    if (revealed < cols * rows - mineCount) return;
+    won = true;
+    clearInterval(timer);
+    const cs = Math.min(Math.floor((Date.now() - startTime) / 10), CAP_CS);
+    for (let i = 0; i < mine.length; i++) if (mine[i] && state[i] !== 2) { state[i] = 2; flags++; }
+    leftEl.textContent = 0;
+    paintAll();
+    timeEl.textContent = clock(cs);
+
+    const prev = Number(localStorage.getItem(bestKey()) || 0);
+    if (!prev || cs < prev) {
+      try { localStorage.setItem(bestKey(), String(cs)); } catch (e) {}
+      bestEl.textContent = clock(cs);
+    }
+
+    overTitle.textContent = 'Cleared';
+    overSub.textContent = DIFFS[diff].label + ' in ' + clock(cs);
+    pendingCs = cs;
+    isPB = board ? board.isPB(toScore(cs)) : false;
+    if (isPB) {
+      initWrap.classList.add('show');
+      initInp.value = '';
+      setTimeout(() => initInp.focus(), 30);
+    } else {
+      initWrap.classList.remove('show');
+    }
+    overEl.classList.add('show');
+  }
+
+  function submitTime() {
+    if (!isPB || !pendingCs) return;
+    const name = initInp.value;
+    const s = toScore(pendingCs);
+    isPB = false; pendingCs = 0;
+    initWrap.classList.remove('show');
+    submitBtn.disabled = true;
+    Promise.resolve(board.submit(name, s)).finally(() => { submitBtn.disabled = false; });
+  }
+
+  // ── input ──────────────────────────────────────────
+  function cellIndexFrom(e) {
+    const t = e.target.closest('.mine-cell');
+    return t ? Number(t.dataset.i) : -1;
+  }
+
+  gridEl.addEventListener('click', e => {
+    const i = cellIndexFrom(e);
+    if (i < 0 || dead || won) return;
+    focusCell(i);
+    if (flagMode) return toggleFlag(i);
+    if (state[i] === 1) return chord(i);
+    openCell(i);
+  });
+
+  gridEl.addEventListener('contextmenu', e => {
+    const i = cellIndexFrom(e);
+    if (i < 0) return;
+    e.preventDefault();
+    focusCell(i);
+    toggleFlag(i);
+  });
+
+  // Long press flags on touch, without hijacking a normal tap.
+  let touchTimer = null, touchMoved = false;
+  gridEl.addEventListener('touchstart', e => {
+    const i = cellIndexFrom(e);
+    if (i < 0) return;
+    touchMoved = false;
+    touchTimer = setTimeout(() => {
+      touchTimer = null;
+      if (!touchMoved) { toggleFlag(i); if (navigator.vibrate) navigator.vibrate(15); }
+    }, 420);
+  }, { passive: true });
+  gridEl.addEventListener('touchmove', () => { touchMoved = true; clearTimeout(touchTimer); touchTimer = null; }, { passive: true });
+  gridEl.addEventListener('touchend', e => {
+    if (touchTimer === null) { e.preventDefault(); return; }   // long press already fired
+    clearTimeout(touchTimer); touchTimer = null;
+  });
+
+  function focusCell(i) {
+    if (!cells[i]) return;
+    cells[cursor] && (cells[cursor].tabIndex = -1);
+    cursor = i;
+    cells[i].tabIndex = 0;
+  }
+
+  gridEl.addEventListener('keydown', e => {
+    const k = e.key;
+    let c = cursor % cols, r = (cursor / cols) | 0;
+    if (k === 'ArrowLeft')       c = Math.max(0, c - 1);
+    else if (k === 'ArrowRight') c = Math.min(cols - 1, c + 1);
+    else if (k === 'ArrowUp')    r = Math.max(0, r - 1);
+    else if (k === 'ArrowDown')  r = Math.min(rows - 1, r + 1);
+    else if (k === 'f' || k === 'F') { e.preventDefault(); return toggleFlag(cursor); }
+    else if (k === 'Enter' || k === ' ') {
+      e.preventDefault();
+      if (dead || won) return;
+      if (flagMode) return toggleFlag(cursor);
+      if (state[cursor] === 1) return chord(cursor);
+      return openCell(cursor);
+    } else return;
+    e.preventDefault();
+    focusCell(idx(c, r));
+    cells[cursor].focus();
+  });
+
+  diffWrap.addEventListener('click', e => {
+    const b = e.target.closest('.mines-diff');
+    if (!b) return;
+    diff = b.dataset.diff;
+    diffWrap.querySelectorAll('.mines-diff').forEach(x => x.classList.toggle('active', x === b));
+    build(); paintAll(); bindBoard();
+  });
+
+  newBtn.addEventListener('click', () => { build(); paintAll(); });
+  restBtn.addEventListener('click', () => { build(); paintAll(); });
+  submitBtn.addEventListener('click', submitTime);
+  initInp.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); submitTime(); } });
+
+  flagBtn.addEventListener('click', () => {
+    flagMode = !flagMode;
+    flagBtn.textContent = 'Flag Mode: ' + (flagMode ? 'On' : 'Off');
+    flagBtn.setAttribute('aria-pressed', flagMode ? 'true' : 'false');
+    flagBtn.classList.toggle('inv', flagMode);
+  });
+
+  build();
+  paintAll();
+  bindBoard();
+})();
+</script>
+
 
 <script>
 document.querySelectorAll('.game-section .sec-head').forEach(function(head) {
