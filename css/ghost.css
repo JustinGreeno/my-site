@@ -2394,20 +2394,31 @@ select:focus-visible,
 .mines-diff.active { background: var(--accent); color: var(--accent-fg); }
 .mines-diff.active span { color: var(--accent-fg); opacity: 0.75; }
 
-/* The board sits in the shared game frame, but unlike the canvas games it
-   is a DOM grid, so it scrolls sideways on Expert rather than shrinking
-   the cells past readability. */
-.mines-wrap { background: var(--bg); padding: 0; }
+/* The board sits in the shared game frame, but unlike the canvas games it is
+   a DOM grid, so the frame grows with the column count instead of scrolling:
+   Beginner keeps the 480px frame the canvas games use, and Expert widens out
+   to roughly 1000px. Below that the cells simply shrink to fit, so the board
+   never needs a scroll bar at any width. */
+.mines-wrap {
+  background: var(--bg);
+  padding: 0;
+  max-width: min(100%, max(480px, calc(var(--mines-cols, 9) * 32px + 2.5rem)));
+  overflow: hidden;
+}
 
-.mines-scroll {
-  overflow-x: auto;
-  overflow-y: hidden;
+.mines-board {
   padding: clamp(0.6rem, 2vw, 1.25rem);
+  container-type: inline-size;
+}
+
+/* Expert on a phone needs every pixel of the frame, so trim the inset. */
+@media (max-width: 560px) {
+  .mines-board { padding: 0.4rem; }
 }
 
 .mines-grid {
   display: grid;
-  grid-template-columns: repeat(var(--mines-cols, 9), minmax(26px, 1fr));
+  grid-template-columns: repeat(var(--mines-cols, 9), 1fr);
   gap: 1px;
   background: var(--rule-c, rgba(237,237,237,0.12));
   border: 1px solid var(--rule-c, rgba(237,237,237,0.12));
@@ -2415,16 +2426,18 @@ select:focus-visible,
   margin: 0 auto;
 }
 
-.mines-grid.dense { min-width: 640px; }
-
 .mine-cell {
   aspect-ratio: 1;
-  min-width: 26px;
+  min-width: 0;
   border: none;
   background: var(--mine-hidden, rgba(237,237,237,0.07));
   color: var(--fg);
   font-family: var(--mono);
   font-size: clamp(0.62rem, 1.5vw, 0.85rem);
+  /* Progressive enhancement: size the digit off the real cell width, which is
+     the board width divided by the column count, so Expert stays legible as
+     the cells shrink. Browsers without container queries keep the clamp above. */
+  font-size: clamp(0.45rem, calc(100cqw / var(--mines-cols, 9) * 0.52), 0.85rem);
   font-weight: 500;
   line-height: 1;
   display: flex;
@@ -2463,8 +2476,3 @@ select:focus-visible,
 
 :root { --mine-hidden: rgba(0,0,0,0.07); --mine-hover: rgba(0,0,0,0.15); --rule-c: rgba(0,0,0,0.12); }
 [data-theme="dark"] { --mine-hidden: rgba(237,237,237,0.07); --mine-hover: rgba(237,237,237,0.16); --rule-c: rgba(237,237,237,0.12); }
-
-@media (max-width: 560px) {
-  .mine-cell { min-width: 22px; }
-  .mines-grid { grid-template-columns: repeat(var(--mines-cols, 9), minmax(22px, 1fr)); }
-}

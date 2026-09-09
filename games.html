@@ -439,7 +439,7 @@
       </div>
 
       <div class="game-canvas-wrap mines-wrap">
-        <div class="mines-scroll">
+        <div class="mines-board">
           <div class="mines-grid" id="mines-grid" role="grid" aria-label="Minesweeper board"></div>
         </div>
         <div class="game-over-overlay" id="mines-over">
@@ -1626,6 +1626,7 @@
   }
 
   const gridEl    = document.getElementById('mines-grid');
+  const wrapEl    = gridEl.closest('.mines-wrap');
   const leftEl    = document.getElementById('mines-left');
   const timeEl    = document.getElementById('mines-time');
   const bestEl    = document.getElementById('mines-best');
@@ -1719,8 +1720,9 @@
     overEl.classList.remove('show');
     initWrap.classList.remove('show');
 
-    gridEl.style.setProperty('--mines-cols', cols);
-    gridEl.classList.toggle('dense', cols > 20);
+    // The var lives on the frame, whose max-width scales with the column
+    // count so the board always fits without a scroll bar. The grid inherits it.
+    wrapEl.style.setProperty('--mines-cols', cols);
     gridEl.innerHTML = '';
     cells = [];
     const frag = document.createDocumentFragment();
