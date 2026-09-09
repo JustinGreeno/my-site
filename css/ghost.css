@@ -2396,24 +2396,21 @@ select:focus-visible,
 
 /* The board sits in the shared game frame, but unlike the canvas games it is
    a DOM grid, so the frame grows with the column count instead of scrolling:
-   Beginner keeps the 480px frame the canvas games use, and Expert widens out
-   to roughly 1000px. Below that the cells simply shrink to fit, so the board
-   never needs a scroll bar at any width. */
+   Beginner keeps the 480px frame the canvas games use, and Expert (30 wide)
+   widens out to about 960px. Below that the cells simply shrink to fit, so the
+   board never needs a scroll bar at any width. */
 .mines-wrap {
   background: var(--bg);
   padding: 0;
-  max-width: min(100%, max(480px, calc(var(--mines-cols, 9) * 32px + 2.5rem)));
+  max-width: min(100%, max(480px, calc(var(--mines-cols, 9) * 32px + 2px)));
   overflow: hidden;
 }
 
+/* No inset: the board fills the frame edge to edge, so the frame background
+   never shows as a ring around the grid. */
 .mines-board {
-  padding: clamp(0.6rem, 2vw, 1.25rem);
+  padding: 0;
   container-type: inline-size;
-}
-
-/* Expert on a phone needs every pixel of the frame, so trim the inset. */
-@media (max-width: 560px) {
-  .mines-board { padding: 0.4rem; }
 }
 
 .mines-grid {
@@ -2421,7 +2418,6 @@ select:focus-visible,
   grid-template-columns: repeat(var(--mines-cols, 9), 1fr);
   gap: 1px;
   background: var(--rule-c, rgba(237,237,237,0.12));
-  border: 1px solid var(--rule-c, rgba(237,237,237,0.12));
   width: 100%;
   margin: 0 auto;
 }
