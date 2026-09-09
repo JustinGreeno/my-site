@@ -2289,3 +2289,53 @@ a.book-cover-wrap:hover { transform: translateY(-4px); border-color: var(--accen
   .nf-figure { order: -1; max-width: 380px; }
   .nf-msg { max-width: none; }
 }
+
+/* ── FOCUS ───────────────────────────────────────── */
+/* :focus-visible only, so pointer users never see a ring and keyboard
+   users always do. Several controls below clear their own outline, so
+   these rules carry higher specificity to put it back. */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Contact form fields set outline:none and had nothing in its place, so a
+   keyboard user could not tell which field they were in. */
+.form-group:focus-within { border-bottom-color: var(--accent); }
+
+.form-input:focus-visible,
+.form-area:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+#search-input:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+.photo-item:focus-visible,
+.word-grid .photo-item:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* ── REDUCED MOTION ──────────────────────────────── */
+/* Honour the OS setting: hold everything still rather than animating it. */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .marquee-track { animation: none !important; }
+
+  /* Reveal-on-scroll and the hero letter stagger both start invisible,
+     so they need to be forced to their finished state, not just sped up. */
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .hl { animation: none !important; opacity: 1 !important; transform: none !important; }
+
+  #cursor-dot, #cursor-glow { display: none !important; }
+}

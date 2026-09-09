@@ -1,6 +1,12 @@
-// Shared global leaderboard for all games on this site.
+// Leaderboard for all games on this site.
 // Backend: Firebase Firestore (modular SDK loaded via ESM dynamic import).
 // Falls back to per-browser localStorage if config is missing or Firebase fails.
+//
+// CURRENTLY IN FALLBACK MODE. FIREBASE_CONFIG below is still REPLACE_ME, so
+// scores live only in each visitor's own browser and the status readout shows
+// "Local" rather than "Live". games.html copy says "saved on your device" to
+// match. Paste a real config in and it becomes genuinely shared, at which
+// point that copy should go back to saying global.
 
 (function () {
   'use strict';
