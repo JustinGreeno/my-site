@@ -1,0 +1,48 @@
+// Firestore security rules for the games leaderboard.
+//
+// Paste these into: Firebase console > Build > Firestore Database > Rules > Publish.
+// Kept in the repo so the deployed rules have a reviewable source.
+//
+// Anyone may read the board. Anyone may add a score, but only in the exact
+// shape js/leaderboard.js writes, and nothing can ever be edited or deleted
+// from the client. That keeps a bored visitor from rewriting the board
+// without needing anyone to sign in.
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /leaderboard/{entry} {
+
+      allow read: if true;
+
+      allow create: if
+        request.resource.data.keys().hasOnly(['game', 'name', 'score', 'createdAt'])
+
+        && request.resource.data.game is string
+        && request.resource.data.game.size() > 0
+        && request.resource.data.game.size() <= 32
+        && request.resource.data.game.matches('^[a-z0-9_-]+$')
+
+        && request.resource.data.name is string
+        && request.resource.data.name.size() == 3
+        && request.resource.data.name.matches('^[A-Z0-9?]+$')
+
+        && request.resource.data.score is number
+        && request.resource.data.score >= 0
+        && request.resource.data.score <= 9999999
+
+        // Must be the server clock, so nobody can backdate an entry.
+        && request.resource.data.createdAt == request.time;
+
+      // Scores are append only. No client edits or deletions, ever.
+      allow update, delete: if false;
+    }
+
+    // Everything else stays closed.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

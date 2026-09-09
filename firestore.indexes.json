@@ -1,0 +1,14 @@
+{
+  "_comment": "The leaderboard query filters on game and sorts by score, which Firestore cannot serve from a single-field index. Create this composite index or the board silently falls back to localStorage. Console route: Firestore Database > Indexes > Composite > Create index.",
+  "indexes": [
+    {
+      "collectionGroup": "leaderboard",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "game",  "order": "ASCENDING" },
+        { "fieldPath": "score", "order": "DESCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}
