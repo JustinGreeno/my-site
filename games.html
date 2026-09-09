@@ -121,7 +121,7 @@
 
       <div class="lb-block">
         <div class="lb-head">
-          <div class="game-score-label">Top 10</div>
+          <div class="game-score-label">Top 10<span class="lb-only-live"> Global</span></div>
           <span class="lb-status" id="snake-lb-status">&hellip;</span>
         </div>
         <ol class="lb-list" id="snake-lb"><li class="lb-empty">Loading&hellip;</li></ol>
@@ -198,7 +198,7 @@
 
       <div class="lb-block">
         <div class="lb-head">
-          <div class="game-score-label">Top 10</div>
+          <div class="game-score-label">Top 10<span class="lb-only-live"> Global</span></div>
           <span class="lb-status" id="pac-lb-status">&hellip;</span>
         </div>
         <ol class="lb-list" id="pac-lb"><li class="lb-empty">Loading&hellip;</li></ol>
@@ -278,7 +278,7 @@
 
       <div class="lb-block">
         <div class="lb-head">
-          <div class="game-score-label">Top 10</div>
+          <div class="game-score-label">Top 10<span class="lb-only-live"> Global</span></div>
           <span class="lb-status" id="colour-lb-status">&hellip;</span>
         </div>
         <ol class="lb-list" id="colour-lb"><li class="lb-empty">Loading&hellip;</li></ol>
@@ -308,7 +308,7 @@
           <span class="tag">Canvas</span>
           <span class="tag">JavaScript</span>
           <span class="tag">7-bag RNG</span>
-          <span class="tag">Leaderboard</span>
+          <span class="tag"><span class="lb-only-live">Global </span>Leaderboard</span>
         </div>
         <span class="game-toggle">+</span>
       </div>
@@ -357,7 +357,7 @@
 
       <div class="lb-block">
         <div class="lb-head">
-          <div class="game-score-label">Top 10</div>
+          <div class="game-score-label">Top 10<span class="lb-only-live"> Global</span></div>
           <span class="lb-status" id="tetris-lb-status">&hellip;</span>
         </div>
         <ol class="lb-list" id="tetris-lb"><li class="lb-empty">Loading&hellip;</li></ol>
@@ -404,8 +404,11 @@
         </div>
       </div>
       <p style="font-size:0.95rem;line-height:1.75;color:var(--fg-mid);max-width:580px;margin-bottom:2.5rem">
-        Three more games are queued up. Every game on this page keeps its own top ten,
-        saved on your device.
+        Three more games are queued up.
+        <span class="lb-only-live">Every game on this page shares one global leaderboard,
+        so high scores compete across every visitor.</span>
+        <span class="lb-only-local">Every game on this page keeps its own top ten,
+        saved on your device.</span>
       </p>
       <div class="coming-grid">
         <div class="coming-item">
@@ -440,7 +443,7 @@
 </footer>
 
 <script src="js/ghost.js"></script>
-<script src="js/leaderboard.js?v=3"></script>
+<script src="js/leaderboard.js?v=5"></script>
 
 <!-- SNAKE GAME -->
 <script>

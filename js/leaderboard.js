@@ -1,33 +1,45 @@
-// Leaderboard for all games on this site.
+// Shared global leaderboard for all games on this site.
 // Backend: Firebase Firestore (modular SDK loaded via ESM dynamic import).
 // Falls back to per-browser localStorage if config is missing or Firebase fails.
 //
-// CURRENTLY IN FALLBACK MODE. FIREBASE_CONFIG below is still REPLACE_ME, so
-// scores live only in each visitor's own browser and the status readout shows
-// "Local" rather than "Live". games.html copy says "saved on your device" to
-// match. Paste a real config in and it becomes genuinely shared, at which
-// point that copy should go back to saying global.
+// The apiKey below is a public project identifier, not a credential. Every
+// Firebase web app ships it in client JS. Access is governed by
+// firestore.rules in this repo, which allow public reads and append-only
+// creates in exactly the shape this file writes.
 
 (function () {
   'use strict';
 
-  // ── PASTE YOUR FIREBASE WEB APP CONFIG HERE ─────────────────
   // Firebase console > Project settings > Your apps > Web app > "Config"
   const FIREBASE_CONFIG = {
-    apiKey:            "REPLACE_ME",
-    authDomain:        "REPLACE_ME.firebaseapp.com",
-    projectId:         "REPLACE_ME",
-    storageBucket:     "REPLACE_ME.appspot.com",
-    messagingSenderId: "REPLACE_ME",
-    appId:             "REPLACE_ME"
+    apiKey:            "AIzaSyDLg6KUWWVa60-Mpc2fFCB8NF0J_Q1PQjs",
+    authDomain:        "justingreenoscores.firebaseapp.com",
+    projectId:         "justingreenoscores",
+    storageBucket:     "justingreenoscores.firebasestorage.app",
+    messagingSenderId: "831264375119",
+    appId:             "1:831264375119:web:c1a77804531edee703453a",
+    measurementId:     "G-M4KHM67FFB"
   };
-  // ────────────────────────────────────────────────────────────
 
   const SDK = '10.13.2';
   const APP_URL = 'https://www.gstatic.com/firebasejs/' + SDK + '/firebase-app.js';
   const FS_URL  = 'https://www.gstatic.com/firebasejs/' + SDK + '/firebase-firestore.js';
 
   const HAS_CONFIG = !!FIREBASE_CONFIG.apiKey && FIREBASE_CONFIG.apiKey !== 'REPLACE_ME';
+
+  /* Whether Firestore is actually answering, as opposed to merely being
+     configured. A present config proves nothing: the database may not exist
+     yet, rules may reject, or the network may be down, and every one of those
+     paths silently falls back to localStorage. Anything user facing that says
+     "global" keys off this, so the page can never claim to be shared when it
+     is not. */
+  let isLive = false;
+  function setMode(live) {
+    if (live === isLive) return;
+    isLive = live;
+    try { document.documentElement.dataset.lbMode = live ? 'live' : 'local'; } catch (e) {}
+  }
+  try { document.documentElement.dataset.lbMode = 'local'; } catch (e) {}
 
   let ctxPromise = null;
   function getCtx() {
@@ -113,6 +125,7 @@
       });
       return true;
     } catch (err) {
+      setMode(false);
       console.warn('Leaderboard: submit failed, saving locally', err);
       submitLocal(g, n, s);
       notifyLocal(g);
@@ -135,11 +148,13 @@
         fs.limit(limit)
       );
       const snap = await fs.getDocs(q);
+      setMode(true);
       return snap.docs.map(function (d) {
         const data = d.data();
         return { name: data.name, score: data.score };
       });
     } catch (err) {
+      setMode(false);
       console.warn('Leaderboard: top failed, reading locally', err);
       return topLocal(g, limit);
     }
@@ -182,14 +197,17 @@
               const data = d.data();
               return { name: data.name, score: data.score };
             });
+            setMode(true);
             try { onUpdate(rows); } catch (e) {}
           },
           function (err) {
+            setMode(false);
             console.warn('Leaderboard: snapshot error, reading locally', err);
             try { onUpdate(topLocal(g, limit)); } catch (e) {}
           }
         );
       } catch (err) {
+        setMode(false);
         console.warn('Leaderboard: subscribe failed, reading locally', err);
         try { onUpdate(topLocal(g, limit)); } catch (e) {}
       }
@@ -223,7 +241,7 @@
           '</li>';
       }).join('');
     }
-    if (statusEl) statusEl.textContent = HAS_CONFIG ? 'Live' : 'Local';
+    if (statusEl) statusEl.textContent = isLive ? 'Live' : 'Local';
   }
 
   // Convenience: bind a leaderboard to a list element + game id.
@@ -236,7 +254,7 @@
       paintList(listEl, current, statusEl);
     }, limit);
 
-    if (statusEl) statusEl.textContent = HAS_CONFIG ? 'Live' : 'Local';
+    if (statusEl) statusEl.textContent = isLive ? 'Live' : 'Local';
 
     return {
       isPB: function (score) {
@@ -259,6 +277,7 @@
     subscribe: subscribe,
     bind: bind,
     cleanName: cleanName,
-    hasConfig: HAS_CONFIG
+    hasConfig: HAS_CONFIG,
+    isLive: function () { return isLive; }
   };
 })();

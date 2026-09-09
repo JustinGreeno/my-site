@@ -2339,3 +2339,14 @@ select:focus-visible,
 
   #cursor-dot, #cursor-glow { display: none !important; }
 }
+
+/* ── LEADERBOARD MODE ────────────────────────────── */
+/* js/leaderboard.js stamps data-lb-mode on <html> once it knows whether
+   Firestore is actually answering. Default is local, so the page never
+   claims to be global before that is proven true. */
+
+.lb-only-live  { display: none; }
+.lb-only-local { display: inline; }
+
+[data-lb-mode="live"] .lb-only-live  { display: inline; }
+[data-lb-mode="live"] .lb-only-local { display: none; }
